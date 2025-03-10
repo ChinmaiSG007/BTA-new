@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 import ScrollVelocity from "./../styling/ScrollerVelocity"
+import TiltedCard from "../styling/TiltedCard";
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
   const itemRef = useRef(null);
@@ -107,13 +108,14 @@ const Features = () => (
         className="text-blue-50 hero-heading"
       />
       <div className="px-5 py-32">
-        <p className="font-circular-web text-lg text-blue-50">
-          Into the Metagame Layer
+        <p className="mb-6 font-circular-web text-lg text-blue-50">
+          Ignite Your Passion: Beyond Tarmac's Unparalleled Motorcycle Adventures
+        </p>
+        <p className="mb-4 max-w-md font-circular-web text-lg text-blue-50 opacity-50">
+          Founded by a collective of passionate motorcycle enthusiasts, Beyond Tarmac is among the select few source companies in South India with a nationwide presence. For over six years, we've curated unforgettable guided motorcycle tours, boasting a track record of over 780+ satisfied clients.
         </p>
         <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-          Immerse yourself in a rich and ever-expanding universe where a vibrant
-          array of products converge into an interconnected overlay experience
-          on your world.
+          "Join us on a journey like no other with Beyond Tarmac, where every twist of the throttle leads to exhilarating discoveries and unforgettable memories. Join us and experience the true essence of motorcycling freedom."
         </p>
       </div>
 
@@ -189,6 +191,32 @@ const Features = () => (
             className="size-full object-cover object-center"
           />
         </BentoTilt>
+      </div>
+
+      <div className="bg-white flex gap-5 p-4 my-4 rounded">
+        <TiltedCard
+          imageSrc="img/images/palaksha.webp"
+          altText="Palaksha"
+          captionText="PALI"
+          containerHeight="300px"
+          containerWidth="300px"
+          imageHeight="300px"
+          imageWidth="300px"
+          rotateAmplitude={12}
+          scaleOnHover={1.2}
+          showMobileWarning={false}
+          showTooltip={true}
+          displayOverlayContent={true}
+          overlayContent={
+            <p className="bg-white/70 px-2 rounded tilted-card-demo-text">
+              Meet your Guide: Palaksha
+            </p>
+          }
+        />
+        <div className="p-4">
+          <h1 className="text-2xl font-bold mb-4">Meet your Guide: Palaksha</h1>
+          <p className=" text-justify">Palaksha fondly known as <strong>"Pali"</strong> is the mad hatter of the pack, motorcycle collector, off-road enthusiast & dirt track guy. He is one of those guys who chose motorcycling as a part of his life and made it his profession. Owning, Riding and Working on his 20 odd motorcycles (albeit few rare ones) alone is testament to his passion for motorcycles. Pali is WAFA Certified and has a rich experience in leading 35 motorcycle tours pan India. His quick wit and perspicacious nature and impeccable decision making has ensured successful completion of all the tours led by him. Our lead road captain's knowledge of Geographies and Motorcycles is immense and it shows in the stories experienced and shared by our clients. He is insatiably curious, open minded and goes beyond the call of duty to get things done!</p>
+        </div>
       </div>
     </div>
   </section>
