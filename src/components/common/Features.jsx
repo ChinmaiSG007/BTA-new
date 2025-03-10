@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
-
+import ScrollVelocity from "./../styling/ScrollerVelocity"
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
   const itemRef = useRef(null);
@@ -101,6 +101,11 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 const Features = () => (
   <section className="bg-black pb-52">
     <div className="container mx-auto px-3 md:px-10">
+      <ScrollVelocity
+        texts={['React Bits', 'Scroll Down', 'CHINMAI']}
+        velocity={10}
+        className="text-blue-50 hero-heading"
+      />
       <div className="px-5 py-32">
         <p className="font-circular-web text-lg text-blue-50">
           Into the Metagame Layer

@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import Button from "./Button";
 import VideoPreview from "./VideoPreview";
-import { Link } from "react-router-dom";
+import GlitchText from "./../styling/GlitchText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -82,6 +82,9 @@ const Hero = () => {
   });
 
   const getVideoSrc = (index) => `videos/bta-${index}.mp4`;
+  const scrollToAbout = () => {
+    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
@@ -145,24 +148,30 @@ const Hero = () => {
           ADVENTURES
         </h1>
 
+
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
-            <h1 className="special-font hero-heading text-blue-100">
+            <GlitchText
+              speed={1.5}
+              enableShadows={true}
+              enableOnHover={true}
+              className='special-font hero-heading text-blue-100'
+            >
               BEYOND TARMAC
-            </h1>
+            </GlitchText>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
               Navigating the Contours of the Unknown
             </p>
 
-            <Link to={"/home#about"}>
+            <a href="#about">
               <Button
                 id="watch-trailer"
                 title="Discover Us"
                 leftIcon={<TiLocationArrow />}
                 containerClass="bg-yellow-300 flex-center gap-1"
               />
-            </Link>
+            </a>
           </div>
         </div>
       </div>

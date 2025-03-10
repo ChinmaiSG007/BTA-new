@@ -35,7 +35,6 @@ const About = () => {
 
         <AnimatedTitle
           title="Navigating the Contours of the Unknown"
-          // title="Disc<b>o</b>ver the world's <br /> largest shared <b>a</b>dventure"
           containerClass="mt-5 !text-black text-center"
         />
 
