@@ -46,7 +46,7 @@ const ImportantMessage = () => {
             </div>
 
             {/* Guide dialog box */}
-            <div className="absolute right-10 top-16 z-20 w-64 rounded-lg border glass-nav backdrop-blur-glass p-4 ">
+            <div className="absolute right-10 top-16 z-20 w-64 rounded-lg border bg-black/10 p-4 ">
                 <h3 className="mb-2 text-lg font-bold">Audio Controls</h3>
                 <p className="mb-4">Click the audio icon to toggle sound on/off during your experience!</p>
                 <button
