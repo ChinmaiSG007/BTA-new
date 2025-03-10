@@ -17,13 +17,13 @@ const GlitchText = ({
     const hoverClass = enableOnHover ? 'enable-on-hover' : '';
 
     return (
-        <div
+        <h1
             className={`glitch ${hoverClass} ${className}`}
             style={inlineStyles}
             data-text={children}
         >
             {children}
-        </div>
+        </h1>
     );
 };
 
