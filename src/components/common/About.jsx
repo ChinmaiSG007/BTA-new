@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 
 import AnimatedTitle from "./AnimatedTitle";
+import CircularGallery from "../styling/CircularGallery ";
 
 gsap.registerPlugin(ScrollTrigger);
 const DnaItems = [
@@ -70,7 +71,14 @@ const About = () => {
 
   return (
     <div id="about" className="min-h-screen w-screen">
+      <div>
+        <div style={{ height: '600px', position: 'relative' }}>
+          <CircularGallery bend={3} textColor="#000" borderRadius={0.05} />
+        </div>
+      </div>
+
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
+
         <div className="bg-white/40 backdrop-blur-sm shadow-lg rounded-3xl mx-12 p-8 max-w-[80vw]">
           <h1 className="mb-8 text-center text-3xl font-bold">
             DNA OF BEYOND TARMAC ADVENTURES
