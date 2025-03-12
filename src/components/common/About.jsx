@@ -1,9 +1,8 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-
 import AnimatedTitle from "./AnimatedTitle";
-import CircularGallery from "../styling/CircularGallery ";
+import TripCarousel from "./TripCarousel";
 
 gsap.registerPlugin(ScrollTrigger);
 const DnaItems = [
@@ -71,21 +70,15 @@ const About = () => {
 
   return (
     <div id="about" className="min-h-screen w-screen">
-      <div>
-        <div style={{ height: '600px', position: 'relative' }}>
-          <CircularGallery bend={3} textColor="#000" borderRadius={0.05} />
-        </div>
-      </div>
-
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
-
+        <TripCarousel />
         <div className="bg-white/40 backdrop-blur-sm shadow-lg rounded-3xl mx-12 p-8 max-w-[80vw]">
           <h1 className="mb-8 text-center text-3xl font-bold">
             DNA OF BEYOND TARMAC ADVENTURES
           </h1>
           <div className="grid grid-cols-2 gap-7 md:grid-cols-4 md:grid-rows-2">
-            {DnaItems.map((item) => (
-              <div className="flex flex-col items-center" >
+            {DnaItems.map((item, index) => (
+              <div key={index} className="flex flex-col items-center" >
                 <div className="overflow-hidden rounded mb-2">
                   <img src={item.image} alt={item.heading} className="w-full h-full mb-4 hover:scale-125 duration-500 rounded-lg object-cover " />
                 </div>

@@ -78,7 +78,7 @@ const NavBar = () => {
           {/* Logo and Product button */}
           <div className="flex items-center gap-7">
             <Link to={"/"}>
-              <img src="/img/images/logo2.png" alt="logo" className=" w-28" />
+              <img src={navButtontheme === 'white' ? "/img/images/logo2.png" : "/img/images/logo1.png"} alt="logo" className=" w-28" />
             </Link>
             <Link to={"/tour"}>
               <Button
