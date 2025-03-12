@@ -4,6 +4,7 @@ import Home from "./components/pages/Home";
 import NavBar from "./components/layouts/Navbar";
 import Footer from "./components/layouts/Footer";
 import About from "./components/common/About";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
   return (
@@ -16,6 +17,14 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
             </Routes>
+            <ScrollToTop
+              threshold={500}
+              right={30}
+              bottom={30}
+              size={40}
+              bgColor="#edff66"
+              shadow={true}
+            />
           </main>
           <Footer />
         </div>
