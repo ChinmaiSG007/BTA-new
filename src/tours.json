@@ -1,0 +1,108 @@
+{
+  "regions": [
+    {
+      "id": "north-india-himalayas",
+      "name": "North India Himalayas",
+      "tours": [
+        {
+          "id": "nih-1",
+          "name": "Snow White Spiti",
+          "caption": "Premium Spiti Snow Ride",
+          "duration": "9 Days and 8 Nights",
+          "period": "April 2025",
+          "starting": "Chandigarh",
+          "cost": "₹ 95,999",
+          "imageUrl": ""
+        },
+        {
+          "id": "nih-2",
+          "name": "Tale of Three Valleys",
+          "caption": "A Trans himalayan motorcycle adventure",
+          "duration": "15 days and 14 nights",
+          "period": "June - October 2024",
+          "starting": "Chandigarh",
+          "cost": "₹ 1,45,000",
+          "imageUrl": ""
+        },
+        {
+          "id": "nih-3",
+          "name": "The Moonland Tour",
+          "caption": "A Spiti motorcycle ride",
+          "duration": "10 days and 10 nights",
+          "period": "June - October 2024",
+          "starting": "Chandigarh",
+          "cost": "₹ 84,999",
+          "imageUrl": ""
+        },
+        {
+          "id": "nih-4",
+          "name": "The Complete Circle",
+          "caption": "The Old school Ladakh route with a twist",
+          "duration": "12 days and 11 nights",
+          "period": "June 2024",
+          "starting": "Chandigarh",
+          "cost": "₹ 1,19,999",
+          "imageUrl": ""
+        },
+        {
+          "id": "nih-5",
+          "name": "La Himalaya",
+          "caption": "Charting the Uncharted on Two Wheels",
+          "duration": "15 days and 14 nights",
+          "period": "July - August 2024",
+          "starting": "Chandigarh",
+          "cost": "₹ 1,35,999",
+          "imageUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "north-india",
+      "name": "North India",
+      "tours": [
+        {
+          "id": "ni-1",
+          "name": "Rajashtan",
+          "caption": "Riding the Royal Trails of Rajasthan",
+          "duration": "11 Days and 10 Nights",
+          "period": "Jan / Feb 2025",
+          "starting": "Jaipur",
+          "cost": "₹ 1,49,999",
+          "imageUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "nepal",
+      "name": "Nepal",
+      "tours": [
+        {
+          "id": "nep-1",
+          "name": "Nēpālamā svāgata cha",
+          "caption": "Motorycle Ride Across the Heaven on Earth",
+          "duration": "11 Days and 10 Nights",
+          "period": "October 2024",
+          "starting": "Lucknow",
+          "cost": "₹ 75,999",
+          "imageUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "north-east-india",
+      "name": "North East India",
+      "tours": [
+        {
+          "id": "nei-1",
+          "name": "North Eastern Nirvana",
+          "caption": "Touch the Edge of India",
+          "duration": "11 Days and 10 Nights",
+          "period": "November 2025",
+          "starting": "Guwahati",
+          "cost": "₹ 1,24,999",
+          "imageUrl": ""
+        }
+      ]
+    }
+  ]
+}
