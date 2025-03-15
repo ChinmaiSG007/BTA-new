@@ -167,7 +167,7 @@ const Hero = () => {
             <a href="#about">
               <Button
                 id="watch-trailer"
-                title="Discover Us"
+                title="Discover"
                 leftIcon={<TiLocationArrow />}
                 containerClass="bg-yellow-300 flex-center gap-1"
               />
@@ -176,7 +176,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
+      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-[#edff66]">
         ADVENTURES
       </h1>
     </div>

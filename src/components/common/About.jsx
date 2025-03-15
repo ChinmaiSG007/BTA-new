@@ -71,15 +71,18 @@ const About = () => {
   return (
     <div id="about" className="min-h-screen w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
+        <p className="section-small-heading">
+          EXPLORE WITH US!
+        </p>
         <TripCarousel />
-        <div className="bg-white/40 backdrop-blur-sm shadow-lg rounded-3xl mx-12 p-8 max-w-[80vw]">
+        <div className="bg-white/90 backdrop-blur-sm shadow-lg rounded-3xl mx-12 p-8 max-w-[80vw]">
           <h1 className="mb-8 text-center text-3xl font-bold">
             DNA OF BEYOND TARMAC ADVENTURES
           </h1>
           <div className="grid grid-cols-2 gap-7 md:grid-cols-4 md:grid-rows-2">
             {DnaItems.map((item, index) => (
               <div key={index} className="flex flex-col items-center" >
-                <div className="overflow-hidden rounded mb-2">
+                <div className="overflow-hidden rounded mb-2 ">
                   <img src={item.image} alt={item.heading} className="w-full h-full mb-4 hover:scale-125 duration-500 rounded-lg object-cover " />
                 </div>
                 <h3 className="text-2xl font-semibold">{item.heading}</h3>
@@ -89,16 +92,13 @@ const About = () => {
 
           </div>
         </div>
-        <p className="font-general text-sm uppercase md:text-[10px]">
-          EXPLORE WITH US!
-        </p>
 
         <AnimatedTitle
           title="Navigating the Contours of the Unknown"
-          containerClass="mt-5 !text-black text-center"
+          containerClass="mt-4 text-center"
         />
 
-        <div className="about-subtext">
+        <div className="section-subtext">
           <p className="text-gray-500">
             Exploring these ever-chasing contours, fosters a deeper understanding of ourselves and the world around us.
           </p>

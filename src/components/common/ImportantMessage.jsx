@@ -46,12 +46,12 @@ const ImportantMessage = () => {
             </div>
 
             {/* Guide dialog box */}
-            <div className="absolute right-10 top-16 z-20 w-64 rounded-lg border bg-black/10 p-4 ">
+            <div className="!text-white absolute right-10 top-16 z-20 w-64 rounded-lg border bg-black/10 p-4 ">
                 <h3 className="mb-2 text-lg font-bold">Audio Controls</h3>
                 <p className="mb-4">Click the audio icon to toggle sound on/off during your experience!</p>
                 <button
                     onClick={closeGuide}
-                    className="rounded-lg px-4 py-2  bg-opacity-40 border backdrop-blur-glass hover:text-black duration-300 font-semibold hover:bg-white "
+                    className="action-button"
                 >
                     Got it!
                 </button>
