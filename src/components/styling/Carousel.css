@@ -5,9 +5,16 @@
   border: 1px solid #555;
   border-radius: 24px;
   padding: 16px;
+  background-color: #00000033;
   /* This padding is taken into account for item width */
   --outer-r: 24px;
   --p-distance: 12px;
+    transition: all 1s ease;
+}
+
+.carousel-container:hover {
+  z-index: 20;
+  box-shadow: 0 0 100px 5px rgba(0, 174, 255, 0.3);
 }
 
 /* Track */
@@ -25,9 +32,10 @@
   justify-content: space-between;
   border: 1px solid #555;
   border-radius: calc(var(--outer-r) - var(--p-distance));
-  background-color: #707070;
+  background-color: #0076c51f;
   overflow: hidden;
   cursor: grab;
+  width: 100%;
 }
 
 .carousel-item:active {
@@ -71,7 +79,7 @@
 
 .carousel-item-header {
   margin-bottom: 16px;
-  padding: 20px;
+  padding: 10px;
   padding-top: 20px;
 }
 
@@ -94,6 +102,11 @@
 .carousel-item-content {
   padding: 20px;
   padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .carousel-item-title {
@@ -106,6 +119,7 @@
 .carousel-item-description {
   font-size: 14px;
   color: #fff;
+  text-align: center;
 }
 
 /* Indicators */

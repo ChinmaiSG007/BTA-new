@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 
 import "./Carousel.css";
+import { Link } from "react-router-dom";
 
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
@@ -16,6 +17,7 @@ export default function Carousel({
     pauseOnHover = true,
     loop = true,
     round = false,
+    tripName
 }) {
     // Handle empty or single item cases
     const hasSingleItem = tripData.length <= 1;
@@ -29,6 +31,7 @@ export default function Carousel({
     const x = useMotionValue(0);
     const [isHovered, setIsHovered] = useState(false);
     const [isResetting, setIsResetting] = useState(false);
+    const [selectedIndex, setSelectedIndex] = useState(null);
 
     const containerRef = useRef(null);
     useEffect(() => {
@@ -115,7 +118,7 @@ export default function Carousel({
     return (
         <div
             ref={containerRef}
-            className={`carousel-container ${round ? "round" : ""}`}
+            className={`carousel-container ${round ? "round" : ""} backdrop-blur-sm`}
             style={{
                 width: `${baseWidth}px`,
                 ...(round && { height: `${baseWidth}px`, borderRadius: "50%" }),
@@ -158,16 +161,20 @@ export default function Carousel({
                             }}
                             transition={effectiveTransition}
                         >
+                            <h2 className="section-mini-heading p-4 text-center w-full">{tripName}</h2>
                             <div className="p-4">
-                                <img src="" alt={item.name} />
+                                <img src={item.image} alt={item.name} />
                             </div>
                             <div className="carousel-item-content">
-                                <div className="carousel-item-title">{item.name}</div>
+                                <div className="section-mini-heading">{item.name}</div>
                                 <p className="carousel-item-description">{item.caption}</p>
-                                <p className="carousel-item-description">{item.duration}</p>
-                                <p className="carousel-item-description">{item.period}</p>
-                                <p className="carousel-item-description">{item.starting}</p>
-                                <p className="carousel-item-description">{item.cost}</p>
+                                <ul>
+                                    <li className="carousel-item-description">Duration: {item.duration}</li>
+                                    <li className="carousel-item-description">Period: {item.period}</li>
+                                    <li className="carousel-item-description">Starting point: {item.starting}</li>
+                                    <li className="carousel-item-description">Cost: {item.cost}</li>
+                                </ul>
+                                <Link to={"/tour"} className="action-button">DETAILS</Link>
                             </div>
                         </motion.div>
                     );

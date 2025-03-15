@@ -12,7 +12,7 @@
           "period": "April 2025",
           "starting": "Chandigarh",
           "cost": "₹ 95,999",
-          "imageUrl": ""
+          "image": "img/images/gallery/compressedImages/DSC_6452.jpg"
         },
         {
           "id": "nih-2",
@@ -22,7 +22,7 @@
           "period": "June - October 2024",
           "starting": "Chandigarh",
           "cost": "₹ 1,45,000",
-          "imageUrl": ""
+          "image": "img/images/gallery/compressedImages/SMR_9402.jpg"
         },
         {
           "id": "nih-3",
@@ -32,7 +32,7 @@
           "period": "June - October 2024",
           "starting": "Chandigarh",
           "cost": "₹ 84,999",
-          "imageUrl": ""
+          "image": "img/images/gallery/compressedImages/SMR_9402.jpg"
         },
         {
           "id": "nih-4",
@@ -42,7 +42,7 @@
           "period": "June 2024",
           "starting": "Chandigarh",
           "cost": "₹ 1,19,999",
-          "imageUrl": ""
+          "image": "img/images/gallery/compressedImages/SMR_4883.jpg"
         },
         {
           "id": "nih-5",
@@ -52,7 +52,7 @@
           "period": "July - August 2024",
           "starting": "Chandigarh",
           "cost": "₹ 1,35,999",
-          "imageUrl": ""
+          "image": "img/images/gallery/compressedImages/SMR_5088.jpg"
         }
       ]
     },
@@ -68,7 +68,7 @@
           "period": "Jan / Feb 2025",
           "starting": "Jaipur",
           "cost": "₹ 1,49,999",
-          "imageUrl": ""
+          "image": "img/images/gallery/compressedImages/SMR_9701.jpg"
         }
       ]
     },
@@ -84,7 +84,7 @@
           "period": "October 2024",
           "starting": "Lucknow",
           "cost": "₹ 75,999",
-          "imageUrl": ""
+          "image": "img/images/gallery/compressedImages/SMR_6718.jpg"
         }
       ]
     },
@@ -100,7 +100,7 @@
           "period": "November 2025",
           "starting": "Guwahati",
           "cost": "₹ 1,24,999",
-          "imageUrl": ""
+          "image": "img/images/gallery/compressedImages/SMR_6718.jpg"
         }
       ]
     }
