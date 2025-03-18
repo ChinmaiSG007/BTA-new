@@ -17,11 +17,11 @@ const Footer = () => {
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* Logo and Mission */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center space-x-2 mb-4">
-              <img src='img/images/Logo.png' alt="Beyond Tarmac Adventures Logo" className="h-20 w-auto" />
-              <span className="section-mini-heading font-bold text-white">Beyond Tarmac Adventures</span>
+          <div className="lg:col-span-1 w-full mb-5">
+            <Link to="/" className="mb-4">
+              <img src='img/images/Logo.png' alt="Beyond Tarmac Adventures Logo" className="h-40 w-auto" />
             </Link>
+            <p className="font-myCustomFont text-2xl font-bold text-white">Beyond Tarmac Adventures</p>
             <p className="text-neutral-300 mb-4">
               Follow Beyond Tarmac Adventures On Social Media
             </p>
