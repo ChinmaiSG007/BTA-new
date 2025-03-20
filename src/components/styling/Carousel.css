@@ -9,12 +9,12 @@
   /* This padding is taken into account for item width */
   --outer-r: 24px;
   --p-distance: 12px;
-    transition: all 1s ease;
+  transition: all 1s ease;
 }
 
 .carousel-container:hover {
   z-index: 20;
-  box-shadow: 0 0 100px 5px rgba(0, 174, 255, 0.3);
+  box-shadow: 0 0 100px 5px rgba(0, 99, 145, 0.5);
 }
 
 /* Track */
@@ -28,14 +28,14 @@
   display: flex;
   flex-shrink: 0;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   border: 1px solid #555;
   border-radius: calc(var(--outer-r) - var(--p-distance));
   background-color: #0076c51f;
   overflow: hidden;
   cursor: grab;
-  width: 100%;
+  width: 50%;
 }
 
 .carousel-item:active {
@@ -53,7 +53,6 @@
   border: 1px solid #555;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .carousel-item-header.round {
@@ -119,7 +118,6 @@
 .carousel-item-description {
   font-size: 14px;
   color: #fff;
-  text-align: center;
 }
 
 /* Indicators */

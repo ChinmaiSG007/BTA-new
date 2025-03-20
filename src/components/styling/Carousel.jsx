@@ -166,9 +166,9 @@ export default function Carousel({
                                 <img src={item.image} alt={item.name} />
                             </div>
                             <div className="carousel-item-content">
-                                <div className="section-mini-heading">{item.name}</div>
-                                <p className="carousel-item-description">{item.caption}</p>
-                                <ul>
+                                <div className="section-mini-heading mb-2">{item.name}</div>
+                                <p className="carousel-item-description mb-4 font-myCustomFont text-sm">{item.caption}</p>
+                                <ul className="mb-4">
                                     <li className="carousel-item-description">Duration: {item.duration}</li>
                                     <li className="carousel-item-description">Period: {item.period}</li>
                                     <li className="carousel-item-description">Starting point: {item.starting}</li>
