@@ -5,48 +5,6 @@ import AnimatedTitle from "./AnimatedTitle";
 import TripCarousel from "./TripCarousel";
 
 gsap.registerPlugin(ScrollTrigger);
-const DnaItems = [
-  {
-    image: 'img/images/DNA1.webp',
-    heading: 'CONNECTION',
-    body: 'Ride, Bond and Belong'
-  },
-  {
-    image: 'img/images/DNA2.webp',
-    heading: 'EXPLORATION',
-    body: 'Uncharted paths, Endless dicoveries'
-  },
-  {
-    image: 'img/images/DNA3.webp',
-    heading: 'COMMUNITY',
-    body: 'Your motorcycle fam awaits'
-  },
-  {
-    image: 'img/images/DNA4.webp',
-    heading: 'ADVENTURE',
-    body: 'Daring you to push your boundaries'
-  },
-  {
-    image: 'img/images/DNA5.webp',
-    heading: 'CURIOSITY',
-    body: 'The inner explorer, questioning everything'
-  },
-  {
-    image: 'img/images/DNA6.webp',
-    heading: 'CULTURE',
-    body: 'Immerse, Experience, Connect'
-  },
-  {
-    image: 'img/images/DNA7.webp',
-    heading: 'SUPPORT',
-    body: 'We\'ve got your back, every mile'
-  },
-  {
-    image: 'img/images/DNA8.webp',
-    heading: 'UNBOUNDED',
-    body: 'Where exploration knows no bounds'
-  },
-]
 
 const About = () => {
   useGSAP(() => {
@@ -75,24 +33,6 @@ const About = () => {
           EXPLORE WITH US!
         </p>
         <TripCarousel />
-        <div className="bg-white/90 backdrop-blur-sm shadow-lg rounded-3xl mx-12 p-8 max-w-[80vw]">
-          <h1 className="mb-8 text-center text-3xl font-bold">
-            DNA OF BEYOND TARMAC ADVENTURES
-          </h1>
-          <div className="grid grid-cols-2 gap-7 md:grid-cols-4 md:grid-rows-2">
-            {DnaItems.map((item, index) => (
-              <div key={index} className="flex flex-col items-center" >
-                <div className="overflow-hidden rounded mb-2 ">
-                  <img src={item.image} alt={item.heading} className="w-full h-full mb-4 hover:scale-125 duration-500 rounded-lg object-cover " />
-                </div>
-                <h3 className="text-2xl font-semibold">{item.heading}</h3>
-                <p className="text-gray-800">{item.body}</p>
-              </div>
-            ))}
-
-          </div>
-        </div>
-
         <AnimatedTitle
           title="Navigating the Contours of the Unknown"
           containerClass="mt-4 text-center"

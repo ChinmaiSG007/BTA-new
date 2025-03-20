@@ -5,25 +5,91 @@ import TiltedCard from "../styling/TiltedCard";
 import SpotlightCard from "../styling/SpotlightCard";
 import CountUp from "../styling/CountUp";
 
+const DnaItems = [
+  {
+    image: 'img/images/DNA1.webp',
+    heading: 'CONNECTION',
+    body: 'Ride, Bond and Belong'
+  },
+  {
+    image: 'img/images/DNA2.webp',
+    heading: 'EXPLORATION',
+    body: 'Uncharted paths, Endless dicoveries'
+  },
+  {
+    image: 'img/images/DNA3.webp',
+    heading: 'COMMUNITY',
+    body: 'Your motorcycle fam awaits'
+  },
+  {
+    image: 'img/images/DNA4.webp',
+    heading: 'ADVENTURE',
+    body: 'Daring you to push your boundaries'
+  },
+  {
+    image: 'img/images/DNA5.webp',
+    heading: 'CURIOSITY',
+    body: 'The inner explorer, questioning everything'
+  },
+  {
+    image: 'img/images/DNA6.webp',
+    heading: 'CULTURE',
+    body: 'Immerse, Experience, Connect'
+  },
+  {
+    image: 'img/images/DNA7.webp',
+    heading: 'SUPPORT',
+    body: 'We\'ve got your back, every mile'
+  },
+  {
+    image: 'img/images/DNA8.webp',
+    heading: 'UNBOUNDED',
+    body: 'Where exploration knows no bounds'
+  },
+]
+
+
 const Features = () => (
-  <section className="  pb-52">
+  <section className="pb-24">
     <div className="container mx-auto px-3 md:px-10">
       <ScrollVelocity
         texts={['Beyond', 'Tarmac', 'Adventures']}
         velocity={10}
         className="text-blue-50 hero-heading"
       />
-      <div className="px-5 py-32">
+      <div className="px-5 py-32 text-center">
+        <p className="section-small-heading mb-4">
+          INTRO
+        </p>
         <p className="mb-6 font-circular-web text-lg text-blue-50">
           Ignite Your Passion: Beyond Tarmac's Unparalleled Motorcycle Adventures
         </p>
-        <p className="mb-4 max-w-md font-circular-web text-lg text-blue-50 opacity-50">
+        <p className="mb-4 font-circular-web text-lg text-blue-50 opacity-50">
           Founded by a collective of passionate motorcycle enthusiasts, Beyond Tarmac is among the select few source companies in South India with a nationwide presence. For over six years, we've curated unforgettable guided motorcycle tours, boasting a track record of over 780+ satisfied clients.
         </p>
-        <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
+        <p className="font-circular-web text-lg text-blue-50 opacity-50">
           "Join us on a journey like no other with Beyond Tarmac, where every twist of the throttle leads to exhilarating discoveries and unforgettable memories. Join us and experience the true essence of motorcycling freedom."
         </p>
       </div>
+
+      <div className="bg-white/90 mb-12 backdrop-blur-sm shadow-lg rounded-3xl mx-12 p-8 max-w-[80vw]">
+        <h1 className="mb-8 !text-black section-heading">
+          DNA OF BEYOND TARMAC ADVENTURES
+        </h1>
+        <div className="grid grid-cols-2 gap-7 md:grid-cols-4 md:grid-rows-2">
+          {DnaItems.map((item, index) => (
+            <div key={index} className="flex flex-col items-center" >
+              <div className="overflow-hidden rounded mb-2 ">
+                <img src={item.image} alt={item.heading} className="w-full h-full mb-4 hover:scale-125 duration-500 rounded-lg object-cover " />
+              </div>
+              <h3 className="text-2xl font-myCustomFont">{item.heading}</h3>
+              <p className="text-gray-800">{item.body}</p>
+            </div>
+          ))}
+
+        </div>
+      </div>
+
 
       <div className="section-card bg-[#edff66]/30 flex md:flex-row flex-col items-center gap-5 mb-8">
         <TiltedCard
@@ -56,6 +122,9 @@ const Features = () => (
           <img src="img/images/16.svg" alt="" />
         </SpotlightCard>
         <div className="p-4">
+          <p className="section-small-heading mb-4">
+            ABOUT
+          </p>
           <h1 className="text-2xl font-bold mb-4">Unleashing the Spirit of Adventure: Beyond Tarmac's Guided Motorcycle Tours</h1>
           <p className=" text-justify">Beyond Tarmac was born from the fervent dedication of a collective of motorcycle aficionados, united by an unbridled passion for the art of motorcycling. As trailblazers in the South Indian motorcycle scene, we have established a formidable presence nationwide, distinguishing ourselves as pioneers in the industry. For over six years, we have orchestrated meticulously curated guided motorcycle tours, each journey meticulously crafted to deliver unforgettable experiences on the open road. With a track record of over 780+ delighted clients, our commitment to excellence and unwavering dedication to our craft continue to propel us forward, shaping the landscape of motorcycle touring in India.</p>
         </div>
