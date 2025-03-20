@@ -169,14 +169,14 @@ const Hero = () => {
                 id="watch-trailer"
                 title="Discover"
                 leftIcon={<TiLocationArrow />}
-                containerClass="bg-yellow-300 flex-center gap-1"
+                containerClass="!bg-brown-100 flex-center gap-1"
               />
             </a>
           </div>
         </div>
       </div>
 
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-[#edff66]">
+      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-brown-100">
         ADVENTURES
       </h1>
     </div>

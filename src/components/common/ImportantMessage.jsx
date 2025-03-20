@@ -8,8 +8,8 @@ const ImportantMessage = () => {
         const lastVisit = localStorage.getItem('lastVisitTimestamp');
         const currentTime = new Date().getTime();
 
-        // Check if this is first visit or if it's been more than 30 days
-        if (!lastVisit || (currentTime - parseInt(lastVisit)) > (30 * 24 * 60 * 60 * 1000)) {
+        // Check if this is first visit or if it's been more than 3 days
+        if (!lastVisit || (currentTime - parseInt(lastVisit)) > (3 * 24 * 60 * 60 * 1000)) {
             const timer = setTimeout(() => {
                 setShowGuide(true);
                 localStorage.setItem('lastVisitTimestamp', currentTime.toString());
@@ -46,7 +46,7 @@ const ImportantMessage = () => {
             </div>
 
             {/* Guide dialog box */}
-            <div className="!text-white absolute right-10 top-16 z-20 w-64 rounded-lg border bg-black/10 p-4 ">
+            <div className="!text-white absolute right-10 top-16 z-20 w-64 rounded-lg border p-4 backdrop-blur-glass">
                 <h3 className="mb-2 text-lg font-bold">Audio Controls</h3>
                 <p className="mb-4">Click the audio icon to toggle sound on/off during your experience!</p>
                 <button
