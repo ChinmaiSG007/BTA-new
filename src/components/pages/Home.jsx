@@ -2,7 +2,7 @@ import About from "../common/About";
 import Hero from "../common/Hero";
 import Features from "../common/Features";
 import Story from "../common/Story";
-import Contact from "../common/Contact";
+import JoinJourney from "../common/JoinJourney";
 import CircularGallery from "../styling/CircularGallery";
 import { Link } from "react-router-dom";
 import Button from "./../common/Button";
@@ -21,7 +21,7 @@ const Home = () => {
                 </Link>
             </div>
             {/* <Story /> */}
-            <Contact />
+            <JoinJourney />
         </div>
     )
 }
