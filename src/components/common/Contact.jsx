@@ -42,8 +42,6 @@ const Contact = () => {
             title="let&#39;s chart the <b>u</b>nknown <br /> and explore <br /> new horizons together."
             className="special-font !md:text-[6.2rem] w-full font-zentry !text-5xl !font-black !leading-[.9]"
           />
-
-          <Button title="Start Your Adventure" containerClass="text-black mt-10 cursor-pointer" />
         </div>
       </div>
     </div>

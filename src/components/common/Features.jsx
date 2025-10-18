@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import { FaMotorcycle, FaCertificate, FaRoute } from "react-icons/fa";
 import ScrollVelocity from "./../styling/ScrollerVelocity"
 import TiltedCard from "../styling/TiltedCard";
 import SpotlightCard from "../styling/SpotlightCard";
@@ -72,18 +73,18 @@ const Features = () => (
         </p>
       </div>
 
-      <div className="bg-white/90 mb-12 backdrop-blur-sm shadow-lg rounded-3xl mx-12 p-8 max-w-[80vw]">
-        <h1 className="mb-8 !text-black section-heading">
+      <div className="bg-white/90 mb-12 backdrop-blur-sm shadow-lg rounded-3xl mx-2 sm:mx-4 md:mx-8 lg:mx-12 p-4 sm:p-6 md:p-8 max-w-full lg:max-w-[80vw]">
+        <h1 className="mb-6 sm:mb-8 !text-black section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
           DNA OF BEYOND TARMAC ADVENTURES
         </h1>
-        <div className="grid grid-cols-2 gap-7 md:grid-cols-4 md:grid-rows-2">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-7 lg:grid-cols-4 lg:grid-rows-2">
           {DnaItems.map((item, index) => (
-            <div key={index} className="flex flex-col items-center" >
-              <div className="overflow-hidden rounded mb-2 ">
-                <img src={item.image} alt={item.heading} className="w-full h-full mb-4 hover:scale-125 duration-500 rounded-lg object-cover " />
+            <div key={index} className="flex flex-col items-center text-center" >
+              <div className="overflow-hidden rounded mb-2 w-full aspect-square">
+                <img src={item.image} alt={item.heading} className="w-full h-full object-cover hover:scale-125 duration-500 rounded-lg" />
               </div>
-              <h3 className="text-2xl font-myCustomFont">{item.heading}</h3>
-              <p className="text-gray-800">{item.body}</p>
+              <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-myCustomFont mb-1">{item.heading}</h3>
+              <p className="text-gray-800 text-xs sm:text-sm md:text-base">{item.body}</p>
             </div>
           ))}
 
@@ -91,35 +92,72 @@ const Features = () => (
       </div>
 
 
-      <div className="section-card bg-[#edff66]/30 flex md:flex-row flex-col items-center gap-5 mb-8">
-        <TiltedCard
-          imageSrc="img/images/palaksha.webp"
-          altText="Palaksha"
-          captionText="PALI"
-          containerHeight="300px"
-          containerWidth="300px"
-          imageHeight="300px"
-          imageWidth="300px"
-          rotateAmplitude={12}
-          scaleOnHover={1.2}
-          showMobileWarning={false}
-          showTooltip={true}
-          displayOverlayContent={true}
-          overlayContent={
-            <p className="bg-white/70 px-2 text-black rounded tilted-card-demo-text">
-              Meet your Guide: Palaksha
-            </p>
-          }
-        />
-        <div className="p-4">
-          <h1 className="text-2xl font-bold mb-4">Meet your Guide: Palaksha</h1>
-          <p className=" text-justify">Palaksha fondly known as <strong>"Pali"</strong> is the mad hatter of the pack, motorcycle collector, off-road enthusiast & dirt track guy. He is one of those guys who chose motorcycling as a part of his life and made it his profession. Owning, Riding and Working on his 20 odd motorcycles (albeit few rare ones) alone is testament to his passion for motorcycles. Pali is WAFA Certified and has a rich experience in leading 35 motorcycle tours pan India. His quick wit and perspicacious nature and impeccable decision making has ensured successful completion of all the tours led by him. Our lead road captain's knowledge of Geographies and Motorcycles is immense and it shows in the stories experienced and shared by our clients. He is insatiably curious, open minded and goes beyond the call of duty to get things done!</p>
+      <div className="section-card bg-brown-100/20 backdrop-blur-lg border border-white/20 mb-8 overflow-hidden">
+        <div className="flex md:flex-row flex-col items-center md:items-stretch">
+          {/* Image Section */}
+          <div className="md:w-2/5 w-full relative overflow-hidden">
+            <div className="absolute top-4 left-4 z-10 bg-brown-100/90 backdrop-blur-sm px-4 py-2 rounded-full">
+              <p className="text-black font-myCustomFont text-sm uppercase tracking-wider">Lead Road Captain</p>
+            </div>
+            <TiltedCard
+              imageSrc="img/images/palaksha.webp"
+              altText="Palaksha"
+              captionText="PALI"
+              containerHeight="100%"
+              containerWidth="100%"
+              imageHeight="500px"
+              imageWidth="100%"
+              rotateAmplitude={8}
+              scaleOnHover={1.1}
+              showMobileWarning={false}
+              showTooltip={true}
+              displayOverlayContent={false}
+            />
+          </div>
+
+          {/* Content Section */}
+          <div className="md:w-3/5 w-full p-6 sm:p-8 md:p-10 flex flex-col justify-center">
+            <div className="mb-4">
+              <p className="section-small-heading text-brown-100 mb-2">YOUR GUIDE</p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-2">
+                Palaksha
+              </h1>
+              <p className="text-lg sm:text-xl text-brown-100 font-circular-web italic">Founder Beyond Tarmac Adventures</p>
+            </div>
+
+            <div className="space-y-4 text-blue-50/90 font-circular-web text-sm sm:text-base leading-relaxed">
+              <p>
+                Palaksha, fondly known as <span className="text-brown-100 font-semibold">"Pali"</span>, is the mad hatter of the pack—a motorcycle collector, off-road enthusiast, and dirt track specialist who transformed his passion into his profession.
+              </p>
+              <p>
+                With a remarkable collection of <span className="text-brown-100 font-semibold">20+ motorcycles</span> (including rare gems), Pali is <span className="text-brown-100 font-semibold">WAFA Certified</span> and has successfully led <span className="text-brown-100 font-semibold">35+ motorcycle tours</span> across India.
+              </p>
+              <p>
+                His quick wit, perspicacious nature, and impeccable decision-making ensure every journey's success. With an immense knowledge of geographies and motorcycles, Pali is insatiably curious, open-minded, and goes beyond the call of duty to make every ride unforgettable.
+              </p>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 flex items-center gap-2">
+                <FaMotorcycle className="text-brown-100 text-base sm:text-lg" />
+                <p className="text-xs sm:text-sm text-blue-50 font-circular-web">20+ Motorcycles</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 flex items-center gap-2">
+                <FaCertificate className="text-brown-100 text-base sm:text-lg" />
+                <p className="text-xs sm:text-sm text-blue-50 font-circular-web">WAFA Certified</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 flex items-center gap-2">
+                <FaRoute className="text-brown-100 text-base sm:text-lg" />
+                <p className="text-xs sm:text-sm text-blue-50 font-circular-web">35+ Tours Led</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="section-card bg-[#8566ff]/30 flex md:flex-row flex-col items-center gap-5 mb-8">
-        <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.5)">
-          <img src="img/images/16.svg" alt="" />
+      <div className="section-card bg-[#33443c]/30 flex md:flex-row flex-col items-center gap-5 mb-8">
+        <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(255, 255, 255, 0.5)">
+          <img src="img/images/16.svg" alt="Beyond Tarmac Adventures Logo" />
         </SpotlightCard>
         <div className="p-4">
           <p className="section-small-heading mb-4">
@@ -130,38 +168,44 @@ const Features = () => (
         </div>
       </div>
 
-      <div className="text-white flex md:flex-row flex-col items-center gap-5 justify-between">
-        <div>
-          <CountUp
-            from={0}
-            to={83310}
-            separator=","
-            direction="up"
-            duration={1}
-            className="count-up-text text-4xl font-bold" />
-          <p>Kilometers done</p>
-        </div>
-        <div>
-          <CountUp
-            from={0}
-            to={780}
-            separator=","
-            direction="up"
-            duration={1}
-            className="count-up-text text-4xl font-bold" />
-          <p>Clients
-            Served</p>
-        </div>
-        <div>
-          <CountUp
-            from={0}
-            to={330}
-            separator=","
-            direction="up"
-            duration={1}
-            className="count-up-text text-4xl font-bold" />
-          <p>Women
-            Trained</p>
+      <div className="bg-brown-100/20 backdrop-blur-lg rounded-3xl p-8 sm:p-10 md:p-12 lg:p-16 shadow-2xl border border-white/20">
+        <h2 className="text-center section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 mb-8 sm:mb-10 md:mb-12">
+          OUR JOURNEY IN NUMBERS
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
+          <div className="text-center p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg">
+            <CountUp
+              from={0}
+              to={83310}
+              separator=","
+              direction="up"
+              duration={1}
+              className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
+            <p className="text-base sm:text-lg md:text-xl text-blue-50 font-circular-web uppercase tracking-wide">Kilometers Conquered</p>
+            <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
+          </div>
+          <div className="text-center p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg">
+            <CountUp
+              from={0}
+              to={780}
+              separator=","
+              direction="up"
+              duration={1}
+              className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
+            <p className="text-base sm:text-lg md:text-xl text-blue-50 font-circular-web uppercase tracking-wide">Happy Clients Served</p>
+            <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
+          </div>
+          <div className="text-center p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg sm:col-span-2 lg:col-span-1">
+            <CountUp
+              from={0}
+              to={330}
+              separator=","
+              direction="up"
+              duration={1}
+              className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
+            <p className="text-base sm:text-lg md:text-xl text-blue-50 font-circular-web uppercase tracking-wide">Women Empowered</p>
+            <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
+          </div>
         </div>
       </div>
     </div>

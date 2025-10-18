@@ -5,6 +5,7 @@ import Story from "../common/Story";
 import Contact from "../common/Contact";
 import CircularGallery from "../styling/CircularGallery";
 import { Link } from "react-router-dom";
+import Button from "./../common/Button";
 
 const Home = () => {
     return (
@@ -16,7 +17,7 @@ const Home = () => {
                 <h3 className='section-heading'>Gallery</h3>
                 <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} />
                 <Link to={'/gallery'} className='flex flex-col justify-center items-center gap-4'>
-                    <button className='action-button'>See more</button>
+                    <Button title="See more" containerClass="text-black mt-10 cursor-pointer" />
                 </Link>
             </div>
             {/* <Story /> */}

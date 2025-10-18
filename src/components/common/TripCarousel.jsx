@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaClock, FaCalendarAlt, FaDollarSign } from 'react-icons/fa';
 import toursData from './../../tours.json';
 import { Link } from 'react-router-dom';
+import Button from "./Button";
 
 // Flatten all tours from imported JSON data and preserve region info
 const tours = toursData.regions.flatMap(region =>
@@ -309,26 +310,11 @@ export default function TripCarousel() {
                 </div>
 
                 {/* Explore All Tours Button - Outside AnimatePresence so it stays persistent */}
-                <div className="mt-2 sm:mt-3 lg:mt-4 flex-shrink-0">
-                    <Link
-                        to="/tours"
-                        className="group relative inline-flex items-center justify-center gap-2 py-2.5 sm:py-3 px-8 sm:px-10 bg-white/15 hover:bg-white/25 backdrop-blur-lg border-2 border-white/30 hover:border-white/50 font-bold rounded-full shadow-xl hover:shadow-2xl hover:shadow-white/20 transform hover:scale-105 transition-all duration-300 text-white text-sm sm:text-base overflow-hidden"
-                    >
-                        <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
-                        <span className="relative z-10 flex items-center gap-2">
-                            Explore All Tours
-                            <svg
-                                className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
-                        </span>
-                    </Link>
-                </div>
-            </div>            {/* Navigation Arrows - Only show if more than 1 tour */}
+                <Link to="/tours">
+                    <Button title="Explore all Tours" containerClass="text-black mt-10 cursor-pointer" />
+                </Link>
+            </div>
+            {/* Navigation Arrows - Only show if more than 1 tour */}
             {tours.length > 1 && (
                 <>
                     <button
