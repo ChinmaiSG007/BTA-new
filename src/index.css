@@ -73,7 +73,38 @@ body {
   }
 
   .hero-heading {
-    @apply uppercase font-myCustomFont font-black text-[2rem] sm:right-10 sm:text-[4rem] md:text-[5rem] lg:text-[7rem];
+    @apply uppercase font-myCustomFont font-black leading-[0.95] max-w-full;
+    font-size: clamp(2.5rem, 7vw, 8rem);
+  }
+
+  @media (min-width: 640px) {
+    .hero-heading {
+      font-size: clamp(3rem, 7.5vw, 8rem);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-heading {
+      font-size: clamp(3.5rem, 8vw, 8rem);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-heading {
+      font-size: clamp(4rem, 7vw, 8rem);
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .hero-heading {
+      font-size: clamp(5rem, 8vw, 8.5rem);
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .hero-heading {
+      font-size: clamp(6rem, 9vw, 9rem);
+    }
   }
 
   .section-small-heading {
