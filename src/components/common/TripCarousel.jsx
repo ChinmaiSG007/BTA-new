@@ -173,7 +173,7 @@ export default function TripCarousel() {
     }
 
     return (
-        <div className="relative w-full h-screen max-h-screen overflow-hidden">
+        <div className="relative w-full min-h-[600px] sm:min-h-[700px] md:min-h-[750px] lg:min-h-[800px] xl:min-h-[850px] 2xl:min-h-[900px] overflow-hidden">
             {/* Blurred Background */}
             <AnimatePresence mode="wait">
                 <motion.div
@@ -194,18 +194,18 @@ export default function TripCarousel() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
 
             {/* Main Content */}
-            <div className="relative z-10 flex flex-col items-center justify-center h-full max-w-full overflow-y-auto overflow-x-hidden px-3 sm:px-4 md:px-6 lg:px-8 pt-4 sm:pt-6 md:pt-8 pb-24 sm:pb-28 md:pb-32 lg:pb-24 font-general gap-3 sm:gap-4 md:gap-5 lg:gap-6">
+            <div className="relative z-10 flex flex-col items-center justify-center min-h-[600px] sm:min-h-[700px] md:min-h-[750px] lg:min-h-[800px] xl:min-h-[850px] 2xl:min-h-[900px] max-w-full px-3 sm:px-4 md:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-32 font-general gap-3 sm:gap-4 md:gap-5 lg:gap-6">
                 {/* Watermark Name */}
                 <AnimatePresence mode="wait">
                     <motion.h1
                         key={`watermark-${currentTour.id}`}
                         layoutId="watermark"
-                        className="absolute text-[1.2rem] sm:text-[2.5rem] md:text-[4rem] lg:text-[5.5rem] xl:text-[6.5rem] font-extrabold text-white/10 select-none pointer-events-none font-myCustomFont overflow-hidden"
+                        className="absolute text-[1.5rem] sm:text-[2rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] 2xl:text-[6rem] font-extrabold text-white/10 select-none pointer-events-none font-myCustomFont overflow-hidden"
                         style={{
                             top: '50%',
                             left: '50%',
                             transform: 'translate(-50%, -50%)',
-                            maxWidth: '95vw',
+                            maxWidth: '90vw',
                             whiteSpace: 'nowrap',
                             textOverflow: 'ellipsis'
                         }}
@@ -222,13 +222,13 @@ export default function TripCarousel() {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={`region-${currentTour.id}`}
-                        className="flex-shrink-0 lg:mb-4"
+                        className="flex-shrink-0 mb-2 sm:mb-3 lg:mb-4"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <div className="bg-white/10 backdrop-blur-lg rounded-full px-4 sm:px-6 py-1.5 sm:py-2 border border-white/20 max-w-[90vw]">
+                        <div className="bg-white/10 backdrop-blur-lg rounded-full px-4 sm:px-5 md:px-6 py-1.5 sm:py-2 border border-white/20 max-w-[85vw]">
                             <span className="text-white/90 text-xs sm:text-sm md:text-base font-medium truncate block">
                                 {currentTour.region}
                             </span>
@@ -237,7 +237,7 @@ export default function TripCarousel() {
                 </AnimatePresence>
 
                 {/* Image and Content Container - Side by Side on Desktop */}
-                <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-4 sm:gap-5 lg:gap-8 xl:gap-12 w-full max-w-7xl flex-shrink-0">
+                <div className="flex flex-col lg:flex-row items-center lg:items-center justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 w-full max-w-7xl flex-shrink-0">
                     {/* Main Image Card */}
                     <AnimatePresence mode="wait" custom={direction}>
                         <motion.div
@@ -256,13 +256,13 @@ export default function TripCarousel() {
                             dragConstraints={{ left: 0, right: 0 }}
                             dragElastic={0.2}
                             onDragEnd={handleSwipe}
-                            className={`relative flex-shrink-0 max-w-[90vw] lg:max-w-none ${tours.length > 1 ? 'cursor-grab active:cursor-grabbing' : ''}`}
+                            className={`relative flex-shrink-0 max-w-[85vw] sm:max-w-none ${tours.length > 1 ? 'cursor-grab active:cursor-grabbing' : ''}`}
                         >
                             <div className="bg-white/10 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-1.5 sm:p-2 shadow-2xl border border-white/20">
                                 <img
                                     src={currentTour.image}
                                     alt={currentTour.name}
-                                    className="w-64 sm:w-72 md:w-80 lg:w-[22rem] xl:w-[26rem] h-40 sm:h-48 md:h-56 lg:h-[16rem] xl:h-[18rem] object-cover rounded-xl sm:rounded-2xl"
+                                    className="w-64 sm:w-72 md:w-80 lg:w-[20rem] xl:w-[24rem] 2xl:w-[28rem] h-40 sm:h-48 md:h-56 lg:h-[14rem] xl:h-[16rem] 2xl:h-[18rem] object-cover rounded-xl sm:rounded-2xl"
                                     draggable={false}
                                 />
                             </div>
@@ -273,21 +273,21 @@ export default function TripCarousel() {
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={`info-${currentTour.id}`}
-                            className="text-center lg:text-left max-w-4xl lg:max-w-md xl:max-w-lg w-full flex-shrink-0 px-2 sm:px-4 lg:px-0 flex flex-col justify-center"
+                            className="text-center lg:text-left max-w-4xl lg:max-w-md xl:max-w-lg 2xl:max-w-xl w-full flex-shrink-0 px-2 sm:px-4 lg:px-0 flex flex-col justify-center"
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -30 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-white mb-2 sm:mb-3 tracking-tight font-myCustomFont px-2 lg:px-0">
+                            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-white mb-2 sm:mb-3 tracking-tight font-myCustomFont px-2 lg:px-0">
                                 {currentTour.name}
                             </h2>
-                            <p className="text-sm sm:text-base md:text-lg lg:text-base xl:text-lg text-white/90 mb-4 sm:mb-5 leading-relaxed px-2 sm:px-4 lg:px-0 line-clamp-3 lg:line-clamp-4">
+                            <p className="text-sm sm:text-base md:text-lg lg:text-sm xl:text-base 2xl:text-lg text-white/90 mb-3 sm:mb-4 leading-relaxed px-2 sm:px-4 lg:px-0 line-clamp-2 sm:line-clamp-3 lg:line-clamp-3">
                                 {currentTour.caption}
                             </p>
 
                             {/* Tour Details - Vertical Stack */}
-                            <div className="flex flex-col items-center lg:items-start gap-2 sm:gap-2.5 text-xs sm:text-sm md:text-base text-white/90 mb-4 sm:mb-5">
+                            <div className="flex flex-col items-center lg:items-start gap-2 text-xs sm:text-sm md:text-base lg:text-sm xl:text-base text-white/90 mb-3 sm:mb-4">
                                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-white/20 w-full max-w-[280px] sm:max-w-[300px] lg:max-w-full justify-center lg:justify-start">
                                     <FaClock className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400 flex-shrink-0" />
                                     <span className="text-center lg:text-left truncate">{currentTour.duration}</span>
@@ -310,8 +310,8 @@ export default function TripCarousel() {
                 </div>
 
                 {/* Explore All Tours Button - Outside AnimatePresence so it stays persistent */}
-                <Link to="/tours">
-                    <Button title="Explore all Tours" containerClass="text-black mt-10 cursor-pointer" />
+                <Link to="/tours" className="mt-4 sm:mt-6 md:mt-8">
+                    <Button title="Explore all Tours" containerClass="text-black cursor-pointer" />
                 </Link>
             </div>
             {/* Navigation Arrows - Only show if more than 1 tour */}
@@ -337,7 +337,7 @@ export default function TripCarousel() {
 
             {/* Modern Pills Navigation - Only show if more than 1 tour */}
             {tours.length > 1 && (
-                <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-[100] max-w-[95vw]">
+                <div className="absolute bottom-4 sm:bottom-5 md:bottom-6 lg:bottom-8 xl:bottom-10 left-1/2 -translate-x-1/2 z-[100] max-w-[95vw]">
                     <div className="bg-white/10 backdrop-blur-lg rounded-full px-2 sm:px-3 py-2 sm:py-2.5 shadow-2xl border border-white/20 flex items-center gap-2 relative">
                         {/* Previous Bubble Navigation Button */}
                         {showBubbleNavigation && (
