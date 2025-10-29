@@ -6,6 +6,7 @@ import Footer from "./components/layouts/Footer";
 import About from "./components/common/About";
 import Tours from "./components/pages/Tours";
 import TourDetail from "./components/pages/TourDetail";
+import NotFound from "./components/pages/NotFound";
 import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/tours" element={<Tours />} />
               <Route path="/tours/:tourSlug" element={<TourDetail />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <ScrollToTop
               threshold={500}
