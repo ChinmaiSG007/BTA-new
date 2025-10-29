@@ -4,6 +4,8 @@ import Home from "./components/pages/Home";
 import NavBar from "./components/layouts/Navbar";
 import Footer from "./components/layouts/Footer";
 import About from "./components/common/About";
+import Tours from "./components/pages/Tours";
+import TourDetail from "./components/pages/TourDetail";
 import ScrollToTop from "./components/common/ScrollToTop";
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/tours" element={<Tours />} />
+              <Route path="/tours/:tourSlug" element={<TourDetail />} />
             </Routes>
             <ScrollToTop
               threshold={500}
