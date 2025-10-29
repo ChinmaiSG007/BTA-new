@@ -1,7 +1,7 @@
 // src/components/TripCarousel.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaClock, FaCalendarAlt, FaDollarSign } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaClock, FaCalendarAlt, FaMoneyBillWave } from 'react-icons/fa';
 import toursData from './../../tours.json';
 import { Link } from 'react-router-dom';
 import Button from "./Button";
@@ -289,19 +289,19 @@ export default function TripCarousel() {
                             {/* Tour Details - Vertical Stack */}
                             <div className="flex flex-col items-center lg:items-start gap-2 text-xs sm:text-sm md:text-base lg:text-sm xl:text-base text-white/90 mb-3 sm:mb-4">
                                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-white/20 w-full max-w-[280px] sm:max-w-[300px] lg:max-w-full justify-center lg:justify-start">
-                                    <FaClock className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400 flex-shrink-0" />
+                                    <FaClock className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" style={{ color: '#ac6e4a' }} />
                                     <span className="text-center lg:text-left truncate">{currentTour.duration}</span>
                                 </div>
                                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-white/20 w-full max-w-[280px] sm:max-w-[300px] lg:max-w-full justify-center lg:justify-start">
-                                    <FaCalendarAlt className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" />
+                                    <FaCalendarAlt className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" style={{ color: '#ac6e4a' }} />
                                     <span className="text-center lg:text-left truncate">{currentTour.period}</span>
                                 </div>
                                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-white/20 w-full max-w-[280px] sm:max-w-[300px] lg:max-w-full justify-center lg:justify-start">
-                                    <FaMapMarkerAlt className="w-3 h-3 sm:w-4 sm:h-4 text-red-400 flex-shrink-0" />
+                                    <FaMapMarkerAlt className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" style={{ color: '#ac6e4a' }} />
                                     <span className="text-center lg:text-left truncate">Starts in <span className="font-bold">{currentTour.starting}</span></span>
                                 </div>
                                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-white/20 w-full max-w-[280px] sm:max-w-[300px] lg:max-w-full justify-center lg:justify-start">
-                                    <FaDollarSign className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400 flex-shrink-0" />
+                                    <FaMoneyBillWave className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" style={{ color: '#ac6e4a' }} />
                                     <span className="text-center lg:text-left font-semibold truncate">{currentTour.cost}</span>
                                 </div>
                             </div>

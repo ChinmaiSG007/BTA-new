@@ -73,18 +73,18 @@ const Features = () => (
         </p>
       </div>
 
-      <div className="bg-white/90 mb-12 backdrop-blur-sm shadow-lg rounded-3xl mx-2 sm:mx-4 md:mx-8 lg:mx-12 p-4 sm:p-6 md:p-8 max-w-full lg:max-w-[80vw]">
-        <h1 className="mb-6 sm:mb-8 !text-black section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
+      <div className="section-card bg-[#33443c]/30 backdrop-blur-lg border border-white/20 mb-8 overflow-hidden">
+        <h1 className="mb-6 sm:mb-8  section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
           DNA OF BEYOND TARMAC ADVENTURES
         </h1>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-6 lg:gap-7 lg:grid-cols-4 lg:grid-rows-2">
           {DnaItems.map((item, index) => (
             <div key={index} className="flex flex-col items-center text-center" >
-              <div className="overflow-hidden rounded mb-2 w-full aspect-square">
+              <div className="bg-[#e4e4e4] overflow-hidden rounded-xl mb-2 w-full aspect-square">
                 <img src={item.image} alt={item.heading} className="w-full h-full object-cover hover:scale-125 duration-500 rounded-lg" />
               </div>
-              <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-myCustomFont mb-1">{item.heading}</h3>
-              <p className="text-gray-800 text-xs sm:text-sm md:text-base">{item.body}</p>
+              <h3 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-myCustomFont mb-1 text-white">{item.heading}</h3>
+              <p className="text-gray-400 text-xs sm:text-sm md:text-base">{item.body}</p>
             </div>
           ))}
 
