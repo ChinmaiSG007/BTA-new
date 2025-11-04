@@ -6,6 +6,7 @@ import Footer from "./components/layouts/Footer";
 import About from "./components/common/About";
 import Tours from "./components/pages/Tours";
 import TourDetail from "./components/pages/TourDetail";
+import Gallery from "./components/pages/Gallery";
 import NotFound from "./components/pages/NotFound";
 import ScrollToTop from "./components/common/ScrollToTop";
 
@@ -19,6 +20,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/tours" element={<Tours />} />
               <Route path="/tours/:tourSlug" element={<TourDetail />} />
               <Route path="*" element={<NotFound />} />
