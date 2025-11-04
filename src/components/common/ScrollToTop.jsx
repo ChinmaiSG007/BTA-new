@@ -4,22 +4,29 @@ import { IoIosArrowUp } from "react-icons/io";
 
 const ScrollToTop = ({
     threshold = 300,
-    right = 20,
-    bottom = 20,
-    size = 40,
-    bgColor = "#6366f1", // Indigo color
+    right = 24,
+    bottom = 24,
+    size = 60,
+    bgColor = "rgba(0, 0, 0, 0.6)", // Dark semi-transparent
     textColor = "white",
     zIndex = 50,
-    borderRadius = 9999, // Fully rounded
+    borderRadius = 50,
     shadow = true,
     smoothScroll = true,
 }) => {
     const [isVisible, setIsVisible] = useState(false);
+    const [scrollProgress, setScrollProgress] = useState(0);
 
     // Handle scroll event
     useEffect(() => {
         const toggleVisibility = () => {
-            if (window.scrollY > threshold) {
+            const scrolled = window.scrollY;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrolled / maxScroll) * 100;
+
+            setScrollProgress(progress);
+
+            if (scrolled > threshold) {
                 setIsVisible(true);
             } else {
                 setIsVisible(false);
@@ -27,6 +34,9 @@ const ScrollToTop = ({
         };
 
         window.addEventListener("scroll", toggleVisibility);
+        // Call once to set initial state
+        toggleVisibility();
+
         return () => window.removeEventListener("scroll", toggleVisibility);
     }, [threshold]);
 
@@ -45,36 +55,124 @@ const ScrollToTop = ({
     return (
         <AnimatePresence>
             {isVisible && (
-                <motion.button
-                    className="scroll-to-top-button"
-                    onClick={scrollToTop}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.5 }}
-                    transition={{ duration: 0.2 }}
-                    aria-label="Scroll to top"
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.5, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.5, y: 20 }}
+                    transition={{
+                        duration: 0.3,
+                        ease: [0.4, 0, 0.2, 1] // cubic-bezier for smooth animation
+                    }}
                     style={{
                         position: "fixed",
                         bottom: bottom,
                         right: right,
-                        width: size,
-                        height: size,
-                        backgroundColor: bgColor,
-                        color: textColor,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        border: "none",
-                        borderRadius: borderRadius,
-                        cursor: "pointer",
                         zIndex: zIndex,
-                        boxShadow: shadow ? "0 4px 10px rgba(0, 0, 0, 0.15)" : "none",
                     }}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
                 >
-                    <IoIosArrowUp style={{ color: '#000' }} size={size * 0.5} />
-                </motion.button>
+                    <motion.button
+                        className="scroll-to-top-button relative overflow-hidden"
+                        onClick={scrollToTop}
+                        aria-label="Scroll to top"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+                        style={{
+                            width: size,
+                            height: size,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            borderRadius: borderRadius,
+                            cursor: "pointer",
+                            boxShadow: shadow
+                                ? "0 4px 20px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) inset"
+                                : "none",
+                            position: "relative",
+                        }}
+                    >
+                        {/* Background circle for contrast */}
+                        <div
+                            style={{
+                                position: "absolute",
+                                width: size - 8,
+                                height: size - 8,
+                                borderRadius: "50%",
+                                backgroundColor: "rgba(0, 0, 0, 0.4)",
+                            }}
+                        />
+
+                        {/* Circular progress ring */}
+                        <svg
+                            style={{
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                transform: "rotate(-90deg)",
+                                zIndex: 1,
+                            }}
+                        >
+                            {/* Background circle */}
+                            <circle
+                                cx={size / 2}
+                                cy={size / 2}
+                                r={(size - 8) / 2}
+                                stroke="#3d5349"
+                                strokeWidth="3"
+                                fill="none"
+                            />
+                            {/* Progress circle */}
+                            <circle
+                                cx={size / 2}
+                                cy={size / 2}
+                                r={(size - 8) / 2}
+                                stroke="#b87b58"
+                                strokeWidth="3"
+                                fill="none"
+                                strokeLinecap="round"
+                                strokeDasharray={`${2 * Math.PI * ((size - 8) / 2)}`}
+                                strokeDashoffset={`${2 * Math.PI * ((size - 8) / 2) * (1 - scrollProgress / 100)}`}
+                                style={{
+                                    filter: "drop-shadow(0 0 6px rgba(255, 255, 255, 0.8))",
+                                    transition: "stroke-dashoffset 0.3s ease-out",
+                                }}
+                            />
+                        </svg>
+
+                        {/* Arrow Icon */}
+                        <motion.div
+                            style={{ zIndex: 2, position: "relative" }}
+                            animate={{ y: [0, -4, 0] }}
+                            transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
+                        >
+                            <IoIosArrowUp
+                                style={{
+                                    color: textColor,
+                                    filter: "drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4))"
+                                }}
+                                size={size * 0.45}
+                            />
+                        </motion.div>
+
+                        {/* Hover glow effect */}
+                        <motion.div
+                            className="absolute inset-0"
+                            style={{
+                                background: "radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%)",
+                                borderRadius: borderRadius,
+                                opacity: 0,
+                            }}
+                            whileHover={{ opacity: 1 }}
+                            transition={{ duration: 0.3 }}
+                        />
+                    </motion.button>
+                </motion.div>
             )}
         </AnimatePresence>
     );
