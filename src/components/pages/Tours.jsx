@@ -122,13 +122,14 @@ const Tours = () => {
                     <p className="font-robert-regular text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-neutral-gray leading-relaxed mb-8">
                         Embark on unforgettable motorcycle journeys through the world's most stunning landscapes
                     </p>
+                </div>
+                <div className="absolute bottom-20 w-full px-6 z-20">
                     <div className="flex gap-4 justify-center items-center">
                         <TiLocationArrow className="text-brown-100 text-3xl sm:text-4xl animate-bounce" />
                     </div>
-                </div>
-
-                <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-                    <p className="font-general text-xs sm:text-sm text-neutral-gray uppercase tracking-widest animate-pulse">Scroll to explore</p>
+                    <div className="absolute left-1/2 transform -translate-x-1/2 z-20">
+                        <p className="font-general text-xs sm:text-sm text-neutral-gray uppercase tracking-widest animate-pulse">Scroll to explore</p>
+                    </div>
                 </div>
             </section>
 
