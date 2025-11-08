@@ -28,9 +28,6 @@ const Tours = () => {
             ? allTours
             : allTours.filter((tour) => tour.regionId === activeRegion);
 
-    console.log("All Tours:", allTours);
-    console.log("Filtered Tours:", filteredTours);
-
     useGSAP(() => {
         // Animate intro section
         gsap.from(".tours-intro", {

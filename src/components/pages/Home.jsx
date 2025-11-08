@@ -4,6 +4,8 @@ import Features from "../common/Features";
 import Story from "../common/Story";
 import JoinJourney from "../common/JoinJourney";
 import CircularGallery from "../styling/CircularGallery";
+import Blogs from "../common/Blogs";
+import Testimonials from "../common/Testimonials";
 import { Link } from "react-router-dom";
 import Button from "./../common/Button";
 
@@ -20,7 +22,8 @@ const Home = () => {
                     <Button title="See more" containerClass="text-black mt-10 cursor-pointer" />
                 </Link>
             </div>
-            {/* <Story /> */}
+            <Blogs />
+            <Testimonials />
             <JoinJourney />
         </div>
     )
