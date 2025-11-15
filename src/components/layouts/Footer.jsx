@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <footer className="bg-green-700/60 text-white pt-16 pb-8">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Logo and Mission */}
           <div className="lg:col-span-1 w-full mb-5">
             <Link to="/" className="mb-4">
@@ -63,6 +63,53 @@ const Footer = () => {
                   );
                 })
               ))}
+            </ul>
+          </div>
+
+          {/* Other Useful Links */}
+          <div>
+            <h4 className="text-lg font-medium mb-4">Other Useful Links</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  to="/ride-skill-workshop"
+                  className="text-neutral-300 hover:text-white transition-colors duration-200"
+                >
+                  Women Only / RSW
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/know-your-guide"
+                  className="text-neutral-300 hover:text-white transition-colors duration-200"
+                >
+                  Know Your Guide
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/blog"
+                  className="text-neutral-300 hover:text-white transition-colors duration-200"
+                >
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/faq"
+                  className="text-neutral-300 hover:text-white transition-colors duration-200"
+                >
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/travel-tips"
+                  className="text-neutral-300 hover:text-white transition-colors duration-200"
+                >
+                  Travel Tips
+                </Link>
+              </li>
             </ul>
           </div>
 

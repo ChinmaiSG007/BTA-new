@@ -9,7 +9,7 @@ import Button from "../common/Button";
 import ImportantMessage from "../common/ImportantMessage";
 import GlassSurface from "../styling/GlassSurface";
 
-const navItems = ["Gallery", "Women only", "FAQ", "Travel Tips", "Know your Guide", "Blogs", "Contact"];
+const navItems = ["Gallery", "RSW", "Contact"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -190,7 +190,7 @@ const NavBar = () => {
           width={"100%"}
           className="absolute top-1/2 w-full -translate-y-1/2">
           <nav className="flex size-full items-center justify-between px-3 sm:px-4 py-2">
-            {/* Logo and Product button */}
+            {/* Left Section: Logo and Tours Button */}
             <div className="flex items-center gap-2 sm:gap-4 md:gap-7">
               <Link to={"/"}>
                 <img
@@ -216,14 +216,14 @@ const NavBar = () => {
               </Link>
             </div>
 
-            {/* Navigation Links and Audio Button */}
-            <div className="flex h-full items-center gap-2 sm:gap-4">
-              {/* Desktop Navigation */}
-              <div className="hidden lg:block">
-                {navItems.map((item, index) => (
+            {/* Middle Section: Navigation Links (left-aligned) */}
+            <div className="hidden lg:flex items-center gap-2 sm:gap-4 flex-1">
+              {navItems.map((item, index) => {
+                const href = item === "RSW" ? "/ride-skill-workshop" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
+                return (
                   <a
                     key={index}
-                    href={`/${item.trim().toLowerCase().replace(/\s+/g, "-")}`}
+                    href={href}
                     className="nav-hover-btn text-xs lg:text-sm"
                     style={{
                       color: navButtontheme,
@@ -232,18 +232,21 @@ const NavBar = () => {
                   >
                     {item}
                   </a>
-                ))}
-              </div>
+                );
+              })}
 
-              {/* Important Message - Hidden on small screens */}
+              {/* Important Message */}
               <div className="hidden sm:block">
                 <ImportantMessage />
               </div>
+            </div>
 
+            {/* Right Section: Audio Button and Mobile Menu */}
+            <div className="flex h-full items-center gap-2 sm:gap-4">
               {/* Audio Button */}
               <div
                 onClick={toggleAudioIndicator}
-                className={`ml-2 sm:ml-4 md:ml-8 border-2 p-1.5 sm:p-2 rounded-full z-50 ring-2 sm:ring-4 animate-pulse hover:cursor-pointer transition-all duration-500 ${isBackgroundLight
+                className={`border-2 p-1.5 sm:p-2 rounded-full z-50 ring-2 sm:ring-4 animate-pulse hover:cursor-pointer transition-all duration-500 ${isBackgroundLight
                   ? 'border-black ring-black/30'
                   : 'border-white ring-white/30'
                   }`}
@@ -316,20 +319,23 @@ const NavBar = () => {
 
             {/* Mobile Navigation Links */}
             <div className="flex flex-col space-y-1">
-              {navItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={`/${item.trim().toLowerCase().replace(/\s+/g, "-")}`}
-                  className="nav-hover-btn text-left"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  style={{
-                    color: navButtontheme,
-                    transition: 'color 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-                  }}
-                >
-                  {item}
-                </a>
-              ))}
+              {navItems.map((item, index) => {
+                const href = item === "RSW" ? "/ride-skill-workshop" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
+                return (
+                  <a
+                    key={index}
+                    href={href}
+                    className="nav-hover-btn text-left"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    style={{
+                      color: navButtontheme,
+                      transition: 'color 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+                    }}
+                  >
+                    {item}
+                  </a>
+                );
+              })}
             </div>
 
             {/* Mobile Important Message */}
