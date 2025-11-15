@@ -73,8 +73,13 @@ const TourDetail = () => {
 
     if (!tour || !region) {
         return (
-            <div className="min-h-screen w-screen bg-neutral-black flex items-center justify-center">
-                <div className="text-white text-2xl font-robert-regular">Loading...</div>
+            <div className="flex-center absolute h-dvh w-screen overflow-hidden loader-bg">
+                {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
+                <div className="three-body">
+                    <div className="three-body__dot"></div>
+                    <div className="three-body__dot"></div>
+                    <div className="three-body__dot"></div>
+                </div>
             </div>
         );
     }

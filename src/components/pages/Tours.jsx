@@ -146,9 +146,9 @@ const Tours = () => {
     );
 };
 
-const TourCard = ({ tour, index }) => {
+const TourCard = ({ tour }) => {
     const cardRef = useRef(null);
-    const glowRef = useRef(null);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     useGSAP(() => {
         if (cardRef.current) {
@@ -172,130 +172,99 @@ const TourCard = ({ tour, index }) => {
         }
     }, []);
 
-    // Magic Bento Effect
-    useEffect(() => {
-        const card = cardRef.current;
-        const glow = glowRef.current;
-        if (!card || !glow) return;
-
-        const handleMouseMove = (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            glow.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(137, 87, 59, 0.15), transparent 40%)`;
-        };
-
-        const handleMouseEnter = () => {
-            glow.style.opacity = '1';
-        };
-
-        const handleMouseLeave = () => {
-            glow.style.opacity = '0';
-        };
-
-        card.addEventListener('mousemove', handleMouseMove);
-        card.addEventListener('mouseenter', handleMouseEnter);
-        card.addEventListener('mouseleave', handleMouseLeave);
-
-        return () => {
-            card.removeEventListener('mousemove', handleMouseMove);
-            card.removeEventListener('mouseenter', handleMouseEnter);
-            card.removeEventListener('mouseleave', handleMouseLeave);
-        };
-    }, []);
-
     const tourSlug = tour.name.toLowerCase().replace(/\s+/g, "-");
+    const displayedHighlights = isExpanded ? tour.highlights : tour.highlights?.slice(0, 4);
 
     return (
         <div
             ref={cardRef}
-            className="tour-card relative group rounded-3xl border border-[#496156] bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-[#89573b] hover:shadow-[0_0_40px_rgba(137,87,59,0.4)]"
+            className="tour-card group relative overflow-hidden rounded-2xl backdrop-blur-xl bg-gradient-to-br from-[#1c2621]/60 via-[#1c2621]/40 to-[#1b1b1b]/60 border border-[#496156]/40 hover:border-brown-100/60 transition-all duration-500 hover:-translate-y-2"
+            style={{
+                backdropFilter: 'blur(20px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+            }}
         >
-            {/* Magic Bento Glow Effect */}
-            <div
-                ref={glowRef}
-                className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-500"
-                style={{ zIndex: 0 }}
-            />
+            {/* Glassmorphism shine effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
             {/* Image Section */}
-            <div className="relative z-10 w-full h-[300px] sm:h-[400px] overflow-hidden">
+            <div className="relative w-full h-[280px] sm:h-[320px] overflow-hidden">
                 <img
                     src={tour.image.startsWith('/') ? tour.image : `/${tour.image}`}
                     alt={tour.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1c2621]/95 via-[#1c2621]/50 to-transparent" />
 
                 {/* Region Badge with GlassSurface */}
-                <div className="absolute top-6 left-6">
+                <div className="absolute top-4 left-4">
                     <GlassSurface
-                        displace={5}
-                        distortionScale={350}
-                        redOffset={15}
-                        greenOffset={35}
-                        blueOffset={55}
-                        brightness={60}
-                        opacity={0.8}
-                        mixBlendMode="screen"
-                        width={"100%"}
-                        height={40}
-                        className="px-4 py-2"
+                        width="auto"
+                        height={32}
+                        borderRadius={16}
+                        brightness={40}
+                        opacity={0.85}
+                        blur={10}
+                        className="px-4 py-1.5"
                     >
-                        <span className="text-white text-sm font-semibold whitespace-nowrap">
+                        <span className="text-white text-xs font-semibold uppercase tracking-wide whitespace-nowrap">
                             {tour.regionName}
                         </span>
                     </GlassSurface>
                 </div>
 
                 {/* Price Badge with GlassSurface */}
-                <div className="absolute top-6 right-6">
+                <div className="absolute bottom-4 right-4">
                     <GlassSurface
                         width="auto"
                         height={40}
-                        displace={0.3}
-                        distortionScale={450}
-                        redOffset={5}
-                        greenOffset={5}
-                        blueOffset={5}
                         borderRadius={20}
                         brightness={95}
                         opacity={0.95}
-                        blur={6}
+                        blur={8}
                         className="px-5 py-2"
                     >
-                        <span className="text-[#1c2621] font-bold text-lg whitespace-nowrap">
+                        <span className="text-white font-bold text-lg whitespace-nowrap">
                             {tour.cost}
                         </span>
                     </GlassSurface>
                 </div>
             </div>
 
-            {/* Content Section */}
-            <div className="relative z-10 p-6 sm:p-8 space-y-6">
-                {/* Tour Name with myCustomFont */}
-                <h2 className="font-myCustomFont text-3xl sm:text-4xl md:text-5xl text-brown-100 group-hover:text-white transition-colors duration-300 leading-tight">
+            {/* Content Section with Glassmorphism */}
+            <div className="relative p-6 space-y-4 bg-gradient-to-b from-transparent to-[#1c2621]/30">
+                {/* Tour Name */}
+                <h2 className="font-myCustomFont text-2xl sm:text-3xl text-brown-100 group-hover:text-white transition-colors duration-300 leading-tight drop-shadow-lg">
                     {tour.name}
                 </h2>
 
                 {/* Caption */}
-                <p className="text-lg sm:text-xl text-neutral-gray font-general italic leading-relaxed">
+                <p className="text-base text-neutral-gray font-general leading-relaxed line-clamp-2">
                     {tour.caption}
                 </p>
 
-                {/* Highlights Section - Display ALL highlights */}
+                {/* Highlights Section with Glass Background */}
                 {tour.highlights && tour.highlights.length > 0 && (
-                    <div className="space-y-4">
-                        <h3 className="text-sm font-semibold text-brown-100 uppercase tracking-wider">
-                            Tour Highlights
-                        </h3>
-                        <ul className="space-y-2.5 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
-                            {tour.highlights.map((highlight, idx) => (
-                                <li key={idx} className="flex items-start gap-3 text-neutral-gray text-sm">
-                                    <TiLocationArrow className="text-brown-100 mt-1 flex-shrink-0 text-base" />
+                    <div className="space-y-3 pt-2 p-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10">
+                        <div className="flex items-center justify-between">
+                            <h3 className="text-xs font-semibold text-brown-100 uppercase tracking-wider">
+                                Highlights
+                            </h3>
+                            {tour.highlights.length > 4 && (
+                                <button
+                                    onClick={() => setIsExpanded(!isExpanded)}
+                                    className="text-xs text-brown-100 hover:text-white transition-colors px-2 py-1 rounded-md hover:bg-white/10"
+                                >
+                                    {isExpanded ? 'Show Less' : `+${tour.highlights.length - 4} More`}
+                                </button>
+                            )}
+                        </div>
+                        <ul className="space-y-2">
+                            {displayedHighlights?.map((highlight, idx) => (
+                                <li key={idx} className="flex items-start gap-2 text-neutral-gray text-xs">
+                                    <span className="text-brown-100 mt-0.5 flex-shrink-0">•</span>
                                     <span className="leading-relaxed">{highlight}</span>
                                 </li>
                             ))}
@@ -303,13 +272,12 @@ const TourCard = ({ tour, index }) => {
                     </div>
                 )}
 
-                {/* Explore Button */}
+                {/* Explore Button with Glassmorphism */}
                 <Link to={`/tours/${tourSlug}`} className="block pt-4">
-                    <Button
-                        title="Explore Tour"
-                        leftIcon={<TiLocationArrow className="mr-2" />}
-                        containerClass="!bg-brown-100 text-white hover:!bg-brown-300 transition-all duration-300 w-full flex items-center justify-center"
-                    />
+                    <button className="w-full border border-brown-100/90 hover:text-brown-100 backdrop-blur-sm text-brown-100/90 font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group/btn">
+                        <span>Explore Tour</span>
+                        <TiLocationArrow className="text-lg group-hover/btn:translate-x-1 transition-transform" />
+                    </button>
                 </Link>
             </div>
         </div>

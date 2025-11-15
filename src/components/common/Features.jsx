@@ -122,7 +122,7 @@ const Features = () => (
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-2">
                 Palaksha
               </h1>
-              <p className="text-lg sm:text-xl text-brown-100 font-circular-web italic">Founder Beyond Tarmac Adventures</p>
+              <p className="text-md font-general italic">Founder Beyond Tarmac Adventures</p>
             </div>
 
             <div className="space-y-4 text-blue-50/90 font-circular-web text-sm sm:text-base leading-relaxed">
