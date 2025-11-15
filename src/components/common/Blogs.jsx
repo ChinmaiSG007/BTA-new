@@ -40,7 +40,7 @@ const Blogs = () => {
                                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-2">
                                     {blogPost.title}
                                 </h1>
-                                <p className="text-lg sm:text-xl text-brown-100 font-circular-web italic">{blogPost.subtitle}</p>
+                                <p className="text-lg sm:text-xl text-brown-100 font-general">{blogPost.subtitle}</p>
                             </div>
 
                             <div className="mb-4">
@@ -59,9 +59,9 @@ const Blogs = () => {
                                 href={blogPost.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="mt-6 inline-flex items-center gap-2 bg-brown-100 hover:bg-brown-300 text-black px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:gap-4 shadow-lg w-fit"
+                                className="mt-6 inline-flex items-center gap-2 bg-white hover:bg-brown-300 text-black px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:gap-4 shadow-lg w-fit"
                             >
-                                <span className="font-circular-web">Read Full Story</span>
+                                <span className="font-general">Read Full Story</span>
                                 <TiLocationArrow className="text-xl transition-transform duration-300" />
                             </a>
                         </div>

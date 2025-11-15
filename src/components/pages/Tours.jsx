@@ -8,12 +8,12 @@ import toursData from "../../tours.json";
 import AnimatedTitle from "../common/AnimatedTitle";
 import Button from "../common/Button";
 import Balatro from "../styling/Balatro";
+import GlassSurface from "../styling/GlassSurface";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Tours = () => {
     const [activeRegion, setActiveRegion] = useState("all");
-    const containerRef = useRef(null);
 
     const allTours = toursData.regions.flatMap((region) =>
         region.tours.map((tour) => ({
@@ -37,24 +37,6 @@ const Tours = () => {
             ease: "power3.out",
         });
 
-        // Animate instruction cards
-        gsap.fromTo(".instruction-card",
-            {
-                opacity: 0,
-                y: 30,
-            },
-            {
-                opacity: 1,
-                y: 0,
-                stagger: 0.2,
-                duration: 0.8,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: ".instructions-container",
-                    start: "top 80%",
-                },
-            }
-        );
 
         // Animate tour cards on scroll
         gsap.fromTo(".tour-card",
@@ -76,23 +58,6 @@ const Tours = () => {
         );
     }, [filteredTours]);
 
-    const instructions = [
-        {
-            icon: "🏍️",
-            title: "Choose Your Adventure",
-            description: "Browse through our curated motorcycle expeditions across breathtaking terrains",
-        },
-        {
-            icon: "📅",
-            title: "Pick Your Dates",
-            description: "Select from various departure dates that suit your schedule",
-        },
-        {
-            icon: "✨",
-            title: "Book & Ride",
-            description: "Reserve your spot and get ready for the journey of a lifetime",
-        },
-    ];
 
     return (
         <div className="min-h-screen w-screen bg-neutral-black text-white">
@@ -144,7 +109,7 @@ const Tours = () => {
                         <button
                             onClick={() => setActiveRegion("all")}
                             className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeRegion === "all"
-                                ? "bg-[#edff66] text-black"
+                                ? "bg-[#b87b58] text-[#1c2621]"
                                 : "bg-[#2a2a2a] text-white hover:bg-[#3a3a3a]"
                                 }`}
                         >
@@ -155,7 +120,7 @@ const Tours = () => {
                                 key={region.id}
                                 onClick={() => setActiveRegion(region.id)}
                                 className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${activeRegion === region.id
-                                    ? "bg-[#edff66] text-black"
+                                    ? "bg-[#b87b58] text-[#1c2621]"
                                     : "bg-[#2a2a2a] text-white hover:bg-[#3a3a3a]"
                                     }`}
                             >
@@ -170,7 +135,7 @@ const Tours = () => {
                         <p className="text-2xl text-gray-400">No tours found for this region.</p>
                     </div>
                 ) : (
-                    <div className="space-y-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
                         {filteredTours.map((tour, index) => (
                             <TourCard key={tour.id} tour={tour} index={index} />
                         ))}
@@ -184,7 +149,6 @@ const Tours = () => {
 const TourCard = ({ tour, index }) => {
     const cardRef = useRef(null);
     const glowRef = useRef(null);
-    const [isHovered, setIsHovered] = useState(false);
 
     useGSAP(() => {
         if (cardRef.current) {
@@ -246,75 +210,105 @@ const TourCard = ({ tour, index }) => {
     return (
         <div
             ref={cardRef}
-            className={`tour-card relative flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } gap-8 items-center group rounded-2xl border border-[#496156] bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm p-6 sm:p-8 transition-all duration-500 hover:border-[#89573b] hover:shadow-[0_0_30px_rgba(137,87,59,0.3)]`}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            className="tour-card relative group rounded-3xl border border-[#496156] bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-[#89573b] hover:shadow-[0_0_40px_rgba(137,87,59,0.4)]"
         >
             {/* Magic Bento Glow Effect */}
             <div
                 ref={glowRef}
-                className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500"
+                className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-500"
                 style={{ zIndex: 0 }}
             />
 
-            {/* Card Content - wrapped in relative z-10 */}
-            <div className="relative z-10 w-full lg:w-1/2 overflow-hidden rounded-2xl">
-                <div className="aspect-video relative">
-                    {/* Fallback Image */}
-                    <img
-                        src={tour.image.startsWith('/') ? tour.image : `/${tour.image}`}
-                        alt={tour.name}
-                        className="absolute inset-0 w-full h-full object-cover"
-                    />
+            {/* Image Section */}
+            <div className="relative z-10 w-full h-[300px] sm:h-[400px] overflow-hidden">
+                <img
+                    src={tour.image.startsWith('/') ? tour.image : `/${tour.image}`}
+                    alt={tour.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
 
-                    {/* Video Overlay - can be added later */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
-                    <div className="absolute top-4 right-4 bg-brown-100 text-white px-4 py-2 rounded-full font-bold">
-                        {tour.cost}
-                    </div>
+                {/* Region Badge with GlassSurface */}
+                <div className="absolute top-6 left-6">
+                    <GlassSurface
+                        displace={5}
+                        distortionScale={350}
+                        redOffset={15}
+                        greenOffset={35}
+                        blueOffset={55}
+                        brightness={60}
+                        opacity={0.8}
+                        mixBlendMode="screen"
+                        width={"100%"}
+                        height={40}
+                        className="px-4 py-2"
+                    >
+                        <span className="text-white text-sm font-semibold whitespace-nowrap">
+                            {tour.regionName}
+                        </span>
+                    </GlassSurface>
+                </div>
+
+                {/* Price Badge with GlassSurface */}
+                <div className="absolute top-6 right-6">
+                    <GlassSurface
+                        width="auto"
+                        height={40}
+                        displace={0.3}
+                        distortionScale={450}
+                        redOffset={5}
+                        greenOffset={5}
+                        blueOffset={5}
+                        borderRadius={20}
+                        brightness={95}
+                        opacity={0.95}
+                        blur={6}
+                        className="px-5 py-2"
+                    >
+                        <span className="text-[#1c2621] font-bold text-lg whitespace-nowrap">
+                            {tour.cost}
+                        </span>
+                    </GlassSurface>
                 </div>
             </div>
 
             {/* Content Section */}
-            <div className="relative z-10 w-full lg:w-1/2 space-y-6">
-                <div className="inline-block bg-brown-100/20 text-brown-100 px-4 py-2 rounded-full text-sm font-semibold border border-brown-100/30">
-                    {tour.regionName}
-                </div>
-
-                <h2 className="special-font text-4xl md:text-5xl lg:text-6xl text-brown-100 group-hover:text-white transition-colors duration-300">
+            <div className="relative z-10 p-6 sm:p-8 space-y-6">
+                {/* Tour Name with myCustomFont */}
+                <h2 className="font-myCustomFont text-3xl sm:text-4xl md:text-5xl text-brown-100 group-hover:text-white transition-colors duration-300 leading-tight">
                     {tour.name}
                 </h2>
 
-                <p className="text-xl md:text-2xl text-neutral-gray font-robert-regular italic">
+                {/* Caption */}
+                <p className="text-lg sm:text-xl text-neutral-gray font-general italic leading-relaxed">
                     {tour.caption}
                 </p>
 
-                <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-secondary-dark/50 p-4 rounded-lg border border-secondary-light/30">
-                        <p className="text-sm text-neutral-darkGray">Duration</p>
-                        <p className="text-lg font-semibold text-white">{tour.duration}</p>
+                {/* Highlights Section - Display ALL highlights */}
+                {tour.highlights && tour.highlights.length > 0 && (
+                    <div className="space-y-4">
+                        <h3 className="text-sm font-semibold text-brown-100 uppercase tracking-wider">
+                            Tour Highlights
+                        </h3>
+                        <ul className="space-y-2.5 max-h-[300px] overflow-y-auto pr-2 custom-scrollbar">
+                            {tour.highlights.map((highlight, idx) => (
+                                <li key={idx} className="flex items-start gap-3 text-neutral-gray text-sm">
+                                    <TiLocationArrow className="text-brown-100 mt-1 flex-shrink-0 text-base" />
+                                    <span className="leading-relaxed">{highlight}</span>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-                    <div className="bg-secondary-dark/50 p-4 rounded-lg border border-secondary-light/30">
-                        <p className="text-sm text-neutral-darkGray">Period</p>
-                        <p className="text-lg font-semibold text-white">{tour.period}</p>
-                    </div>
-                    <div className="bg-secondary-dark/50 p-4 rounded-lg border border-secondary-light/30">
-                        <p className="text-sm text-neutral-darkGray">Starting From</p>
-                        <p className="text-lg font-semibold text-white">{tour.starting}</p>
-                    </div>
-                    <div className="bg-secondary-dark/50 p-4 rounded-lg border border-secondary-light/30">
-                        <p className="text-sm text-neutral-darkGray">Cost</p>
-                        <p className="text-lg font-semibold text-brown-100">{tour.cost}</p>
-                    </div>
-                </div>
+                )}
 
-                <Link to={`/tours/${tourSlug}`}>
+                {/* Explore Button */}
+                <Link to={`/tours/${tourSlug}`} className="block pt-4">
                     <Button
                         title="Explore Tour"
-                        leftIcon={<TiLocationArrow />}
-                        containerClass="!bg-brown-100 text-white hover:!bg-brown-300 transition-all duration-300 w-full justify-center"
+                        leftIcon={<TiLocationArrow className="mr-2" />}
+                        containerClass="!bg-brown-100 text-white hover:!bg-brown-300 transition-all duration-300 w-full flex items-center justify-center"
                     />
                 </Link>
             </div>

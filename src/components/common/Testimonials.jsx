@@ -61,10 +61,10 @@ const Testimonials = () => {
                         className="text-center mb-12"
                     >
                         <a
-                            href="https://maps.app.goo.gl/39cmxX2UWunyrkiv8"
+                            href="https://www.google.com/maps/place/BEYOND+TARMAC+ADVENTURES/@12.9055677,77.6108996,19z/data=!4m8!3m7!1s0x3bae14e163287bb5:0x1fe11f1fc07a7a83!8m2!3d12.9055664!4d77.6115433!9m1!1b1!16s%2Fg%2F11hgp56w6g?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 bg-brown-100 hover:bg-brown-300 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
+                            className="inline-flex items-center gap-2 font-general border text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
                         >
                             <FaStar className="text-yellow-400" />
                             <span>View All Reviews on Google</span>
@@ -136,9 +136,6 @@ const Testimonials = () => {
                         viewport={{ once: true }}
                         className="mt-12 text-center"
                     >
-                        <p className="text-sm text-neutral-darkGray italic">
-                            These are sample reviews. To display live Google reviews, you'll need to set up a backend API.
-                        </p>
                     </motion.div>
                 </div>
             </div>
