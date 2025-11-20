@@ -18,15 +18,39 @@ const Hero = () => {
   const [loadedVideos, setLoadedVideos] = useState(0);
 
   const totalVideos = 2;
+  const totalVideoElements = 3; // We have 3 video elements on the page
   const nextVdRef = useRef(null);
+  const loadingTimeoutRef = useRef(null);
 
   const handleVideoLoad = () => {
     setLoadedVideos((prev) => prev + 1);
   };
 
+  // Reset loading state on component mount
   useEffect(() => {
-    if (loadedVideos === totalVideos - 1) {
+    setLoading(true);
+    setLoadedVideos(0);
+
+    // Fallback: Hide loader after 3 seconds regardless of video load status
+    loadingTimeoutRef.current = setTimeout(() => {
       setLoading(false);
+    }, 3000);
+
+    return () => {
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // Wait for at least 2 videos to load (the main autoplay video and one preview)
+    if (loadedVideos >= 2) {
+      setLoading(false);
+      // Clear the fallback timeout since videos loaded successfully
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+      }
     }
   }, [loadedVideos]);
 
