@@ -12,11 +12,13 @@ import FAQ from "./components/pages/FAQ";
 import TravelTips from "./components/pages/TravelTips";
 import NotFound from "./components/pages/NotFound";
 import ScrollToTop from "./components/common/ScrollToTop";
+import ScrollToTopOnMount from "./components/common/ScrollToTopOnMount";
 
 function App() {
   return (
     <main className="relative min-h-screen w-screen overflow-x-hidden">
       <Router>
+        <ScrollToTopOnMount />
         <div className="flex flex-col min-h-screen">
           <NavBar />
           <main className="flex-grow">
