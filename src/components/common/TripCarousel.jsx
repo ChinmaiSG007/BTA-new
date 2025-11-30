@@ -1,7 +1,6 @@
-// src/components/TripCarousel.jsx
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaClock, FaCalendarAlt, FaMoneyBillWave } from 'react-icons/fa';
+import { motion, AnimatePresence, useMotionValue, useTransform, useSpring, useAnimationFrame } from 'framer-motion';
+import { FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaClock, FaCalendarAlt, FaMoneyBillWave, FaPlay, FaPause } from 'react-icons/fa';
 import toursData from './../../tours.json';
 import { Link } from 'react-router-dom';
 import Button from "./Button";
@@ -14,433 +13,404 @@ const tours = toursData.regions.flatMap(region =>
     }))
 );
 
+const TiltCard = ({ children, className }) => {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const mouseX = useSpring(x, { stiffness: 150, damping: 15 });
+    const mouseY = useSpring(y, { stiffness: 150, damping: 15 });
+
+    const rotateX = useTransform(mouseY, [-0.5, 0.5], ["7deg", "-7deg"]);
+    const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-7deg", "7deg"]);
+
+    const handleMouseMove = (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        const mouseXFromCenter = e.clientX - rect.left - width / 2;
+        const mouseYFromCenter = e.clientY - rect.top - height / 2;
+        x.set(mouseXFromCenter / width);
+        y.set(mouseYFromCenter / height);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    return (
+        <motion.div
+            className={className}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+            }}
+        >
+            {children}
+        </motion.div>
+    );
+};
+
 export default function TripCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    const [isPlaying, setIsPlaying] = useState(true); // User's master switch
     const [direction, setDirection] = useState(0);
-    const [bubbleStartIndex, setBubbleStartIndex] = useState(0);
-    const [hoveredPill, setHoveredPill] = useState(null);
-    const autoPlayRef = useRef(null);
-    const pauseTimeoutRef = useRef(null);
+
+    // Performance optimization: Use MotionValue for progress to avoid re-renders
+    const progress = useMotionValue(0);
 
     const currentTour = tours[currentIndex];
-    const maxVisibleBubbles = 6;
-    const showBubbleNavigation = tours.length > maxVisibleBubbles;
+    const AUTO_PLAY_DURATION = 5000;
+    const RADIUS = 18;
+    const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
-    // Auto-play functionality
-    useEffect(() => {
-        if (isAutoPlaying && tours.length > 1) {
-            autoPlayRef.current = setInterval(() => {
+    // Transform progress (0-100) to strokeDashoffset (CIRCUMFERENCE-0)
+    const strokeDashoffset = useTransform(progress, [0, 100], [CIRCUMFERENCE, 0]);
+
+    // Animation frame loop for smooth progress
+    useAnimationFrame((time, delta) => {
+        if (isPlaying && tours.length > 1) {
+            const currentProgress = progress.get();
+            // Calculate increment based on delta time (ms)
+            const increment = (delta / AUTO_PLAY_DURATION) * 100;
+            const newProgress = currentProgress + increment;
+
+            if (newProgress >= 100) {
+                progress.set(0);
                 handleNext();
-            }, 4000);
+            } else {
+                progress.set(newProgress);
+            }
         }
-        return () => {
-            if (autoPlayRef.current) {
-                clearInterval(autoPlayRef.current);
-            }
-        };
-    }, [isAutoPlaying, currentIndex]);
+    });
 
-    // Cleanup on unmount
-    useEffect(() => {
-        return () => {
-            if (autoPlayRef.current) {
-                clearInterval(autoPlayRef.current);
-            }
-            if (pauseTimeoutRef.current) {
-                clearTimeout(pauseTimeoutRef.current);
-            }
-        };
-    }, []);
+    // Reset progress when index changes manually (handled in navigation functions)
+    // But we also need to ensure it stays 0 if we just switched.
+    // The handleNext/Prev functions set it to 0.
 
-    // Pause auto-play temporarily when user interacts
-    const pauseAutoPlay = () => {
-        setIsAutoPlaying(false);
-        if (pauseTimeoutRef.current) {
-            clearTimeout(pauseTimeoutRef.current);
-        }
-        pauseTimeoutRef.current = setTimeout(() => {
-            setIsAutoPlaying(true);
-        }, 6000);
+    const togglePlay = () => {
+        setIsPlaying(!isPlaying);
     };
 
     const handleNext = () => {
         if (tours.length <= 1) return;
         setDirection(1);
-        const nextIndex = (currentIndex + 1) % tours.length;
-        setCurrentIndex(nextIndex);
-
-        // Auto-adjust bubble view
-        if (showBubbleNavigation) {
-            if (nextIndex >= bubbleStartIndex + maxVisibleBubbles) {
-                setBubbleStartIndex(nextIndex - maxVisibleBubbles + 1);
-            } else if (nextIndex < bubbleStartIndex) {
-                setBubbleStartIndex(nextIndex);
-            }
-        }
+        progress.set(0); // Reset progress immediately
+        setCurrentIndex((prev) => (prev + 1) % tours.length);
     };
 
     const handlePrev = () => {
         if (tours.length <= 1) return;
         setDirection(-1);
-        const prevIndex = (currentIndex - 1 + tours.length) % tours.length;
-        setCurrentIndex(prevIndex);
-
-        // Auto-adjust bubble view
-        if (showBubbleNavigation) {
-            if (prevIndex < bubbleStartIndex) {
-                setBubbleStartIndex(prevIndex);
-            } else if (prevIndex >= bubbleStartIndex + maxVisibleBubbles) {
-                setBubbleStartIndex(prevIndex - maxVisibleBubbles + 1);
-            }
-        }
+        progress.set(0); // Reset progress immediately
+        setCurrentIndex((prev) => (prev - 1 + tours.length) % tours.length);
     };
 
-    const handlePillClick = (index) => {
+    const handleDotClick = (index) => {
         if (index === currentIndex) return;
         setDirection(index > currentIndex ? 1 : -1);
+        progress.set(0); // Reset progress immediately
         setCurrentIndex(index);
-        pauseAutoPlay();
-
-        // Auto-adjust bubble view to show the selected tour
-        if (showBubbleNavigation) {
-            if (index < bubbleStartIndex) {
-                setBubbleStartIndex(index);
-            } else if (index >= bubbleStartIndex + maxVisibleBubbles) {
-                setBubbleStartIndex(index - maxVisibleBubbles + 1);
-            }
-        }
-    };
-
-    const handleBubbleNext = () => {
-        if (bubbleStartIndex + maxVisibleBubbles < tours.length) {
-            setBubbleStartIndex(prev => prev + 1);
-        }
-    };
-
-    const handleBubblePrev = () => {
-        if (bubbleStartIndex > 0) {
-            setBubbleStartIndex(prev => prev - 1);
-        }
     };
 
     const handleSwipe = (event, info) => {
         if (tours.length <= 1) return;
-        if (Math.abs(info.offset.x) > 100) {
-            if (info.offset.x > 0) {
-                handlePrev();
-            } else {
-                handleNext();
-            }
-            pauseAutoPlay();
+        const swipeThreshold = 50;
+        if (info.offset.x < -swipeThreshold) {
+            handleNext();
+        } else if (info.offset.x > swipeThreshold) {
+            handlePrev();
         }
     };
 
     // Animation variants
-    const slideVariants = {
+    const imageVariants = {
         enter: (direction) => ({
-            x: direction > 0 ? 1000 : -1000,
+            x: direction > 0 ? '100%' : '-100%',
             opacity: 0,
-            scale: 0.8,
+            scale: 1.2,
+            rotateY: direction > 0 ? 45 : -45,
         }),
         center: {
-            zIndex: 1,
             x: 0,
             opacity: 1,
             scale: 1,
+            rotateY: 0,
+            transition: {
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.5 },
+                scale: { duration: 0.8, ease: "easeOut" },
+                rotateY: { duration: 0.6, ease: "easeOut" }
+            }
         },
         exit: (direction) => ({
-            zIndex: 0,
-            x: direction < 0 ? 1000 : -1000,
+            x: direction < 0 ? '100%' : '-100%',
             opacity: 0,
-            scale: 0.8,
+            scale: 0.9,
+            rotateY: direction < 0 ? 45 : -45,
+            transition: {
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.5 },
+                scale: { duration: 0.5 }
+            }
         }),
     };
 
-    const backgroundVariants = {
+    const contentContainerVariants = {
         enter: { opacity: 0 },
-        center: { opacity: 0.3 },
-        exit: { opacity: 0 },
+        center: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        },
+        exit: {
+            opacity: 0,
+            transition: {
+                staggerChildren: 0.05,
+                staggerDirection: -1
+            }
+        }
     };
 
-    // Handle edge case where tours array might be empty
+    const itemVariants = {
+        enter: { opacity: 0, y: 20 },
+        center: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+        exit: { opacity: 0, y: -20, transition: { duration: 0.3, ease: "easeIn" } }
+    };
+
     if (!tours || tours.length === 0) {
-        return (
-            <div className="relative w-full h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-                <div className="text-white text-xl">No tours available</div>
-            </div>
-        );
+        return <div className="text-white text-center py-20">No tours available</div>;
     }
 
     return (
-        <div className="relative w-full min-h-[600px] sm:min-h-[700px] md:min-h-[750px] lg:min-h-[800px] xl:min-h-[850px] 2xl:min-h-[900px] overflow-hidden">
-            {/* Blurred Background */}
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={`bg-${currentTour.id}`}
-                    className="absolute inset-0 bg-cover bg-center filter blur-lg"
-                    style={{
-                        backgroundImage: `url(${currentTour.image})`,
-                        opacity: 0.5
-                    }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.5 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8 }}
-                />
-            </AnimatePresence>
+        <div className="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-10 perspective-1000">
+            <div className="relative bg-neutral-900/40 backdrop-blur-xl rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl min-h-[600px] md:min-h-[700px] flex flex-col md:flex-row">
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-
-            {/* Main Content */}
-            <div className="relative z-10 flex flex-col items-center justify-center min-h-[600px] sm:min-h-[700px] md:min-h-[750px] lg:min-h-[800px] xl:min-h-[850px] 2xl:min-h-[900px] max-w-full px-3 sm:px-4 md:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-32 font-general gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-                {/* Watermark Name */}
-                <AnimatePresence mode="wait">
-                    <motion.h1
-                        key={`watermark-${currentTour.id}`}
-                        layoutId="watermark"
-                        className="absolute text-[1.5rem] sm:text-[2rem] md:text-[3rem] lg:text-[4rem] xl:text-[5rem] 2xl:text-[6rem] font-extrabold text-white/10 select-none pointer-events-none font-myCustomFont overflow-hidden"
-                        style={{
-                            top: '50%',
-                            left: '50%',
-                            transform: 'translate(-50%, -50%)',
-                            maxWidth: '90vw',
-                            whiteSpace: 'nowrap',
-                            textOverflow: 'ellipsis'
-                        }}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        {currentTour.name}
-                    </motion.h1>
-                </AnimatePresence>
-
-                {/* Region Name */}
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={`region-${currentTour.id}`}
-                        className="flex-shrink-0 mb-2 sm:mb-3 lg:mb-4"
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <div className="bg-white/10 backdrop-blur-lg rounded-full px-4 sm:px-5 md:px-6 py-1.5 sm:py-2 border border-white/20 max-w-[85vw]">
-                            <span className="text-white/90 text-xs sm:text-sm md:text-base font-medium truncate block">
-                                {currentTour.region}
-                            </span>
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
-
-                {/* Image and Content Container - Side by Side on Desktop */}
-                <div className="flex flex-col lg:flex-row items-center lg:items-center justify-center gap-4 sm:gap-5 md:gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 w-full max-w-7xl flex-shrink-0">
-                    {/* Main Image Card */}
-                    <AnimatePresence mode="wait" custom={direction}>
-                        <motion.div
-                            key={currentTour.id}
-                            custom={direction}
-                            variants={slideVariants}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            transition={{
-                                x: { type: "spring", stiffness: 300, damping: 30, duration: 0.6 },
-                                opacity: { duration: 0.4 },
-                                scale: { duration: 0.4 }
-                            }}
-                            drag={tours.length > 1 ? "x" : false}
-                            dragConstraints={{ left: 0, right: 0 }}
-                            dragElastic={0.2}
-                            onDragEnd={handleSwipe}
-                            className={`relative flex-shrink-0 max-w-[85vw] sm:max-w-none ${tours.length > 1 ? 'cursor-grab active:cursor-grabbing' : ''}`}
-                        >
-                            <div className="bg-white/10 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-1.5 sm:p-2 shadow-2xl border border-white/20">
+                {/* Image Section (Top on mobile, Left on desktop) */}
+                <div className="relative w-full md:w-3/5 h-[350px] md:h-auto overflow-hidden group z-10 cursor-grab active:cursor-grabbing">
+                    <TiltCard className="w-full h-full relative">
+                        <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                            <motion.div
+                                key={currentTour.id}
+                                className="absolute inset-0 w-full h-full"
+                                custom={direction}
+                                variants={imageVariants}
+                                initial="enter"
+                                animate="center"
+                                exit="exit"
+                                drag="x"
+                                dragConstraints={{ left: 0, right: 0 }}
+                                dragElastic={0.2}
+                                onDragEnd={handleSwipe}
+                            >
                                 <img
                                     src={currentTour.image}
                                     alt={currentTour.name}
-                                    className="w-64 sm:w-72 md:w-80 lg:w-[20rem] xl:w-[24rem] 2xl:w-[28rem] h-40 sm:h-48 md:h-56 lg:h-[14rem] xl:h-[16rem] 2xl:h-[18rem] object-cover rounded-xl sm:rounded-2xl"
+                                    className="w-full h-full object-cover"
                                     draggable={false}
                                 />
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
-
-                    {/* Tour Information */}
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={`info-${currentTour.id}`}
-                            className="text-center lg:text-left max-w-4xl lg:max-w-md xl:max-w-lg 2xl:max-w-xl w-full flex-shrink-0 px-2 sm:px-4 lg:px-0 flex flex-col justify-center"
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -30 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                        >
-                            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-white mb-2 sm:mb-3 tracking-tight font-myCustomFont px-2 lg:px-0">
-                                {currentTour.name}
-                            </h2>
-                            <p className="text-sm sm:text-base md:text-lg lg:text-sm xl:text-base 2xl:text-lg text-white/90 mb-3 sm:mb-4 leading-relaxed px-2 sm:px-4 lg:px-0 line-clamp-2 sm:line-clamp-3 lg:line-clamp-3">
-                                {currentTour.caption}
-                            </p>
-
-                            {/* Tour Details - Vertical Stack */}
-                            <div className="flex flex-col items-center lg:items-start gap-2 text-xs sm:text-sm md:text-base lg:text-sm xl:text-base text-white/90 mb-3 sm:mb-4">
-                                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-white/20 w-full max-w-[280px] sm:max-w-[300px] lg:max-w-full justify-center lg:justify-start">
-                                    <FaClock className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" style={{ color: '#ac6e4a' }} />
-                                    <span className="text-center lg:text-left truncate">{currentTour.duration}</span>
-                                </div>
-                                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-white/20 w-full max-w-[280px] sm:max-w-[300px] lg:max-w-full justify-center lg:justify-start">
-                                    <FaCalendarAlt className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" style={{ color: '#ac6e4a' }} />
-                                    <span className="text-center lg:text-left truncate">{currentTour.period}</span>
-                                </div>
-                                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-white/20 w-full max-w-[280px] sm:max-w-[300px] lg:max-w-full justify-center lg:justify-start">
-                                    <FaMapMarkerAlt className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" style={{ color: '#ac6e4a' }} />
-                                    <span className="text-center lg:text-left truncate">Starts in <span className="font-bold">{currentTour.starting}</span></span>
-                                </div>
-                                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-white/20 w-full max-w-[280px] sm:max-w-[300px] lg:max-w-full justify-center lg:justify-start">
-                                    <FaMoneyBillWave className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" style={{ color: '#ac6e4a' }} />
-                                    <span className="text-center lg:text-left font-semibold truncate">{currentTour.cost}</span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
-
-                {/* Explore All Tours Button - Outside AnimatePresence so it stays persistent */}
-                <Link to="/tours" className="mt-4 sm:mt-6 md:mt-8">
-                    <Button title="Explore all Tours" containerClass="text-black cursor-pointer" />
-                </Link>
-            </div>
-            {/* Navigation Arrows - Only show if more than 1 tour */}
-            {tours.length > 1 && (
-                <>
-                    <button
-                        onClick={() => { handlePrev(); pauseAutoPlay(); }}
-                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 transition-all duration-300 hover:scale-110"
-                        aria-label="Previous tour"
-                    >
-                        <FaChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </button>
-
-                    <button
-                        onClick={() => { handleNext(); pauseAutoPlay(); }}
-                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 text-white hover:bg-white/20 transition-all duration-300 hover:scale-110"
-                        aria-label="Next tour"
-                    >
-                        <FaChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </button>
-                </>
-            )}
-
-            {/* Modern Pills Navigation - Only show if more than 1 tour */}
-            {tours.length > 1 && (
-                <div className="absolute bottom-4 sm:bottom-5 md:bottom-6 lg:bottom-8 xl:bottom-10 left-1/2 -translate-x-1/2 z-[100] max-w-[95vw]">
-                    <div className="bg-white/10 backdrop-blur-lg rounded-full px-2 sm:px-3 py-2 sm:py-2.5 shadow-2xl border border-white/20 flex items-center gap-2 relative">
-                        {/* Previous Bubble Navigation Button */}
-                        {showBubbleNavigation && (
-                            <button
-                                onClick={handleBubblePrev}
-                                disabled={bubbleStartIndex === 0}
-                                className={`flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-300 ${bubbleStartIndex === 0
-                                    ? 'opacity-30 cursor-not-allowed'
-                                    : 'hover:bg-white/20 cursor-pointer'
-                                    }`}
-                                aria-label="Previous tours"
-                            >
-                                <FaChevronLeft className="w-3 h-3 text-white" />
-                            </button>
-                        )}
-
-                        {/* Pills Container */}
-                        <div className="overflow-visible relative">
-                            <div className="flex items-center gap-1.5 sm:gap-2 relative">
-                                {/* Active pill background */}
+                                {/* Subtle Zoom Effect on Image */}
                                 <motion.div
-                                    className="absolute bg-brown-100 rounded-full shadow-lg w-8 h-8 sm:w-9 sm:h-9"
-                                    layoutId="activePillTripCarousel"
-                                    animate={{
-                                        left: typeof window !== 'undefined' && window.innerWidth >= 640
-                                            ? `${(currentIndex - bubbleStartIndex) * 44}px` // sm breakpoint: 36px width + 8px gap
-                                            : `${(currentIndex - bubbleStartIndex) * 38}px`  // mobile: 32px width + 6px gap
-                                    }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 400,
-                                        damping: 30
-                                    }}
+                                    className="absolute inset-0 bg-black/10"
+                                    animate={{ scale: [1, 1.05] }}
+                                    transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
                                 />
+                            </motion.div>
+                        </AnimatePresence>
 
-                                {/* Tour Pills */}
-                                {tours
-                                    .slice(
-                                        bubbleStartIndex,
-                                        showBubbleNavigation ? bubbleStartIndex + maxVisibleBubbles : tours.length
-                                    )
-                                    .map((tour, relativeIndex) => {
-                                        const actualIndex = bubbleStartIndex + relativeIndex;
-                                        const isHovered = hoveredPill === actualIndex;
-                                        return (
-                                            <div key={tour.id} className="relative">
-                                                {/* Tooltip - Positioned above */}
-                                                {isHovered && (
-                                                    <div
-                                                        className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 pointer-events-none z-[200]"
-                                                    >
-                                                        <motion.div
-                                                            initial={{ opacity: 0, y: 5, scale: 0.95 }}
-                                                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                                                            exit={{ opacity: 0, y: 5, scale: 0.95 }}
-                                                            transition={{ duration: 0.15 }}
-                                                            className="whitespace-nowrap"
-                                                        >
-                                                            <div className="bg-gray-900 text-white text-xs sm:text-sm px-3 py-2 rounded-lg shadow-2xl border border-white/40">
-                                                                <div className="font-semibold">{tour.name}</div>
-                                                                <div className="text-[10px] sm:text-xs text-white/70 mt-0.5">{tour.region}</div>
-                                                            </div>
-                                                            {/* Tooltip Arrow */}
-                                                            <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px]">
-                                                                <div className="w-2.5 h-2.5 bg-gray-900 border-r border-b border-white/40 rotate-45"></div>
-                                                            </div>
-                                                        </motion.div>
-                                                    </div>
-                                                )}
+                        {/* Image Overlay Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-black/90 pointer-events-none" />
 
-                                                <button
-                                                    onClick={() => handlePillClick(actualIndex)}
-                                                    onMouseEnter={() => setHoveredPill(actualIndex)}
-                                                    onMouseLeave={() => setHoveredPill(null)}
-                                                    className={`relative z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full transition-all duration-300 flex items-center justify-center text-xs font-semibold flex-shrink-0 ${actualIndex === currentIndex
-                                                        ? 'text-white scale-110'
-                                                        : 'text-white/60 hover:text-white/80 hover:scale-105'
-                                                        }`}
-                                                    aria-label={`Go to ${tour.name}`}
-                                                >
-                                                    {actualIndex + 1}
-                                                </button>
-                                            </div>
-                                        );
-                                    })}
-                            </div>
-                        </div>                        {/* Next Bubble Navigation Button */}
-                        {showBubbleNavigation && (
-                            <button
-                                onClick={handleBubbleNext}
-                                disabled={bubbleStartIndex + maxVisibleBubbles >= tours.length}
-                                className={`flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all duration-300 ${bubbleStartIndex + maxVisibleBubbles >= tours.length
-                                    ? 'opacity-30 cursor-not-allowed'
-                                    : 'hover:bg-white/20 cursor-pointer'
-                                    }`}
-                                aria-label="Next tours"
+                        {/* Region Tag (Top Left) */}
+                        <div className="absolute top-8 left-8 z-20">
+                            <motion.span
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.3 }}
+                                className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/60 rounded-full text-white text-sm font-myCustomFont tracking-widest uppercase shadow-lg"
                             >
-                                <FaChevronRight className="w-3 h-3 text-white" />
-                            </button>
-                        )}
+                                {currentTour.region}
+                            </motion.span>
+                        </div>
+                    </TiltCard>
+
+                    {/* Navigation Arrows (Over Image) */}
+                    <div className="absolute inset-0 flex items-center justify-between px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-30">
+                        <button
+                            onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+                            className="p-4 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-white hover:text-black transition-all duration-300 pointer-events-auto hover:scale-110 border border-white/10"
+                        >
+                            <FaChevronLeft size={24} />
+                        </button>
+                        <button
+                            onClick={(e) => { e.stopPropagation(); handleNext(); }}
+                            className="p-4 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-white hover:text-black transition-all duration-300 pointer-events-auto hover:scale-110 border border-white/10"
+                        >
+                            <FaChevronRight size={24} />
+                        </button>
                     </div>
                 </div>
-            )}
+
+                {/* Content Section (Bottom on mobile, Right on desktop) */}
+                <div className="w-full md:w-2/5 relative z-20 flex flex-col">
+                    {/* Enhanced Glass Background for Text Area */}
+                    <div className="absolute inset-0 bg-white/5 backdrop-blur-3xl border-l border-white/10" />
+
+                    {/* Subtle Pattern Overlay */}
+                    <div className="absolute inset-0 opacity-[0.03]"
+                        style={{
+                            backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
+                            backgroundSize: '24px 24px'
+                        }}
+                    />
+
+                    <div className="relative h-full p-8 md:p-12 flex flex-col justify-center">
+                        {/* Background decoration */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-brown-500/20 rounded-full blur-[100px] pointer-events-none" />
+
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={currentTour.id}
+                                variants={contentContainerVariants}
+                                initial="enter"
+                                animate="center"
+                                exit="exit"
+                                className="flex flex-col gap-8 relative"
+                            >
+                                <motion.div variants={itemVariants} className="relative">
+                                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white font-myCustomFont leading-[0.9] mb-6 tracking-tight drop-shadow-lg">
+                                        {currentTour.name}
+                                    </h2>
+                                    {/* Improved Underline */}
+                                    <div className="h-1.5 w-32 bg-gradient-to-r from-brown-500 via-brown-400 to-transparent rounded-full shadow-[0_0_15px_rgba(172,110,74,0.5)]" />
+                                </motion.div>
+
+                                <motion.p variants={itemVariants} className="text-gray-300 text-base md:text-lg leading-relaxed line-clamp-3 font-light">
+                                    {currentTour.caption}
+                                </motion.p>
+
+                                <motion.div variants={itemVariants} className="grid grid-cols-2 gap-x-6 gap-y-6">
+                                    <div className="flex items-start gap-3 text-gray-300 group/item">
+                                        <div className="p-2.5 bg-white/5 rounded-xl text-brown-300 group-hover/item:bg-brown-500 group-hover/item:text-white transition-colors duration-300 border border-white/5 group-hover/item:border-brown-400/50">
+                                            <FaClock size={18} />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Duration</span>
+                                            <span className="text-sm font-medium text-white">{currentTour.duration}</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3 text-gray-300 group/item">
+                                        <div className="p-2.5 bg-white/5 rounded-xl text-brown-300 group-hover/item:bg-brown-500 group-hover/item:text-white transition-colors duration-300 border border-white/5 group-hover/item:border-brown-400/50">
+                                            <FaCalendarAlt size={18} />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Period</span>
+                                            <span className="text-sm font-medium text-white">{currentTour.period}</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3 text-gray-300 group/item">
+                                        <div className="p-2.5 bg-white/5 rounded-xl text-brown-300 group-hover/item:bg-brown-500 group-hover/item:text-white transition-colors duration-300 border border-white/5 group-hover/item:border-brown-400/50">
+                                            <FaMapMarkerAlt size={18} />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Start</span>
+                                            <span className="text-sm font-medium text-white">{currentTour.starting}</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3 text-gray-300 group/item">
+                                        <div className="p-2.5 bg-white/5 rounded-xl text-brown-300 group-hover/item:bg-brown-500 group-hover/item:text-white transition-colors duration-300 border border-white/5 group-hover/item:border-brown-400/50">
+                                            <FaMoneyBillWave size={18} />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Cost</span>
+                                            <span className="text-sm font-medium text-white">{currentTour.cost}</span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                <motion.div variants={itemVariants} className="pt-6 flex items-center gap-6">
+                                    <Link to="/tours">
+                                        <Button
+                                            title="View Details"
+                                            containerClass="!bg-brown-500 !text-white hover:!bg-brown-600 shadow-lg shadow-brown-500/30 hover:shadow-brown-500/50 transition-all duration-300 !px-8 !py-4 !text-sm !font-bold !tracking-wider"
+                                        />
+                                    </Link>
+
+                                    {/* Persistent Play/Pause Toggle Button */}
+                                    <div className="relative w-10 h-10 flex items-center justify-center">
+                                        <svg className="w-full h-full transform -rotate-90">
+                                            <circle
+                                                cx="20"
+                                                cy="20"
+                                                r={RADIUS}
+                                                stroke="currentColor"
+                                                strokeWidth="3"
+                                                fill="transparent"
+                                                className="text-white/10"
+                                            />
+                                            {/* Optimized Progress Ring using MotionValue */}
+                                            {isPlaying && (
+                                                <motion.circle
+                                                    cx="20"
+                                                    cy="20"
+                                                    r={RADIUS}
+                                                    stroke="currentColor"
+                                                    strokeWidth="3"
+                                                    fill="transparent"
+                                                    strokeDasharray={CIRCUMFERENCE}
+                                                    style={{ strokeDashoffset }}
+                                                    className="text-brown-500"
+                                                />
+                                            )}
+                                        </svg>
+                                        <button
+                                            onClick={togglePlay}
+                                            className="absolute inset-0 flex items-center justify-center text-white/50 hover:text-white transition-colors z-10"
+                                            aria-label={isPlaying ? "Pause" : "Play"}
+                                        >
+                                            <AnimatePresence mode="wait">
+                                                <motion.div
+                                                    key={isPlaying ? "pause" : "play"}
+                                                    initial={{ scale: 0, opacity: 0 }}
+                                                    animate={{ scale: 1, opacity: 1 }}
+                                                    exit={{ scale: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.2 }}
+                                                >
+                                                    {isPlaying ? (
+                                                        <FaPause size={12} />
+                                                    ) : (
+                                                        <FaPlay size={12} className="ml-0.5" />
+                                                    )}
+                                                </motion.div>
+                                            </AnimatePresence>
+                                        </button>
+                                    </div>
+                                </motion.div>
+                            </motion.div>
+                        </AnimatePresence>
+
+                        {/* Pagination Dots */}
+                        <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-3 md:justify-start md:left-12 md:bottom-12">
+                            {tours.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handleDotClick(index)}
+                                    className={`h-1.5 rounded-full transition-all duration-500 ${index === currentIndex
+                                        ? 'w-10 bg-gradient-to-r from-brown-500 to-brown-300'
+                                        : 'w-2 bg-white/20 hover:bg-white/40 hover:w-4'
+                                        }`}
+                                    aria-label={`Go to slide ${index + 1}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
