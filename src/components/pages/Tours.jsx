@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TiLocationArrow } from "react-icons/ti";
 import { FaClock, FaCalendarAlt, FaMoneyBillWave, FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import toursData from "../../tours.json";
-import AnimatedTitle from "../common/AnimatedTitle";
+import DecryptedText from "../styling/DecryptedText";
 import Balatro from "../styling/Balatro";
 
 const Tours = () => {
@@ -66,10 +66,20 @@ const Tours = () => {
 
             {/* Tours Grid Section */}
             <section className="relative tours-grid px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-32 mt-20 z-30">
-                <AnimatedTitle
-                    title="Choose Your <b>Adventure</b>"
-                    containerClass="text-center mb-12"
-                />
+                <div className="section-heading text-center mb-12">
+                    <DecryptedText
+                        text="Choose Your Adventure"
+                        parentClassName="flex justify-center"
+                        className="font-myCustomFont font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase text-blue-75"
+                        encryptedClassName="font-myCustomFont font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase text-blue-75 opacity-40"
+                        characters="█▓▒░▀▄▌▐"
+                        animateOn="view"
+                        revealDirection="start"
+                        sequential
+                        useOriginalCharsOnly={false}
+                        speed={40}
+                    />
+                </div>
 
                 {/* Filter Tabs */}
                 <div className="flex flex-wrap justify-center gap-3 mb-16">
