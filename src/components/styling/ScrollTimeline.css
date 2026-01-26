@@ -1,0 +1,110 @@
+/* ScrollTimeline Component Styles */
+
+.scroll-timeline-container {
+    --timeline-color-active: #d4a574;
+    --timeline-color-inactive: #262626;
+    --timeline-glow: rgba(212, 165, 116, 0.3);
+}
+
+/* Timeline Line Glow Effect */
+.timeline-line-glow {
+    box-shadow: 
+        0 0 10px var(--timeline-glow),
+        0 0 20px var(--timeline-glow),
+        0 0 30px rgba(212, 165, 116, 0.1);
+}
+
+/* Step Badge Animation */
+@keyframes timeline-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 var(--timeline-glow);
+    }
+    50% {
+        box-shadow: 0 0 0 10px transparent;
+    }
+}
+
+.timeline-badge-active {
+    animation: timeline-pulse 2s ease-in-out infinite;
+}
+
+/* Step Content Reveal Animation */
+@keyframes slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .scroll-timeline-container .timeline-content {
+        margin-left: 2rem !important;
+        margin-right: 0 !important;
+        text-align: left !important;
+        padding-left: 1.5rem !important;
+        padding-right: 0 !important;
+    }
+    
+    .scroll-timeline-container .timeline-line {
+        left: 1rem !important;
+    }
+    
+    .scroll-timeline-container .timeline-badge {
+        left: 1rem !important;
+        transform: translateX(-50%);
+    }
+}
+
+/* Smooth Scroll Snap for Timeline (Optional Enhancement) */
+.scroll-timeline-snap {
+    scroll-snap-type: y proximity;
+}
+
+.scroll-timeline-snap .timeline-step {
+    scroll-snap-align: center;
+}
+
+/* Custom Scrollbar for Timeline Container */
+.scroll-timeline-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.scroll-timeline-container::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.scroll-timeline-container::-webkit-scrollbar-thumb {
+    background: var(--timeline-color-active);
+    border-radius: 2px;
+}
+
+/* Connecting Line Animation */
+@keyframes line-draw {
+    from {
+        stroke-dashoffset: 100;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.timeline-connector {
+    stroke-dasharray: 100;
+    animation: line-draw 0.5s ease-out forwards;
+}

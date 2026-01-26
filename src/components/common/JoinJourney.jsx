@@ -1,4 +1,4 @@
-import AnimatedTitle from "./AnimatedTitle";
+import DecryptedText from "../styling/DecryptedText";
 import Button from "./Button";
 
 const ImageClipBox = ({ src, clipClass }) => (
@@ -40,9 +40,17 @@ const JoinJourney = () => {
             Join the Journey
           </p>
 
-          <AnimatedTitle
-            title="let&#39;s chart the <b>u</b>nknown <br /> and explore <br /> new horizons together."
-            className="special-font w-full font-zentry !text-3xl sm:!text-4xl md:!text-5xl lg:!text-6xl xl:!text-[6.2rem] !font-black !leading-[.9]"
+          <DecryptedText
+            text="let's chart the unknown and explore new horizons together."
+            parentClassName="mb-8"
+            className="font-myCustomFont font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl uppercase text-blue-50 leading-[.9]"
+            encryptedClassName="font-myCustomFont font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl uppercase text-blue-50 opacity-40 leading-[.9]"
+            characters="█▓▒░▀▄▌▐"
+            animateOn="view"
+            revealDirection="start"
+            sequential
+            useOriginalCharsOnly={false}
+            speed={30}
           />
         </div>
       </div>

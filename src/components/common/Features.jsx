@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
-import { FaMotorcycle, FaCertificate, FaRoute } from "react-icons/fa";
+import { FaMotorcycle, FaCertificate, FaRoute, FaInstagram } from "react-icons/fa";
 import ScrollVelocity from "./../styling/ScrollerVelocity"
 import TiltedCard from "../styling/TiltedCard";
 import SpotlightCard from "../styling/SpotlightCard";
 import CountUp from "../styling/CountUp";
+import DecryptedText from "../styling/DecryptedText";
 
 const DnaItems = [
   {
@@ -119,9 +120,17 @@ const Features = () => (
           <div className="md:w-3/5 w-full p-6 sm:p-8 md:p-10 flex flex-col justify-center">
             <div className="mb-4">
               <p className="section-small-heading text-brown-100 mb-2">YOUR GUIDE</p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-2">
-                Palaksha
-              </h1>
+              
+                <DecryptedText text="Palaksha Shadaksharappa"
+                  className="text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-2"
+                  encryptedClassName="text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-2"
+                  characters="█▓▒░▀▄▌▐"
+                  animateOn="view"
+                  revealDirection="start"
+                  sequential
+                  useOriginalCharsOnly={false}
+                  speed={30}
+                />
               <p className="text-md font-general italic">Founder Beyond Tarmac Adventures</p>
             </div>
 
@@ -150,6 +159,10 @@ const Features = () => (
                 <FaRoute className="text-brown-100 text-base sm:text-lg" />
                 <p className="text-xs sm:text-sm text-blue-50 font-circular-web">35+ Tours Led</p>
               </div>
+              <a href="https://www.instagram.com/palaksha_shadaksharappa" target="_blank" rel="noopener noreferrer" className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 flex items-center gap-2 hover:bg-white/20 transition-all duration-300">
+                <FaInstagram className="text-brown-100 text-base sm:text-lg" />
+                <p className="text-xs sm:text-sm text-blue-50 font-circular-web">@palaksha_shadaksharappa</p>
+              </a>
             </div>
           </div>
         </div>
@@ -165,47 +178,6 @@ const Features = () => (
           </p>
           <h1 className="text-2xl font-bold mb-4">Unleashing the Spirit of Adventure: Beyond Tarmac's Guided Motorcycle Tours</h1>
           <p className=" text-justify">Beyond Tarmac was born from the fervent dedication of a collective of motorcycle aficionados, united by an unbridled passion for the art of motorcycling. As trailblazers in the South Indian motorcycle scene, we have established a formidable presence nationwide, distinguishing ourselves as pioneers in the industry. For over six years, we have orchestrated meticulously curated guided motorcycle tours, each journey meticulously crafted to deliver unforgettable experiences on the open road. With a track record of over 780+ delighted clients, our commitment to excellence and unwavering dedication to our craft continue to propel us forward, shaping the landscape of motorcycle touring in India.</p>
-        </div>
-      </div>
-
-      <div className="bg-brown-100/20 backdrop-blur-lg rounded-3xl p-8 sm:p-10 md:p-12 lg:p-16 shadow-2xl border border-white/20">
-        <h2 className="text-center section-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 mb-8 sm:mb-10 md:mb-12">
-          OUR JOURNEY IN NUMBERS
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-          <div className="text-center p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg">
-            <CountUp
-              from={0}
-              to={330}
-              separator=","
-              direction="up"
-              duration={1}
-              className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
-            <p className="text-base sm:text-lg md:text-xl text-blue-50 font-circular-web uppercase tracking-wide">Women Empowered</p>
-            <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
-          </div>
-          <div className="text-center p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg">
-            <CountUp
-              from={0}
-              to={780}
-              separator=","
-              direction="up"
-              duration={1}
-              className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
-            <p className="text-base sm:text-lg md:text-xl text-blue-50 font-circular-web uppercase tracking-wide">Happy Clients Served</p>
-            <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
-          </div>
-          <div className="text-center p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg sm:col-span-2 lg:col-span-1">
-            <CountUp
-              from={0}
-              to={83310}
-              separator=","
-              direction="up"
-              duration={1}
-              className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
-            <p className="text-base sm:text-lg md:text-xl text-blue-50 font-circular-web uppercase tracking-wide">Kilometers Conquered</p>
-            <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
-          </div>
         </div>
       </div>
     </div>
