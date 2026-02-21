@@ -77,25 +77,6 @@ const Testimonials = () => {
                         />
                     </div>
 
-                    {/* Google Business Link */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                        className="text-center mb-12"
-                    >
-                        <a
-                            href="https://www.google.com/maps/place/BEYOND+TARMAC+ADVENTURES/@12.9055677,77.6108996,19z/data=!4m8!3m7!1s0x3bae14e163287bb5:0x1fe11f1fc07a7a83!8m2!3d12.9055664!4d77.6115433!9m1!1b1!16s%2Fg%2F11hgp56w6g?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 font-general border text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
-                        >
-                            <FaStar className="text-yellow-400" />
-                            <span>View All Reviews on Google</span>
-                        </a>
-                    </motion.div>
-
                     {/* Reviews Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {reviews.map((review, index) => (
@@ -169,7 +150,7 @@ const Testimonials = () => {
                                     </div>
 
                                     {/* Google Icon */}
-                                    <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-40 transition-opacity">
+                                    <div className="absolute top-4 right-4 opacity-80 group-hover:opacity-40 transition-opacity">
                                         <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
                                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
                                             <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
@@ -181,6 +162,25 @@ const Testimonials = () => {
                             </motion.div>
                         ))}
                     </div>
+
+                    {/* Google Business Link */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-center mt-12"
+                    >
+                        <a
+                            href="https://www.google.com/maps/place/BEYOND+TARMAC+ADVENTURES/@12.9055677,77.6108996,19z/data=!4m8!3m7!1s0x3bae14e163287bb5:0x1fe11f1fc07a7a83!8m2!3d12.9055664!4d77.6115433!9m1!1b1!16s%2Fg%2F11hgp56w6g?entry=ttu&g_ep=EgoyMDI1MTExMi4wIKXMDSoASAFQAw%3D%3D"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 font-general border border-black bg-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
+                        >
+                            <span>View All Reviews on Google</span>
+                            <FaStar className="text-black" />
+                        </a>
+                    </motion.div>
 
                     {/* Note about dynamic reviews */}
                     <motion.div

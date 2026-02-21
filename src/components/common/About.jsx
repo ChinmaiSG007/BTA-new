@@ -54,7 +54,7 @@ const About = () => {
                 direction="up"
                 duration={1}
                 className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
-              <p className="text-base sm:text-lg md:text-xl text-blue-50 font-circular-web uppercase tracking-wide">Women Empowered</p>
+              <p className="text-base sm:text-lg md:text-xl text-blue-50 font-general uppercase tracking-wide">Women Empowered</p>
               <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
             </div>
             <div className="text-center p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg">
@@ -65,7 +65,7 @@ const About = () => {
                 direction="up"
                 duration={1}
                 className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
-              <p className="text-base sm:text-lg md:text-xl text-blue-50 font-circular-web uppercase tracking-wide">Happy Clients Served</p>
+              <p className="text-base sm:text-lg md:text-xl text-blue-50 font-general uppercase tracking-wide">Happy Clients Served</p>
               <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
             </div>
             <div className="text-center p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg sm:col-span-2 lg:col-span-1">
@@ -76,7 +76,7 @@ const About = () => {
                 direction="up"
                 duration={1}
                 className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
-              <p className="text-base sm:text-lg md:text-xl text-blue-50 font-circular-web uppercase tracking-wide">Kilometers Conquered</p>
+              <p className="text-base sm:text-lg md:text-xl text-blue-50 font-general uppercase tracking-wide">Kilometers Conquered</p>
               <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
             </div>
           </div>

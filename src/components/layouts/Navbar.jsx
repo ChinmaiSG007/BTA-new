@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import { FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import Button from "../common/Button";
@@ -234,15 +235,24 @@ const NavBar = () => {
                   </a>
                 );
               })}
-
-              {/* Important Message */}
-              <div className="hidden sm:block">
-                <ImportantMessage />
-              </div>
             </div>
 
             {/* Right Section: Audio Button and Mobile Menu */}
             <div className="flex h-full items-center gap-2 sm:gap-4">
+              {/* Instagram Button */}
+              <a
+                href="https://www.instagram.com/beyondtarmacadventures"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-1.5 sm:p-2 rounded-full hover:scale-110 transition-all duration-300 ${isBackgroundLight
+                  ? 'text-black hover:text-black/70'
+                  : 'text-white hover:text-white/70'
+                  }`}
+                aria-label="Follow us on Instagram"
+              >
+                <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />
+              </a>
+
               {/* Audio Button */}
               <div
                 onClick={toggleAudioIndicator}
@@ -337,14 +347,12 @@ const NavBar = () => {
                 );
               })}
             </div>
-
-            {/* Mobile Important Message */}
-            <div className="mt-6 sm:hidden">
-              <ImportantMessage />
-            </div>
           </div>
         </div>
       )}
+
+      {/* Important Message - rendered outside navbar for proper fixed positioning */}
+      <ImportantMessage />
     </>
   );
 };

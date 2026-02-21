@@ -290,7 +290,7 @@ export default function TripCarousel() {
                                     <div className="h-1.5 w-32 bg-gradient-to-r from-brown-500 via-brown-400 to-transparent rounded-full shadow-[0_0_15px_rgba(172,110,74,0.5)]" />
                                 </motion.div>
 
-                                <motion.p variants={itemVariants} className="text-gray-300 text-base md:text-lg leading-relaxed line-clamp-3 font-light">
+                                <motion.p variants={itemVariants} className="text-gray-300 font-general text-base md:text-lg leading-relaxed line-clamp-3">
                                     {currentTour.caption}
                                 </motion.p>
 

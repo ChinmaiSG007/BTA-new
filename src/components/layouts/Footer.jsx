@@ -78,7 +78,7 @@ const Footer = () => {
                   Women Only / RSW
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/know-your-guide"
                   className="text-neutral-300 hover:text-white transition-colors duration-200"
@@ -93,7 +93,7 @@ const Footer = () => {
                 >
                   Blog
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   to="/faq"
@@ -180,9 +180,9 @@ const Footer = () => {
         <div className="pt-8 border-t border-neutral-700 text-neutral-400 text-sm text-center">
           <p>© {currentYear} Beyond Tarmac Adventures. All rights reserved.</p>
           <div className="mt-2 space-x-4">
+            <Link to="/faq" className="hover:text-white">FAQ</Link>
+            <Link to="/travel-tips" className="hover:text-white">Travel Tips</Link>
             <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="hover:text-white">Terms of Service</Link>
-            <Link to="/accessibility" className="hover:text-white">Accessibility Statement</Link>
           </div>
         </div>
       </div>
