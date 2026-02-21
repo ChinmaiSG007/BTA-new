@@ -10,7 +10,7 @@ import Button from "../common/Button";
 import ImportantMessage from "../common/ImportantMessage";
 import GlassSurface from "../styling/GlassSurface";
 
-const navItems = ["Gallery", "RSW", "Contact"];
+const navItems = ["Gallery", "Ride skill workshop", "Contact"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -220,7 +220,7 @@ const NavBar = () => {
             {/* Middle Section: Navigation Links (left-aligned) */}
             <div className="hidden lg:flex items-center gap-2 sm:gap-4 flex-1">
               {navItems.map((item, index) => {
-                const href = item === "RSW" ? "/ride-skill-workshop" : item === "Contact" ? "#contact" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
+                const href = item === "Ride skill workshop" ? "/ride-skill-workshop" : item === "Contact" ? "#contact" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
                 return (
                   <a
                     key={index}
@@ -319,7 +319,7 @@ const NavBar = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Mobile Tours Button */}
-            <Link to={"/tours"} className="block sm:hidden mb-4">
+            <Link to={"/tours"} className="block sm:hidden mb-4" onClick={() => setIsMobileMenuOpen(false)}>
               <Button
                 id="mobile-tours-button"
                 title="Tours"
@@ -331,7 +331,7 @@ const NavBar = () => {
             {/* Mobile Navigation Links */}
             <div className="flex flex-col space-y-1">
               {navItems.map((item, index) => {
-                const href = item === "RSW" ? "/ride-skill-workshop" : item === "Contact" ? "#contact" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
+                const href = item === "Ride skill workshop" ? "/ride-skill-workshop" : item === "Contact" ? "#contact" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
                 return (
                   <a
                     key={index}

@@ -174,7 +174,7 @@ const Hero = () => {
 
 
         <div className="absolute left-0 top-0 z-40 size-full">
-          <div className="mt-16 sm:mt-20 md:mt-24 px-4 sm:px-6 md:px-8 lg:px-10">
+          <div className="mt-20 sm:mt-24 md:mt-28 px-4 sm:px-6 md:px-8 lg:px-10">
             <DecryptedText
               text="BEYOND TARMAC"
               className="special-font hero-heading text-blue-100"

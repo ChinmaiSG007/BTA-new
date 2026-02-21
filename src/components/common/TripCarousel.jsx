@@ -269,7 +269,7 @@ export default function TripCarousel() {
                         }}
                     />
 
-                    <div className="relative h-full p-8 md:p-12 flex flex-col justify-center">
+                    <div className="relative h-full p-5 sm:p-8 md:p-12 flex flex-col justify-center pb-16 sm:pb-8 md:pb-12">
                         {/* Background decoration */}
                         <div className="absolute top-0 right-0 w-64 h-64 bg-brown-500/20 rounded-full blur-[100px] pointer-events-none" />
 
@@ -280,21 +280,21 @@ export default function TripCarousel() {
                                 initial="enter"
                                 animate="center"
                                 exit="exit"
-                                className="flex flex-col gap-8 relative"
+                                className="flex flex-col gap-5 sm:gap-8 relative"
                             >
                                 <motion.div variants={itemVariants} className="relative">
-                                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white font-myCustomFont leading-[0.9] mb-6 tracking-tight drop-shadow-lg">
+                                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white font-myCustomFont leading-[0.9] mb-4 sm:mb-6 tracking-tight drop-shadow-lg">
                                         {currentTour.name}
                                     </h2>
                                     {/* Improved Underline */}
-                                    <div className="h-1.5 w-32 bg-gradient-to-r from-brown-500 via-brown-400 to-transparent rounded-full shadow-[0_0_15px_rgba(172,110,74,0.5)]" />
+                                    <div className="h-1 sm:h-1.5 w-24 sm:w-32 bg-gradient-to-r from-brown-500 via-brown-400 to-transparent rounded-full shadow-[0_0_15px_rgba(172,110,74,0.5)]" />
                                 </motion.div>
 
-                                <motion.p variants={itemVariants} className="text-gray-300 font-general text-base md:text-lg leading-relaxed line-clamp-3">
+                                <motion.p variants={itemVariants} className="text-gray-300 font-general text-sm sm:text-base md:text-lg leading-relaxed line-clamp-2 sm:line-clamp-3">
                                     {currentTour.caption}
                                 </motion.p>
 
-                                <motion.div variants={itemVariants} className="grid grid-cols-2 gap-x-6 gap-y-6">
+                                <motion.div variants={itemVariants} className="grid grid-cols-2 gap-x-4 gap-y-4 sm:gap-x-6 sm:gap-y-6">
                                     <div className="flex items-start gap-3 text-gray-300 group/item">
                                         <div className="p-2.5 bg-white/5 rounded-xl text-brown-300 group-hover/item:bg-brown-500 group-hover/item:text-white transition-colors duration-300 border border-white/5 group-hover/item:border-brown-400/50">
                                             <FaClock size={18} />
@@ -333,7 +333,7 @@ export default function TripCarousel() {
                                     </div>
                                 </motion.div>
 
-                                <motion.div variants={itemVariants} className="pt-6 flex items-center gap-6">
+                                <motion.div variants={itemVariants} className="pt-4 sm:pt-6 flex items-center gap-4 sm:gap-6">
                                     <Link to="/tours">
                                         <Button
                                             title="View Details"
@@ -353,20 +353,18 @@ export default function TripCarousel() {
                                                 fill="transparent"
                                                 className="text-white/10"
                                             />
-                                            {/* Optimized Progress Ring using MotionValue */}
-                                            {isPlaying && (
-                                                <motion.circle
-                                                    cx="20"
-                                                    cy="20"
-                                                    r={RADIUS}
-                                                    stroke="currentColor"
-                                                    strokeWidth="3"
-                                                    fill="transparent"
-                                                    strokeDasharray={CIRCUMFERENCE}
-                                                    style={{ strokeDashoffset }}
-                                                    className="text-brown-500"
-                                                />
-                                            )}
+                                            {/* Progress Ring - always visible, animates when playing */}
+                                            <motion.circle
+                                                cx="20"
+                                                cy="20"
+                                                r={RADIUS}
+                                                stroke="currentColor"
+                                                strokeWidth="3"
+                                                fill="transparent"
+                                                strokeDasharray={CIRCUMFERENCE}
+                                                style={{ strokeDashoffset }}
+                                                className="text-brown-500"
+                                            />
                                         </svg>
                                         <button
                                             onClick={togglePlay}

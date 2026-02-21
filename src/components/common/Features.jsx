@@ -168,11 +168,13 @@ const Features = () => (
         </div>
       </div>
 
-      <div className="section-card bg-[#33443c]/30 flex md:flex-row flex-col items-center gap-5 mb-8">
-        <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(255, 255, 255, 0.5)">
-          <img src="img/images/16.svg" alt="Beyond Tarmac Adventures Logo" />
-        </SpotlightCard>
-        <div className="p-4">
+      <div className="section-card bg-[#33443c]/30 flex md:flex-row flex-col items-center md:items-stretch gap-5 mb-8">
+        <div className="md:w-2/5 w-full">
+          <SpotlightCard className="custom-spotlight-card w-full h-full" spotlightColor="rgba(255, 255, 255, 0.5)">
+            <img src="img/images/logo-color.png" alt="Beyond Tarmac Adventures Logo" className="w-full h-[500px] object-contain" />
+          </SpotlightCard>
+        </div>
+        <div className="md:w-3/5 w-full p-4 flex flex-col justify-center">
           <p className="section-small-heading mb-4">
             ABOUT
           </p>
