@@ -120,17 +120,17 @@ const Features = () => (
           <div className="md:w-3/5 w-full p-6 sm:p-8 md:p-10 flex flex-col justify-center">
             <div className="mb-4">
               <p className="section-small-heading text-brown-100 mb-2">YOUR GUIDE</p>
-              
-                <DecryptedText text="Palaksha Shadaksharappa"
-                  className="text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-2"
-                  encryptedClassName="text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-2"
-                  characters="█▓▒░▀▄▌▐"
-                  animateOn="view"
-                  revealDirection="start"
-                  sequential
-                  useOriginalCharsOnly={false}
-                  speed={30}
-                />
+
+              <DecryptedText text="Palaksha Shadaksharappa"
+                className="text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-2"
+                encryptedClassName="text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-2"
+                characters="█▓▒░▀▄▌▐"
+                animateOn="view"
+                revealDirection="start"
+                sequential
+                useOriginalCharsOnly={false}
+                speed={30}
+              />
               <p className="text-md font-general italic">Founder Beyond Tarmac Adventures</p>
             </div>
 

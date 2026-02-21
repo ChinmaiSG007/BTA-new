@@ -50,7 +50,7 @@ const JoinJourney = () => {
             revealDirection="start"
             sequential
             useOriginalCharsOnly={false}
-            speed={30}
+            speed={10}
           />
         </div>
       </div>

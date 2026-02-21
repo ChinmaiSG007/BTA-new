@@ -119,7 +119,7 @@ const ScrollToTop = ({
                                 cx={size / 2}
                                 cy={size / 2}
                                 r={(size - 8) / 2}
-                                stroke="#3d5349"
+                                stroke="#fffff"
                                 strokeWidth="3"
                                 fill="none"
                             />
