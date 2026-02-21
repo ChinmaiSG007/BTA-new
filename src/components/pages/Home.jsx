@@ -9,10 +9,12 @@ import Testimonials from "../common/Testimonials";
 import { Link } from "react-router-dom";
 import Button from "./../common/Button";
 import DecryptedText from "../styling/DecryptedText";
+import UpcomingTourModal from "../common/UpcomingTourModal";
 
 const Home = () => {
     return (
         <div>
+            <UpcomingTourModal />
             <Hero />
             <About />
             <Features />

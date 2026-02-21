@@ -220,12 +220,13 @@ const NavBar = () => {
             {/* Middle Section: Navigation Links (left-aligned) */}
             <div className="hidden lg:flex items-center gap-2 sm:gap-4 flex-1">
               {navItems.map((item, index) => {
-                const href = item === "RSW" ? "/ride-skill-workshop" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
+                const href = item === "RSW" ? "/ride-skill-workshop" : item === "Contact" ? "#contact" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
                 return (
                   <a
                     key={index}
                     href={href}
                     className="nav-hover-btn text-xs lg:text-sm"
+                    onClick={item === "Contact" ? (e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); } : undefined}
                     style={{
                       color: navButtontheme,
                       transition: 'color 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
@@ -330,13 +331,13 @@ const NavBar = () => {
             {/* Mobile Navigation Links */}
             <div className="flex flex-col space-y-1">
               {navItems.map((item, index) => {
-                const href = item === "RSW" ? "/ride-skill-workshop" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
+                const href = item === "RSW" ? "/ride-skill-workshop" : item === "Contact" ? "#contact" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
                 return (
                   <a
                     key={index}
                     href={href}
                     className="nav-hover-btn text-left"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => { setIsMobileMenuOpen(false); if (item === "Contact") { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); } }}
                     style={{
                       color: navButtontheme,
                       transition: 'color 0.6s cubic-bezier(0.4, 0, 0.2, 1)'

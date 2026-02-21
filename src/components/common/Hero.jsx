@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import Button from "./Button";
 import VideoPreview from "./VideoPreview";
-import GlitchText from "./../styling/GlitchText";
+import DecryptedText from "./../styling/DecryptedText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -175,14 +175,17 @@ const Hero = () => {
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-16 sm:mt-20 md:mt-24 px-4 sm:px-6 md:px-8 lg:px-10">
-            <GlitchText
-              speed={2}
-              enableShadows={true}
-              enableOnHover={true}
-              className='special-font hero-heading text-blue-100'
-            >
-              BEYOND TARMAC
-            </GlitchText>
+            <DecryptedText
+              text="BEYOND TARMAC"
+              className="special-font hero-heading text-blue-100"
+              encryptedClassName="special-font hero-heading text-blue-100 opacity-40"
+              characters="█▓▒░▀▄▌▐"
+              animateOn="view"
+              revealDirection="start"
+              sequential
+              useOriginalCharsOnly={false}
+              speed={60}
+            />
 
             <p className="mb-5 mt-4 sm:mt-5 max-w-xs sm:max-w-md md:max-w-lg font-robert-regular text-blue-100 text-sm sm:text-base md:text-lg">
               Navigating the Contours of the Unknown

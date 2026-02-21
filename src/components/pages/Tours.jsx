@@ -173,18 +173,35 @@ const TourCard = ({ tour }) => {
                     <motion.img
                         src={tour.image.startsWith('/') ? tour.image : `/${tour.image}`}
                         alt={tour.name}
-                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        className={`w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 ${tour.isSoldOut ? 'grayscale-[40%] brightness-75' : ''}`}
                     />
 
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 md:opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
 
-                    {/* Top Badge */}
-                    <div className="absolute top-6 left-6 z-20">
+                    {/* Top Badges */}
+                    <div className="absolute top-6 left-6 z-20 flex flex-wrap items-center gap-2">
                         <span className="px-4 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold uppercase tracking-wider text-white shadow-lg">
                             {tour.regionName}
                         </span>
+                        {tour.isUpcomingTour && (
+                            <span className="px-3 py-1.5 bg-amber-500/30 backdrop-blur-md border border-amber-300/40 rounded-full text-[10px] sm:text-xs font-general uppercase tracking-wider text-white">
+                                Upcoming Tour
+                            </span>
+                        )}
                     </div>
+
+                    {/* Sold Out Banner */}
+                    {tour.isSoldOut && (
+                        <div className="absolute top-6 right-0 sm:top-8 sm:right-0 z-20">
+                            <div className="relative bg-red-600/60 border border-red-600 text-white font-bold uppercase tracking-wider text-[10px] sm:text-xs px-6 sm:px-8 py-1.5 sm:py-2 shadow-lg shadow-red-600/40"
+                                style={{
+                                    clipPath: 'polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                                }}>
+                                <span className="ml-1">Sold Out</span>
+                            </div>
+                        </div>
+                    )}
 
                     {/* Content Container */}
                     <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end z-20">
@@ -241,10 +258,16 @@ const TourCard = ({ tour }) => {
                                             </div>
                                         </div>
 
-                                        <div className="w-full py-3 bg-white text-black font-general text-center rounded-xl hover:bg-brown-500 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2 mt-auto">
-                                            <span>VIEW DETAILS</span>
-                                            <TiLocationArrow className="text-lg" />
-                                        </div>
+                                        {tour.isSoldOut ? (
+                                            <div className="w-full py-3 bg-red-600/20 text-red-400 font-general text-center rounded-xl border border-red-500/30 flex items-center justify-center gap-2 mt-auto cursor-not-allowed">
+                                                <span>SOLD OUT</span>
+                                            </div>
+                                        ) : (
+                                            <div className="w-full py-3 bg-white text-black font-general text-center rounded-xl hover:bg-brown-500 hover:text-white transition-colors duration-300 flex items-center justify-center gap-2 mt-auto">
+                                                <span>VIEW DETAILS</span>
+                                                <TiLocationArrow className="text-lg" />
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
