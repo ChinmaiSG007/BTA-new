@@ -23,6 +23,29 @@ const TourDetail = () => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const [showLogoScreen, setShowLogoScreen] = useState(true);
 
+    // Hide navbar during HUD loading screen
+    useEffect(() => {
+        const navEl = document.querySelector('nav')?.closest('.fixed');
+        if (navEl) {
+            if (showLogoScreen) {
+                navEl.style.opacity = '0';
+                navEl.style.pointerEvents = 'none';
+                navEl.style.visibility = 'hidden';
+            } else {
+                navEl.style.opacity = '';
+                navEl.style.pointerEvents = '';
+                navEl.style.visibility = '';
+            }
+        }
+        return () => {
+            if (navEl) {
+                navEl.style.opacity = '';
+                navEl.style.pointerEvents = '';
+                navEl.style.visibility = '';
+            }
+        };
+    }, [showLogoScreen]);
+
     useEffect(() => {
         // Reset scroll position on mount
         window.scrollTo(0, 0);
@@ -128,8 +151,7 @@ const TourDetail = () => {
                             initial={{ y: -30, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.2, duration: 0.5 }}
-                            className="absolute top-[8%] left-[40%] z-20"
-                            style={{ transform: 'translateX(-50%)' }}
+                            className="absolute top-[4%] sm:top-[6%] md:top-[8%] left-0 right-0 z-20 flex flex-col items-center justify-center"
                         >
                             {/* Energy bar frame */}
                             <div className="w-[400px] max-w-[80vw] h-8 relative">
@@ -150,7 +172,7 @@ const TourDetail = () => {
                             {/* Sub info */}
                             <div className="text-center mt-2">
                                 <span className="text-cyan-400/60 font-mono text-[10px] tracking-wider">
-                                    EXPEDITION // {region.id.toUpperCase()}-{tour.id}
+                                    EXPEDITION // {region.id.toUpperCase()}
                                 </span>
                             </div>
                         </motion.div>
@@ -158,61 +180,12 @@ const TourDetail = () => {
                         {/* Center - Rotating Logo with Rings */}
                         <div className="relative w-full h-full flex items-center justify-center px-4 sm:px-0">
                             <motion.div
-                                className="relative aspect-square w-[75vw] sm:w-[65vw] md:w-[55vw] lg:w-[45vw] xl:w-[35vw] 2xl:w-[30vw] max-w-[500px] min-w-[280px]"
+                                className="relative aspect-square w-[65vw] sm:w-[65vw] md:w-[55vw] lg:w-[45vw] xl:w-[38vw] 2xl:w-[32vw] max-w-[550px] min-w-[240px]"
                                 initial={{ scale: 0.5, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 exit={{ scale: 0.5, opacity: 0 }}
                                 transition={{ duration: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }}
                             >
-                                {/* Outer glow effect */}
-                                <div className="absolute inset-0 rounded-full bg-cyan-500/5 blur-2xl sm:blur-3xl animate-pulse" />
-
-                                {/* Outer rotating ring with enhanced effects */}
-                                <motion.div
-                                    className="absolute inset-0 rounded-full border border-cyan-500/40 sm:border-2 shadow-lg shadow-cyan-500/20"
-                                    animate={{ rotate: 360 }}
-                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                                >
-                                    {/* Scanning arc effect */}
-                                    <motion.div
-                                        className="absolute inset-0 rounded-full overflow-hidden"
-                                        animate={{ rotate: 360 }}
-                                        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                                    >
-                                        <div
-                                            style={{
-                                                position: 'absolute',
-                                                inset: 0,
-                                                background: 'conic-gradient(from 0deg, transparent 0deg, rgba(34, 211, 238, 0.3) 30deg, transparent 60deg)',
-                                                filter: 'blur(1px) sm:blur(2px)'
-                                            }}
-                                        />
-                                    </motion.div>
-                                </motion.div>
-
-                                {/* Secondary ring */}
-                                <motion.div
-                                    className="absolute inset-[8%] rounded-full border border-cyan-500/25"
-                                    animate={{ rotate: -180 }}
-                                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                                >
-                                    {/* Ring segments - hidden on very small screens */}
-                                    {[0, 90, 180, 270].map((angle, i) => (
-                                        <motion.div
-                                            key={angle}
-                                            className="hidden xs:block absolute w-0.5 sm:w-1 bg-gradient-to-b from-cyan-400/60 to-transparent"
-                                            style={{
-                                                height: '10%',
-                                                top: '50%',
-                                                left: '50%',
-                                                transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(calc(-50% + 5%))`,
-                                                transformOrigin: 'center center'
-                                            }}
-                                            animate={{ opacity: [0.3, 1, 0.3] }}
-                                            transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-                                        />
-                                    ))}
-                                </motion.div>
 
                                 {/* Middle ring with enhanced segments */}
                                 <motion.div
@@ -277,95 +250,36 @@ const TourDetail = () => {
                                         <div className="absolute top-0 bottom-0 left-1/2 w-[1px] bg-gradient-to-b from-transparent via-cyan-400/40 to-transparent" />
                                     </motion.div>
 
-                                    <motion.img
-                                        src="/img/images/tours/mono_logo/snow_white_spiti.svg"
-                                        alt="Tour Logo"
-                                        className="w-full sm:w-3/4 h-auto relative z-10 drop-shadow-lg"
-                                        animate={{
-                                            filter: [
-                                                'drop-shadow(0 0 8px rgba(34, 211, 238, 0.5))',
-                                                'drop-shadow(0 0 16px rgba(34, 211, 238, 0.7))',
-                                                'drop-shadow(0 0 8px rgba(34, 211, 238, 0.5))'
-                                            ]
-                                        }}
-                                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                                    />
+                                    {tour.monoLogo ? (
+                                        <motion.img
+                                            src={tour.monoLogo}
+                                            alt="Tour Logo"
+                                            className="w-[95%] sm:w-[95%] h-auto relative z-10 drop-shadow-lg"
+                                            animate={{
+                                                filter: [
+                                                    'drop-shadow(0 0 8px rgba(34, 211, 238, 0.5))',
+                                                    'drop-shadow(0 0 16px rgba(34, 211, 238, 0.7))',
+                                                    'drop-shadow(0 0 8px rgba(34, 211, 238, 0.5))'
+                                                ]
+                                            }}
+                                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                        />
+                                    ) : (
+                                        <motion.span
+                                            className="relative z-10 font-myCustomFont text-cyan-400 text-2xl sm:text-3xl md:text-4xl text-center px-4 uppercase drop-shadow-lg"
+                                            animate={{
+                                                textShadow: [
+                                                    '0 0 8px rgba(34, 211, 238, 0.5)',
+                                                    '0 0 16px rgba(34, 211, 238, 0.7)',
+                                                    '0 0 8px rgba(34, 211, 238, 0.5)'
+                                                ]
+                                            }}
+                                            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                        >
+                                            {tour.name}
+                                        </motion.span>
+                                    )}
                                 </div>
-
-                                {/* Corner accent lines - perfectly symmetric with responsive sizing */}
-                                {[
-                                    { corner: '-top-3 -left-3 sm:-top-4 sm:-left-4', x: -15, y: -15, delay: 0.3, color: 'cyan', gradients: 'from-cyan-400 via-cyan-400/50', position: 'top-0 left-0' },
-                                    { corner: '-top-3 -right-3 sm:-top-4 sm:-right-4', x: 15, y: -15, delay: 0.4, color: 'orange', gradients: 'from-orange-400 via-orange-400/50', position: 'top-0 right-0' },
-                                    { corner: '-bottom-3 -left-3 sm:-bottom-4 sm:-left-4', x: -15, y: 15, delay: 0.5, color: 'orange', gradients: 'from-orange-400 via-orange-400/50', position: 'bottom-0 left-0' },
-                                    { corner: '-bottom-3 -right-3 sm:-bottom-4 sm:-right-4', x: 15, y: 15, delay: 0.6, color: 'cyan', gradients: 'from-cyan-400 via-cyan-400/50', position: 'bottom-0 right-0' }
-                                ].map((corner, i) => (
-                                    <motion.div
-                                        key={i}
-                                        className={`absolute ${corner.corner} w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20`}
-                                        initial={{ opacity: 0, x: corner.x, y: corner.y }}
-                                        animate={{ opacity: 1, x: 0, y: 0 }}
-                                        transition={{ delay: corner.delay, duration: 0.5 }}
-                                    >
-                                        <div className={`absolute ${corner.position} w-full h-[2px] sm:h-0.5 bg-gradient-to-${corner.position.includes('right') ? 'l' : 'r'} ${corner.gradients} to-transparent`} />
-                                        <div className={`absolute ${corner.position} w-[2px] sm:w-0.5 h-full bg-gradient-to-${corner.position.includes('bottom') ? 't' : 'b'} ${corner.gradients} to-transparent`} />
-                                        <motion.div
-                                            className={`absolute ${corner.position} w-1.5 h-1.5 sm:w-2 sm:h-2 bg-${corner.color}-400 rounded-full`}
-                                            animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
-                                            transition={{ duration: 2, repeat: Infinity, delay: corner.delay * 2 }}
-                                        />
-                                    </motion.div>
-                                ))}
-
-                                {/* Diagonal connecting lines - responsive SVG */}
-                                <motion.div
-                                    className="absolute inset-0 pointer-events-none hidden sm:block"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ delay: 0.8 }}
-                                >
-                                    <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
-                                        {/* Top-left to corner bracket */}
-                                        <motion.line
-                                            x1="-2%" y1="-2%" x2="10%" y2="10%"
-                                            stroke="rgba(34, 211, 238, 0.3)"
-                                            strokeWidth="1"
-                                            strokeDasharray="4 4"
-                                            vectorEffect="non-scaling-stroke"
-                                            animate={{ strokeDashoffset: [0, 8] }}
-                                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                                        />
-                                        {/* Top-right to corner bracket */}
-                                        <motion.line
-                                            x1="102%" y1="-2%" x2="90%" y2="10%"
-                                            stroke="rgba(251, 146, 60, 0.3)"
-                                            strokeWidth="1"
-                                            strokeDasharray="4 4"
-                                            vectorEffect="non-scaling-stroke"
-                                            animate={{ strokeDashoffset: [0, 8] }}
-                                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                                        />
-                                        {/* Bottom-left to corner bracket */}
-                                        <motion.line
-                                            x1="-2%" y1="102%" x2="10%" y2="90%"
-                                            stroke="rgba(251, 146, 60, 0.3)"
-                                            strokeWidth="1"
-                                            strokeDasharray="4 4"
-                                            vectorEffect="non-scaling-stroke"
-                                            animate={{ strokeDashoffset: [0, 8] }}
-                                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                                        />
-                                        {/* Bottom-right to corner bracket */}
-                                        <motion.line
-                                            x1="102%" y1="102%" x2="90%" y2="90%"
-                                            stroke="rgba(34, 211, 238, 0.3)"
-                                            strokeWidth="1"
-                                            strokeDasharray="4 4"
-                                            vectorEffect="non-scaling-stroke"
-                                            animate={{ strokeDashoffset: [0, 8] }}
-                                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                                        />
-                                    </svg>
-                                </motion.div>
                             </motion.div>
                         </div>
 
@@ -374,7 +288,7 @@ const TourDetail = () => {
                             initial={{ x: -30, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: 0.3, duration: 0.5 }}
-                            className="absolute top-[15%] left-12 md:left-16"
+                            className="absolute top-[18%] sm:top-[16%] md:top-[15%] left-4 sm:left-8 md:left-16"
                         >
                             <div className="space-y-0.5">
                                 <div className="text-cyan-400/60 font-mono text-[10px] tracking-wider uppercase">Coordinates</div>
@@ -392,7 +306,7 @@ const TourDetail = () => {
                             initial={{ x: 30, opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ delay: 0.3, duration: 0.5 }}
-                            className="absolute top-[15%] right-12 md:right-16 text-right"
+                            className="absolute top-[18%] sm:top-[16%] md:top-[15%] right-4 sm:right-8 md:right-16 text-right"
                         >
                             <div className="space-y-0.5">
                                 <div className="text-cyan-400/60 font-mono text-[10px] tracking-wider uppercase">Duration</div>
@@ -409,12 +323,12 @@ const TourDetail = () => {
                             initial={{ y: 30, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.5 }}
-                            className="absolute bottom-[15%] left-12 md:left-16"
+                            className="absolute bottom-[18%] sm:bottom-[16%] md:bottom-[15%] left-4 sm:left-8 md:left-16"
                         >
                             <div className="text-cyan-400/60 font-mono text-[10px] tracking-wider text-left uppercase mb-2">
                                 Terrain Scan
                             </div>
-                            <div className="relative w-32 h-32 md:w-36 md:h-36">
+                            <div className="relative w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36">
                                 {/* Radar background with glow */}
                                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-black/80 to-black/95 border border-cyan-400/40 shadow-lg shadow-cyan-400/10" />
 
@@ -545,7 +459,7 @@ const TourDetail = () => {
                             initial={{ y: 30, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.5 }}
-                            className="absolute bottom-[15%] right-12 md:right-16 text-right"
+                            className="absolute bottom-[18%] sm:bottom-[16%] md:bottom-[15%] right-4 sm:right-8 md:right-16 text-right"
                         >
                             <div className="space-y-0.5">
                                 <div className="text-cyan-400/60 font-mono text-[10px] tracking-wider uppercase">Region</div>
@@ -566,8 +480,7 @@ const TourDetail = () => {
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.5, duration: 0.5 }}
-                            className="absolute bottom-[8%] left-[43%]"
-                            style={{ transform: 'translateX(-50%)' }}
+                            className="absolute bottom-[4%] sm:bottom-[6%] md:bottom-[8%] left-0 right-0 flex justify-center"
                         >
                             <div className="w-56 md:w-72">
                                 <div className="flex justify-between items-center mb-0.5 text-center">
@@ -629,27 +542,29 @@ const TourDetail = () => {
                             {region.name}
                         </div>
 
-                        {/* Main Logo - Preload in background, show after mono logo */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{
-                                opacity: showLogoScreen ? 0 : 1,
-                                scale: showLogoScreen ? 0.8 : 1
-                            }}
-                            transition={{
-                                duration: 0.8,
-                                delay: 0,
-                                ease: [0.43, 0.13, 0.23, 0.96]
-                            }}
-                            className="w-[60vw] sm:w-[50vw] md:w-[40vw] lg:w-[35vw] xl:w-[30vw] max-w-lg mx-auto mb-6"
-                        >
-                            <img
-                                src="/img/images/tours/main_logo/snow_white_spiti.png"
-                                alt={tour.name}
-                                className="w-full h-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
-                                loading="eager"
-                            />
-                        </motion.div>
+                        {/* Main Logo - only shown when tour has a logo image */}
+                        {tour.mainLogo && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{
+                                    opacity: showLogoScreen ? 0 : 1,
+                                    scale: showLogoScreen ? 0.8 : 1
+                                }}
+                                transition={{
+                                    duration: 0.8,
+                                    delay: 0,
+                                    ease: [0.43, 0.13, 0.23, 0.96]
+                                }}
+                                className="w-[60vw] sm:w-[50vw] md:w-[40vw] lg:w-[35vw] xl:w-[30vw] max-w-lg mx-auto mb-6"
+                            >
+                                <img
+                                    src={tour.mainLogo}
+                                    alt={tour.name}
+                                    className="w-full h-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
+                                    loading="eager"
+                                />
+                            </motion.div>
+                        )}
 
                         {/* Tour Title */}
                         <motion.div
@@ -940,10 +855,10 @@ const TourDetail = () => {
                     {/* CTA Section */}
                     <section className="content-section">
                         <div className="bg-gradient-to-br from-brown-100 to-[#8a5a3a] rounded-2xl p-12 text-center text-white border border-brown-100">
-                            <h2 className="special-font text-4xl md:text-5xl mb-4">
+                            <h2 className="font-myCustomFont text-4xl md:text-5xl mb-4">
                                 Ready for the Adventure?
                             </h2>
-                            <p className="text-heading-secondary mb-8">
+                            <p className="text-heading-secondary mb-8 !font-general">
                                 Book your spot now and create memories that last a lifetime
                             </p>
                             <div className="flex flex-wrap gap-4 justify-center">
