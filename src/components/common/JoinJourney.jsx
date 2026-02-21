@@ -10,9 +10,9 @@ const ImageClipBox = ({ src, clipClass }) => (
 const JoinJourney = () => {
   return (
     <div id="contact" className="my-20 min-h-96 w-screen px-4 sm:px-10">
-      <div className="relative rounded-lg bg-black py-24 text-blue-50 overflow-hidden">
+      <div className="relative rounded-lg bg-black py-16 sm:py-24 text-blue-50 overflow-hidden">
         {/* Left side images */}
-        <div className="absolute left-0 top-0 hidden h-full w-72 sm:flex flex-col gap-4 lg:left-10 lg:w-96 xl:left-20">
+        <div className="absolute left-0 top-0 h-full w-40 sm:w-72 flex flex-col gap-4 lg:left-10 lg:w-96 xl:left-20 opacity-30 sm:opacity-100">
           <ImageClipBox
             src="/img/images/gallery/compressedImages/DSC_5469.jpg"
             clipClass="contact-clip-path-1 h-1/2"
@@ -24,7 +24,7 @@ const JoinJourney = () => {
         </div>
 
         {/* Right side images */}
-        <div className="absolute right-0 top-0 hidden h-full w-72 sm:flex flex-col gap-4 lg:right-10 lg:w-96 xl:right-20">
+        <div className="absolute right-0 top-0 h-full w-40 sm:w-72 flex flex-col gap-4 lg:right-10 lg:w-96 xl:right-20 opacity-30 sm:opacity-100">
           <ImageClipBox
             src="/img/images/gallery/compressedImages/DSC_5025.jpg"
             clipClass="contact-clip-path-1 h-1/2"

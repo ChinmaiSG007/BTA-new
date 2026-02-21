@@ -520,7 +520,7 @@ const TourDetail = () => {
                 className="min-h-screen w-screen bg-neutral-black text-white pt-20"
             >
                 {/* Hero Section */}
-                <section className="tour-hero relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-black">
+                <section className="tour-hero relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-black pt-20 sm:pt-24">
                     {/* Balatro Overlay - Blended on top of image */}
                     <div className="absolute inset-0 z-10 pointer-events-none mix-blend-overlay opacity-40">
                         <Balatro
@@ -854,25 +854,25 @@ const TourDetail = () => {
 
                     {/* CTA Section */}
                     <section className="content-section">
-                        <div className="bg-gradient-to-br from-brown-100 to-[#8a5a3a] rounded-2xl p-12 text-center text-white border border-brown-100">
-                            <h2 className="font-myCustomFont text-4xl md:text-5xl mb-4">
+                        <div className="bg-gradient-to-br from-brown-100 to-[#8a5a3a] rounded-2xl p-6 sm:p-8 md:p-12 text-center text-white border border-brown-100">
+                            <h2 className="font-myCustomFont text-3xl sm:text-4xl md:text-5xl mb-4">
                                 Ready for the Adventure?
                             </h2>
-                            <p className="text-heading-secondary mb-8 !font-general">
+                            <p className="text-heading-secondary mb-8 !font-general text-sm sm:text-base">
                                 Book your spot now and create memories that last a lifetime
                             </p>
-                            <div className="flex flex-wrap gap-4 justify-center">
-                                <a href="https://wa.me/919663299663" target="_blank" rel="noopener noreferrer">
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                <a href="https://wa.me/919663299663" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                                     <Button
                                         title="Book Now on WhatsApp"
                                         leftIcon={<TiLocationArrow />}
-                                        containerClass="!bg-white !text-black hover:!bg-neutral-gray transition-all duration-300"
+                                        containerClass="!bg-white !text-black hover:!bg-neutral-gray transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
                                     />
                                 </a>
-                                <Link to="/tours">
+                                <Link to="/tours" className="w-full sm:w-auto">
                                     <Button
                                         title="View All Tours"
-                                        containerClass="!bg-black !text-white border border-white hover:!bg-neutral-black transition-all duration-300"
+                                        containerClass="!bg-black !text-white border border-white hover:!bg-neutral-black transition-all duration-300 w-full sm:w-auto"
                                     />
                                 </Link>
                             </div>

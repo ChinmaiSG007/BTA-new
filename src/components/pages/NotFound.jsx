@@ -7,7 +7,7 @@ import Balatro from '../styling/Balatro';
 
 const NotFound = () => {
     return (
-        <div className="relative min-h-screen w-screen flex items-center justify-center bg-neutral-black overflow-hidden">
+        <div className="relative min-h-screen w-screen flex items-center justify-center bg-neutral-black overflow-hidden pt-20 sm:pt-24">
             {/* Animated Background */}
             <div className="absolute inset-0">
                 <Balatro

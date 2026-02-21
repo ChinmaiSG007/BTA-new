@@ -9,12 +9,12 @@
           "name": "Snow White Spiti",
           "caption": "Premium Spiti Snow Ride",
           "duration": "9 Days and 8 Nights",
-          "period": "April 2025",
+          "period": "April 2026",
           "starting": "Chandigarh",
           "cost": "₹ 95,999",
           "image": "img/images/gallery/compressedImages/DSC_6452.jpg",
           "mainLogo": "/img/images/tours/main_logo/snow_white_spiti.png",
-          "monoLogo": "/img/images/tours/mono_logo/snow_white_spiti.svg",
+          "monoLogo": "/img/images/tours/mono_logo/snow_white_spiti.png",
           "isUpcomingTour": false,
           "isSoldOut": false,
           "brief": "Join us on a thrilling snow tour on a motorcycle from Chandigarh to Spiti Valley is an exhilarating adventure, blending the charm of the open road with the breathtaking landscapes of the Himalayas. The journey begins in Chandigarh, where riders set out on their powerful bikes, navigating through the bustling city before ascending into the snowcapped peaks. As riders traverse the winding roads, they witness a mesmerizing transformation in scenery, from the lush greenery of the lower Himalayas to the stark, snow-covered beauty of Spiti.",
@@ -99,13 +99,13 @@
           "id": "nih-2",
           "name": "Tale of Three Valleys",
           "caption": "A Trans himalayan motorcycle adventure",
-          "duration": "15 days and 14 nights",
-          "period": "June - October 2024",
+          "duration": "16 days and 15 nights",
+          "period": "August 2026",
           "starting": "Chandigarh",
-          "cost": "₹ 1,45,000",
+          "cost": "₹ 1,85,999",
           "image": "img/images/gallery/compressedImages/SMR_9402.jpg",
           "mainLogo": "/img/images/tours/main_logo/tale_of_three_valleys.png",
-          "monoLogo": null,
+          "monoLogo": "/img/images/tours/mono_logo/tale_of_three_valleys.png",
           "isUpcomingTour": false,
           "isSoldOut": false,
           "brief": "Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration .",
@@ -139,43 +139,39 @@
           "itinerary": [
             {
               "day": "Day 1",
-              "title": "Arrival at Chandigarh - Transfer to Shimla (120 kms / 4-5 hrs)",
-              "description": "Arrive at Chandigarh airport where you will be welcomed by our representative. From here, we will transfer to Shimla, the capital city of Himachal Pradesh. The journey takes us through scenic landscapes, winding roads, and picturesque villages. Upon arrival in Shimla, we will check into our hotel and spend the evening exploring the charming town, known for its colonial architecture and vibrant markets."
+              "title": "Arrival at Chandigarh - Transfer to Shimla (120 kms / 4-5 hrs)"
             },
             {
               "day": "Day 2",
-              "title": "Shimla to Sarahan (125 kms / 5-6 hrs)",
-              "description": "After breakfast, we will embark on our ride from Shimla to Sarahan. The route takes us through beautiful mountain roads, offering stunning views of the surrounding valleys and peaks. Sarahan is a quaint village known for its ancient Bhimakali Temple and traditional Himachali culture. We will check into our accommodation and spend the evening exploring the village and enjoying the local cuisine."
+              "title": "Shimla to Sarahan (125 kms / 5-6 hrs)"
             },
             {
               "day": "Day 3",
-              "title": "Sarahan to Kalpa (110 kms / 4-5 hrs)",
-              "description": "Today, we will ride from Sarahan to Kalpa, a picturesque town nestled in the Kinnaur district. The journey takes us through lush green valleys, terraced fields, and charming villages. Kalpa is renowned for its apple orchards and panoramic views of the Kinner Kailash range. We will check into our hotel and spend the evening exploring the town and enjoying the serene surroundings."
+              "title": "Sarahan to Kalpa (110 kms / 4-5 hrs)"
             },
             {
               "day": "Day 4",
-              "title": "Kalpa to Tabo (130 kms / 6-7 hrs)",
-              "description": "Our ride today takes us from Kalpa to Tabo, a remote village in Spiti Valley known for its ancient monastery. The route is challenging yet rewarding, with breathtaking views of snow-capped peaks and rugged terrain. Tabo Monastery, a UNESCO World Heritage site, is one of the oldest Buddhist monasteries in India. We will check into our accommodation and spend the evening exploring the monastery and learning about its rich history."
+              "title": "Kalpa to Tabo (130 kms / 6-7 hrs)"
             },
             {
               "day": "Day 5",
-              "title": "Tabo to Kaza (50 kms / 2-3 hrs)",
-              "description": "After breakfast, we will ride from Tabo to Kaza, the largest town in Spiti Valley. The journey is relatively short, allowing us to take in the stunning landscapes and unique culture of the region. Kaza serves as a hub for exploring the surrounding areas, including nearby villages and monasteries. We will check into our hotel and spend the evening exploring Kaza's vibrant market and sampling local delicacies."
+              "title": "Tabo to Kaza (50 kms / 2-3 hrs)"
             }
           ],
           "whyUs": "Beyond Tarmac Adventures - born from passion for Motorcycles. We are one of the very few source companies in South India to have their presence across the country. Our dedicated team, seasoned riders themselves have successfully catered to 780+ clients, with which we bring a wealth of experience and passion to every ride. Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration.",
           "inclusions": [
-            "Assistance upon arrival at Airport. Welcome by representative & transfer to the hotel",
-            "Accommodation on twin sharing, Ask for single room prices",
-            "A Class / Experiential Hotels / Homestay /Camps",
+            "Accomodation on twin sharing",
+            "A Class / Experiential Hotels / Camps",
             "Breakfast, Lunch, Dinner, Tea / Coffee",
-            "WAFA / WFR Certified, professional with first aid kit & oxygen cylinder",
+            "Royal Enfield Himalayan 450 (If opted for)",
+            "Fuel for the motorcycle (If rental motorcycles are opted)",
             "Tour lead on a motorcycle",
+            "WAFA / WFR Certified, professional with first aid kit & oxygen cylinder",
             "4x4 back up vehicle for luggage",
-            "Royal Enfield Himalayan / Scram for each rider",
-            "Fuel for the motorcycles",
+            "ILP charges",
             "Mechanic / Marshal",
-            "Permit charges"
+            "Airport transfers",
+            "Goodies"
           ],
           "exclusions": [
             "5% GST",
@@ -184,8 +180,6 @@
             "Any Drinks (Alcoholic, Soft / hard / Aerated)",
             "Any kind of personal expenses or extra meals ordered",
             "Tips, Travel insurance, Laundry",
-            "Services of vehicle is not included on leisure days & after finishing the sight seeing",
-            "Alcohol & Starters",
             "Anything and everything not mentioned in the ‘Inclusions’."
           ]
         },
@@ -194,93 +188,83 @@
           "name": "The Moonland Tour",
           "caption": "A Spiti motorcycle ride",
           "duration": "10 days and 9 nights",
-          "period": "June - October 2024",
+          "period": "October 2026",
           "starting": "Chandigarh",
           "cost": "₹ 84,999",
           "image": "img/images/gallery/compressedImages/SMR_9402.jpg",
           "mainLogo": "/img/images/tours/main_logo/the_moonland_tour.png",
-          "monoLogo": null,
+          "monoLogo": "/img/images/tours/mono_logo/the_moonland_tour.png",
           "isUpcomingTour": false,
           "isSoldOut": false,
-          "brief": "Discover the surreal landscapes of Spiti Valley, often called the 'Moonland' due to its otherworldly terrain. This motorcycle expedition takes you through barren mountains, ancient Buddhist monasteries, and remote villages frozen in time. Experience the raw beauty of one of India's coldest deserts, where the landscape transforms dramatically with every turn, offering riders an unparalleled adventure through high-altitude passes and pristine valleys.",
+          "brief": "The route is a sensory delight, with the crisp mountain air, the crunch of snow beneath the tires, and the panoramic views of majestic peaks. Along the way, riders encounter charming mountain villages, monasteries perched on hillsides, and frozen rivers that add to the mystique of the journey. The challenges of riding through snow-covered terrains heighten the sense of adventure, making the journey not just a physical feat but also a test of resilience and skill. The camaraderie among fellow riders and the warmth of Spiti's hospitality create memories that linger long after the engines are turned off, making this snow tour an unforgettable escapade for motorcycle enthusiasts.",
           "highlights": [
-            "10 day motorcycle adventure through Spiti Valley",
-            "Visit ancient monasteries including Key, Tabo, and Dhankar",
-            "Ride through moonland landscapes near Chicham and Langza",
-            "Experience traditional Spitian culture and cuisine",
-            "Cross Kunzum Pass (4,551m) and enjoy panoramic Himalayan views",
-            "Visit the world's highest post office at Hikkim",
-            "Comfortable mountain stays and local hospitality",
-            "Backup support with trained WFR professionals"
+            "10 day motorcycle adventure",
+            "Destination focus on Spiti, Sangla, Tirthan valleys",
+            "Off road opportunities and stunning stretches of tarmac",
+            "Kunzum la -The highest motorable road in this circuit",
+            "Fully aided tour with backup team",
+            "Comfortable stays, a variety of food and local subject matter resources",
+            "Backup & medical support with trained WFR"
           ],
-          "about": "The Moonland Tour is designed for those who seek to explore the uncharted beauty of Spiti Valley. This region, nestled between Tibet and India, offers a unique blend of Tibetan Buddhist culture and stark Himalayan landscapes. From the moment you start your ride from Chandigarh, you'll be mesmerized by the changing scenery - from lush green valleys to barren moonscapes. The tour includes visits to some of the oldest monasteries in the world, interactions with warm local communities, and rides through some of the most challenging yet rewarding terrains. Each day brings new adventures, whether it's crossing high mountain passes, exploring hidden villages, or simply soaking in the tranquility of the Himalayas.",
+          "about": "The route is a sensory delight, with the crisp mountain air, the crunch of snow beneath the tires, and the panoramic views of majestic peaks. Along the way, riders encounter charming mountain villages, monasteries perched on hillsides, and frozen rivers that add to the mystique of the journey. The challenges of riding through snow-covered terrains heighten the sense of adventure, making the journey not just a physical feat but also a test of resilience and skill. The camaraderie among fellow riders and the warmth of Spiti's hospitality create memories that linger long after the engines are turned off, making this snow tour an unforgettable escapade for motorcycle enthusiasts.",
           "facts": [
-            "Period of visit - June to October",
+            "Period of visit - October",
             "Start & End place - Chandigarh",
-            "Mode of Arrival & Departure - Flight to/from Chandigarh airport",
-            "Duration - 9N/10D",
+            "Mode of Arrival & Departure - Flight in/out from Chandigarh airport",
+            "Duration - 10N/ 10D",
             "Nature of tour - Motorcycle ride",
-            "Nature of tour activity - Motorcycling through high altitude desert terrain",
-            "Expected terrain - Mountain passes, broken roads, river crossings, loose gravel",
-            "Expected weather - 10-25 degrees celsius during day, 0-10 degrees at night",
+            "Nature of tour activity - Motorcycling through rugged & challenging terrain, at slightly higher altitude",
+            "Expected terrain - Rocks, Mud slopes, Broken tarmac, under-construction roads, highwa",
+            "Expected weather - 5-15 degrees celsius, night & early mornings are colder",
             "Accommodation - Twin sharing in hotels, homestays, and camps",
-            "Food - Tibetan, Indian, Indo-Chinese, local Spitian cuisine",
-            "Fitness - Moderate fitness level required, ability to handle high altitude",
-            "Other attractions - Fossil hunting, star gazing, photography, village walks",
-            "Wildlife - Himalayan Ibex, Snow Leopard (rare), various bird species",
-            "To note - Carry sufficient warm clothing, acclimatize properly",
-            "Insurance - Adventure travel insurance strongly recommended"
+            "Food - Tibetan, Indian, Indo-chinese, Indo - Continental",
+            "Fitness - Basic level of fitness and ability to cope with high altitude",
+            "Other attractions -Kalpa, Gus, Dhankar, Ki, Kibber, Chicham, Langcha, Hikkim,Manali shopping, local food",
+            "Sighting of various indigenous mammals & birds",
+            "To note - Book flights early in order to ensure low costs. Pack according to the gear list to ensure comfort",
+            "Insurance - Adventure travel insurance strongly recommendedCheck with your physician about high altitude travel",
+            "Insurance - Adventure centric insurance advised"
           ],
           "itinerary": [
             {
               "day": "Day 1",
-              "title": "Arrival at Chandigarh - Transfer to Shimla (120 kms / 4-5 hrs)",
-              "description": "Arrive at Chandigarh airport and meet the team. Transfer to Shimla via road. Check into hotel and rest. Evening briefing about the tour, bike allocation, and welcome dinner."
+              "title": "Arrival at Chandigarh - Transfer to Shimla (120 kms / 4-5 hrs)"
             },
             {
               "day": "Day 2",
-              "title": "Shimla to Rampur (130 kms / 4-5 hrs)",
-              "description": "Begin the motorcycle journey towards Rampur. Ride through beautiful mountain roads along the Sutlej river. Explore Rampur's local market and traditional architecture."
+              "title": "Shimla to Rampur (130 kms / 4-5 hrs)"
             },
             {
               "day": "Day 3",
-              "title": "Rampur to Kalpa (150 kms / 6-7 hrs)",
-              "description": "Ride to the picturesque town of Kalpa with stunning views of Kinner Kailash. Visit ancient temples and enjoy the apple orchards. Overnight stay with mountain views."
+              "title": "Rampur to Kalpa (150 kms / 6-7 hrs)"
             },
             {
               "day": "Day 4",
-              "title": "Kalpa to Tabo (140 kms / 6-7 hrs)",
-              "description": "Cross into Spiti Valley and ride to Tabo. Visit the 1000-year-old Tabo Monastery, a UNESCO World Heritage site. Experience the beginning of the moonland landscapes."
+              "title": "Kalpa to Tabo (140 kms / 6-7 hrs)"
             },
             {
               "day": "Day 5",
-              "title": "Tabo to Kaza (50 kms / 2-3 hrs)",
-              "description": "Short ride to Kaza, the valley's headquarters. Afternoon visit to Dhankar Monastery perched on a cliff. Explore Kaza market and rest."
+              "title": "Tabo to Kaza (50 kms / 2-3 hrs)"
             },
             {
               "day": "Day 6",
-              "title": "Kaza Local Sightseeing",
-              "description": "Day trip to Key Monastery, Kibber village (one of the highest inhabited villages), and Chicham Bridge (Asia's highest bridge). Return to Kaza for overnight stay."
+              "title": "Kaza Local Sightseeing"
             },
             {
               "day": "Day 7",
-              "title": "Kaza to Langza and Hikkim",
-              "description": "Explore the moonland villages of Langza (fossil village) and Hikkim (world's highest post office). Experience authentic Spitian culture. Return to Kaza."
+              "title": "Kaza to Langza and Hikkim"
             },
             {
               "day": "Day 8",
-              "title": "Kaza to Manali via Kunzum Pass (200 kms / 8-9 hrs)",
-              "description": "Cross the magnificent Kunzum Pass at 4,551m. Descend into the lush Kullu Valley. Dramatic change in landscape from desert to green valleys. Reach Manali."
+              "title": "Kaza to Manali via Kunzum Pass (200 kms / 8-9 hrs)"
             },
             {
               "day": "Day 9",
-              "title": "Manali to Chandigarh (310 kms / 8-9 hrs)",
-              "description": "Final day ride through scenic Kullu Valley and plains. Stop at Kullu for shopping. Reach Chandigarh by evening. Farewell dinner."
+              "title": "Manali to Chandigarh (310 kms / 8-9 hrs)"
             },
             {
               "day": "Day 10",
-              "title": "Departure from Chandigarh",
-              "description": "Check out after breakfast. Transfer to Chandigarh airport for your onward journey. Tour ends with memories of the Moonland."
+              "title": "Departure from Chandigarh"
             }
           ],
           "whyUs": "Beyond Tarmac Adventures - born from passion for Motorcycles. We are one of the very few source companies in South India to have their presence across the country. Our dedicated team, seasoned riders themselves have successfully catered to 780+ clients, with which we bring a wealth of experience and passion to every ride. Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration.",
@@ -314,129 +298,116 @@
           "name": "The Complete Circle",
           "caption": "The Old school Ladakh route with a twist",
           "duration": "12 days and 11 nights",
-          "period": "June 2024",
+          "period": "June 2026",
           "starting": "Chandigarh",
           "cost": "₹ 1,19,999",
           "image": "img/images/gallery/compressedImages/SMR_4883.jpg",
           "mainLogo": "/img/images/tours/main_logo/the_complete_circle.png",
-          "monoLogo": null,
+          "monoLogo": "/img/images/tours/mono_logo/the_complete_circle.png",
           "isUpcomingTour": false,
           "isSoldOut": false,
-          "brief": "Experience the classic Ladakh circuit with an exciting modern twist! This comprehensive tour combines the timeless beauty of the old Ladakh route with exclusive detours to hidden gems. Ride through the iconic Manali-Leh highway, explore the mystical Nubra Valley, witness the changing colors of Pangong Lake, and navigate through some of the world's highest motorable passes. This journey is perfect for those who want to experience Ladakh in its full glory while discovering paths less traveled.",
+          "brief": "Join us on an exhilarating motorcycle odyssey, traversing the rugged terrains of northern India from Chandigarh to Srinagar, Leh, Turtuk, Pangong Tso, and Manali, culminating in an unforgettable journey. Kick-start your adventure in Chandigarh, where modernity blends seamlessly with nature. Navigate through the enchanting landscapes as you ride towards Srinagar, immersing yourself in the picturesque beauty of Dal Lake and the vibrant markets.",
           "highlights": [
-            "12 day complete Ladakh circuit with unique additions",
-            "Cross 5 major high altitude passes including Khardung La",
-            "Explore Nubra Valley and ride double-humped camels",
-            "Camp by the famous Pangong Tso Lake",
-            "Visit ancient monasteries: Thiksey, Hemis, Diskit",
-            "Ride the challenging Manali-Leh highway",
-            "Experience Magnetic Hill and Hall of Fame",
-            "Professional backup team with medical support"
+            "12 day motorcycle adventure",
+            "Destination focus on Kargil, Leh, Hunder, Pangong Tso, Jispa and Manali",
+            "Off road opportunities and stunning stretches of tarmac",
+            "Fully aided tour with backup team",
+            "Travel through Winter Spiti",
+            "Comfortable stays, a variety of food and local subject matter resources",
+            "Backup & medical support with trained WFR"
           ],
-          "about": "The Complete Circle is our signature Ladakh tour that covers all the must-visit destinations while adding special experiences that make this journey truly unforgettable. Starting from Chandigarh, you'll ascend through the beautiful Kullu Valley into the trans-Himalayan region of Ladakh. The tour includes the classic Manali-Leh route, exploration of Nubra Valley's sand dunes, a night by the serene Pangong Lake, and a return journey through different passes. What sets this tour apart are the carefully curated stops at lesser-known viewpoints, interactions with local communities, and flexible schedules that allow you to truly absorb the magic of Ladakh.",
+          "about": "Continue the expedition to Leh, where the lofty mountains and ancient monasteries welcome you to a surreal realm. From Leh, venture off the beaten path to Turtuk, a hidden gem near the Pakistan border, offering a glimpse into a lesser-explored Ladakhi culture. Conquer the formidable roads leading to Pangong Tso, a mesmerizing high-altitude lake with everchanging hues. Ride through the magnetic landscapes before descending to Manali, where the lush valleys and towering peaks provide a dramatic contrast. As the journey comes full circle back to Chandigarh, you'll have etched indelible memories of conquering some of the world's highest motorable passes and witnessing the breathtaking beauty of the Himalayas.",
           "facts": [
-            "Period of visit - June to September",
+            "Period of visit - June",
             "Start & End place - Chandigarh",
-            "Mode of Arrival & Departure - Flight to/from Chandigarh/Leh airports",
-            "Duration - 11N/12D",
-            "Nature of tour - Motorcycle expedition",
-            "Nature of tour activity - High altitude motorcycling through extreme terrain",
-            "Expected terrain - Mountain passes, river crossings, gravel roads, black top",
-            "Expected weather - -5 to 25 degrees celsius, weather can change rapidly",
-            "Accommodation - Twin sharing in hotels and camps",
-            "Food - Ladakhi, Tibetan, Indian, Chinese, Continental",
-            "Fitness - Good fitness level required, high altitude acclimatization essential",
-            "Other attractions - Leh Palace, Shanti Stupa, local markets, monasteries",
-            "Wildlife - Possible sighting of Himalayan Marmots, Kiang, rare birds",
-            "To note - Two days for acclimatization included, carry altitude sickness medication",
-            "Insurance - Comprehensive adventure insurance mandatory"
+            "Mode of Arrival & Departure - Flight in/out from respective airports depending on the option selected",
+            "Duration - 11N - 12D",
+            "Nature of tour - Motorcycle ride / 4x4 Drive",
+            "Nature of tour activity - Motorcycling through rugged & challenging terrain, at extreme altitude",
+            "Expected terrain - High altitude passes, Water crossings, Rocks, Mud slopes, Broken tarmac, underconstruction roads",
+            "Expected weather - 5-20 degrees Celsius, night & early mornings are colder",
+            "Food - Ladakhi, Indian, Indo-chinese, Indo - Continental",
+            "Fitness - Basic level of fitness and ability to cope with high altitude",
+            "Other attractions - Leh market, Leh town, palaces in Leh, Stok village, shopping, local food",
+            "Sighting of various indigenous mammals & birds",
+            "To note - Book flights early in order to ensure low costs. Pack according to the gear list to ensure comfort",
+            "Check with your physician about high altitude travel",
+            "Insurance - Adventure centric insurance advised"
           ],
           "itinerary": [
             {
               "day": "Day 1",
-              "title": "Arrival at Chandigarh - Transfer to Manali (310 kms / 8-9 hrs)",
-              "description": "Arrive at Chandigarh and transfer to Manali via road. Check into hotel. Evening walk in Manali market. Welcome dinner and tour briefing."
+              "title": "Arrival at Chandigarh - Transfer to Manali (310 kms / 8-9 hrs)"
             },
             {
               "day": "Day 2",
-              "title": "Manali Local - Bike Allocation & Acclimatization",
-              "description": "Morning bike allocation and test ride. Visit Solang Valley, Hadimba Temple, and Manu Temple. Preparation day for the high altitude journey ahead."
+              "title": "Manali Local - Bike Allocation & Acclimatization"
             },
             {
               "day": "Day 3",
-              "title": "Manali to Jispa (140 kms / 6-7 hrs)",
-              "description": "Begin the iconic Manali-Leh highway. Cross Rohtang Pass (3,978m) and Keylong. Ride along the Bhaga river to reach Jispa. Beautiful camping spot."
+              "title": "Manali to Jispa (140 kms / 6-7 hrs)"
             },
             {
               "day": "Day 4",
-              "title": "Jispa to Leh via Sarchu (240 kms / 9-10 hrs)",
-              "description": "Cross Baralacha La (4,890m), Nakee La, and Lachung La passes. Stop at Sarchu for lunch. Continue to Leh via Tanglang La (5,328m). Long but rewarding day."
+              "title": "Jispa to Leh via Sarchu (240 kms / 9-10 hrs)"
             },
             {
               "day": "Day 5",
-              "title": "Leh - Rest & Acclimatization",
-              "description": "Complete rest day for acclimatization. Visit Leh market, Leh Palace, Shanti Stupa. Light activities only. Important for adjusting to altitude."
+              "title": "Leh - Rest & Acclimatization"
             },
             {
               "day": "Day 6",
-              "title": "Leh to Nubra Valley via Khardung La (120 kms / 5-6 hrs)",
-              "description": "Cross the famous Khardung La (5,359m), one of the world's highest motorable passes. Descend into Nubra Valley. Visit Diskit Monastery and sand dunes."
+              "title": "Leh to Nubra Valley via Khardung La (120 kms / 5-6 hrs)"
             },
             {
               "day": "Day 7",
-              "title": "Nubra Valley Exploration",
-              "description": "Explore Hunder sand dunes, ride double-humped Bactrian camels. Visit Turtuk village near the Pakistan border (if permits allow). Experience Balti culture."
+              "title": "Nubra Valley Exploration"
             },
             {
               "day": "Day 8",
-              "title": "Nubra to Pangong Lake via Shyok (160 kms / 6-7 hrs)",
-              "description": "Ride through the scenic Shyok river route. Cross Shyok village and reach the stunning Pangong Tso. Camp by the lake. Watch the sunset over changing lake colors."
+              "title": "Nubra to Pangong Lake via Shyok (160 kms / 6-7 hrs)"
             },
             {
               "day": "Day 9",
-              "title": "Pangong to Leh via Chang La (140 kms / 5-6 hrs)",
-              "description": "Morning by Pangong Lake. Return to Leh via Chang La pass (5,360m). Visit Thiksey and Hemis monasteries en route. Evening in Leh."
+              "title": "Pangong to Leh via Chang La (140 kms / 5-6 hrs)"
             },
             {
               "day": "Day 10",
-              "title": "Leh to Sarchu (250 kms / 9-10 hrs)",
-              "description": "Begin return journey. Ride to Sarchu. Experience the vast Moray Plains and high altitude camping at Sarchu."
+              "title": "Leh to Sarchu (250 kms / 9-10 hrs)"
             },
             {
               "day": "Day 11",
-              "title": "Sarchu to Manali (220 kms / 8-9 hrs)",
-              "description": "Final riding day. Cross familiar passes in opposite direction. Descend to the green valleys of Manali. Celebration dinner."
+              "title": "Sarchu to Manali (220 kms / 8-9 hrs)"
             },
             {
               "day": "Day 12",
-              "title": "Manali to Chandigarh & Departure (310 kms / 8-9 hrs)",
-              "description": "Transfer to Chandigarh airport. Tour concludes with cherished memories of the Himalayan adventure."
+              "title": "Manali to Chandigarh & Departure (310 kms / 8-9 hrs)"
             }
           ],
           "whyUs": "Beyond Tarmac Adventures - born from passion for Motorcycles. We are one of the very few source companies in South India to have their presence across the country. Our dedicated team, seasoned riders themselves have successfully catered to 780+ clients, with which we bring a wealth of experience and passion to every ride. Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration.",
           "inclusions": [
-            "Assistance upon arrival and transfers",
-            "Accommodation on twin sharing basis in hotels/camps",
-            "All meals - Breakfast, Lunch, Dinner, Tea/Coffee",
-            "WAFA/WFR Certified medical professional with first aid & oxygen",
-            "Experienced tour lead on motorcycle",
-            "Backup vehicle (4x4) for luggage and emergency",
-            "Royal Enfield Himalayan/Scram 411 for each rider",
-            "Fuel for motorcycles throughout the journey",
-            "Mechanic and marshal support",
-            "All permits (Inner Line, Protected Area, Wildlife)",
-            "Camping equipment where applicable"
+            "Assistance upon arrival at Airport. Welcome by representative & transfer to the hotel",
+            "Accomodation on twin sharing, Ask for single room prices",
+            "A Class / Experiential Hotels / Homestay /Camps",
+            "Breakfast, Lunch, Dinner, Tea / Coffee",
+            "WAFA / WFR Certified, professional with first aid kit & oxygen cylinder",
+            "Tour lead on a motorcycle",
+            "4x4 back up vehicle for luggage",
+            "Royal Enfield Himalayan / Scram for each rider",
+            "Fuel for the motorcycles",
+            "Mechanic / Marshal",
+            "Permit charges"
           ],
           "exclusions": [
             "5% GST",
-            "Airfare to/from Chandigarh or Leh",
-            "Travel insurance (mandatory)",
-            "Personal expenses, laundry, tips",
-            "Monument entry fees",
-            "Alcoholic/non-alcoholic beverages",
-            "Any meals not mentioned in inclusions",
-            "Emergency evacuation costs",
-            "Anything not mentioned in 'Inclusions'"
+            "Airfare from your respective city",
+            "Monument Entry fee (if any)",
+            "Any Drinks (Alcoholic, Soft / hard / Aerated)",
+            "Any kind of personal expenses or extra meals ordered",
+            "Tips, Travel insurance, Laundry",
+            "Services of vehicle is not included on leisure days & after finishing the sight seeing",
+            "Alcohol & Starters",
+            "Anything and everything not mentioned in the 'Inclusions'."
           ]
         },
         {
@@ -444,7 +415,7 @@
           "name": "La Himalaya",
           "caption": "Charting the Uncharted on Two Wheels",
           "duration": "15 days and 14 nights",
-          "period": "July - August 2024",
+          "period": "July - August 2026",
           "starting": "Chandigarh",
           "cost": "₹ 1,35,999",
           "image": "img/images/gallery/compressedImages/SMR_5088.jpg",
@@ -452,177 +423,31 @@
           "monoLogo": null,
           "isUpcomingTour": false,
           "isSoldOut": false,
-          "brief": "La Himalaya is the ultimate Himalayan motorcycle expedition for those who seek to explore beyond the beaten path. This exclusive tour takes you through remote mountain passes, hidden valleys, and ancient trade routes that few travelers have experienced. Combining the best of Ladakh, Spiti, and Kinnaur, this journey offers unparalleled diversity in landscapes, cultures, and riding challenges. From lush green valleys to barren high-altitude deserts, from Buddhist monasteries to ancient Hindu temples, this is the Himalayas in all its magnificent glory.",
+          "brief": "In the realm of high-altitude adventures, a new titan has risen, overshadowing the once unbeatable Khardung La. Welcome to Umling La Pass – the pinnacle of motorcycle touring, nowholding the prestigious title of the world's highest motorable road. This mountain pass not only sets a new benchmark for thrill-seekers but also opens up vistas previously untouched by the wheels of adventure enthusiasts.",
           "highlights": [
-            "15 day comprehensive Himalayan exploration",
-            "Visit three distinct regions: Ladakh, Spiti, and Kinnaur",
-            "Cross 7+ high altitude passes above 4,000m",
-            "Ride through lesser-known routes and hidden valleys",
-            "Experience diverse cultures: Buddhist, Hindu, and Tribal",
-            "Professional photography opportunities at every turn",
-            "Stay in unique accommodations: monasteries to luxury camps",
-            "Expert-led expedition with full backup and medical support"
-          ],
-          "about": "La Himalaya represents the pinnacle of our Himalayan motorcycle expeditions. This carefully crafted journey takes you through three distinct Himalayan regions, each offering unique landscapes and cultural experiences. You'll start in the lush Kullu Valley, ascend to the stark beauty of Ladakh, explore the ancient monasteries of Spiti, and ride through the apple orchards of Kinnaur. The route includes remote villages rarely visited by tourists, ancient trade routes that connected India to Tibet, and some of the most challenging yet rewarding mountain passes in the Himalayas. This is not just a motorcycle tour; it's a journey through time, culture, and some of the most spectacular landscapes on Earth.",
-          "facts": [
-            "Period of visit - July to August (best weather window)",
-            "Start & End place - Chandigarh",
-            "Mode of Arrival & Departure - Flight to/from Chandigarh or Leh",
-            "Duration - 14N/15D",
-            "Nature of tour - Extended motorcycle expedition",
-            "Nature of tour activity - Extreme high altitude motorcycling",
-            "Expected terrain - All types - tarmac, gravel, sand, water crossings, snow patches",
-            "Expected weather - Highly variable, -5 to 30 degrees celsius",
-            "Accommodation - Mix of hotels, homestays, camps, and monastery guesthouses",
-            "Food - Multi-cuisine including Ladakhi, Spitian, Kinnauri, Tibetan, Indian",
-            "Fitness - Excellent fitness required, prior high altitude experience beneficial",
-            "Other attractions - Rare wildlife, unique geology, archaeological sites",
-            "Special experiences - Homestays, local festivals (if timing permits)",
-            "To note - Most challenging tour, requires experienced riding skills",
-            "Insurance - Comprehensive adventure insurance absolutely mandatory"
-          ],
-          "itinerary": [
-            {
-              "day": "Day 1",
-              "title": "Arrival at Chandigarh - Transfer to Shimla (120 kms / 4-5 hrs)",
-              "description": "Arrive at Chandigarh, meet the team. Transfer to Shimla. Check into hotel. Evening briefing, bike allocation, and welcome dinner."
-            },
-            {
-              "day": "Day 2",
-              "title": "Shimla to Sarahan (125 kms / 5-6 hrs)",
-              "description": "Begin motorcycle journey. Ride along Sutlej river to Sarahan. Visit Bhimakali Temple. Stunning views of Srikhand Mahadev peak."
-            },
-            {
-              "day": "Day 3",
-              "title": "Sarahan to Kalpa (110 kms / 4-5 hrs)",
-              "description": "Ride to Kalpa through apple orchards and pine forests. Visit Reckong Peo. Camp with views of Kinner Kailash range."
-            },
-            {
-              "day": "Day 4",
-              "title": "Kalpa to Tabo via Nako (180 kms / 7-8 hrs)",
-              "description": "Cross into Spiti. Visit high-altitude Nako Lake. Reach Tabo, home to 1000-year-old monastery complex."
-            },
-            {
-              "day": "Day 5",
-              "title": "Tabo to Kaza (50 kms / 2-3 hrs) - Local Exploration",
-              "description": "Short ride to Kaza. Visit Dhankar Monastery perched on cliff. Afternoon exploration of Kaza town and market."
-            },
-            {
-              "day": "Day 6",
-              "title": "Kaza to Losar via Kunzum Pass (120 kms / 5-6 hrs)",
-              "description": "Cross Kunzum Pass (4,551m). Visit Kunzum Devi temple. Descend to Losar, gateway to Lahaul."
-            },
-            {
-              "day": "Day 7",
-              "title": "Losar to Jispa (90 kms / 4-5 hrs)",
-              "description": "Ride through Lahaul Valley. Visit Keylong. Camp by Bhaga river at Jispa. Rest and acclimatization."
-            },
-            {
-              "day": "Day 8",
-              "title": "Jispa to Leh (340 kms / 12-13 hrs)",
-              "description": "Epic riding day! Cross Baralacha La, Nakee La, Lachung La, and Tanglang La passes. Longest but most rewarding day. Reach Leh."
-            },
-            {
-              "day": "Day 9",
-              "title": "Leh - Rest & Acclimatization",
-              "description": "Complete rest day. Visit Leh market, palaces, and monasteries. Prepare for high-altitude sectors ahead."
-            },
-            {
-              "day": "Day 10",
-              "title": "Leh to Nubra Valley via Khardung La (120 kms / 5-6 hrs)",
-              "description": "Cross Khardung La (5,359m). Explore Diskit Monastery and sand dunes. Experience double-humped camels."
-            },
-            {
-              "day": "Day 11",
-              "title": "Nubra Valley to Pangong via Shyok (160 kms / 6-7 hrs)",
-              "description": "Take the adventurous Shyok route. Reach Pangong Tso. Lakeside camping with stunning sunset views."
-            },
-            {
-              "day": "Day 12",
-              "title": "Pangong to Hanle via Chushul (160 kms / 7-8 hrs)",
-              "description": "Off-road adventure to Hanle. Visit Indian Astronomical Observatory. Remote village experience. Star gazing night."
-            },
-            {
-              "day": "Day 13",
-              "title": "Hanle to Tso Moriri (180 kms / 8-9 hrs)",
-              "description": "Ride to the pristine Tso Moriri Lake. Remote and less crowded than Pangong. Wildlife spotting opportunities."
-            },
-            {
-              "day": "Day 14",
-              "title": "Tso Moriri to Leh via Chumathang (220 kms / 8-9 hrs)",
-              "description": "Return to Leh via Chumathang hot springs. Visit Thiksey and Shey palaces. Farewell dinner in Leh."
-            },
-            {
-              "day": "Day 15",
-              "title": "Leh to Chandigarh Flight & Departure",
-              "description": "Early morning flight to Chandigarh. Tour concludes with lifetime memories of the ultimate Himalayan adventure."
-            }
-          ],
-          "whyUs": "Beyond Tarmac Adventures - born from passion for Motorcycles. We are one of the very few source companies in South India to have their presence across the country. Our dedicated team, seasoned riders themselves have successfully catered to 780+ clients, with which we bring a wealth of experience and passion to every ride. Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration.",
-          "inclusions": [
-            "All airport transfers and assistance",
-            "Accommodation on twin sharing (hotels/camps/homestays)",
-            "All meals - Breakfast, Lunch, Dinner, Tea/Coffee",
-            "WFR certified medical professional with comprehensive first aid",
-            "Oxygen cylinders and Oximeter",
-            "Experienced tour lead and marshal",
-            "Backup vehicle (4x4) throughout the journey",
-            "Royal Enfield Himalayan 450 or similar",
-            "All fuel for motorcycles",
-            "Expert mechanic with tools and spares",
-            "All permits and entry fees",
-            "Satellite phone for emergencies"
-          ],
-          "exclusions": [
-            "5% GST",
-            "Airfare (can be arranged on request)",
-            "Comprehensive travel and medical insurance (mandatory)",
-            "Personal expenses, laundry, phone calls",
-            "Tips to staff and guides",
-            "Monument entry fees not mentioned",
-            "Any alcoholic or non-alcoholic beverages",
-            "Emergency evacuation costs (insurance should cover)",
-            "Any services not mentioned in inclusions"
-          ]
-        },
-        {
-          "id": "nih-6",
-          "name": "Snow White Spiti 4X4",
-          "caption": "Premium Spiti Snow Ride",
-          "duration": "9 Days and 8 Nights",
-          "period": "April 2025",
-          "starting": "Chandigarh",
-          "cost": "₹ 95,999",
-          "image": "img/images/gallery/compressedImages/DSC_6452.jpg",
-          "mainLogo": "/img/images/tours/main_logo/snow_white_spiti.png",
-          "monoLogo": "/img/images/tours/mono_logo/snow_white_spiti.svg",
-          "isUpcomingTour": true,
-          "isSoldOut": false,
-          "brief": "Join us on a thrilling snow tour on a motorcycle from Chandigarh to Spiti Valley is an exhilarating adventure, blending the charm of the open road with the breathtaking landscapes of the Himalayas. The journey begins in Chandigarh, where riders set out on their powerful bikes, navigating through the bustling city before ascending into the snowcapped peaks. As riders traverse the winding roads, they witness a mesmerizing transformation in scenery, from the lush greenery of the lower Himalayas to the stark, snow-covered beauty of Spiti.",
-          "highlights": [
-            "9 day motorcycle adventure",
-            "Destination focus on Spiti, Sangla, Tirthan valleys",
-            "Off road opportunities and stunning stretches of tarmac",
-            "Jalori Pass -The highest motorable road in this circuit",
-            "Fully aided tour with backup team",
-            "Travel through Winter Spiti",
-            "Comfortable stays, a variety of food and local subject matter resources",
-            "Backup & medical support with trained WFR"
+            "Join us on a thrilling 14-night, 15-day motorcycle odyssey",
+            "Traverse the heart of Zanskar and Nubra Valley, alongside the breathtaking high-altitude lakes of Ladakh, and encounter the nomadic herders of Chanthang.",
+            "Challenge yourself on numerous high-altitude passes, revel in off-road adventures, and cruise on picturesque stretches of pristine tarmac.",
+            "Conquer Umling La - the zenith of motorable roads worldwide.",
+            "Enjoy the security of a fully supported tour, complete with an attentive backup team.",
+            "Venture through Ladakh's hidden gems, far from the well-trodden paths.",
+            "Luxuriate in comfortable accommodations, savor a diverse palette of culinary delights, and gain insights from local experts.",
+            "Benefit from comprehensive backup and medical support, including trained Wilderness First Responders (WFR)."
           ],
           "about": "The route is a sensory delight, with the crisp mountain air, the crunch of snow beneath the tires, and the panoramic views of majestic peaks. Along the way, riders encounter charming mountain villages, monasteries perched on hillsides, and frozen rivers that add to the mystique of the journey. The challenges of riding through snow-covered terrains heighten the sense of adventure, making the journey not just a physical feat but also a test of resilience and skill. The camaraderie among fellow riders and the warmth of Spiti's hospitality create memories that linger long after the engines are turned off, making this snow tour an unforgettable escapade for motorcycle enthusiasts.",
           "facts": [
-            "Period of visit - April",
+            "Period of visit - June",
             "Start & End place - Chandigarh",
-            "Mode of Arrival & Departure - Flight in/out from Chandigarh airport",
-            "Duration - 8N/ 9D",
+            "Mode of Arrival & Departure - Flight in/out from respective airports",
+            "Duration - 14N / 15D",
             "Nature of tour - Motorcycle ride",
-            "Nature of tour activity - Motorcycling through rugged & challenging terrain, at slightly higher altitude",
-            "Expected terrain - Snow, Black ice, Rocks, Mud slopes, Broken tarmac, under-construction roads",
-            "Expected weather - 5-15 degrees celsius, night & early mornings are colder",
-            "Accomodation - Twin sharing. Comfortable hotels & camps at all stops",
-            "Food - Tibetan, Indian, Indo-chinese, Indo - Continental",
-            "Fitness - Basic level of fitness and ability to cope with high altitude",
-            "Other attractions -Kalpa, Gus, Dhankar, Ki, Kibber, Chicham, Langcha, Hikkim, shopping, local food",
+            "Nature of tour activity - Motorcycling through rugged & challenging terrain",
+            "Expected terrain - Under construction roads, Rocks, Mud slopes, Broken tarmac, Motorways/Expressway",
+            "Expected weather - 5-20 degrees Celsius, night & early mornings are colder",
+            "Accomodation - Double occupancy, Comfortable hotels & camps at all stops",
+            "Food - Ladhaki, Indian, Indo-chinese, Indo-Continental",
+            "Fitness - Basic level of fitness and ability to cope with extended physical fatigue",
+            "Other attractions - Market, town and palaces of Leh, Tibetian monasteries, Drang Drung glacier, Kargil War Memorial, Gonbo Rang jon",
             "Sighting of various indigenous mammals & birds",
             "To note - Book flights early in order to ensure low costs. Pack according to the gear list to ensure comfort",
             "Check with your physician about high altitude travel",
@@ -643,26 +468,67 @@
             },
             {
               "day": "Day 4",
-              "title": "Kalpa to Tabo (130 kms / 6-7 hrs)"
+              "title": "Kalpa to Tabo via Nako (180 kms / 7-8 hrs)"
             },
             {
               "day": "Day 5",
-              "title": "Tabo to Kaza (50 kms / 2-3 hrs)"
+              "title": "Tabo to Kaza (50 kms / 2-3 hrs) - Local Exploration"
+            },
+            {
+              "day": "Day 6",
+              "title": "Kaza to Losar via Kunzum Pass (120 kms / 5-6 hrs)"
+            },
+            {
+              "day": "Day 7",
+              "title": "Losar to Jispa (90 kms / 4-5 hrs)"
+            },
+            {
+              "day": "Day 8",
+              "title": "Jispa to Leh (340 kms / 12-13 hrs)"
+            },
+            {
+              "day": "Day 9",
+              "title": "Leh - Rest & Acclimatization"
+            },
+            {
+              "day": "Day 10",
+              "title": "Leh to Nubra Valley via Khardung La (120 kms / 5-6 hrs)"
+            },
+            {
+              "day": "Day 11",
+              "title": "Nubra Valley to Pangong via Shyok (160 kms / 6-7 hrs)"
+            },
+            {
+              "day": "Day 12",
+              "title": "Pangong to Hanle via Chushul (160 kms / 7-8 hrs)"
+            },
+            {
+              "day": "Day 13",
+              "title": "Hanle to Tso Moriri (180 kms / 8-9 hrs)"
+            },
+            {
+              "day": "Day 14",
+              "title": "Tso Moriri to Leh via Chumathang (220 kms / 8-9 hrs)"
+            },
+            {
+              "day": "Day 15",
+              "title": "Leh to Chandigarh Flight & Departure"
             }
           ],
           "whyUs": "Beyond Tarmac Adventures - born from passion for Motorcycles. We are one of the very few source companies in South India to have their presence across the country. Our dedicated team, seasoned riders themselves have successfully catered to 780+ clients, with which we bring a wealth of experience and passion to every ride. Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration.",
           "inclusions": [
-            "Assistance upon arrival at Airport. Welcome by representative & transfer to the hotel",
-            "Accommodation on twin sharing, Ask for single room prices",
-            "A Class / Experiential Hotels / Homestay /Camps",
+            "Accomodation on double occupancy",
+            "Accomodation on twin sharing, Ask for single room prices",
+            "A Class / Experiential Hotels / Camps",
             "Breakfast, Lunch, Dinner, Tea / Coffee",
             "WAFA / WFR Certified, professional with first aid kit & oxygen cylinder",
             "Tour lead on a motorcycle",
-            "4x4 back up vehicle for luggage",
-            "Royal Enfield Himalayan / Scram for each rider",
-            "Fuel for the motorcycles",
-            "Mechanic / Marshal",
-            "Permit charges"
+            "Rental Motorcycle & fuel (if Opted for)",
+            "4x4 back up vehicle",
+            "Mechanic",
+            "Bansar / Carnet charges",
+            "Airport transfers",
+            "Goodies"
           ],
           "exclusions": [
             "5% GST",
@@ -671,8 +537,109 @@
             "Any Drinks (Alcoholic, Soft / hard / Aerated)",
             "Any kind of personal expenses or extra meals ordered",
             "Tips, Travel insurance, Laundry",
-            "Services of vehicle is not included on leisure days & after finishing the sight seeing",
-            "Alcohol & Starters",
+            "Anything and everything not mentioned in the 'Inclusions'."
+          ]
+        },
+        {
+          "id": "nih-6",
+          "name": "Snow White Spiti 4X4",
+          "caption": "Premium Spiti Snow Drive",
+          "duration": "9 Days and 8 Nights",
+          "period": "March/April 2026",
+          "starting": "Chandigarh",
+          "cost": "₹ 79,999",
+          "image": "img/images/gallery/compressedImages/DSC_6452.jpg",
+          "mainLogo": "/img/images/tours/main_logo/snow_white_spiti.png",
+          "monoLogo": "/img/images/tours/mono_logo/snow_white_spiti.png",
+          "isUpcomingTour": true,
+          "isSoldOut": false,
+          "brief": "Our new 4x4 Spiti snow adventure expeditions are designed for those who seek raw landscapes, remote trails, and the thrill of venturing where the road ends. From snowbound mountain passes to rugged desert tracks, every expedition is meticulously planned, safety-led, and driven by local insight. Blending proven expedition expertise with capable 4x4 machines, Beyond Tarmac adventures invites you to explore the wild with confidence, purpose, and a deep respect for terrain, culture, and the spirit of adventure.",
+          "highlights": [
+            "The expedition begins in Chandigarh, transitioning from open plains into the foothills near Nalagarh. Focus on convoy discipline, vehicle checks, and radio coordination.",
+            "Climbing from Nalagarh into the apple-growing region of Thanedar, with cooler temperatures and winding mountain roads. Drivers adapt to elevation and tighter sections.",
+            "The route from Thanedar to Sangla enters deeper Himalayan valleys. Narrow roads, sharp drops, and changing weather increase driving intensity. A quick drive to Chitkul and back to Sangla.",
+            "The drive from Sangla to Tabo marks the first full entry into Spiti Valley. Visit Nako and Gue monastrey along the way. Terrain turns stark and barren with icy sections and winter conditions.",
+            "A high-altitude stretch connecting Tabo, Dhankar, and Kaza. Steep climbs, exposed ridgelines, and thin air test vehicles and drivers.",
+            "A remote village loop from Kaza to Ki, Kibber, and Chicham. Crossing the Chicham Bridge, one of the world’s highest, with deep valleys and snow walls.",
+            "Descending from Kaza to Kalpa, landscapes shift from Spiti’s cold desert to pine-covered slopes. Altitude drops and conditions soften.",
+            "The route from Kalpa to Shoja passes through forest roads and river valleys, smoother tarmac allows both crew and vehicles to recover. The infamous Jalori pass offers you one last bit of snow adventure.",
+            "The final drive from Shoja back to Chandigarh returns to the plains, closing a complete winter Spiti 4x4 expedition loop."
+          ],
+          "about": "Snow White Spiti is not designed for comfort—it is designed for commitment. This expedition explores Spiti Valley during the snow season, when access is limited, conditions are unpredictable, and the landscape is stripped down to its purest form. Guided by riders experienced in winter high-altitude travel, this journey prioritises acclimatisation, terrain awareness, and controlled riding over speed or distance. Each day unfolds slowly—through snow corridors, frozen valleys, and isolated Himalayan settlements that remain cut off for months. This is not a checklist ride. It is a deliberate, high-risk, high-reward winter expedition.",
+          "facts": [
+            "Period of Visit: March/April",
+            "Start & End place - Chandigarh",
+            "Mode of Arrival & Departure - Flight in/out from Chandigarh airport",
+            "Duration - 8N/ 9D",
+            "Nature of tour - High-altitude 4X4 adventure touring",
+            "Expected terrain - Snow-covered tarmac, ice patches, broken roads, mountain passes",
+            "Expected weather - Sub-zero nights, cold days, Low temperatures",
+            "Food: Himachali cuisine with familiar meal options",
+            "Fitness - Basic fitness level required; ability to drive comfortably for extended periods on consecutive days",
+            "Notable Attractions: • Snowbound riding through the high-altitude deserts of Spiti Valley, Chitkul — India’s last inhabited village near the Indo-Tibetan border, Frozen river crossings and snow-lined mountain roads, Chicham Bridge — one of the highest suspension bridges in the world",
+            "To Note: Book flights early if traveling from outside Bangalore for the best fares and connections",
+            "Essential: Adventure-centric travel insurance highly recommended for all participants Consult your physician about adventure travel and motorcycle touring if needed"
+          ],
+          "itinerary": [
+            {
+              "day": "Day 1",
+              "title": "Chandigarh - Nalagarh (60 kms)"
+            },
+            {
+              "day": "Day 2",
+              "title": "Nalagarh - Thanedar (190 kms)"
+            },
+            {
+              "day": "Day 3",
+              "title": "Thanedar - Sangla (145 kms)"
+            },
+            {
+              "day": "Day 4",
+              "title": "Sangla - Chitkul - Sangla (100 kms)"
+            },
+            {
+              "day": "Day 5",
+              "title": "Sangla - Tabo (210 kms)"
+            },
+            {
+              "day": "Day 6",
+              "title": "Tabo - Dhankar - Kaza (80 kms)"
+            },
+            {
+              "day": "Day 7",
+              "title": "Kaza - Ki - Kibber - Chicham (80 kms)"
+            },
+            {
+              "day": "Day 8",
+              "title": "Kaza - Kalpa (219 kms)"
+            },
+            {
+              "day": "Day 9",
+              "title": "Kalpa - Shoja (200 kms)"
+            },
+            {
+              "day": "Day 10",
+              "title": "Shoja - Chandigarh (230 kms)"
+            }
+          ],
+          "whyUs": "Beyond Tarmac Adventures - born from passion for Motorcycles. We are one of the very few source companies in South India to have their presence across the country. Our dedicated team, seasoned riders themselves have successfully catered to 780+ clients, with which we bring a wealth of experience and passion to every ride. Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration.",
+          "inclusions": [
+            "Accommodation on double occupancy (single occupency at extra cost)",
+            "A Class / Experiential Hotels / Homestay /Camps",
+            "Breakfast, Lunch, Dinner",
+            "WAFA / WFR Certified, professional with first aid kit",
+            "Oxygen cylinder",
+            "Lead with backup vehicle",
+            "Walkie-talkie in all cars",
+            "Goodies"
+          ],
+          "exclusions": [
+            "5% GST",
+            "Car & fuel",
+            "Monument entry/Parking charges",
+            "Any Drinks (Alcoholic, Soft / hard / Aerated)",
+            "Any kind of personal expenses or extra meals ordered",
+            "Tips, Travel insurance, Laundry",
             "Anything and everything not mentioned in the ‘Inclusions’."
           ]
         }
@@ -687,7 +654,7 @@
           "name": "Rajashtan",
           "caption": "Riding the Royal Trails of Rajasthan",
           "duration": "11 Days and 10 Nights",
-          "period": "Jan / Feb 2025",
+          "period": "Jan / Feb 2027",
           "starting": "Jaipur",
           "cost": "₹ 1,49,999",
           "image": "img/images/gallery/compressedImages/SMR_9701.jpg",
@@ -695,116 +662,100 @@
           "monoLogo": null,
           "isUpcomingTour": false,
           "isSoldOut": false,
-          "brief": "Embark on a royal motorcycle expedition through the land of maharajas, majestic forts, and golden deserts. This tour takes you through Rajasthan's most iconic cities, each telling stories of valor, romance, and grandeur. From the pink-hued streets of Jaipur to the blue lanes of Jodhpur, from the golden sands of Jaisalmer to the romantic lakes of Udaipur, experience the rich heritage and vibrant culture of India's most colorful state. Ride through desert highways, visit magnificent palaces, and witness sunsets over ancient forts.",
+          "brief": "Embark on an extraordinary journey through Rajasthan, the land of kings and legends. Ride across the vibrant streets of Jaipur, past the artistic havelis of Mandawa, and through the rugged deserts of Bikaner and Osian. Marvel at the golden splendor of Jaisalmer, venture to the historic battlefields of Tanot and Longewala, and experience the magic of the Sam Sand Dunes under a starry sky. Traverse through Jodhpur's blue alleys, the regal charm of Udaipur, and the sacred ghats of Pushkar. This journey isn't just about the ride-it's about immersing yourself in the rich tapestry of Rajasthan's heritage, landscapes, and stories of valor.",
           "highlights": [
-            "11 day royal heritage motorcycle tour",
-            "Visit 6 major cities: Jaipur, Pushkar, Jodhpur, Jaisalmer, Udaipur, Ajmer",
-            "Explore UNESCO World Heritage Sites and magnificent forts",
-            "Desert safari in Thar Desert with camel rides",
-            "Stay in heritage hotels and palace properties",
-            "Experience traditional Rajasthani cuisine and folk performances",
-            "Ride through diverse landscapes: deserts, lakes, Aravalli hills",
-            "Full support team with cultural guides"
+            "Embark on an 11-day motorcycle journey through the vibrant and diverse landscapes of Rajasthan.",
+            "Immerse yourself in the history, heritage, and folklore of this enchanting region.",
+            "Ride along stunning stretches of tarmac that lead to Rajasthan's most iconic destinations.",
+            "Marvel at the grandeur of forts, palaces, and architectural wonders steeped in royal legacy.",
+            "Experience a fully supported tour with a dedicated and experienced team.",
+            "Enjoy comfortable accommodations, savor authentic local cuisine, and uncover the secrets of majestic forts and palaces.",
+            "Feel the thrill of dune bashing and witness unforgettable sunsets over the golden sands.",
+            "Travel with confidence, supported by comprehensive backup, mechanical expertise, and medical assistance led by a trained Wilderness First Responder (WFR)."
           ],
-          "about": "Rajasthan, the Land of Kings, offers a unique blend of history, culture, and natural beauty that makes for an unforgettable motorcycle journey. This tour is designed to showcase the best of Rajasthan - from its architectural marvels to its culinary delights, from bustling bazaars to serene lakes. You'll ride through varied terrain including desert highways, hilly roads through the Aravallis, and scenic lakeside routes. Each day brings new experiences: exploring centuries-old forts, shopping in traditional markets, enjoying cultural performances, and tasting authentic Rajasthani food. This is not just a motorcycle tour; it's a journey through time and tradition.",
+          "about": "Embark on an extraordinary journey through Rajasthan, the land of kings and legends. Ride across the vibrant streets of Jaipur, past the artistic havelis of Mandawa, and through the rugged deserts of Bikaner and Osian. Marvel at the golden splendor of Jaisalmer, venture to the historic battlefields of Tanot and Longewala, and experience the magic of the Sam Sand Dunes under a starry sky. Traverse through Jodhpur's blue alleys, the regal charm of Udaipur, and the sacred ghats of Pushkar. This journey isn't just about the ride-it's about immersing yourself in the rich tapestry of Rajasthan's heritage, landscapes, and stories of valor.",
           "facts": [
-            "Period of visit - January to February (best weather)",
-            "Start & End place - Jaipur",
-            "Mode of Arrival & Departure - Flight to/from Jaipur airport",
-            "Duration - 10N/11D",
-            "Nature of tour - Cultural motorcycle expedition",
-            "Nature of tour activity - Easy to moderate riding through plains and hills",
-            "Expected terrain - Good highways, some hilly sections, desert roads",
-            "Expected weather - Pleasant 10-25 degrees celsius, dry weather",
-            "Accommodation - Heritage hotels and palace properties (twin sharing)",
-            "Food - Traditional Rajasthani, North Indian, Continental",
-            "Fitness - Basic fitness sufficient, no altitude challenges",
-            "Other attractions - Light & Sound shows, cultural performances, local crafts",
-            "Special experiences - Desert camping, folk music, traditional attire photoshoots",
-            "To note - Perfect for first-time motorcycle tourists, family-friendly",
-            "Insurance - Standard travel insurance recommended"
+            "Period of visit - January/February",
+            "Start & End place - Jaipur, Rajasthan",
+            "Mode of Arrival & Departure - Flight in/out from respective airports depending on the option selected",
+            "Duration - 10N / 11D",
+            "Nature of tour - Motorcycle ride / Cars & SUV",
+            "Nature of tour activity - Motorcycling through highways/ Motorways/ Occasional desert sand",
+            "Expected terrain - Tarmac, Motorways, Broken tarmac, under construction roads",
+            "Expected weather - 8 to 24 degrees Celsius, night & early mornings are colder",
+            "Food - Rajasthani, North-Indian, Continental, Marwadi",
+            "Fitness - Basic level of fitness",
+            "Other attractions - Kechan to see a Siberian migratory crane, Dune bashing in Sam sand dunes, Havelis of Mandawa, Stunning stretches of sand dunes from Tanot, Safari in Ranthambore, Only Bramha temple in the world in Pushkar, Lake Pichola in Udaipur, Sighting of various indigenous mammals & birds",
+            "To note - Book flights early in order to ensure low costs. Pack according to the gear list to ensure comfort.",
+            "Insurance - Travel insurance advised"
           ],
           "itinerary": [
             {
               "day": "Day 1",
-              "title": "Arrival at Jaipur - City Tour",
-              "description": "Arrive at Jaipur airport. Check into heritage hotel. Afternoon visit to Hawa Mahal and City Palace. Evening bike allocation and briefing. Welcome dinner with Rajasthani folk performance."
+              "title": "Jaipur - Meet & Greet"
             },
             {
               "day": "Day 2",
-              "title": "Jaipur Local Sightseeing",
-              "description": "Visit Amber Fort, Jaigarh Fort, and Jal Mahal. Explore the famous pink city markets. Optional elephant ride at Amber Fort. Rest day before starting the ride."
+              "title": "Jaipur to Mandawa (170 kms / Easy, State Highway)"
             },
             {
               "day": "Day 3",
-              "title": "Jaipur to Pushkar (145 kms / 3-4 hrs)",
-              "description": "Begin the motorcycle journey. Ride to the sacred town of Pushkar. Visit Brahma Temple and the holy Pushkar Lake. Explore vibrant bazaars. Sunset at the ghats."
+              "title": "Mandawa to Bikaner (190 kms / Easy, State Highway)"
             },
             {
               "day": "Day 4",
-              "title": "Pushkar to Jodhpur (190 kms / 4-5 hrs)",
-              "description": "Ride through Aravalli hills to the Blue City. Visit Mehrangarh Fort, one of India's largest forts. Explore Jaswant Thada and Clock Tower market. Stay in heritage property."
+              "title": "Bikaner to Osian (230 kms / Easy, State Highway)"
             },
             {
               "day": "Day 5",
-              "title": "Jodhpur to Jaisalmer (285 kms / 6-7 hrs)",
-              "description": "Long ride through Thar Desert landscapes. Arrive at the Golden City. Check into hotel. Evening stroll in the fort area. Prepare for desert adventure."
+              "title": "Osian to Jaisalmer (240 kms / Easy, State Highway)"
             },
             {
               "day": "Day 6",
-              "title": "Jaisalmer - Fort & Desert Safari",
-              "description": "Morning visit to Jaisalmer Fort (living fort with residents). Explore Patwon Ki Haveli. Afternoon desert safari to Sam Sand Dunes. Camel ride and cultural program. Overnight luxury desert camp."
+              "title": "Jaisalmer to Tanot & Longewala - Sam Sand Dunes (280 kms / Moderate, State Highway)"
             },
             {
               "day": "Day 7",
-              "title": "Jaisalmer to Jodhpur (285 kms / 6-7 hrs)",
-              "description": "Sunrise in desert. Return ride to Jodhpur via different route. Visit Osian temples en route. Free evening in Jodhpur for shopping and leisure."
+              "title": "Sam Sand Dunes to Jodhpur (300 kms / Moderate, State Highway)"
             },
             {
               "day": "Day 8",
-              "title": "Jodhpur to Ranakpur (160 kms / 4-5 hrs)",
-              "description": "Ride through scenic Aravalli range. Visit magnificent Ranakpur Jain Temples with 1,444 intricately carved marble pillars. Stay in peaceful resort setting."
+              "title": "Jodhpur to Udaipur (260 kms / Moderate, State Highway)"
             },
             {
               "day": "Day 9",
-              "title": "Ranakpur to Udaipur (95 kms / 3 hrs)",
-              "description": "Short scenic ride to the City of Lakes. Visit Kumbhalgarh Fort en route. Arrive in Udaipur. Evening boat ride on Lake Pichola. Visit City Palace."
+              "title": "Udaipur to Pushkar (310 kms / Moderate, State Highway)"
             },
             {
               "day": "Day 10",
-              "title": "Udaipur Local - Leisure Day",
-              "description": "Explore Udaipur at leisure. Visit Jagdish Temple, Saheliyon ki Bari, local markets. Optional visit to vintage car museum. Farewell dinner with cultural performance."
+              "title": "Pushkar to Ranthambore (270 kms / Moderate, State Highway)"
             },
             {
               "day": "Day 11",
-              "title": "Udaipur to Jaipur & Departure (395 kms / 7-8 hrs)",
-              "description": "Final ride back to Jaipur through Chittorgarh (optional fort visit). Transfer to airport for departure. Tour concludes with royal memories."
+              "title": "Ranthambore to Jaipur (180 kms / Easy, State Highway)"
             }
           ],
           "whyUs": "Beyond Tarmac Adventures - born from passion for Motorcycles. We are one of the very few source companies in South India to have their presence across the country. Our dedicated team, seasoned riders themselves have successfully catered to 780+ clients, with which we bring a wealth of experience and passion to every ride. Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration.",
           "inclusions": [
-            "Assistance upon arrival at Jaipur airport",
-            "Accommodation in heritage hotels and palace properties (twin sharing)",
-            "All meals - Breakfast, Lunch, Dinner",
-            "Royal Enfield Classic 350 or similar motorcycles",
-            "Fuel for motorcycles throughout",
-            "Experienced tour guide with historical and cultural knowledge",
-            "Backup vehicle for luggage and emergencies",
-            "Mechanic support with tools",
-            "All monument entry fees as per itinerary",
-            "Desert safari and cultural performances",
-            "Boat ride in Udaipur"
+            "Accomodation on double occupancy",
+            "A Class / Experiential Hotels / Camps",
+            "Breakfast, Lunch, Dinner, Tea / Coffee",
+            "WAFA / WFR Certified, professional with first aid kit & oxygen cylinder",
+            "Tour lead on a motorcycle",
+            "Rental Motorcycle & fuel (if Opted for)",
+            "4x4 back up vehicle",
+            "Mechanic",
+            "Goodies"
           ],
           "exclusions": [
             "5% GST",
-            "Airfare to/from Jaipur",
-            "Travel insurance",
-            "Personal expenses, tips, laundry",
-            "Alcoholic and non-alcoholic beverages",
-            "Camera fees at monuments",
-            "Elephant ride at Amber Fort (optional)",
-            "Any activities not mentioned in inclusions",
-            "Any cost arising from unforeseen events"
+            "Airfare from your respective city",
+            "Monument Entry fee (if any)",
+            "Guide Charges",
+            "Any Drinks (Alcoholic, Soft / hard / Aerated)",
+            "Any kind of personal expenses or extra meals ordered",
+            "Tips, Travel insurance, Laundry",
+            "Anything and everything not mentioned in the 'Inclusions'."
           ]
         }
       ]
@@ -817,126 +768,118 @@
           "id": "nep-1",
           "name": "Nēpālamā svāgata cha",
           "caption": "Motorycle Ride Across the Heaven on Earth",
-          "duration": "11 Days and 10 Nights",
-          "period": "October 2024",
+          "duration": "12 Days and 11 Nights",
+          "period": "October 2026",
           "starting": "Lucknow",
-          "cost": "₹ 75,999",
+          "cost": "₹ 1,89,999",
           "image": "img/images/gallery/compressedImages/SMR_6718.jpg",
           "mainLogo": "/img/images/tours/main_logo/nepalama_svagata_cha.png",
-          "monoLogo": null,
+          "monoLogo": "/img/images/tours/mono_logo/nepalama_svagata_cha.png",
           "isUpcomingTour": false,
           "isSoldOut": false,
-          "brief": "Welcome to Nepal - Nēpālamā svāgata cha! Experience the magic of the Himalayan kingdom on this incredible motorcycle journey. Ride through diverse landscapes from the plains of Terai to the foothills of the world's highest mountains. Visit ancient temples and stupas, explore medieval cities with their rich heritage, and witness the warm hospitality of the Nepali people. From the bustling streets of Kathmandu to the serene lakeside of Pokhara, from wildlife safaris in Chitwan to panoramic mountain views, this tour offers a perfect blend of culture, nature, and adventure.",
+          "brief": "Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration.",
           "highlights": [
-            "11 day motorcycle adventure through Nepal",
-            "Visit Kathmandu, Pokhara, Chitwan, Lumbini",
-            "Witness stunning Himalayan panoramas including Mt. Everest views (weather permitting)",
-            "Explore UNESCO World Heritage Sites",
-            "Wildlife safari in Chitwan National Park",
-            "Paragliding and adventure activities in Pokhara (optional)",
-            "Experience traditional Nepali culture and cuisine",
-            "Comfortable stays with full backup support"
+            "12 day adventure",
+            "Destination focus on Kathmandu, Muktinath, Nagarkot, Bandipur, Chitwan",
+            "Off road opportunities and stunning stretches of tarmac",
+            "Muktinath - the lower mustang of Nepal",
+            "Fully aided tour with backup team",
+            "Travel through lesser explored parts of Nepal",
+            "Comfortable stays, a variety of food and local subject matter resources",
+            "Backup & medical support with trained WFR"
           ],
-          "about": "Nepal, the land nestled between India and Tibet, offers one of the most diverse and enriching motorcycle experiences in Asia. This tour takes you through the length of Nepal, showcasing its incredible variety - from the birthplace of Buddha in Lumbini to the medieval cities of Kathmandu Valley, from the wildlife-rich jungles of Chitwan to the adventure capital of Pokhara. You'll ride through winding mountain roads with spectacular views, visit ancient temples and monasteries, interact with friendly locals, and experience the unique blend of Hindu and Buddhist cultures. The journey includes perfect riding roads, comfortable accommodations, and carefully curated experiences that capture the essence of Nepal.",
+          "about": "Join us on an exhilarating motorcycle tour with Nepal Bike Trip, starting from the bustling city of Lucknow and journeying through majestic landscapes to serene Siddharth Nagar. Traverse lush greenery in Chitwan National Park, encountering exotic wildlife along the way. Explore picturesque Kulekhani's tranquil reservoir, then immerse in Kathmandu's rich culture and history. Venture to charming Bandipur and awe-inspiring Pokhara before reaching the spiritual haven of Muktinath amidst the Himalayas. Experience diverse landscapes, from lush forests to towering peaks, on this unforgettable adventure through Nepal.",
           "facts": [
-            "Period of visit - October to November (post-monsoon, clear skies)",
-            "Start place - Lucknow | End place - Lucknow via Nepal",
-            "Mode of Arrival & Departure - Flight/Train to Lucknow",
-            "Duration - 10N/11D",
-            "Nature of tour - International motorcycle expedition",
-            "Nature of tour activity - Moderate riding through hills and plains",
-            "Expected terrain - Good highways, some winding mountain roads",
-            "Expected weather - Pleasant 15-28 degrees celsius",
-            "Accommodation - Twin sharing in good hotels",
-            "Food - Nepali, Indian, Tibetan, Continental",
-            "Fitness - Moderate fitness level, no extreme altitude",
-            "Other attractions - Temples, stupas, local markets, mountain viewpoints",
-            "Special experiences - Wildlife safari, traditional Thakali meal, Nepali dance",
-            "To note - Valid passport required (no visa for Indians)",
-            "Insurance - International travel insurance recommended"
+            "Period of visit - October",
+            "Start & End place - Lucknow",
+            "Mode of Arrival & Departure - Flight in/out from respective airports",
+            "Duration - 11N / 12D",
+            "Nature of tour - Motorcycle ride",
+            "Nature of tour activity - Motorcycling through rugged & challenging terrain",
+            "Expected terrain - Under construction roads, Rocks, Mud slopes, Broken tarmac, Motorways / Expressway",
+            "Expected weather - 5-20 degrees Celsius, night & early mornings are colder",
+            "Accomodation - Double occupancy, Comfortable hotels & camps at all stops",
+            "Food - Nepali, Indian, Indo-chinese, Indo - Continental",
+            "Fitness - Basic level of fitness and ability to cope with extended physical fatigue",
+            "Other attractions - Thamel night life, Pashupatinath temple, Chitwan National Park, Bandipur, hanging bridges, shopping, local food, lakes, views of the enormous Himalayas etc",
+            "Sighting of various indigenous mammals & birds",
+            "To note - Book flights early in order to ensure low costs. Pack according to the gear list to ensure comfort",
+            "Check with your physician about adventure travel",
+            "Insurance - Adventure centric insurance advised"
           ],
           "itinerary": [
             {
               "day": "Day 1",
-              "title": "Arrival at Lucknow - Transfer to Gorakhpur (275 kms / 6 hrs)",
-              "description": "Arrive at Lucknow. Meet the team and transfer to Gorakhpur near Indo-Nepal border. Check into hotel. Bike allocation and briefing. Welcome dinner."
+              "title": "Lucknow to Siddharthanagar (290 kms)"
             },
             {
               "day": "Day 2",
-              "title": "Gorakhpur to Lumbini, Nepal (110 kms / 3-4 hrs)",
-              "description": "Cross into Nepal at Sunauli border. Ride to Lumbini, the birthplace of Lord Buddha. Visit Maya Devi Temple, Ashoka Pillar, and various international monasteries. Evening walk in peaceful Buddha gardens."
+              "title": "Siddharthanagar to Chitwan (150 kms)"
             },
             {
               "day": "Day 3",
-              "title": "Lumbini to Chitwan (180 kms / 5-6 hrs)",
-              "description": "Ride through Terai plains to Chitwan National Park. Check into jungle resort. Evening cultural program with traditional Tharu dance."
+              "title": "Chitwan to Daman to Kulhekani (180 kms)"
             },
             {
               "day": "Day 4",
-              "title": "Chitwan - Jungle Safari Day",
-              "description": "Full day in Chitwan National Park. Jungle safari on elephant back or jeep to spot one-horned rhinos, tigers, deer, and exotic birds. Canoe ride on Rapti river. Nature walk with naturalist."
+              "title": "Kulhekani to Nagarkot to Kathmandu (90 kms)"
             },
             {
               "day": "Day 5",
-              "title": "Chitwan to Pokhara (150 kms / 5-6 hrs)",
-              "description": "Scenic ride along Prithvi Highway to Pokhara. Views of Trishuli and Seti rivers. Arrive at lakeside city. Evening boat ride on Phewa Lake. Optional street food tour."
+              "title": "Explore Local Attractions in Kathmandu"
             },
             {
               "day": "Day 6",
-              "title": "Pokhara - Adventure & Sightseeing",
-              "description": "Early morning drive to Sarangkot for sunrise over Annapurna range. Visit World Peace Pagoda, Davis Falls, Mahendra Cave. Optional activities: paragliding, zip-lining, mountain biking. Free evening by lakeside."
+              "title": "Kathmandu to Bandipur (160 kms)"
             },
             {
               "day": "Day 7",
-              "title": "Pokhara to Kathmandu (200 kms / 6-7 hrs)",
-              "description": "Ride through winding roads along Trishuli river to Kathmandu valley. Check into hotel. Evening at Thamel - Kathmandu's tourist hub. Shopping and dining."
+              "title": "Bandipur to Pokhara (80 kms)"
             },
             {
               "day": "Day 8",
-              "title": "Kathmandu - Heritage Sites Tour",
-              "description": "Visit UNESCO World Heritage Sites: Pashupatinath Temple, Boudhanath Stupa, Swayambhunath (Monkey Temple). Explore Durbar Square with its ancient palaces and temples. Cultural dinner with Nepali folk dance."
+              "title": "Pokhara to Kagbeni / Muktinath (180 kms)"
             },
             {
               "day": "Day 9",
-              "title": "Kathmandu to Nagarkot (32 kms / 2 hrs) - Mountain Views",
-              "description": "Short ride to Nagarkot hill station. Visit Bhaktapur medieval city en route. Afternoon at leisure. Sunset and sunrise views of Himalayas including Mt. Everest (on clear days)."
+              "title": "Kagbeni / Muktinath to Pokhara (180 kms)"
             },
             {
               "day": "Day 10",
-              "title": "Nagarkot to Gorakhpur via Border (250 kms / 7-8 hrs)",
-              "description": "Return journey to India. Cross border at Sunauli. Ride to Gorakhpur. Last night in India. Farewell dinner with memories of Nepal."
+              "title": "Pokhara to Siddharthanagar (190 kms)"
             },
             {
               "day": "Day 11",
-              "title": "Gorakhpur to Lucknow & Departure (275 kms / 6 hrs)",
-              "description": "Final day transfer to Lucknow. Tour concludes. Transfer to airport/railway station for onward journey."
+              "title": "Siddharthanagar to Lucknow (320 kms)"
+            },
+            {
+              "day": "Day 12",
+              "title": "Departure from Lucknow"
             }
           ],
           "whyUs": "Beyond Tarmac Adventures - born from passion for Motorcycles. We are one of the very few source companies in South India to have their presence across the country. Our dedicated team, seasoned riders themselves have successfully catered to 780+ clients, with which we bring a wealth of experience and passion to every ride. Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration.",
           "inclusions": [
-            "All transfers and assistance",
-            "Accommodation on twin sharing basis in good hotels",
-            "All meals - Breakfast, Lunch, Dinner",
-            "Royal Enfield motorcycles (Himalayan/Classic 350)",
-            "Fuel for motorcycles",
-            "Experienced bilingual tour guide",
-            "Backup vehicle for luggage",
-            "Mechanic support",
-            "Chitwan jungle safari activities",
-            "Boat rides in Pokhara and Chitwan",
-            "All monument and national park entry fees",
-            "Nepal permits and documentation"
+            "Accomodation on double occupancy",
+            "Accomodation on twin sharing, Ask for single room prices",
+            "A Class / Experiential Hotels / Camps",
+            "Breakfast, Lunch, Dinner, Tea / Coffee",
+            "WAFA / WFR Certified, professional with first aid kit & oxygen cylinder",
+            "Tour lead on a motorcycle",
+            "Rental Motorcycle & fuel (if Opted for)",
+            "4x4 back up vehicle",
+            "Mechanic",
+            "Bansar / Carnet charges",
+            "Airport transfers",
+            "Goodies"
           ],
           "exclusions": [
             "5% GST",
-            "Travel to/from Lucknow",
-            "Travel insurance (recommended)",
-            "Personal expenses, tips, laundry",
-            "Optional activities in Pokhara (paragliding, etc.)",
-            "Alcoholic and non-alcoholic beverages",
-            "Camera fees at some monuments",
-            "Any emergency medical expenses",
-            "Anything not mentioned in inclusions"
+            "Airfare from your respective city",
+            "Monument Entry fee (if any)",
+            "Any Drinks (Alcoholic, Soft / hard / Aerated)",
+            "Any kind of personal expenses or extra meals ordered",
+            "Tips, Travel insurance, Laundry",
+            "Anything and everything not mentioned in the 'Inclusions'."
           ]
         }
       ]
@@ -950,125 +893,110 @@
           "name": "North Eastern Nirvana",
           "caption": "Touch the Edge of India",
           "duration": "11 Days and 10 Nights",
-          "period": "November 2025",
+          "period": "November 2026",
           "starting": "Guwahati",
           "cost": "₹ 1,24,999",
           "image": "img/images/gallery/compressedImages/SMR_6718.jpg",
           "mainLogo": "/img/images/tours/main_logo/north_eastern_nirvana.png",
-          "monoLogo": null,
+          "monoLogo": "/img/images/tours/mono_logo/north_eastern_nirvana.png",
           "isUpcomingTour": false,
           "isSoldOut": false,
-          "brief": "Discover the unexplored paradise of Northeast India on this extraordinary motorcycle expedition. Journey through the Seven Sister States, each offering unique cultures, cuisines, and landscapes. From the living root bridges of Meghalaya to the monasteries of Arunachal Pradesh, from the pristine valleys of Nagaland to the wildlife sanctuaries of Assam, this tour showcases India's incredible diversity. Experience the warmth of tribal hospitality, witness breathtaking natural beauty, and ride through some of the most scenic roads in the country. This is India's best-kept secret waiting to be explored.",
+          "brief": "Embark on an unforgettable journey to Bumla Pass, a high-altitude marvel nestled at over 15,000 feet above sea level, where India meets China. As you ride along the rugged, winding paths leading to this historic border, you'll traverse landscapes that shift dramatically from dense pine forests to barren, rocky terrains, each turn offering a breathtaking new vista. This route isn't just about the ride-it's about experiencing the echoes of history and valor.",
           "highlights": [
-            "11 day comprehensive Northeast India exploration",
-            "Visit multiple states: Assam, Meghalaya, Nagaland, Arunachal Pradesh",
-            "Experience diverse tribal cultures and traditions",
-            "Visit living root bridges and cleanest village (Mawlynnong)",
-            "Explore Tawang Monastery, India's largest Buddhist monastery",
-            "Ride through stunning Himalayan landscapes and lush valleys",
-            "Wildlife spotting opportunities in Kaziranga",
-            "Taste authentic Northeast cuisine and local delicacies"
+            "Embark on a thrilling 10-night, 11-day motorcycle odyssey",
+            "Discover the spiritual heart of Arunachal Pradesh with a visit to Tawang Monastery, the largest monastery in India",
+            "Dive into the wild heart of Assam with an exhilarating safari in Kaziranga National Park, home to the iconic one-horned rhino",
+            "Uncover the charm of Shillong, the capital of Meghalaya, renowned for its rolling hills, vibrant culture, and cool, misty climate",
+            "Journey to the rain-drenched wonderland of Cherrapunji and trek through lush jungles to the iconic double-decker root bridge",
+            "Sail across the glass-like waters of Dawki, one of the world's clearest lakes, where the boat seems to float on air",
+            "Feel the mist of Meghalaya's spectacular waterfalls - NohKaLikai Falls, the tallest plunge waterfall in India, and Jung Falls, cascading through lush canyons"
           ],
-          "about": "North Eastern Nirvana is our tribute to one of India's most beautiful yet underrated regions. This motorcycle expedition takes you through a land where nature remains unspoiled, cultures are vibrant, and hospitality is genuine. You'll ride through winding mountain roads with clouds touching the earth, cross bailey bridges over roaring rivers, visit remote villages where ancient traditions thrive, and experience the incredible biodiversity of the region. From the tea gardens of Assam to the war memorials of Arunachal Pradesh, from the wettest place on Earth (Cherrapunji) to the high-altitude lakes, every day brings new wonders. This tour is perfect for those seeking to explore India beyond the usual tourist circuits.",
+          "about": "Embark on an unforgettable journey to Bumla Pass, a high-altitude marvel nestled at over 15,000 feet above sea level, where India meets China. As you ride along the rugged, winding paths leading to this historic border, you'll traverse landscapes that shift dramatically from dense pine forests to barren, rocky terrains, each turn offering a breathtaking new vista. This route isn't just about the ride-it's about experiencing the echoes of history and valor.",
           "facts": [
-            "Period of visit - October to March (best weather, clear skies)",
-            "Start & End place - Guwahati, Assam",
-            "Mode of Arrival & Departure - Flight to/from Guwahati airport",
-            "Duration - 10N/11D",
-            "Nature of tour - Cultural and scenic motorcycle expedition",
-            "Nature of tour activity - Moderate to challenging riding through hills",
-            "Expected terrain - Mountain roads, forest routes, river crossings, bailey bridges",
-            "Expected weather - Pleasant 10-22 degrees celsius",
-            "Accommodation - Twin sharing in best available hotels and homestays",
-            "Food - Assamese, Naga, Arunachali, Meghalayan, Indian, Chinese",
-            "Fitness - Good fitness level required for long riding days",
-            "Other attractions - Tribal villages, local markets, handicrafts, festivals",
-            "Special experiences - Homestays, traditional meals, bonfire evenings",
-            "To note - Special permits required for some areas (arranged by us)",
-            "Insurance - Comprehensive travel insurance recommended"
+            "Period of visit - November",
+            "Start & End place - Guwahati",
+            "Mode of Arrival & Departure - Flight in/out from respective airports",
+            "Duration - 10N / 11D",
+            "Nature of tour - Motorcycle ride",
+            "Nature of tour activity - Motorcycling through rugged & challenging terrain",
+            "Expected terrain - Under construction roads, Rocks, Mud slopes, Broken tarmac, Motorways / Expressway",
+            "Expected weather - 5 to 25 degrees Celsius, night & early mornings are colder",
+            "Accomodation - Double occupancy, Comfortable hotels & camps at all stops",
+            "Food - Assamese, Indian, Indo-chinese, Indo - Continental",
+            "Fitness - Basic level of fitness and ability to cope with extended physical fatigue",
+            "Other attractions - Madhuri lake, 7 sister waterfalls, Garden of caves, Mawsynram (Wettest village in the world)",
+            "To note - Book flights early in order to ensure low costs. Pack according to the gear list to ensure comfort",
+            "Check with your physician about adventure travel",
+            "Insurance - Adventure centric insurance advised"
           ],
           "itinerary": [
             {
               "day": "Day 1",
-              "title": "Arrival at Guwahati - City Tour",
-              "description": "Arrive at Guwahati airport. Transfer to hotel. Evening visit to Kamakhya Temple. Cruise on Brahmaputra river (if time permits). Bike allocation and tour briefing. Welcome dinner with Assamese cuisine."
+              "title": "Guwahati - Meet & Greet, Sightseeing"
             },
             {
               "day": "Day 2",
-              "title": "Guwahati to Kaziranga (220 kms / 5-6 hrs)",
-              "description": "Begin motorcycle journey. Ride to Kaziranga National Park, home to one-horned rhinos. Check into jungle resort. Evening jeep safari in the national park."
+              "title": "Guwahati to Dirang (300 kms)"
             },
             {
               "day": "Day 3",
-              "title": "Kaziranga to Ziro, Arunachal Pradesh (300 kms / 8-9 hrs)",
-              "description": "Long riding day through beautiful landscapes. Cross into Arunachal Pradesh. Reach Ziro Valley, home of Apatani tribe. UNESCO World Heritage Site. Evening village walk."
+              "title": "Dirang to Tawang (134 kms)"
             },
             {
               "day": "Day 4",
-              "title": "Ziro to Tawang (350 kms / 10-11 hrs)",
-              "description": "Epic riding day! Cross Sela Pass (4,170m) with stunning views. Visit Sela Lake. Reach Tawang, the birthplace of 6th Dalai Lama. Check into hotel with mountain views."
+              "title": "Tawang - Bumla - Tawang (100 kms)"
             },
             {
               "day": "Day 5",
-              "title": "Tawang - Local Sightseeing",
-              "description": "Visit Tawang Monastery (largest in India), war memorial, and local markets. Optional excursion to Madhuri Lake (Shonga-tser Lake). Rest and acclimatization day."
+              "title": "Tawang to Bomdila (177 kms)"
             },
             {
               "day": "Day 6",
-              "title": "Tawang to Dirang (140 kms / 4-5 hrs)",
-              "description": "Scenic ride down to Dirang Valley. Visit hot water springs and Dirang Dzong. Explore Monpa villages. Stay in comfortable hotel."
+              "title": "Bomdila to Kaziranga (245 kms)"
             },
             {
               "day": "Day 7",
-              "title": "Dirang to Shillong via Guwahati (400 kms / 10-11 hrs)",
-              "description": "Long transfer day. Cross back into Assam, then to Meghalaya. Reach Shillong, the Scotland of the East. Evening at Police Bazaar. Rock music capital of India."
+              "title": "Kaziranga - Local Sightseeing"
             },
             {
               "day": "Day 8",
-              "title": "Shillong to Cherrapunji (60 kms / 2-3 hrs) - Local Sightseeing",
-              "description": "Ride to Cherrapunji, wettest place on Earth. Visit Nohkalikai Falls, seven sister falls, and living root bridges. Trek to double-decker root bridge (moderate difficulty). Return to Shillong."
+              "title": "Kaziranga to Shillong (182 kms)"
             },
             {
               "day": "Day 9",
-              "title": "Shillong to Mawlynnong & Dawki (90 kms / 3 hrs)",
-              "description": "Visit Asia's cleanest village - Mawlynnong. See the living root bridge. Ride to Dawki with crystal clear Umngot river. Boating on transparent waters. Return to Shillong."
+              "title": "Shillong to Cherrapunji (85 kms)"
             },
             {
               "day": "Day 10",
-              "title": "Shillong to Kohima, Nagaland (240 kms / 7-8 hrs)",
-              "description": "Cross into Nagaland. Ride to Kohima, the state capital. Visit World War II Cemetery and Kohima Museum. Experience Naga culture. Traditional Naga dinner."
+              "title": "Cherrapunji - Local Sightseeing"
             },
             {
               "day": "Day 11",
-              "title": "Kohima to Guwahati & Departure (320 kms / 8-9 hrs)",
-              "description": "Final day ride back to Guwahati. Transfer to airport for departure. Tour concludes with memories of incredible Northeast India."
+              "title": "Cherrapunji - Dawki - Guwahati (285 kms)"
             }
           ],
           "whyUs": "Beyond Tarmac Adventures - born from passion for Motorcycles. We are one of the very few source companies in South India to have their presence across the country. Our dedicated team, seasoned riders themselves have successfully catered to 780+ clients, with which we bring a wealth of experience and passion to every ride. Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration.",
           "inclusions": [
-            "Assistance upon arrival at Guwahati airport",
-            "Accommodation on twin sharing (hotels and homestays)",
-            "All meals - Breakfast, Lunch, Dinner, Tea/Coffee",
-            "Royal Enfield Himalayan or similar motorcycles",
-            "Fuel for motorcycles throughout the tour",
-            "Experienced tour guide familiar with Northeast",
-            "Backup vehicle for luggage",
-            "Mechanic support with tools and spares",
-            "All inner line permits for restricted areas",
-            "Entry fees to national parks and monuments",
-            "Kaziranga jeep safari",
-            "Local guides in tribal areas"
+            "Accomodation on double occupancy",
+            "A Class / Experiential Hotels / Camps",
+            "Breakfast, Lunch, Dinner, Tea / Coffee",
+            "WAFA / WFR Certified, professional with first aid kit & oxygen cylinder",
+            "Tour lead on a motorcycle",
+            "Rental Motorcycle & fuel (if Opted for)",
+            "4x4 back up vehicle",
+            "Mechanic",
+            "Bansar / Carnet charges",
+            "Airport transfers",
+            "Goodies"
           ],
           "exclusions": [
             "5% GST",
-            "Airfare to/from Guwahati",
-            "Travel and medical insurance (recommended)",
-            "Personal expenses, laundry, tips",
-            "Alcoholic and non-alcoholic beverages",
-            "Optional activities (boating in Dawki, etc.)",
-            "Camera fees at monuments/parks",
-            "Any emergency evacuation costs",
-            "Anything and everything not mentioned in inclusions"
+            "Airfare from your respective city",
+            "Monument Entry fee (if any)",
+            "Any Drinks (Alcoholic, Soft / hard / Aerated)",
+            "Any kind of personal expenses or extra meals ordered",
+            "Tips, Travel insurance, Laundry",
+            "Anything and everything not mentioned in the 'Inclusions'."
           ]
         }
       ]
@@ -1081,126 +1009,104 @@
           "id": "si-1",
           "name": "Southern Spice",
           "caption": "Riding The South: Beaches - Twisties - Food",
-          "duration": "11 Days and 10 Nights",
-          "period": "13 - 21 DEC 2025",
+          "duration": "8 Days and 9 Nights",
+          "period": "December 2026",
           "starting": "Bengaluru",
-          "cost": "₹ 1,24,999",
+          "cost": "₹ 64,999",
           "image": "img/images/gallery/compressedImages/SMR_6718.jpg",
           "mainLogo": "/img/images/tours/main_logo/southern_spice.png",
-          "monoLogo": null,
+          "monoLogo": "/img/images/tours/mono_logo/southern_spice.png",
           "isUpcomingTour": false,
           "isSoldOut": false,
-          "brief": "South India’s roads weave through forests, ancient temples, and timeless landscapes filled with rhythm and hidden magic. From winding mountain ghats to endless coastal highways, each ride offers adventure and breathtaking beauty. The varied terrain invites riders to explore lush plantations, vibrant villages, and serene backwaters, making every mile a unique experience. Riding here connects you deeply with the vibrant culture and natural wonders that make South India truly unforgettable.",
+          "brief": "South India’s roads weave through forests, ancient temples, and timeless landscapes filled with rhythm and hidden magic. From winding mountain ghats to endless coastal highways, each ride offers adventure and breathtaking beauty. The varied terrain invites riders to explore lush plantations, vibrant villages, and serene backwaters, making every mile a unique experience. Riding here connects you deeply with the vibrant culture and natural wonders that make South India truly unforgettable",
           "highlights": [
-            "11 day comprehensive Northeast India exploration",
-            "Visit multiple states: Assam, Meghalaya, Nagaland, Arunachal Pradesh",
-            "Experience diverse tribal cultures and traditions",
-            "Visit living root bridges and cleanest village (Mawlynnong)",
-            "Explore Tawang Monastery, India's largest Buddhist monastery",
-            "Ride through stunning Himalayan landscapes and lush valleys",
-            "Wildlife spotting opportunities in Kaziranga",
-            "Taste authentic Northeast cuisine and local delicacies"
+            "Ride through Wayanad's scenic ghats and misty hills, enjoying stays in relaxing resorts and exploring Edakkal Caves and tea estates.",
+            "Relax in Kumily's spice country with cozy nature resorts, spice plantations, and wildlife experiences in Periyar Sanctuary.",
+            "Explore heritage sites in Fort Kochi, staying in charming boutique hotels, visiting historic churches, and strolling through vibrant markets.",
+            "Cruise Kumarakom's famous backwaters, stay in traditional houseboats or riverside cottages, and take in sunset views on tranquil canals.",
+            "Unwind on Varkala's cliffside beaches, discover beach cafes, shop local markets, and visit the Janardanaswamy Temple.",
+            "Enjoy the peaceful atmosphere and mountain views in Kodaikanal, with waterfall visits and fresh air from cozy hillside resorts.",
+            "Experience Masinagudi's rich wildlife sanctuaries and serene forests, stay in cozy jungle lodges, and explore the rugged trails and scenic roads weaving through the Nilgiri Hills on your motorcycle.",
+            "Benefit from curated stays, group bonfires, and expert guides—making each day social, safe, and memorable."
           ],
-          "about": "North Eastern Nirvana is our tribute to one of India's most beautiful yet underrated regions. This motorcycle expedition takes you through a land where nature remains unspoiled, cultures are vibrant, and hospitality is genuine. You'll ride through winding mountain roads with clouds touching the earth, cross bailey bridges over roaring rivers, visit remote villages where ancient traditions thrive, and experience the incredible biodiversity of the region. From the tea gardens of Assam to the war memorials of Arunachal Pradesh, from the wettest place on Earth (Cherrapunji) to the high-altitude lakes, every day brings new wonders. This tour is perfect for those seeking to explore India beyond the usual tourist circuits.",
+          "about": "Feel the road beneath the wheels of your trusted steed as you journey through the mystical landscapes of South India. This option is perfect for riders who share a deep connection with their motorcycle and wish to create unforgettable memories.",
           "facts": [
-            "Period of visit - October to March (best weather, clear skies)",
-            "Start & End place - Guwahati, Assam",
-            "Mode of Arrival & Departure - Flight to/from Guwahati airport",
-            "Duration - 10N/11D",
-            "Nature of tour - Cultural and scenic motorcycle expedition",
-            "Nature of tour activity - Moderate to challenging riding through hills",
-            "Expected terrain - Mountain roads, forest routes, river crossings, bailey bridges",
-            "Expected weather - Pleasant 10-22 degrees celsius",
-            "Accommodation - Twin sharing in best available hotels and homestays",
-            "Food - Assamese, Naga, Arunachali, Meghalayan, Indian, Chinese",
-            "Fitness - Good fitness level required for long riding days",
-            "Other attractions - Tribal villages, local markets, handicrafts, festivals",
-            "Special experiences - Homestays, traditional meals, bonfire evenings",
-            "To note - Special permits required for some areas (arranged by us)",
-            "Insurance - Comprehensive travel insurance recommended"
+            "Period of visit - December",
+            "Start & End place - Bangalore, India",
+            "Mode of Arrival & Departure - Flight in/out from respective airports if coming from other cities; road arrival from Bangalore",
+            "Duration - 8N / 9D",
+            "Nature of tour - Motorcycle ride",
+            "Nature of tour activity - Riding through diverse terrains—hill stations, coastal highways, tea estates, and scenic villages",
+            "Expected terrain - Paved highways, winding ghat roads, occasional rural tracks, and stretches through forest areas",
+            "Expected weather - Ranges from cool mountain air in the Western Ghats to humid coastal breezes; weather changes with each state",
+            "Food - South Indian specialties plus a mix of local cuisine and familiar favorites",
+            "Fitness - Basic fitness level required; ability to ride comfortably for extended periods on consecutive days",
+            "Notable attractions - Wayanad's tea estates, Fort Kochi's historic sites, Kumarakom's backwaters, Varkala's cliff beaches, Kumily's spice plantations, Kodaikanal and Masinagudi forest vibes",
+            "To note - Book flights early if traveling from outside Bangalore for the best fares and connections",
+            "Essentials - Adventure-centric travel insurance highly recommended for all participants Consult your physician about adventure travel and motorcycle touring if needed"
           ],
           "itinerary": [
             {
               "day": "Day 1",
-              "title": "Arrival at Guwahati - City Tour",
-              "description": "Arrive at Guwahati airport. Transfer to hotel. Evening visit to Kamakhya Temple. Cruise on Brahmaputra river (if time permits). Bike allocation and tour briefing. Welcome dinner with Assamese cuisine."
+              "title": "Bangalore to Wayanad (300 kms)"
             },
             {
               "day": "Day 2",
-              "title": "Guwahati to Kaziranga (220 kms / 5-6 hrs)",
-              "description": "Begin motorcycle journey. Ride to Kaziranga National Park, home to one-horned rhinos. Check into jungle resort. Evening jeep safari in the national park."
+              "title": "Wayanad to Fort Kochi (269 kms)"
             },
             {
               "day": "Day 3",
-              "title": "Kaziranga to Ziro, Arunachal Pradesh (300 kms / 8-9 hrs)",
-              "description": "Long riding day through beautiful landscapes. Cross into Arunachal Pradesh. Reach Ziro Valley, home of Apatani tribe. UNESCO World Heritage Site. Evening village walk."
+              "title": "Fort Kochi to Kumarakom (60 kms)"
             },
             {
               "day": "Day 4",
-              "title": "Ziro to Tawang (350 kms / 10-11 hrs)",
-              "description": "Epic riding day! Cross Sela Pass (4,170m) with stunning views. Visit Sela Lake. Reach Tawang, the birthplace of 6th Dalai Lama. Check into hotel with mountain views."
+              "title": "Kumarakom to Varkala (125 kms)"
             },
             {
               "day": "Day 5",
-              "title": "Tawang - Local Sightseeing",
-              "description": "Visit Tawang Monastery (largest in India), war memorial, and local markets. Optional excursion to Madhuri Lake (Shonga-tser Lake). Rest and acclimatization day."
+              "title": "Varkala - REST DAY"
             },
             {
               "day": "Day 6",
-              "title": "Tawang to Dirang (140 kms / 4-5 hrs)",
-              "description": "Scenic ride down to Dirang Valley. Visit hot water springs and Dirang Dzong. Explore Monpa villages. Stay in comfortable hotel."
+              "title": "Varkala to Kumily (180 kms)"
             },
             {
               "day": "Day 7",
-              "title": "Dirang to Shillong via Guwahati (400 kms / 10-11 hrs)",
-              "description": "Long transfer day. Cross back into Assam, then to Meghalaya. Reach Shillong, the Scotland of the East. Evening at Police Bazaar. Rock music capital of India."
+              "title": "Kumily to Kodaikanal (150 kms)"
             },
             {
               "day": "Day 8",
-              "title": "Shillong to Cherrapunji (60 kms / 2-3 hrs) - Local Sightseeing",
-              "description": "Ride to Cherrapunji, wettest place on Earth. Visit Nohkalikai Falls, seven sister falls, and living root bridges. Trek to double-decker root bridge (moderate difficulty). Return to Shillong."
+              "title": "Kodaikanal to Masinagudi (290 kms)"
             },
             {
               "day": "Day 9",
-              "title": "Shillong to Mawlynnong & Dawki (90 kms / 3 hrs)",
-              "description": "Visit Asia's cleanest village - Mawlynnong. See the living root bridge. Ride to Dawki with crystal clear Umngot river. Boating on transparent waters. Return to Shillong."
-            },
-            {
-              "day": "Day 10",
-              "title": "Shillong to Kohima, Nagaland (240 kms / 7-8 hrs)",
-              "description": "Cross into Nagaland. Ride to Kohima, the state capital. Visit World War II Cemetery and Kohima Museum. Experience Naga culture. Traditional Naga dinner."
-            },
-            {
-              "day": "Day 11",
-              "title": "Kohima to Guwahati & Departure (320 kms / 8-9 hrs)",
-              "description": "Final day ride back to Guwahati. Transfer to airport for departure. Tour concludes with memories of incredible Northeast India."
+              "title": "Masinagudi to Bangalore (210 kms)"
             }
           ],
           "whyUs": "Beyond Tarmac Adventures - born from passion for Motorcycles. We are one of the very few source companies in South India to have their presence across the country. Our dedicated team, seasoned riders themselves have successfully catered to 780+ clients, with which we bring a wealth of experience and passion to every ride. Our reviews attest to the unforgettable adventures we deliver, blending scenic routes with camaraderie. From winding mountain roads to hidden gems, we craft experiences that resonate with the spirit of exploration.",
           "inclusions": [
-            "Assistance upon arrival at Guwahati airport",
-            "Accommodation on twin sharing (hotels and homestays)",
-            "All meals - Breakfast, Lunch, Dinner, Tea/Coffee",
-            "Royal Enfield Himalayan or similar motorcycles",
-            "Fuel for motorcycles throughout the tour",
-            "Experienced tour guide familiar with Northeast",
-            "Backup vehicle for luggage",
-            "Mechanic support with tools and spares",
-            "All inner line permits for restricted areas",
-            "Entry fees to national parks and monuments",
-            "Kaziranga jeep safari",
-            "Local guides in tribal areas"
+            "Accommodation - Double occupancy (single occupancy at extra cost)",
+            "A Class / Experiential Hotels / Camps",
+            "Rental Motorcycle & fuel (if Opted for)",
+            "Breakfast & Dinner",
+            "WAFA / WFR Certified, professional with first aid kit",
+            "Tour lead on a motorcycle",
+            "4x4 back up vehicle",
+            "Mechanic / Marshal",
+            "Goodies"
           ],
           "exclusions": [
             "5% GST",
-            "Airfare to/from Guwahati",
-            "Travel and medical insurance (recommended)",
-            "Personal expenses, laundry, tips",
-            "Alcoholic and non-alcoholic beverages",
-            "Optional activities (boating in Dawki, etc.)",
-            "Camera fees at monuments/parks",
-            "Any emergency evacuation costs",
-            "Anything and everything not mentioned in inclusions"
+            "Lunch",
+            "Airfare from your respective city",
+            "Monument Entry fee (if any)",
+            "Guide charges",
+            "Any Drinks (Alcoholic, Soft / hard / Aerated)",
+            "Any kind of personal expenses or extra meals ordered",
+            "Expenses On The Road - Chai/Sutta Stops",
+            "Fuel For Motorcycles",
+            "Tips, Travel insurance, Laundry",
+            "Anything and everything not mentioned in the 'Inclusions'."
           ]
         }
       ]

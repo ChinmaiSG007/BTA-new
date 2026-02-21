@@ -89,7 +89,7 @@ const Gallery = () => {
     return (
         <div className="min-h-screen w-screen bg-neutral-black text-white">
             {/* Hero Intro Section */}
-            <section className="relative h-screen flex items-center justify-center overflow-hidden">
+            <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24">
                 {/* Background with gradient overlay */}
                 <div className="absolute inset-0 bg-neutral-black">
                     <div className="absolute inset-0 bg-gradient-to-b from-neutral-black/60 via-neutral-black/80 to-neutral-black z-10" />

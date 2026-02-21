@@ -18,7 +18,7 @@ const Home = () => {
             <Hero />
             <About />
             <Features />
-            <div style={{ height: '800px', position: 'relative', marginBottom: '16rem' }}>
+            <div className="relative h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px]">
                 <h3 className='section-heading'>
                     <DecryptedText
                         text="Gallery"
@@ -33,11 +33,11 @@ const Home = () => {
                         speed={80}
                     />
                 </h3>
-                <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} />
-                <Link to={'/gallery'} className='flex flex-col justify-center items-center gap-4'>
-                    <Button title="See more" containerClass="text-black mt-10 cursor-pointer" />
-                </Link>
+                <CircularGallery bend={2} textColor="#ffffff" borderRadius={0.05} />
             </div>
+            <Link to={'/gallery'} className='flex flex-col justify-center items-center gap-4 mt-6 mb-20 sm:mb-28 md:mb-36 lg:mb-44'>
+                <Button title="See more" containerClass="text-black cursor-pointer" />
+            </Link>
             <Blogs />
             <Testimonials />
             <JoinJourney />
