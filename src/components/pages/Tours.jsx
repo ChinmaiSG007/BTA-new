@@ -5,7 +5,7 @@ import { TiLocationArrow } from "react-icons/ti";
 import { FaClock, FaCalendarAlt, FaMoneyBillWave, FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import toursData from "../../tours.json";
 import DecryptedText from "../styling/DecryptedText";
-import Balatro from "../styling/Balatro";
+import ToursHeroCarousel from "../styling/ToursHeroCarousel";
 
 const Tours = () => {
     const [activeRegion, setActiveRegion] = useState("all");
@@ -30,39 +30,8 @@ const Tours = () => {
 
     return (
         <div className="min-h-screen w-screen bg-neutral-black text-white">
-            {/* Hero Intro Section */}
-            <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24">
-                {/* Background with gradient overlay like home page */}
-                <div className="absolute inset-0 bg-neutral-black">
-                    <div className="absolute inset-0 bg-gradient-to-b from-neutral-black/60 via-neutral-black/80 to-neutral-black z-10" />
-                </div>
-
-                <Balatro
-                    isRotate={false}
-                    mouseInteraction={true}
-                    pixelFilter={1000}
-                    color1="#763919"
-                    color2="#102103"
-                    color3="#010b18"
-                />
-
-                <div className="tours-intro relative z-20 text-center px-6">
-                    <h1 className="special-font hero-heading text-blue-75 mb-6">
-                        EPIC TOURS
-                    </h1>
-                    <p className="font-robert-regular text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-neutral-gray leading-relaxed mb-8">
-                        Embark on unforgettable motorcycle journeys through the world's most stunning landscapes
-                    </p>
-                </div>
-                <div className="absolute bottom-20 w-full px-6 z-20">
-                    <div className="flex gap-4 justify-center items-center">
-                        <TiLocationArrow className="text-brown-100 text-3xl sm:text-4xl animate-bounce" />
-                    </div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 z-20">
-                        <p className="font-general text-xs sm:text-sm text-neutral-gray uppercase tracking-widest animate-pulse">Scroll to explore</p>
-                    </div>
-                </div>
-            </section>
+            {/* Hero Carousel Section */}
+            <ToursHeroCarousel />
 
             {/* Tours Grid Section */}
             <section className="relative tours-grid px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-32 mt-20 z-30">
