@@ -653,9 +653,9 @@ const TourDetail = () => {
                         </div>
                         <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm border border-[#496156] rounded-2xl p-4 md:p-8 overflow-hidden">
                             <img
-                                src="/img/images/tours/map_images/snow_white_spiti_map.png"
+                                src={tour.hudMap}
                                 alt="Tour Route Map"
-                                className="w-full h-auto rounded-xl"
+                                className="w-full h-[60vh] rounded-xl object-contain"
                             />
                         </div>
                     </section>
