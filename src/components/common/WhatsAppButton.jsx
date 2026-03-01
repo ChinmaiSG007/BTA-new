@@ -34,7 +34,7 @@ const WhatsAppButton = ({
 
     const handleClick = () => {
         const encodedMessage = encodeURIComponent(message);
-        window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
+        window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`, "_blank");
     };
 
     return (
