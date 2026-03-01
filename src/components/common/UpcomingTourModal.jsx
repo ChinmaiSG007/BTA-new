@@ -62,7 +62,7 @@ const UpcomingTourModal = () => {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.92, y: 30 }}
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative w-full max-w-2xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl bg-[#1c1c1c] border border-white/10"
+                        className="relative w-full max-w-sm sm:max-w-md lg:max-w-2xl max-h-[95vh] sm:max-h-[90vh] rounded-3xl overflow-y-auto shadow-2xl bg-[#1c1c1c] border border-white/10"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}
@@ -83,7 +83,7 @@ const UpcomingTourModal = () => {
                         </div>
 
                         {/* Image Section */}
-                        <div className="relative h-48 sm:h-56 w-full overflow-hidden">
+                        <div className="relative h-40 sm:h-48 md:h-56 w-full overflow-hidden">
                             <img
                                 src={upcomingTour.image.startsWith("/") ? upcomingTour.image : `/${upcomingTour.image}`}
                                 alt={upcomingTour.name}
@@ -113,13 +113,13 @@ const UpcomingTourModal = () => {
                         </div>
 
                         {/* Content Section */}
-                        <div className="p-6 space-y-5">
+                        <div className="p-4 sm:p-6 space-y-4 sm:space-y-5">
                             {/* Highlights */}
                             <div>
-                                <h3 className="text-brown-500 text-xs font-bold uppercase tracking-widest mb-3">
+                                <h3 className="text-brown-500 text-xs font-bold uppercase tracking-widest mb-2 sm:mb-3">
                                     Highlights
                                 </h3>
-                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <ul className="grid grid-cols-1 gap-2">
                                     {highlights.map((highlight, idx) => (
                                         <li key={idx} className="flex items-start gap-2 text-gray-300 text-sm">
                                             <FaStar className="text-brown-500 mt-1 flex-shrink-0 text-[10px]" />
@@ -130,7 +130,7 @@ const UpcomingTourModal = () => {
                             </div>
 
                             {/* Stats Row */}
-                            <div className="flex flex-wrap gap-4 py-4 border-t border-b border-white/10">
+                            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4 py-3 sm:py-4 border-t border-b border-white/10">
                                 <div className="flex items-center gap-2 text-gray-300">
                                     <FaClock className="text-brown-500 text-sm" />
                                     <span className="text-sm font-medium">Duration:</span>
@@ -144,8 +144,8 @@ const UpcomingTourModal = () => {
                             </div>
 
                             {/* Period Info */}
-                            <p className="text-gray-400 text-xs font-general uppercase tracking-wider">
-                                Period: {upcomingTour.period} &nbsp;·&nbsp; Starting from {upcomingTour.starting}
+                            <p className="text-gray-400 text-xs font-general uppercase tracking-wider leading-relaxed">
+                                <span className="block sm:inline">Period: {upcomingTour.period}</span> <span className="hidden sm:inline">&nbsp;·&nbsp;</span> <span className="block sm:inline">Starting from {upcomingTour.starting}</span>
                             </p>
 
                             {/* Action Buttons */}

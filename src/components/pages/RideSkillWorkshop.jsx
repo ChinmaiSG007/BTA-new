@@ -83,7 +83,6 @@ const RideSkillWorkshop = () => {
         '/img/images/gallery/Ride/RideSkill (4).webp',
         '/img/images/gallery/Ride/RideSkill (5).webp',
         '/img/images/gallery/Ride/RideSkill (6).webp',
-        '/img/images/gallery/Ride/RideSkill (7).webp',
         '/img/images/gallery/Ride/rideskillworkshop.webp',
         '/img/images/gallery/Ride/rideskillworkshop2.webp',
     ];

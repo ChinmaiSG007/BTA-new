@@ -13,6 +13,7 @@ import TravelTips from "./components/pages/TravelTips";
 import NotFound from "./components/pages/NotFound";
 import ScrollToTop from "./components/common/ScrollToTop";
 import ScrollToTopOnMount from "./components/common/ScrollToTopOnMount";
+import WhatsAppButton from "./components/common/WhatsAppButton";
 
 function App() {
   return (
@@ -37,6 +38,14 @@ function App() {
               threshold={500}
               right={30}
               bottom={30}
+              size={40}
+              shadow={true}
+            />
+            <WhatsAppButton
+              phoneNumber="919663299663"
+              message="Hello! I'm interested in learning more about Beyond Tarmac Adventures tours."
+              bottom={80}
+              right={30}
               size={40}
               shadow={true}
             />

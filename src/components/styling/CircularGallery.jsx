@@ -284,10 +284,8 @@ class Media {
             }
         }
         this.scale = this.screen.height / 1500
-        const isMobile = this.screen.width < 640
-        const scaleFactor = isMobile ? 0.75 : 1
-        this.plane.scale.y = (this.viewport.height * (900 * this.scale * scaleFactor)) / this.screen.height
-        this.plane.scale.x = (this.viewport.width * (700 * this.scale * scaleFactor)) / this.screen.width
+        this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height
+        this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width
         this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y]
         this.padding = 2
         this.width = this.plane.scale.x + this.padding
@@ -376,10 +374,6 @@ class App {
         this.isDown = false
         this.onCheck()
     }
-    onWheel() {
-        this.scroll.target += 2
-        this.onCheckDebounce()
-    }
     onCheck() {
         if (!this.medias || !this.medias[0]) return
         const width = this.medias[0].width
@@ -422,13 +416,10 @@ class App {
     }
     addEventListeners() {
         this.boundOnResize = this.onResize.bind(this)
-        this.boundOnWheel = this.onWheel.bind(this)
         this.boundOnTouchDown = this.onTouchDown.bind(this)
         this.boundOnTouchMove = this.onTouchMove.bind(this)
         this.boundOnTouchUp = this.onTouchUp.bind(this)
         window.addEventListener('resize', this.boundOnResize)
-        window.addEventListener('mousewheel', this.boundOnWheel)
-        window.addEventListener('wheel', this.boundOnWheel)
         window.addEventListener('mousedown', this.boundOnTouchDown)
         window.addEventListener('mousemove', this.boundOnTouchMove)
         window.addEventListener('mouseup', this.boundOnTouchUp)
@@ -439,8 +430,6 @@ class App {
     destroy() {
         window.cancelAnimationFrame(this.raf)
         window.removeEventListener('resize', this.boundOnResize)
-        window.removeEventListener('mousewheel', this.boundOnWheel)
-        window.removeEventListener('wheel', this.boundOnWheel)
         window.removeEventListener('mousedown', this.boundOnTouchDown)
         window.removeEventListener('mousemove', this.boundOnTouchMove)
         window.removeEventListener('mouseup', this.boundOnTouchUp)

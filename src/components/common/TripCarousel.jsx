@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useMotionValue, useTransform, useSpring, useAnimationFrame } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence, useMotionValue, useTransform, useAnimationFrame } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaClock, FaCalendarAlt, FaMoneyBillWave, FaPlay, FaPause } from 'react-icons/fa';
 import toursData from './../../tours.json';
 import { Link } from 'react-router-dom';
@@ -12,47 +12,6 @@ const tours = toursData.regions.flatMap(region =>
         region: region.name
     }))
 );
-
-const TiltCard = ({ children, className }) => {
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseX = useSpring(x, { stiffness: 150, damping: 15 });
-    const mouseY = useSpring(y, { stiffness: 150, damping: 15 });
-
-    const rotateX = useTransform(mouseY, [-0.5, 0.5], ["7deg", "-7deg"]);
-    const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-7deg", "7deg"]);
-
-    const handleMouseMove = (e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseXFromCenter = e.clientX - rect.left - width / 2;
-        const mouseYFromCenter = e.clientY - rect.top - height / 2;
-        x.set(mouseXFromCenter / width);
-        y.set(mouseYFromCenter / height);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
-    return (
-        <motion.div
-            className={className}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{
-                rotateX,
-                rotateY,
-                transformStyle: "preserve-3d",
-            }}
-        >
-            {children}
-        </motion.div>
-    );
-};
 
 export default function TripCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -116,6 +75,7 @@ export default function TripCarousel() {
         setCurrentIndex(index);
     };
 
+    // Shared swipe handler used by both image and text area
     const handleSwipe = (event, info) => {
         if (tours.length <= 1) return;
         const swipeThreshold = 50;
@@ -193,7 +153,7 @@ export default function TripCarousel() {
 
                 {/* Image Section (Top on mobile, Left on desktop) */}
                 <div className="relative w-full md:w-3/5 h-[350px] md:h-auto overflow-hidden group z-10 cursor-grab active:cursor-grabbing">
-                    <TiltCard className="w-full h-full relative">
+                    <div className="w-full h-full relative">
                         <AnimatePresence initial={false} custom={direction} mode="popLayout">
                             <motion.div
                                 key={currentTour.id}
@@ -227,42 +187,39 @@ export default function TripCarousel() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-black/90 pointer-events-none" />
 
                         {/* Region Tag (Top Left) */}
-                        <div className="absolute top-8 left-8 z-20">
+                        <div className="absolute top-8 left-1/2 -translate-x-1/2 md:left-8 md:translate-x-0 z-20">
                             <motion.span
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
-                                className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/60 rounded-full text-white text-sm font-myCustomFont tracking-widest uppercase shadow-lg"
+                                className="px-5 py-2 bg-black/40 backdrop-blur-md border border-white/60 rounded-full text-white text-sm font-myCustomFont tracking-widest uppercase shadow-lg whitespace-nowrap"
                             >
                                 {currentTour.region}
                             </motion.span>
                         </div>
-                    </TiltCard>
-
-                    {/* Navigation Arrows (Over Image) */}
-                    <div className="absolute inset-0 flex items-center justify-between px-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-30">
-                        <button
-                            onClick={(e) => { e.stopPropagation(); handlePrev(); }}
-                            className="p-4 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-white hover:text-black transition-all duration-300 pointer-events-auto hover:scale-110 border border-white/10"
-                        >
-                            <FaChevronLeft size={24} />
-                        </button>
-                        <button
-                            onClick={(e) => { e.stopPropagation(); handleNext(); }}
-                            className="p-4 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-white hover:text-black transition-all duration-300 pointer-events-auto hover:scale-110 border border-white/10"
-                        >
-                            <FaChevronRight size={24} />
-                        </button>
                     </div>
                 </div>
 
                 {/* Content Section (Bottom on mobile, Right on desktop) */}
-                <div className="w-full md:w-2/5 relative z-20 flex flex-col">
+                {/* 
+                    FIX: Wrapped with motion.div with drag="x" so the text panel
+                    is also swipeable, matching the image panel behaviour.
+                    dragConstraints={left:0,right:0} + dragElastic=0 prevents
+                    any visible movement — only the onDragEnd swipe fires.
+                    pointer-events on interactive children are unaffected.
+                */}
+                <motion.div
+                    className="w-full md:w-2/5 relative z-20 flex flex-col cursor-grab active:cursor-grabbing"
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0}
+                    onDragEnd={handleSwipe}
+                >
                     {/* Enhanced Glass Background for Text Area */}
-                    <div className="absolute inset-0 bg-white/5 backdrop-blur-3xl border-l border-white/10" />
+                    <div className="absolute inset-0 bg-white/5 backdrop-blur-3xl border-l border-white/10 pointer-events-none" />
 
                     {/* Subtle Pattern Overlay */}
-                    <div className="absolute inset-0 opacity-[0.03]"
+                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
                         style={{
                             backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
                             backgroundSize: '24px 24px'
@@ -334,10 +291,10 @@ export default function TripCarousel() {
                                 </motion.div>
 
                                 <motion.div variants={itemVariants} className="pt-4 sm:pt-6 flex items-center gap-4 sm:gap-6">
-                                    <Link to="/tours">
+                                    <Link to="/tours" onClick={(e) => e.stopPropagation()}>
                                         <Button
                                             title="View Details"
-                                            containerClass="!bg-brown-500 !text-white hover:!bg-brown-600 shadow-lg shadow-brown-500/30 hover:shadow-brown-500/50 transition-all duration-300 !px-8 !py-4 !text-sm !font-bold !tracking-wider"
+                                            containerClass="!bg-brown-500 !text-white hover:!bg-brown-600 transition-all duration-300 !px-8 !py-4 !text-sm !font-bold !tracking-wider"
                                         />
                                     </Link>
 
@@ -367,7 +324,7 @@ export default function TripCarousel() {
                                             />
                                         </svg>
                                         <button
-                                            onClick={togglePlay}
+                                            onClick={(e) => { e.stopPropagation(); togglePlay(); }}
                                             className="absolute inset-0 flex items-center justify-center text-white/50 hover:text-white transition-colors z-10"
                                             aria-label={isPlaying ? "Pause" : "Play"}
                                         >
@@ -397,7 +354,7 @@ export default function TripCarousel() {
                             {tours.map((_, index) => (
                                 <button
                                     key={index}
-                                    onClick={() => handleDotClick(index)}
+                                    onClick={(e) => { e.stopPropagation(); handleDotClick(index); }}
                                     className={`h-1.5 rounded-full transition-all duration-500 ${index === currentIndex
                                         ? 'w-10 bg-gradient-to-r from-brown-500 to-brown-300'
                                         : 'w-2 bg-white/20 hover:bg-white/40 hover:w-4'
@@ -407,7 +364,7 @@ export default function TripCarousel() {
                             ))}
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     );
