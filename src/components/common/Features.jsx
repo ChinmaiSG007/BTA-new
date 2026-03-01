@@ -98,7 +98,7 @@ const Features = () => (
           {/* Image Section */}
           <div className="md:w-2/5 w-full relative overflow-hidden">
             <div className="absolute top-4 left-4 z-10 bg-brown-100/90 backdrop-blur-sm px-4 py-2 rounded-full">
-              <p className="text-black font-myCustomFont text-sm uppercase tracking-wider">Lead Road Captain</p>
+              <p className="text-black font-myCustomFont text-sm uppercase tracking-wider">Founder</p>
             </div>
             <TiltedCard
               imageSrc="img/images/palaksha.webp"
