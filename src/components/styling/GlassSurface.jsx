@@ -137,16 +137,13 @@ const GlassSurface = ({
     }, [width, height]);
 
     const supportsSVGFilters = () => {
-        const isWebkit = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent);
-        const isFirefox = /Firefox/.test(navigator.userAgent);
-
-        if (isWebkit || isFirefox) {
+        try {
+            const div = document.createElement('div');
+            div.style.backdropFilter = `url(#test)`;
+            return div.style.backdropFilter !== '';
+        } catch {
             return false;
         }
-
-        const div = document.createElement('div');
-        div.style.backdropFilter = `url(#${filterId})`;
-        return div.style.backdropFilter !== '';
     };
 
     const containerStyle = {

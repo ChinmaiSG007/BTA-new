@@ -178,13 +178,6 @@ const ToursHeroCarousel = () => {
                 <div className="tours-hero__particle" />
             </div>
 
-            {/* Counter badge */}
-            <div className="tours-hero__counter glass">
-                <span className="font-general">
-                    {String(currentIndex + 1).padStart(2, "0")} / {String(totalSlides).padStart(2, "0")}
-                </span>
-            </div>
-
             {/* Main content */}
             <div className="tours-hero__content">
                 <motion.div
@@ -236,87 +229,6 @@ const ToursHeroCarousel = () => {
                     />
                 </motion.div>
             </div>
-
-            {/* Navigation bar */}
-            <div
-                className="tours-hero__nav"
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => {
-                    setIsPaused(false);
-                    startTimeRef.current = Date.now() - progress * AUTO_PLAY_INTERVAL;
-                }}
-            >
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 1.1 }}
-                    className="tours-hero__nav-inner glass"
-                >
-                    {/* Prev arrow */}
-                    <button
-                        onClick={prevSlide}
-                        className="tours-hero__arrow"
-                        aria-label="Previous slide"
-                    >
-                        <ChevronLeft size={16} />
-                    </button>
-
-                    {/* Dots with progress */}
-                    <div className="flex items-center gap-1.5 sm:gap-2">
-                        {SLIDER_IMAGES.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => goToSlide(index)}
-                                className={`tours-hero__dot ${index === currentIndex
-                                    ? "tours-hero__dot--active"
-                                    : index < currentIndex
-                                        ? "tours-hero__dot--completed"
-                                        : ""
-                                    }`}
-                                aria-label={`Go to slide ${index + 1}`}
-                            >
-                                {/* Completed: fully filled */}
-                                {index < currentIndex && (
-                                    <div className="tours-hero__dot-fill" style={{ width: "100%" }} />
-                                )}
-                                {/* Active: animated progress fill */}
-                                {index === currentIndex && (
-                                    <motion.div
-                                        className="tours-hero__dot-fill"
-                                        initial={{ width: "0%" }}
-                                        animate={{
-                                            width: `${progress * 100}%`,
-                                        }}
-                                        transition={{ duration: 0.05, ease: "linear" }}
-                                    />
-                                )}
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Next arrow */}
-                    <button
-                        onClick={nextSlide}
-                        className="tours-hero__arrow"
-                        aria-label="Next slide"
-                    >
-                        <ChevronRight size={16} />
-                    </button>
-                </motion.div>
-            </div>
-
-            {/* Scroll indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1.4 }}
-                className="tours-hero__scroll"
-            >
-                <p className="font-general text-[10px] sm:text-xs text-neutral-gray/60 uppercase tracking-[0.2em]">
-                    Scroll
-                </p>
-                <div className="tours-hero__scroll-line" />
-            </motion.div>
         </div>
     );
 };
