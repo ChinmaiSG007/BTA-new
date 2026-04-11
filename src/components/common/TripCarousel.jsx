@@ -22,6 +22,7 @@ export default function TripCarousel() {
     const progress = useMotionValue(0);
 
     const currentTour = tours[currentIndex];
+    const tourSlug = currentTour.name.toLowerCase().replace(/\s+/g, "-");
     const AUTO_PLAY_DURATION = 5000;
     const RADIUS = 18;
     const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
@@ -291,7 +292,7 @@ export default function TripCarousel() {
                                 </motion.div>
 
                                 <motion.div variants={itemVariants} className="pt-4 sm:pt-6 flex items-center gap-4 sm:gap-6">
-                                    <Link to="/tours" onClick={(e) => e.stopPropagation()}>
+                                    <Link to={`/tours/${tourSlug}`} onClick={(e) => e.stopPropagation()}>
                                         <Button
                                             title="View Details"
                                             containerClass="!bg-brown-500 !text-white hover:!bg-brown-600 transition-all duration-300 !px-8 !py-4 !text-sm !font-bold !tracking-wider"
