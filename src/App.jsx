@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
 import NavBar from "./components/layouts/Navbar";
 import Footer from "./components/layouts/Footer";
-import About from "./components/common/About";
+import AboutUs from "./components/pages/AboutUs";
 import Tours from "./components/pages/Tours";
 import TourDetail from "./components/pages/TourDetail";
 import Gallery from "./components/pages/Gallery";
@@ -11,13 +11,14 @@ import RideSkillWorkshop from "./components/pages/RideSkillWorkshop";
 import FAQ from "./components/pages/FAQ";
 import TravelTips from "./components/pages/TravelTips";
 import NotFound from "./components/pages/NotFound";
+import Contact from "./components/pages/Contact";
 import ScrollToTop from "./components/common/ScrollToTop";
 import ScrollToTopOnMount from "./components/common/ScrollToTopOnMount";
 import WhatsAppButton from "./components/common/WhatsAppButton";
 
 function App() {
   return (
-    <main className="relative min-h-screen w-screen overflow-x-hidden">
+    <main className="relative min-h-screen w-screen overflow-x-clip">
       <Router>
         <ScrollToTopOnMount />
         <div className="flex flex-col min-h-screen">
@@ -25,13 +26,14 @@ function App() {
           <main className="flex-grow">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/about" element={<AboutUs />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/tours" element={<Tours />} />
               <Route path="/tours/:tourSlug" element={<TourDetail />} />
               <Route path="/ride-skill-workshop" element={<RideSkillWorkshop />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/travel-tips" element={<TravelTips />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <ScrollToTop

@@ -45,38 +45,63 @@ const About = () => {
               speed={40}
             />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
-            <div className="text-center p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
+            <div className="text-center p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg">
               <CountUp
                 from={0}
                 to={330}
                 separator=","
                 direction="up"
                 duration={1}
-                className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
-              <p className="text-base sm:text-lg md:text-xl text-blue-50 font-general uppercase tracking-wide">Women Empowered</p>
+                className="count-up-text text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-3" />
+              <p className="text-xs sm:text-sm md:text-base text-blue-50 font-general uppercase tracking-wide">Women Empowered</p>
               <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
             </div>
-            <div className="text-center p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg">
+            <div className="text-center p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg">
               <CountUp
                 from={0}
                 to={780}
                 separator=","
                 direction="up"
                 duration={1}
-                className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
-              <p className="text-base sm:text-lg md:text-xl text-blue-50 font-general uppercase tracking-wide">Happy Clients Served</p>
+                className="count-up-text text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-3" />
+              <p className="text-xs sm:text-sm md:text-base text-blue-50 font-general uppercase tracking-wide">Happy Clients Served</p>
               <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
             </div>
-            <div className="text-center p-6 sm:p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg sm:col-span-2 lg:col-span-1">
+            <div className="text-center p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg">
+              <div className="flex items-baseline justify-center">
+                <CountUp
+                  from={0}
+                  to={83}
+                  separator=","
+                  direction="up"
+                  duration={1}
+                  className="count-up-text text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-3" />
+                <span className="text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-3">K+</span>
+              </div>
+              <p className="text-xs sm:text-sm md:text-base text-blue-50 font-general uppercase tracking-wide">Kilometres Conquered</p>
+              <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
+            </div>
+            <div className="text-center p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg">
               <CountUp
                 from={0}
-                to={83310}
+                to={150}
                 separator=","
                 direction="up"
                 duration={1}
-                className="count-up-text text-4xl sm:text-5xl md:text-6xl font-myCustomFont text-blue-50 mb-3" />
-              <p className="text-base sm:text-lg md:text-xl text-blue-50 font-general uppercase tracking-wide">Kilometers Conquered</p>
+                className="count-up-text text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-3" />
+              <p className="text-xs sm:text-sm md:text-base text-blue-50 font-general uppercase tracking-wide">Tours Completed</p>
+              <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
+            </div>
+            <div className="text-center p-4 sm:p-6 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/10 hover:scale-105 transition-all duration-300 shadow-lg col-span-2 sm:col-span-1">
+              <CountUp
+                from={0}
+                to={300}
+                separator=","
+                direction="up"
+                duration={1}
+                className="count-up-text text-3xl sm:text-4xl md:text-5xl font-myCustomFont text-blue-50 mb-3" />
+              <p className="text-xs sm:text-sm md:text-base text-blue-50 font-general uppercase tracking-wide">5-Star Reviews</p>
               <div className="mt-4 h-1 w-20 bg-brown-100 mx-auto rounded-full"></div>
             </div>
           </div>

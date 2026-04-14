@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import DecryptedText from "./DecryptedText";
 import "./ToursHeroCarousel.css";
 
 // Tour slider images
@@ -167,7 +168,6 @@ const ToursHeroCarousel = () => {
             </AnimatePresence>
 
             {/* Gradient overlays */}
-            <div className="tours-hero-pattern-overlay" />
             <div className="tours-hero__overlay tours-hero__overlay--gradient" />
             <div className="tours-hero__overlay tours-hero__overlay--vignette" />
 
@@ -181,52 +181,25 @@ const ToursHeroCarousel = () => {
             {/* Main content */}
             <div className="tours-hero__content">
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="tours-hero__title-card glass--subtle"
+                    transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-center"
                 >
-                    {/* Decorative line */}
-                    <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: "3rem" }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        className="h-[2px] bg-gradient-to-r from-brown-500 to-brown-300 mx-auto mb-6"
-                    />
-
-                    {/* Subtitle */}
-                    <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.5 }}
-                        className="font-general text-[10px] sm:text-xs uppercase tracking-[0.3em] text-brown-100 mb-4"
-                    >
-                        Beyond Tarmac Adventures
-                    </motion.p>
-
-                    {/* Title */}
-                    <h1 className="special-font hero-heading text-blue-75 mb-4 drop-shadow-2xl">
-                        EPIC T<b>O</b>URS
-                    </h1>
-
-                    {/* Description */}
-                    <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.7 }}
-                        className="font-general text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-neutral-gray/90 leading-relaxed"
-                    >
-                        Embark on unforgettable motorcycle journeys through the world&apos;s
-                        most stunning landscapes
-                    </motion.p>
-
-                    {/* Decorative line bottom */}
-                    <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: "3rem" }}
-                        transition={{ duration: 0.8, delay: 0.9 }}
-                        className="h-[2px] bg-gradient-to-r from-brown-300 to-brown-500 mx-auto mt-6"
-                    />
+                    <div className="section-heading">
+                        <DecryptedText
+                            text="Choose Your Adventure"
+                            parentClassName="flex justify-center"
+                            className="font-myCustomFont font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase text-blue-75 drop-shadow-2xl"
+                            encryptedClassName="font-myCustomFont font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase text-blue-75 opacity-40"
+                            characters="█▓▒░▀▄▌▐"
+                            animateOn="view"
+                            revealDirection="start"
+                            sequential
+                            useOriginalCharsOnly={false}
+                            speed={40}
+                        />
+                    </div>
                 </motion.div>
             </div>
         </div>

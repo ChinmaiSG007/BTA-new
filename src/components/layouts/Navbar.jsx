@@ -9,8 +9,9 @@ import { Link } from "react-router-dom";
 import Button from "../common/Button";
 import ImportantMessage from "../common/ImportantMessage";
 import GlassSurface from "../styling/GlassSurface";
+import ToursPopover from "../common/ToursPopover";
 
-const navItems = ["Gallery", "Ride skill workshop", "Contact"];
+const navItems = ["About", "Gallery", "Ride skill workshop", "Contact"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -19,6 +20,7 @@ const NavBar = () => {
   const [navButtontheme, setNavButtontheme] = useState('white')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isBackgroundLight, setIsBackgroundLight] = useState(false);
+  const [isToursPopoverOpen, setIsToursPopoverOpen] = useState(false);
 
   // Refs for audio and navigation container
   const audioElementRef = useRef(null);
@@ -124,6 +126,7 @@ const NavBar = () => {
     } else if (currentScrollY > lastScrollY) {
       setIsNavVisible(false);
       setIsMobileMenuOpen(false); // Close mobile menu on scroll down
+      setIsToursPopoverOpen(false); // Close popover on scroll down
     } else if (currentScrollY < lastScrollY) {
       setIsNavVisible(true);
     }
@@ -204,36 +207,42 @@ const NavBar = () => {
                   }}
                 />
               </Link>
-              <Link to={"/tours"} className="hidden sm:block">
-                <Button
-                  id="product-button"
-                  title="Tours"
-                  rightIcon={<TiLocationArrow />}
-                  containerClass={`border backdrop-blur-glass md:flex hidden items-center justify-center gap-1 transition-all duration-500 ${isBackgroundLight
-                    ? 'bg-black/20 border-black/30 text-black'
-                    : 'bg-white/10 border-white/30 text-white'
-                    }`}
-                />
-              </Link>
+              <div className="hidden sm:block">
+                <div onClick={() => setIsToursPopoverOpen((prev) => !prev)}>
+                  <Button
+                    id="product-button"
+                    title="Tours"
+                    rightIcon={<TiLocationArrow />}
+                    containerClass={`border backdrop-blur-glass md:flex hidden items-center justify-center gap-1 transition-all duration-500 ${isBackgroundLight
+                      ? 'bg-black/20 border-black/30 text-black'
+                      : 'bg-white/10 border-white/30 text-white'
+                      }`}
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Middle Section: Navigation Links (left-aligned) */}
             <div className="hidden lg:flex items-center gap-2 sm:gap-4 flex-1">
               {navItems.map((item, index) => {
-                const href = item === "Ride skill workshop" ? "/ride-skill-workshop" : item === "Contact" ? "#contact" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
+                const hrefMap = {
+                  "About": "/about",
+                  "Ride skill workshop": "/ride-skill-workshop",
+                  "Contact": "/contact",
+                };
+                const href = hrefMap[item] || `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
                 return (
-                  <a
+                  <Link
                     key={index}
-                    href={href}
+                    to={href}
                     className="nav-hover-btn text-xs lg:text-sm"
-                    onClick={item === "Contact" ? (e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); } : undefined}
                     style={{
                       color: navButtontheme,
                       transition: 'color 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
                     }}
                   >
                     {item}
-                  </a>
+                  </Link>
                 );
               })}
             </div>
@@ -303,6 +312,12 @@ const NavBar = () => {
             </div>
           </nav>
         </GlassSurface>
+
+        {/* Tours Popover - rendered outside GlassSurface to avoid overflow:hidden */}
+        <ToursPopover
+          isOpen={isToursPopoverOpen}
+          onClose={() => setIsToursPopoverOpen(false)}
+        />
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -331,20 +346,25 @@ const NavBar = () => {
             {/* Mobile Navigation Links */}
             <div className="flex flex-col space-y-1">
               {navItems.map((item, index) => {
-                const href = item === "Ride skill workshop" ? "/ride-skill-workshop" : item === "Contact" ? "#contact" : `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
+                const hrefMap = {
+                  "About": "/about",
+                  "Ride skill workshop": "/ride-skill-workshop",
+                  "Contact": "/contact",
+                };
+                const href = hrefMap[item] || `/${item.trim().toLowerCase().replace(/\s+/g, "-")}`;
                 return (
-                  <a
+                  <Link
                     key={index}
-                    href={href}
+                    to={href}
                     className="nav-hover-btn text-left"
-                    onClick={(e) => { setIsMobileMenuOpen(false); if (item === "Contact") { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); } }}
+                    onClick={() => setIsMobileMenuOpen(false)}
                     style={{
                       color: navButtontheme,
                       transition: 'color 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
                     }}
                   >
                     {item}
-                  </a>
+                  </Link>
                 );
               })}
             </div>

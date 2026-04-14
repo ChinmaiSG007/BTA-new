@@ -232,14 +232,18 @@ const Hero = () => {
               Navigating the Contours of the Unknown
             </p>
 
-            <a href="#about">
+            <div
+              onClick={() =>
+                window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+              }
+            >
               <Button
                 id="watch-trailer"
                 title="Discover"
                 leftIcon={<TiLocationArrow />}
-                containerClass="!bg-brown-100 flex-center gap-1"
+                containerClass="!bg-brown-100 flex-center gap-1 cursor-pointer"
               />
-            </a>
+            </div>
           </div>
         </div>
       </div>

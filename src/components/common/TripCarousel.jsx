@@ -244,8 +244,8 @@ export default function TripCarousel() {
                                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white font-myCustomFont leading-[0.9] mb-4 sm:mb-6 tracking-tight drop-shadow-lg">
                                         {currentTour.name}
                                     </h2>
-                                    {/* Improved Underline */}
-                                    <div className="h-1 sm:h-1.5 w-24 sm:w-32 bg-gradient-to-r from-brown-500 via-brown-400 to-transparent rounded-full shadow-[0_0_15px_rgba(172,110,74,0.5)]" />
+                                    {/* Accent Underline */}
+                                    <div className="h-1 sm:h-1.5 w-20 sm:w-24 bg-brown-500 rounded-full" />
                                 </motion.div>
 
                                 <motion.p variants={itemVariants} className="text-gray-300 font-general text-sm sm:text-base md:text-lg leading-relaxed line-clamp-2 sm:line-clamp-3">
