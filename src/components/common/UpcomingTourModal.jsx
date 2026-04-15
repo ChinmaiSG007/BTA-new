@@ -62,24 +62,25 @@ const UpcomingTourModal = () => {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.92, y: 30 }}
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        className="relative w-full max-w-sm sm:max-w-md lg:max-w-2xl max-h-[95vh] sm:max-h-[90vh] rounded-3xl overflow-y-auto shadow-2xl bg-[#1c1c1c] border border-white/10"
+                        className="relative w-full max-w-sm sm:max-w-md lg:max-w-xl rounded-3xl shadow-2xl bg-[#1c1c1c] border border-white/10"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {/* Close Button */}
-                        <button
-                            onClick={() => setIsOpen(false)}
-                            className="absolute top-4 right-4 z-30 w-9 h-9 flex items-center justify-center rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-colors duration-200 cursor-pointer"
-                            aria-label="Close"
-                        >
-                            <FaTimes className="text-sm" />
-                        </button>
 
                         {/* Announcement Header */}
-                        <div className="bg-brown-500/20 border-b border-brown-500/30 px-6 py-3 flex items-center gap-2">
+                        <div className="border-b border-brown-500/30 px-6 py-3 flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-brown-500 animate-pulse" />
                             <span className="text-brown-300 text-xs font-general uppercase tracking-widest">
                                 Upcoming Tour Announcement
                             </span>
+
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="absolute top-1 right-4 z-30 w-9 h-9 flex items-center justify-center rounded-full text-white hover:bg-white/10 transition-colors duration-200 cursor-pointer"
+                                aria-label="Close"
+                            >
+                                <FaTimes className="text-sm" />
+                            </button>
                         </div>
 
                         {/* Image Section */}

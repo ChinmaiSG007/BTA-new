@@ -5,33 +5,32 @@ import { TiLocationArrow } from "react-icons/ti";
 import { useEffect, useRef, useState } from "react";
 
 import Button from "./Button";
-import VideoPreview from "./VideoPreview";
 import DecryptedText from "./../styling/DecryptedText";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(1);
-  const [hasClicked, setHasClicked] = useState(false);
-
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [loadedVideos, setLoadedVideos] = useState(0);
 
   const totalVideos = 2;
-  const totalVideoElements = 3; // We have 3 video elements on the page
-  const nextVdRef = useRef(null);
+  const videoRefs = useRef([]);
+  const progressRef = useRef(null);
   const loadingTimeoutRef = useRef(null);
+  const kenBurnsRef = useRef(null);
+
+  const getVideoSrc = (index) => `videos/bta-${index + 1}.mp4`;
 
   const handleVideoLoad = () => {
     setLoadedVideos((prev) => prev + 1);
   };
 
-  // Reset loading state on component mount
+  // Loading management
   useEffect(() => {
     setLoading(true);
     setLoadedVideos(0);
 
-    // Fallback: Hide loader after 3 seconds regardless of video load status
     loadingTimeoutRef.current = setTimeout(() => {
       setLoading(false);
     }, 3000);
@@ -44,49 +43,109 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    // Wait for at least 2 videos to load (the main autoplay video and one preview)
-    if (loadedVideos >= 2) {
+    if (loadedVideos >= totalVideos) {
       setLoading(false);
-      // Clear the fallback timeout since videos loaded successfully
       if (loadingTimeoutRef.current) {
         clearTimeout(loadingTimeoutRef.current);
       }
     }
   }, [loadedVideos]);
 
-  const handleMiniVdClick = () => {
-    setHasClicked(true);
+  // Auto-advance on video end with crossfade
+  useEffect(() => {
+    if (loading) return;
 
-    setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
-  };
+    const currentVideo = videoRefs.current[currentIndex];
+    if (!currentVideo) return;
 
-  useGSAP(
-    () => {
-      if (hasClicked) {
-        gsap.set("#next-video", { visibility: "visible" });
-        gsap.to("#next-video", {
-          transformOrigin: "center center",
-          scale: 1,
-          width: "100%",
-          height: "100%",
-          duration: 1,
-          ease: "power1.inOut",
-          onStart: () => nextVdRef.current.play(),
-        });
-        gsap.from("#current-video", {
-          transformOrigin: "center center",
-          scale: 0,
-          duration: 1.5,
-          ease: "power1.inOut",
-        });
+    const handleEnded = () => {
+      const nextIndex = (currentIndex + 1) % totalVideos;
+      const nextVideo = videoRefs.current[nextIndex];
+
+      if (nextVideo) {
+        nextVideo.currentTime = 0;
+        nextVideo.play();
+
+        gsap.set(nextVideo, { zIndex: 2 });
+        gsap.fromTo(
+          nextVideo,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 1.2,
+            ease: "power2.inOut",
+            onComplete: () => {
+              if (currentVideo) {
+                gsap.set(currentVideo, { opacity: 0, zIndex: 1, scale: 1 });
+                currentVideo.pause();
+                currentVideo.currentTime = 0;
+              }
+            },
+          }
+        );
       }
-    },
-    {
-      dependencies: [currentIndex],
-      revertOnUpdate: true,
-    }
-  );
 
+      setCurrentIndex(nextIndex);
+    };
+
+    currentVideo.addEventListener("ended", handleEnded);
+
+    return () => {
+      currentVideo.removeEventListener("ended", handleEnded);
+    };
+  }, [currentIndex, loading]);
+
+  // Progress bar tracking
+  useEffect(() => {
+    if (loading) return;
+
+    const currentVideo = videoRefs.current[currentIndex];
+    if (!currentVideo || !progressRef.current) return;
+
+    let rafId;
+
+    gsap.set(progressRef.current, { scaleX: 0 });
+
+    const updateProgress = () => {
+      if (currentVideo.duration && progressRef.current) {
+        const progress = currentVideo.currentTime / currentVideo.duration;
+        gsap.set(progressRef.current, { scaleX: progress });
+      }
+      rafId = requestAnimationFrame(updateProgress);
+    };
+
+    rafId = requestAnimationFrame(updateProgress);
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, [currentIndex, loading]);
+
+  // Ken Burns (subtle slow zoom) on active video for cinematic feel
+  useEffect(() => {
+    if (loading) return;
+
+    const currentVideo = videoRefs.current[currentIndex];
+    if (!currentVideo) return;
+
+    if (kenBurnsRef.current) {
+      kenBurnsRef.current.kill();
+    }
+
+    kenBurnsRef.current = gsap.fromTo(
+      currentVideo,
+      { scale: 1 },
+      { scale: 1.06, duration: 20, ease: "none" }
+    );
+
+    return () => {
+      if (kenBurnsRef.current) {
+        kenBurnsRef.current.kill();
+      }
+    };
+  }, [currentIndex, loading]);
+
+  // ScrollTrigger clip-path animation
   useGSAP(() => {
     gsap.set("#video-frame", {
       clipPath: "polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
@@ -105,16 +164,10 @@ const Hero = () => {
     });
   });
 
-  const getVideoSrc = (index) => `videos/bta-${index}.mp4`;
-  const scrollToAbout = () => {
-    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
         <div className="flex-center absolute h-dvh w-screen overflow-hidden loader-bg">
-          {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
           <div className="three-body">
             <div className="three-body__dot"></div>
             <div className="three-body__dot"></div>
@@ -127,51 +180,39 @@ const Hero = () => {
         id="video-frame"
         className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
       >
-        <div>
-          <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
-            <VideoPreview>
-              <div
-                onClick={handleMiniVdClick}
-                className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
-              >
-                <video
-                  ref={nextVdRef}
-                  src={getVideoSrc((currentIndex % totalVideos) + 1)}
-                  loop
-                  muted
-                  id="current-video"
-                  className="size-64 origin-center scale-150 object-cover object-center"
-                  onLoadedData={handleVideoLoad}
-                />
-              </div>
-            </VideoPreview>
-          </div>
+        {/* Stacked video layers with crossfade */}
+        <div className="absolute inset-0 overflow-hidden">
+          {Array.from({ length: totalVideos }, (_, i) => (
+            <video
+              key={i}
+              ref={(el) => (videoRefs.current[i] = el)}
+              src={getVideoSrc(i)}
+              muted
+              playsInline
+              preload="auto"
+              className="absolute inset-0 size-full object-cover object-center will-change-transform"
+              style={{ opacity: i === 0 ? 1 : 0, zIndex: i === 0 ? 2 : 1 }}
+              autoPlay={i === 0}
+              onLoadedData={handleVideoLoad}
+            />
+          ))}
+        </div>
 
-          <video
-            ref={nextVdRef}
-            src={getVideoSrc(currentIndex)}
-            loop
-            muted
-            id="next-video"
-            className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
-            onLoadedData={handleVideoLoad}
-          />
-          <video
-            src={getVideoSrc(
-              currentIndex === totalVideos - 1 ? 1 : currentIndex
-            )}
-            autoPlay
-            loop
-            muted
-            className="absolute left-0 top-0 size-full object-cover object-center"
-            onLoadedData={handleVideoLoad}
+        {/* Cinematic gradient overlay */}
+        <div className="pointer-events-none absolute inset-0 z-30 bg-gradient-to-b from-black/20 via-transparent to-black/40" />
+
+        {/* Video progress bar */}
+        <div className="absolute bottom-0 left-0 z-50 h-[2px] w-full bg-white/10">
+          <div
+            ref={progressRef}
+            className="h-full origin-left bg-brown-100/70"
+            style={{ transform: "scaleX(0)" }}
           />
         </div>
 
         <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
           ADVENTURES
         </h1>
-
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-20 sm:mt-24 md:mt-28 px-4 sm:px-6 md:px-8 lg:px-10 md:whitespace-nowrap">
@@ -191,14 +232,18 @@ const Hero = () => {
               Navigating the Contours of the Unknown
             </p>
 
-            <a href="#about">
+            <div
+              onClick={() =>
+                window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+              }
+            >
               <Button
                 id="watch-trailer"
                 title="Discover"
                 leftIcon={<TiLocationArrow />}
-                containerClass="!bg-brown-100 flex-center gap-1"
+                containerClass="!bg-brown-100 flex-center gap-1 cursor-pointer"
               />
-            </a>
+            </div>
           </div>
         </div>
       </div>

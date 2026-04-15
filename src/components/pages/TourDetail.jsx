@@ -5,11 +5,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import { TiLocationArrow } from "react-icons/ti";
-import { FaCalendarAlt, FaMapMarkerAlt, FaClock, FaMoneyBillWave, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { FaCalendarAlt, FaMapMarkerAlt, FaClock, FaMoneyBillWave, FaCheckCircle, FaTimesCircle, FaWhatsapp, FaShieldAlt, FaUndoAlt, FaSlidersH } from "react-icons/fa";
 import toursData from "../../tours.json";
 import Button from "../common/Button";
 import AnimatedTitle from "../common/AnimatedTitle";
-import Balatro from "../styling/Balatro";
 import DecryptedText from "../styling/DecryptedText";
 import ScrollTimeline from "../styling/ScrollTimeline";
 
@@ -517,28 +516,32 @@ const TourDetail = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: showLogoScreen ? 0 : 1 }}
                 transition={{ duration: 0.6, delay: 0, ease: "easeInOut" }}
-                className="min-h-screen w-screen bg-neutral-black text-white pt-20"
+                className="min-h-screen w-screen bg-neutral-black text-white"
             >
                 {/* Hero Section */}
-                <section className="tour-hero relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-black pt-20 sm:pt-24">
-                    {/* Balatro Overlay - Blended on top of image */}
-                    <div className="absolute inset-0 z-10 pointer-events-none mix-blend-overlay opacity-40">
-                        <Balatro
-                            isRotate={false}
-                            mouseInteraction={false}
-                            pixelFilter={1000}
-                            color1="#763919"
-                            color2="#102103"
-                            color3="#010b18"
-                        />
+                <section className="tour-hero relative min-h-screen flex items-center justify-center overflow-hidden bg-neutral-black">
+                    {/* Video Background */}
+                    <div className="absolute inset-0 z-10">
+                        <video
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="w-full h-full object-cover"
+                        >
+                            <source src="/videos/bta-3.mp4" type="video/mp4" />
+                        </video>
                     </div>
 
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 z-20 bg-gradient-to-b from-neutral-black/30 via-neutral-black/50 to-neutral-black pointer-events-none" />
+                    {/* Contour Pattern Overlay */}
+                    <div className="absolute inset-0 z-[12] pointer-events-none opacity-50" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cpath d='M239 21c-2 2-6 6-10 8-8 5-13 5-22 0-4-2-9-6-12-8l-4-4-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-5 4-8 5-14 5s-9-1-14-5c-4-2-8-5-9-7l-2-2v600h600V17l-4 4zm-6 40c2-2 6-6 10-8 8-5 13-5 22 0 4 2 9 6 12 8l4 4 4-4c3-2 7-6 10-8 5-4 8-5 14-5s9 1 14 5c3 2 7 6 10 8l4 4 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2V41l-4 4c-3 2-7 6-10 8-5 4-8 5-14 5s-9-1-14-5c-3-2-7-6-10-8l-4-4-4 4c-3 2-7 6-10 8-5 4-8 5-14 5s-9-1-14-5c-3-2-7-6-10-8l-4-4-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-4 4z' fill='%23616161' fill-opacity='0.4'/%3E%3C/svg%3E\")" }} />
+
+                    {/* Gradient Overlay - subtle fade at bottom */}
+                    <div className="absolute inset-0 z-[15] pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(27,27,27,0.2) 0%, rgba(27,27,27,0.1) 30%, rgba(27,27,27,0.2) 50%, rgba(27,27,27,0.6) 75%, rgba(27,27,27,1) 90%, rgba(27,27,27,1) 100%)' }} />
 
                     {/* Content Layer */}
-                    <div className="relative z-30 text-center px-6 max-w-5xl">
-                        <div className="inline-block bg-brown-100/20 text-brown-100 px-6 py-3 rounded-full font-robert-medium text-body-small mb-6 backdrop-blur-sm border border-brown-100/30">
+                    <div className="relative z-30 text-center px-6 max-w-5xl pt-24">
+                        <div className="inline-block bg-white/10 text-white px-6 py-3 rounded-full font-robert-medium text-body-small mb-6 backdrop-blur-sm border border-white/20">
                             {region.name}
                         </div>
 
@@ -555,7 +558,7 @@ const TourDetail = () => {
                                     delay: 0,
                                     ease: [0.43, 0.13, 0.23, 0.96]
                                 }}
-                                className="w-[60vw] sm:w-[50vw] md:w-[40vw] lg:w-[35vw] xl:w-[30vw] max-w-lg mx-auto mb-6"
+                                className="w-[40vw] sm:w-[32vw] md:w-[26vw] lg:w-[22vw] xl:w-[18vw] max-w-xs mx-auto mb-6"
                             >
                                 <img
                                     src={tour.mainLogo}
@@ -603,281 +606,449 @@ const TourDetail = () => {
                     </div>
                 </section>
 
-                {/* Quick Info Grid */}
-                <section className="info-grid py-20 px-6 max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div className="info-card bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm p-8 rounded-2xl border border-[#496156] hover:border-brown-100 transition-all duration-300">
-                            <FaClock className="text-4xl text-brown-100 mb-4" />
-                            <p className="text-label text-neutral-gray mb-2">Duration</p>
-                            <p className="text-heading-secondary">{tour.duration}</p>
+                {/* Quick Info Capsules + Content + Sticky Sidebar */}
+                <div className="max-w-7xl mx-auto px-6 pt-20 pb-20">
+                    {/* Mobile CTA Panel - shown first on smaller screens */}
+                    <div className="lg:hidden mb-12">
+                        {/* Mobile Capsules */}
+                        <div className="flex flex-wrap gap-3 mb-6">
+                            <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                <FaClock className="text-lg text-brown-100" />
+                                <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">{tour.duration}</span>
+                            </div>
+                            <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                <FaCalendarAlt className="text-lg text-brown-100" />
+                                <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">{tour.period}</span>
+                            </div>
+                            <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                <FaMapMarkerAlt className="text-lg text-brown-100" />
+                                <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">{tour.starting}</span>
+                            </div>
+                            <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                <FaMoneyBillWave className="text-lg text-brown-100" />
+                                <span className="text-brown-100 font-general text-xs uppercase tracking-wider font-semibold">{tour.cost}</span>
+                            </div>
                         </div>
+                        <div className="rounded-3xl overflow-hidden border border-white/[0.08]">
+                            {/* Brown accent header */}
+                            <div className="bg-brown-100 px-6 py-5">
+                                <p className="font-general text-[10px] uppercase tracking-[0.2em] text-white/70">Starting from</p>
+                                <p className="font-myCustomFont text-white text-3xl sm:text-4xl font-black mt-1">{tour.cost}</p>
+                                <p className="text-white/60 font-general text-xs mt-0.5">per rider</p>
+                            </div>
 
-                        <div className="info-card bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm p-8 rounded-2xl border border-[#496156] hover:border-brown-100 transition-all duration-300">
-                            <FaCalendarAlt className="text-4xl text-brown-100 mb-4" />
-                            <p className="text-label text-neutral-gray mb-2">Period</p>
-                            <p className="text-heading-secondary">{tour.period}</p>
-                        </div>
+                            {/* Card body */}
+                            <div className="bg-[#161616] px-6 py-5 space-y-4">
+                                {/* Tour Date */}
+                                <div className="flex items-center justify-between rounded-xl bg-white/[0.04] px-4 py-3">
+                                    <div>
+                                        <p className="text-white font-general text-sm">{tour.period}</p>
+                                        <p className="text-white/40 font-general text-xs mt-0.5">{tour.duration}</p>
+                                    </div>
+                                    <a
+                                        href={`https://wa.me/919663299663?text=${encodeURIComponent(`Hi! I'd like to book the ${tour.name} tour (${tour.period}).`)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="px-4 py-1.5 rounded-full bg-brown-100 text-white font-general text-xs uppercase tracking-wider font-semibold hover:bg-brown-300 transition-colors duration-300"
+                                    >
+                                        Book
+                                    </a>
+                                </div>
 
-                        <div className="info-card bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm p-8 rounded-2xl border border-[#496156] hover:border-brown-100 transition-all duration-300">
-                            <FaMapMarkerAlt className="text-4xl text-brown-100 mb-4" />
-                            <p className="text-label text-neutral-gray mb-2">Starting Point</p>
-                            <p className="text-heading-secondary">{tour.starting}</p>
-                        </div>
+                                {/* Divider */}
+                                <div className="h-px bg-white/[0.06]" />
 
-                        <div className="info-card bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm p-8 rounded-2xl border border-[#496156] hover:border-brown-100 transition-all duration-300">
-                            <FaMoneyBillWave className="text-4xl text-brown-100 mb-4" />
-                            <p className="text-label text-neutral-gray mb-2">Starting From</p>
-                            <p className="text-heading-secondary text-brown-100">{tour.cost}</p>
+                                {/* CTA Buttons */}
+                                <div className="space-y-2.5">
+                                    <a
+                                        href={`https://wa.me/919663299663?text=${encodeURIComponent(`Hi! I'd like to know more about the ${tour.name} tour.`)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="group flex items-center justify-center gap-2.5 w-full rounded-full bg-brown-100 py-3.5 font-general text-sm uppercase tracking-wider text-white font-bold hover:bg-brown-300 active:scale-[0.98] transition-all duration-300"
+                                    >
+                                        <FaWhatsapp className="w-5 h-5" />
+                                        Enquire Now
+                                    </a>
+                                    <Link
+                                        to="/contact"
+                                        state={{ formType: "tailor", tourName: tour.name }}
+                                        className="group flex items-center justify-center gap-2.5 w-full rounded-full border border-brown-100/40 py-3 font-general text-xs uppercase tracking-wider text-brown-100 font-semibold hover:bg-brown-100/10 transition-all duration-300"
+                                    >
+                                        <FaSlidersH className="w-3.5 h-3.5" />
+                                        Tailor made
+                                    </Link>
+                                    <Link
+                                        to="/contact"
+                                        className="flex items-center justify-center w-full py-2.5 font-general text-xs uppercase tracking-wider text-white/50 font-semibold hover:text-white/80 transition-colors duration-300"
+                                    >
+                                        Questions? Contact Us
+                                    </Link>
+                                </div>
+
+                                {/* Divider */}
+                                <div className="h-px bg-white/[0.06]" />
+
+                                {/* Trust Badges */}
+                                <div className="space-y-2">
+                                    <div className="flex items-center gap-3">
+                                        <FaShieldAlt className="w-3.5 h-3.5 text-brown-100 flex-shrink-0" />
+                                        <span className="text-white/50 font-general text-xs">25,000 INR deposit to confirm your spot</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <FaUndoAlt className="w-3.5 h-3.5 text-brown-100 flex-shrink-0" />
+                                        <span className="text-white/50 font-general text-xs">Cancellation & postponement with conditions</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </section>
 
-                {/* Content Container */}
-                <div className="content-container max-w-7xl mx-auto px-6 pb-20">
-                    {/* Tour Map Section */}
-                    <section className="content-section mb-20">
-                        <div className="mb-10 section-heading">
-                            <DecryptedText
-                                text="Tour Route"
-                                parentClassName="flex justify-center"
-                                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
-                                encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
-                                characters="█▓▒░▀▄▌▐"
-                                animateOn="view"
-                                revealDirection="center"
-                                sequential
-                                useOriginalCharsOnly={false}
-                                speed={40}
-                                initialDelay={500}
-                            />
-                        </div>
-                        <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm border border-[#496156] rounded-2xl p-4 md:p-8 overflow-hidden">
-                            <img
-                                src={tour.hudMap}
-                                alt="Tour Route Map"
-                                className="w-full h-[60vh] rounded-xl object-contain"
-                            />
-                        </div>
-                    </section>
-                    {/* Overview Section */}
-                    {(tour.brief || tour.about) && (
-                        <section className="content-section mb-20">
-                            <div className="mb-10 section-heading">
-                                <DecryptedText
-                                    text="Tour Overview"
-                                    parentClassName="flex justify-center"
-                                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
-                                    encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
-                                    characters="█▓▒░▀▄▌▐"
-                                    animateOn="view"
-                                    revealDirection="center"
-                                    sequential
-                                    useOriginalCharsOnly={false}
-                                    speed={40}
-                                    initialDelay={500}
-                                />
+                    {/* Two-column layout: Content + Sticky Sidebar */}
+                    <div className="flex gap-8">
+                        {/* Main Content */}
+                        <div className="flex-1 min-w-0">
+                            {/* Quick Info Capsules - desktop */}
+                            <div className="hidden lg:flex flex-wrap gap-3 mb-12">
+                                <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                    <FaClock className="text-lg text-brown-100" />
+                                    <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">{tour.duration}</span>
+                                </div>
+                                <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                    <FaCalendarAlt className="text-lg text-brown-100" />
+                                    <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">{tour.period}</span>
+                                </div>
+                                <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                    <FaMapMarkerAlt className="text-lg text-brown-100" />
+                                    <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">{tour.starting}</span>
+                                </div>
+                                <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                    <FaMoneyBillWave className="text-lg text-brown-100" />
+                                    <span className="text-brown-100 font-general text-xs uppercase tracking-wider font-semibold">{tour.cost}</span>
+                                </div>
                             </div>
-                            <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm border border-[#496156] rounded-2xl p-8 md:p-12">
-                                {tour.brief && (
-                                    <p className="text-body text-neutral-gray">
-                                        {tour.brief}
-                                    </p>
-                                )}
-                                {tour.about && (
-                                    <p className="text-body text-neutral-gray mt-6">
-                                        {tour.about}
-                                    </p>
-                                )}
-                            </div>
-                        </section>
-                    )}
-
-                    {/* Highlights Section */}
-                    {tour.highlights && tour.highlights.length > 0 && (
-                        <section className="content-section mb-20">
-                            <div className="mb-10 section-heading">
-                                <DecryptedText
-                                    text="Tour Highlights"
-                                    parentClassName="flex justify-center"
-                                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
-                                    encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
-                                    characters="█▓▒░▀▄▌▐"
-                                    animateOn="view"
-                                    revealDirection="center"
-                                    sequential
-                                    useOriginalCharsOnly={false}
-                                    speed={40}
-                                    initialDelay={500}
-                                />
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {tour.highlights.map((highlight, index) => (
-                                    <div
-                                        key={index}
-                                        className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm p-6 rounded-xl border border-[#496156] hover:border-brown-100/50 transition-all duration-300"
-                                    >
-                                        <div className="flex items-start gap-4">
-                                            <FaCheckCircle className="text-brown-100 text-xl flex-shrink-0 mt-1" />
-                                            <p className="text-body-small text-neutral-gray">
-                                                {highlight}
+                            <section className="content-section mb-20">
+                                <div className="mb-10 section-heading">
+                                    <DecryptedText
+                                        text="Tour Route"
+                                        parentClassName="flex justify-center"
+                                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
+                                        encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
+                                        characters="█▓▒░▀▄▌▐"
+                                        animateOn="view"
+                                        revealDirection="center"
+                                        sequential
+                                        useOriginalCharsOnly={false}
+                                        speed={40}
+                                        initialDelay={500}
+                                    />
+                                </div>
+                                <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm border border-[#496156] rounded-2xl p-4 md:p-8 overflow-hidden">
+                                    <img
+                                        src={tour.hudMap}
+                                        alt="Tour Route Map"
+                                        className="w-full h-[60vh] rounded-xl object-contain"
+                                    />
+                                </div>
+                            </section>
+                            {/* Overview Section */}
+                            {(tour.brief || tour.about) && (
+                                <section className="content-section mb-20">
+                                    <div className="mb-10 section-heading">
+                                        <DecryptedText
+                                            text="Tour Overview"
+                                            parentClassName="flex justify-center"
+                                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
+                                            encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
+                                            characters="█▓▒░▀▄▌▐"
+                                            animateOn="view"
+                                            revealDirection="center"
+                                            sequential
+                                            useOriginalCharsOnly={false}
+                                            speed={40}
+                                            initialDelay={500}
+                                        />
+                                    </div>
+                                    <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm border border-[#496156] rounded-2xl p-8 md:p-12">
+                                        {tour.brief && (
+                                            <p className="text-body text-neutral-gray">
+                                                {tour.brief}
                                             </p>
+                                        )}
+                                        {tour.about && (
+                                            <p className="text-body text-neutral-gray mt-6">
+                                                {tour.about}
+                                            </p>
+                                        )}
+                                    </div>
+                                </section>
+                            )}
+
+                            {/* Highlights Section */}
+                            {tour.highlights && tour.highlights.length > 0 && (
+                                <section className="content-section mb-20">
+                                    <div className="mb-10 section-heading">
+                                        <DecryptedText
+                                            text="Tour Highlights"
+                                            parentClassName="flex justify-center"
+                                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
+                                            encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
+                                            characters="█▓▒░▀▄▌▐"
+                                            animateOn="view"
+                                            revealDirection="center"
+                                            sequential
+                                            useOriginalCharsOnly={false}
+                                            speed={40}
+                                            initialDelay={500}
+                                        />
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        {tour.highlights.map((highlight, index) => (
+                                            <div
+                                                key={index}
+                                                className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm p-6 rounded-xl border border-[#496156] hover:border-brown-100/50 transition-all duration-300"
+                                            >
+                                                <div className="flex items-start gap-4">
+                                                    <FaCheckCircle className="text-brown-100 text-xl flex-shrink-0 mt-1" />
+                                                    <p className="text-body-small text-neutral-gray">
+                                                        {highlight}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
+                            )}
+
+                            {/* Itinerary Section - Scroll Timeline */}
+                            {tour.itinerary && tour.itinerary.length > 0 && (
+                                <section className="content-section mb-20">
+                                    <div className="mb-10 section-heading">
+                                        <DecryptedText
+                                            text="Day by Day Itinerary"
+                                            parentClassName="flex justify-center"
+                                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
+                                            encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
+                                            characters="█▓▒░▀▄▌▐"
+                                            animateOn="view"
+                                            revealDirection="center"
+                                            sequential
+                                            useOriginalCharsOnly={false}
+                                            speed={40}
+                                            initialDelay={500}
+                                        />
+                                    </div>
+                                    <ScrollTimeline
+                                        items={tour.itinerary.map((day, index) => ({
+                                            title: day.title,
+                                            description: day.description || null,
+                                        }))}
+                                    />
+                                </section>
+                            )}
+
+                            {/* Inclusions & Exclusions */}
+                            <section className="content-section mb-20">
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                    {/* Inclusions */}
+                                    {tour.inclusions && tour.inclusions.length > 0 && (
+                                        <div>
+                                            <div className="mb-6 section-heading">
+                                                <DecryptedText
+                                                    text="What's Included"
+                                                    parentClassName="flex justify-center"
+                                                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
+                                                    encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
+                                                    characters="█▓▒░▀▄▌▐"
+                                                    animateOn="view"
+                                                    revealDirection="center"
+                                                    sequential
+                                                    useOriginalCharsOnly={false}
+                                                    speed={40}
+                                                    initialDelay={500}
+                                                />
+                                            </div>
+                                            <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm border border-[#496156] rounded-2xl p-8">
+                                                <ul className="space-y-4">
+                                                    {tour.inclusions.map((item, index) => (
+                                                        <li key={index} className="flex items-start gap-3">
+                                                            <FaCheckCircle className="text-brown-100 text-lg flex-shrink-0 mt-1" />
+                                                            <span className="text-body-small text-neutral-gray">
+                                                                {item}
+                                                            </span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Exclusions */}
+                                    {tour.exclusions && tour.exclusions.length > 0 && (
+                                        <div>
+                                            <div className="mb-6 section-heading">
+                                                <DecryptedText
+                                                    text="What's Not Included"
+                                                    parentClassName="flex justify-center"
+                                                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
+                                                    encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
+                                                    characters="█▓▒░▀▄▌▐"
+                                                    animateOn="view"
+                                                    revealDirection="center"
+                                                    sequential
+                                                    useOriginalCharsOnly={false}
+                                                    speed={40}
+                                                    initialDelay={500}
+                                                />
+                                            </div>
+                                            <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm border border-[#496156] rounded-2xl p-8">
+                                                <ul className="space-y-4">
+                                                    {tour.exclusions.map((item, index) => (
+                                                        <li key={index} className="flex items-start gap-3">
+                                                            <FaTimesCircle className="text-red-400 text-lg flex-shrink-0 mt-1" />
+                                                            <span className="text-body-small text-neutral-gray">
+                                                                {item}
+                                                            </span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </section>
+
+                            {/* Why Us Section */}
+                            {tour.whyUs && (
+                                <section className="content-section mb-20">
+                                    <div className="mb-10 section-heading">
+                                        <DecryptedText
+                                            text="Why Choose Us?"
+                                            parentClassName="flex justify-center"
+                                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
+                                            encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
+                                            characters="█▓▒░▀▄▌▐"
+                                            animateOn="view"
+                                            revealDirection="center"
+                                            sequential
+                                            useOriginalCharsOnly={false}
+                                            speed={40}
+                                            initialDelay={500}
+                                        />
+                                    </div>
+                                    <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm border border-[#496156] rounded-2xl p-8 md:p-12">
+                                        <p className="text-body text-neutral-gray">
+                                            {tour.whyUs}
+                                        </p>
+                                    </div>
+                                </section>
+                            )}
+
+                            {/* CTA Section */}
+                            <section className="content-section">
+                                <div className="bg-gradient-to-br from-brown-100 to-[#8a5a3a] rounded-2xl p-6 sm:p-8 md:p-12 text-center text-white border border-brown-100">
+                                    <h2 className="font-myCustomFont text-3xl sm:text-4xl md:text-5xl mb-4">
+                                        Ready for the Adventure?
+                                    </h2>
+                                    <p className="text-heading-secondary mb-8 !font-general text-sm sm:text-base">
+                                        Book your spot now and create memories that last a lifetime
+                                    </p>
+                                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                                        <a href="https://wa.me/919663299663" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                                            <Button
+                                                title="Book Now on WhatsApp"
+                                                leftIcon={<TiLocationArrow />}
+                                                containerClass="!bg-white !text-black hover:!bg-neutral-gray transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
+                                            />
+                                        </a>
+                                        <Link to="/tours" className="w-full sm:w-auto">
+                                            <Button
+                                                title="View All Tours"
+                                                containerClass="!bg-black !text-white border border-white hover:!bg-neutral-black transition-all duration-300 w-full sm:w-auto"
+                                            />
+                                        </Link>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        {/* Sticky Sidebar - Desktop only */}
+                        <div className="hidden lg:block w-[340px] flex-shrink-0">
+                            <div className="sticky top-24">
+                                <div className="rounded-3xl overflow-hidden border border-white/[0.08]">
+                                    {/* Brown accent header */}
+                                    <div className="bg-brown-100 px-6 py-5">
+                                        <p className="font-general text-[10px] uppercase tracking-[0.2em] text-white/70">Starting from</p>
+                                        <p className="font-myCustomFont text-white text-3xl font-black mt-1">{tour.cost}</p>
+                                        <p className="text-white/60 font-general text-xs mt-0.5">per rider</p>
+                                    </div>
+
+                                    {/* Card body */}
+                                    <div className="bg-[#161616] px-6 py-5 space-y-4">
+                                        {/* Tour Date */}
+                                        <div className="flex items-center justify-between rounded-xl bg-white/[0.04] px-4 py-3">
+                                            <div>
+                                                <p className="text-white font-general text-sm">{tour.period}</p>
+                                                <p className="text-white/40 font-general text-xs mt-0.5">{tour.duration}</p>
+                                            </div>
+                                            <a
+                                                href={`https://wa.me/919663299663?text=${encodeURIComponent(`Hi! I'd like to book the ${tour.name} tour (${tour.period}).`)}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="px-4 py-1.5 rounded-full bg-brown-100 text-white font-general text-xs uppercase tracking-wider font-semibold hover:bg-brown-300 transition-colors duration-300"
+                                            >
+                                                Book
+                                            </a>
+                                        </div>
+
+                                        {/* Divider */}
+                                        <div className="h-px bg-white/[0.06]" />
+
+                                        {/* CTA Buttons */}
+                                        <div className="space-y-2.5">
+                                            <a
+                                                href={`https://wa.me/919663299663?text=${encodeURIComponent(`Hi! I'd like to know more about the ${tour.name} tour.`)}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="group flex items-center justify-center gap-2.5 w-full rounded-full bg-brown-100 py-3.5 font-general text-sm uppercase tracking-wider text-white font-bold hover:bg-brown-300 active:scale-[0.98] transition-all duration-300"
+                                            >
+                                                <FaWhatsapp className="w-5 h-5" />
+                                                Enquire Now
+                                            </a>
+                                            <Link
+                                                to="/contact"
+                                                state={{ formType: "tailor", tourName: tour.name }}
+                                                className="group flex items-center justify-center gap-2.5 w-full rounded-full border border-brown-100/40 py-3 font-general text-xs uppercase tracking-wider text-brown-100 font-semibold hover:bg-brown-100/10 transition-all duration-300"
+                                            >
+                                                <FaSlidersH className="w-3.5 h-3.5" />
+                                                Tailor made
+                                            </Link>
+                                            <Link
+                                                to="/contact"
+                                                className="flex items-center justify-center w-full py-2.5 font-general text-xs uppercase tracking-wider text-white/50 font-semibold hover:text-white/80 transition-colors duration-300"
+                                            >
+                                                Questions? Contact Us
+                                            </Link>
+                                        </div>
+
+                                        {/* Divider */}
+                                        <div className="h-px bg-white/[0.06]" />
+
+                                        {/* Trust Badges */}
+                                        <div className="space-y-2">
+                                            <div className="flex items-center gap-3">
+                                                <FaShieldAlt className="w-3.5 h-3.5 text-brown-100 flex-shrink-0" />
+                                                <span className="text-white/50 font-general text-xs">25,000 INR deposit to confirm your spot</span>
+                                            </div>
+                                            <div className="flex items-center gap-3">
+                                                <FaUndoAlt className="w-3.5 h-3.5 text-brown-100 flex-shrink-0" />
+                                                <span className="text-white/50 font-general text-xs">Cancellation & postponement with conditions</span>
+                                            </div>
                                         </div>
                                     </div>
-                                ))}
-                            </div>
-                        </section>
-                    )}
-
-                    {/* Itinerary Section - Scroll Timeline */}
-                    {tour.itinerary && tour.itinerary.length > 0 && (
-                        <section className="content-section mb-20">
-                            <div className="mb-10 section-heading">
-                                <DecryptedText
-                                    text="Day by Day Itinerary"
-                                    parentClassName="flex justify-center"
-                                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
-                                    encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
-                                    characters="█▓▒░▀▄▌▐"
-                                    animateOn="view"
-                                    revealDirection="center"
-                                    sequential
-                                    useOriginalCharsOnly={false}
-                                    speed={40}
-                                    initialDelay={500}
-                                />
-                            </div>
-                            <ScrollTimeline
-                                items={tour.itinerary.map((day, index) => ({
-                                    title: day.title,
-                                    description: day.description || null,
-                                }))}
-                            />
-                        </section>
-                    )}
-
-                    {/* Inclusions & Exclusions */}
-                    <section className="content-section mb-20">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            {/* Inclusions */}
-                            {tour.inclusions && tour.inclusions.length > 0 && (
-                                <div>
-                                    <div className="mb-6 section-heading">
-                                        <DecryptedText
-                                            text="What's Included"
-                                            parentClassName="flex justify-center"
-                                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
-                                            encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
-                                            characters="█▓▒░▀▄▌▐"
-                                            animateOn="view"
-                                            revealDirection="center"
-                                            sequential
-                                            useOriginalCharsOnly={false}
-                                            speed={40}
-                                            initialDelay={500}
-                                        />
-                                    </div>
-                                    <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm border border-[#496156] rounded-2xl p-8">
-                                        <ul className="space-y-4">
-                                            {tour.inclusions.map((item, index) => (
-                                                <li key={index} className="flex items-start gap-3">
-                                                    <FaCheckCircle className="text-brown-100 text-lg flex-shrink-0 mt-1" />
-                                                    <span className="text-body-small text-neutral-gray">
-                                                        {item}
-                                                    </span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
                                 </div>
-                            )}
-
-                            {/* Exclusions */}
-                            {tour.exclusions && tour.exclusions.length > 0 && (
-                                <div>
-                                    <div className="mb-6 section-heading">
-                                        <DecryptedText
-                                            text="What's Not Included"
-                                            parentClassName="flex justify-center"
-                                            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
-                                            encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
-                                            characters="█▓▒░▀▄▌▐"
-                                            animateOn="view"
-                                            revealDirection="center"
-                                            sequential
-                                            useOriginalCharsOnly={false}
-                                            speed={40}
-                                            initialDelay={500}
-                                        />
-                                    </div>
-                                    <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm border border-[#496156] rounded-2xl p-8">
-                                        <ul className="space-y-4">
-                                            {tour.exclusions.map((item, index) => (
-                                                <li key={index} className="flex items-start gap-3">
-                                                    <FaTimesCircle className="text-red-400 text-lg flex-shrink-0 mt-1" />
-                                                    <span className="text-body-small text-neutral-gray">
-                                                        {item}
-                                                    </span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    </section>
-
-                    {/* Why Us Section */}
-                    {tour.whyUs && (
-                        <section className="content-section mb-20">
-                            <div className="mb-10 section-heading">
-                                <DecryptedText
-                                    text="Why Choose Us?"
-                                    parentClassName="flex justify-center"
-                                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50"
-                                    encryptedClassName="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-blue-50 opacity-40"
-                                    characters="█▓▒░▀▄▌▐"
-                                    animateOn="view"
-                                    revealDirection="center"
-                                    sequential
-                                    useOriginalCharsOnly={false}
-                                    speed={40}
-                                    initialDelay={500}
-                                />
-                            </div>
-                            <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm border border-[#496156] rounded-2xl p-8 md:p-12">
-                                <p className="text-body text-neutral-gray">
-                                    {tour.whyUs}
-                                </p>
-                            </div>
-                        </section>
-                    )}
-
-                    {/* CTA Section */}
-                    <section className="content-section">
-                        <div className="bg-gradient-to-br from-brown-100 to-[#8a5a3a] rounded-2xl p-6 sm:p-8 md:p-12 text-center text-white border border-brown-100">
-                            <h2 className="font-myCustomFont text-3xl sm:text-4xl md:text-5xl mb-4">
-                                Ready for the Adventure?
-                            </h2>
-                            <p className="text-heading-secondary mb-8 !font-general text-sm sm:text-base">
-                                Book your spot now and create memories that last a lifetime
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                                <a href="https://wa.me/919663299663" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                                    <Button
-                                        title="Book Now on WhatsApp"
-                                        leftIcon={<TiLocationArrow />}
-                                        containerClass="!bg-white !text-black hover:!bg-neutral-gray transition-all duration-300 w-full sm:w-auto flex items-center justify-center gap-2"
-                                    />
-                                </a>
-                                <Link to="/tours" className="w-full sm:w-auto">
-                                    <Button
-                                        title="View All Tours"
-                                        containerClass="!bg-black !text-white border border-white hover:!bg-neutral-black transition-all duration-300 w-full sm:w-auto"
-                                    />
-                                </Link>
                             </div>
                         </div>
-                    </section>
+                    </div>
                 </div>
             </motion.div>
         </>
