@@ -45,7 +45,7 @@ const timeline = [
         year: "2016",
         title: "First Organised Tour",
         description:
-            "Officially launched the first curated Spiti Valley expedition with 8 riders and a borrowed backup vehicle.",
+            "Officially launched the first curated Spiti Valley expedition with 8 riders and a backup vehicle.",
     },
     {
         year: "2017",
@@ -254,7 +254,7 @@ const AboutUs = () => {
                         <img
                             src="img/DSC_5753.jpg"
                             alt="Beyond Tarmac Adventures"
-                            className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                            className="absolute inset-0 w-full h-full object-cover transition-all duration-700"
                         />
                         <div className="absolute inset-0 pointer-events-none rounded-3xl ring-1 ring-inset ring-white/[0.06]" />
                     </div>
@@ -305,7 +305,7 @@ const AboutUs = () => {
                             landscapes — all while maintaining the highest standards of safety
                             and responsible tourism.
                         </p>
-                        <div className="flex items-center justify-center gap-6 text-white/30 flex-wrap">
+                        <div className="flex items-center justify-center gap-6 text-[#b87c58] flex-wrap">
                             <div className="flex items-center gap-2">
                                 <FaMapMarkedAlt className="w-4 h-4" />
                                 <span className="font-general text-xs uppercase tracking-[0.15em]">

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { TiLocationArrow } from "react-icons/ti";
 import { FaClock, FaCalendarAlt, FaMoneyBillWave, FaMapMarkerAlt, FaStar, FaChevronDown } from "react-icons/fa";
@@ -13,9 +13,18 @@ const getMonthsFromPeriod = (period) => {
 };
 
 const Tours = () => {
+    const [searchParams] = useSearchParams();
     const [activeRegion, setActiveRegion] = useState("all");
     const [activeMonth, setActiveMonth] = useState("all");
     const [filteredTours, setFilteredTours] = useState([]);
+
+    // Apply month filter from URL search params on mount
+    useEffect(() => {
+        const monthParam = searchParams.get("month");
+        if (monthParam) {
+            setActiveMonth(monthParam);
+        }
+    }, [searchParams]);
 
     // Flatten and prepare tour data
     const allTours = toursData.regions.flatMap((region) =>
@@ -150,8 +159,8 @@ const CapsuleDropdown = ({ icon, label, value, onChange, options, isActive }) =>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full pointer-events-none" />
                     <div className="relative z-10 flex items-center gap-3.5">
                         <div className={`flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-300 ${isActive
-                                ? "border-brown-300 bg-brown-500/20 text-brown-100"
-                                : "border-white/[0.1] bg-white/[0.04] text-white/60 group-hover:bg-white/[0.08] group-hover:text-white group-hover:border-white/[0.2]"
+                            ? "border-brown-300 bg-brown-500/20 text-brown-100"
+                            : "border-white/[0.1] bg-white/[0.04] text-white/60 group-hover:bg-white/[0.08] group-hover:text-white group-hover:border-white/[0.2]"
                             }`}>
                             {icon}
                         </div>

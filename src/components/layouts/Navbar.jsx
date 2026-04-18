@@ -26,6 +26,7 @@ const NavBar = () => {
   const audioElementRef = useRef(null);
   const navContainerRef = useRef(null);
   const navElementsRef = useRef([]);
+  const toursButtonRef = useRef(null);
 
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
@@ -207,7 +208,7 @@ const NavBar = () => {
                   }}
                 />
               </Link>
-              <div className="hidden sm:block">
+              <div className="hidden sm:block" ref={toursButtonRef}>
                 <div onClick={() => setIsToursPopoverOpen((prev) => !prev)}>
                   <Button
                     id="product-button"
@@ -313,10 +314,10 @@ const NavBar = () => {
           </nav>
         </GlassSurface>
 
-        {/* Tours Popover - rendered outside GlassSurface to avoid overflow:hidden */}
         <ToursPopover
           isOpen={isToursPopoverOpen}
           onClose={() => setIsToursPopoverOpen(false)}
+          anchorRef={toursButtonRef}
         />
       </div>
 
@@ -334,14 +335,16 @@ const NavBar = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Mobile Tours Button */}
-            <Link to={"/tours"} className="block sm:hidden mb-4" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button
-                id="mobile-tours-button"
-                title="Tours"
-                rightIcon={<TiLocationArrow />}
-                containerClass="w-full border bg-white/10 backdrop-blur-glass flex items-center justify-center gap-1"
-              />
-            </Link>
+            <div className="block sm:hidden mb-4 relative" ref={toursButtonRef}>
+              <div onClick={() => { setIsMobileMenuOpen(false); setIsToursPopoverOpen((prev) => !prev); }}>
+                <Button
+                  id="mobile-tours-button"
+                  title="Tours"
+                  rightIcon={<TiLocationArrow />}
+                  containerClass="w-full border bg-white/10 backdrop-blur-glass flex items-center justify-center gap-1"
+                />
+              </div>
+            </div>
 
             {/* Mobile Navigation Links */}
             <div className="flex flex-col space-y-1">
