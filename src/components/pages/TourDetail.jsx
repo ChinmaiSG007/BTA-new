@@ -1,16 +1,17 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import { TiLocationArrow } from "react-icons/ti";
-import { FaCalendarAlt, FaMapMarkerAlt, FaClock, FaMoneyBillWave, FaCheckCircle, FaTimesCircle, FaWhatsapp, FaShieldAlt, FaUndoAlt, FaSlidersH } from "react-icons/fa";
+import { FaCalendarAlt, FaMapMarkerAlt, FaClock, FaMoneyBillWave, FaCheckCircle, FaTimesCircle, FaWhatsapp, FaShieldAlt, FaUndoAlt, FaSlidersH, FaTachometerAlt, FaThermometerHalf, FaHotel, FaMotorcycle } from "react-icons/fa";
 import toursData from "../../tours.json";
 import Button from "../common/Button";
 import AnimatedTitle from "../common/AnimatedTitle";
 import DecryptedText from "../styling/DecryptedText";
 import ScrollTimeline from "../styling/ScrollTimeline";
+import RoadmapTimeline from "../styling/RoadmapTimeline";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +22,59 @@ const TourDetail = () => {
     const [region, setRegion] = useState(null);
     const [imageLoaded, setImageLoaded] = useState(false);
     const [showLogoScreen, setShowLogoScreen] = useState(true);
+
+    /* ---------- Price add-ons ---------- */
+    const [addons, setAddons] = useState({
+        rentalBike: false,
+        singleRoom: false,
+        withPillion: false,
+    });
+
+    const ADDON_RATE_PER_DAY = {
+        rentalBike: 3500,
+        singleRoom: 3500,
+        withPillion: 3500,
+    };
+
+    const ADDON_LABELS = {
+        rentalBike: "Rental Motorcycle",
+        singleRoom: "Single Room",
+        withPillion: "With Pillion",
+    };
+
+    const parseCost = useCallback((costStr) => {
+        if (!costStr) return 0;
+        return parseInt(costStr.replace(/[^0-9]/g, ""), 10) || 0;
+    }, []);
+
+    const formatCost = useCallback((num) => {
+        return "₹ " + num.toLocaleString("en-IN");
+    }, []);
+
+    const tourDays = useMemo(() => {
+        if (!tour?.duration) return 0;
+        const match = tour.duration.match(/(\d+)\s*days/i);
+        return match ? parseInt(match[1], 10) : 0;
+    }, [tour]);
+
+    const addonTotal = useMemo(() => {
+        const baseCost = parseCost(tour?.cost);
+        return Object.entries(addons).reduce((sum, [key, active]) => {
+            if (!active) return sum;
+            if (key === "withPillion") return sum + baseCost;
+            return sum + ADDON_RATE_PER_DAY[key] * tourDays;
+        }, 0);
+    }, [addons, tourDays, tour, parseCost]);
+
+    const displayCost = useMemo(() => {
+        if (!tour?.cost) return "";
+        const base = parseCost(tour.cost);
+        return formatCost(base + addonTotal);
+    }, [tour, addonTotal, parseCost, formatCost]);
+
+    const toggleAddon = useCallback((key) => {
+        setAddons((prev) => ({ ...prev, [key]: !prev[key] }));
+    }, []);
 
     // Hide navbar during HUD loading screen
     useEffect(() => {
@@ -533,9 +587,6 @@ const TourDetail = () => {
                         </video>
                     </div>
 
-                    {/* Contour Pattern Overlay */}
-                    <div className="absolute inset-0 z-[12] pointer-events-none opacity-50" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cpath d='M239 21c-2 2-6 6-10 8-8 5-13 5-22 0-4-2-9-6-12-8l-4-4-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-5 4-8 5-14 5s-9-1-14-5c-4-2-8-5-9-7l-2-2v600h600V17l-4 4zm-6 40c2-2 6-6 10-8 8-5 13-5 22 0 4 2 9 6 12 8l4 4 4-4c3-2 7-6 10-8 5-4 8-5 14-5s9 1 14 5c3 2 7 6 10 8l4 4 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2 2-2c1-2 5-5 9-7 10-7 16-7 26 0 4 2 8 5 9 7l2 2V41l-4 4c-3 2-7 6-10 8-5 4-8 5-14 5s-9-1-14-5c-3-2-7-6-10-8l-4-4-4 4c-3 2-7 6-10 8-5 4-8 5-14 5s-9-1-14-5c-3-2-7-6-10-8l-4-4-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-2 2c-1 2-5 5-9 7-10 7-16 7-26 0-4-2-8-5-9-7l-2-2-4 4z' fill='%23616161' fill-opacity='0.4'/%3E%3C/svg%3E\")" }} />
-
                     {/* Gradient Overlay - subtle fade at bottom */}
                     <div className="absolute inset-0 z-[15] pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(27,27,27,0.2) 0%, rgba(27,27,27,0.1) 30%, rgba(27,27,27,0.2) 50%, rgba(27,27,27,0.6) 75%, rgba(27,27,27,1) 90%, rgba(27,27,27,1) 100%)' }} />
 
@@ -626,15 +677,44 @@ const TourDetail = () => {
                             </div>
                             <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
                                 <FaMoneyBillWave className="text-lg text-brown-100" />
-                                <span className="text-brown-100 font-general text-xs uppercase tracking-wider font-semibold">{tour.cost}</span>
+                                <span className="text-brown-100 font-general text-xs uppercase tracking-wider font-semibold">{displayCost || tour.cost}</span>
                             </div>
+                            {tour.skillLevel && (
+                                <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                    <FaTachometerAlt className="text-lg text-brown-100" />
+                                    <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">{tour.skillLevel}</span>
+                                </div>
+                            )}
+                            {tour.temperature && (
+                                <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                    <FaThermometerHalf className="text-lg text-brown-100" />
+                                    <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">{tour.temperature}</span>
+                                </div>
+                            )}
+                            {tour.premiumStays && (
+                                <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                    <FaHotel className="text-lg text-brown-100" />
+                                    <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">Premium Stays</span>
+                                </div>
+                            )}
+                            {tour.rentalAvailable && (
+                                <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                    <FaMotorcycle className="text-lg text-brown-100" />
+                                    <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">Rental Available</span>
+                                </div>
+                            )}
                         </div>
                         <div className="rounded-3xl overflow-hidden border border-white/[0.08]">
                             {/* Brown accent header */}
                             <div className="bg-brown-100 px-6 py-5">
                                 <p className="font-general text-[10px] uppercase tracking-[0.2em] text-white/70">Starting from</p>
-                                <p className="font-myCustomFont text-white text-3xl sm:text-4xl font-black mt-1">{tour.cost}</p>
+                                <p className="font-myCustomFont text-white text-3xl sm:text-4xl font-black mt-1">{displayCost || tour.cost}</p>
                                 <p className="text-white/60 font-general text-xs mt-0.5">per rider</p>
+                                {addonTotal > 0 && (
+                                    <p className="text-white/50 font-general text-[10px] mt-1">
+                                        incl. {formatCost(addonTotal)} in add-ons
+                                    </p>
+                                )}
                             </div>
 
                             {/* Card body */}
@@ -699,6 +779,58 @@ const TourDetail = () => {
                                         <span className="text-white/50 font-general text-xs">Cancellation & postponement with conditions</span>
                                     </div>
                                 </div>
+
+                                {/* Divider */}
+                                <div className="h-px bg-white/[0.06]" />
+
+                                {/* Price Add-ons (mobile) */}
+                                <div>
+                                    <p className="font-general text-[10px] uppercase tracking-[0.15em] text-white/40 mb-3">Add-ons</p>
+                                    <div className="space-y-2.5">
+                                        {Object.entries(ADDON_LABELS).map(([key, label]) => {
+                                            const isActive = addons[key];
+                                            const isPillion = key === "withPillion";
+                                            const priceDisplay = isPillion
+                                                ? tour.cost
+                                                : `₹${ADDON_RATE_PER_DAY[key].toLocaleString("en-IN")}`;
+                                            const suffix = isPillion ? "" : " /day";
+                                            return (
+                                                <button
+                                                    key={key}
+                                                    onClick={() => toggleAddon(key)}
+                                                    className={`w-full flex items-center justify-between rounded-xl px-4 py-3.5 transition-all duration-300 cursor-pointer ${isActive
+                                                        ? "bg-brown-100/15 border border-brown-100/40"
+                                                        : "bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.12]"
+                                                        }`}
+                                                >
+                                                    <div className="flex items-center gap-3">
+                                                        <div
+                                                            className={`w-5 h-5 rounded flex items-center justify-center transition-colors duration-200 flex-shrink-0 ${isActive
+                                                                ? "bg-brown-100"
+                                                                : "border-2 border-white/25"
+                                                                }`}
+                                                        >
+                                                            {isActive && (
+                                                                <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                                                </svg>
+                                                            )}
+                                                        </div>
+                                                        <p className={`font-general text-sm font-semibold ${isActive ? "text-white" : "text-white/70"}`}>{label}</p>
+                                                    </div>
+                                                    <p className={`font-general text-sm font-bold ${isActive ? "text-brown-100" : "text-white/50"}`}>{priceDisplay}{suffix && <span className="text-[10px] font-normal opacity-60">{suffix}</span>}</p>
+                                                </button>
+                                            );
+                                        })}
+                                    </div>
+                                    <Link
+                                        to="/contact"
+                                        state={{ formType: "tailor", tourName: tour.name }}
+                                        className="flex items-center justify-center gap-1.5 w-full mt-3 py-2 font-general text-[11px] uppercase tracking-wider text-white/40 hover:text-brown-100 transition-colors duration-300"
+                                    >
+                                        Contact us for more customization
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -723,8 +855,32 @@ const TourDetail = () => {
                                 </div>
                                 <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
                                     <FaMoneyBillWave className="text-lg text-brown-100" />
-                                    <span className="text-brown-100 font-general text-xs uppercase tracking-wider font-semibold">{tour.cost}</span>
+                                    <span className="font-general text-xs uppercase tracking-wider font-semibold">{tour.cost}</span>
                                 </div>
+                                {tour.skillLevel && (
+                                    <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                        <FaTachometerAlt className="text-lg text-brown-100" />
+                                        <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">{tour.skillLevel}</span>
+                                    </div>
+                                )}
+                                {tour.temperature && (
+                                    <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                        <FaThermometerHalf className="text-lg text-brown-100" />
+                                        <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">{tour.temperature}</span>
+                                    </div>
+                                )}
+                                {tour.premiumStays && (
+                                    <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                        <FaHotel className="text-lg text-brown-100" />
+                                        <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">Premium Stays</span>
+                                    </div>
+                                )}
+                                {tour.rentalAvailable && (
+                                    <div className="flex items-center gap-2.5 bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm px-4 py-2.5 rounded-full border border-[#496156]">
+                                        <FaMotorcycle className="text-lg text-brown-100" />
+                                        <span className="text-neutral-gray font-general text-xs uppercase tracking-wider">Rental Available</span>
+                                    </div>
+                                )}
                             </div>
                             <section className="content-section mb-20">
                                 <div className="mb-10 section-heading">
@@ -837,7 +993,8 @@ const TourDetail = () => {
                                             initialDelay={500}
                                         />
                                     </div>
-                                    <ScrollTimeline
+                                    <RoadmapTimeline
+                                        tourId={tourSlug}
                                         items={tour.itinerary.map((day, index) => ({
                                             title: day.title,
                                             description: day.description || null,
@@ -978,8 +1135,13 @@ const TourDetail = () => {
                                     {/* Brown accent header */}
                                     <div className="bg-brown-100 px-6 py-5">
                                         <p className="font-general text-[10px] uppercase tracking-[0.2em] text-white/70">Starting from</p>
-                                        <p className="font-myCustomFont text-white text-3xl font-black mt-1">{tour.cost}</p>
+                                        <p className="font-myCustomFont text-white text-3xl font-black mt-1">{displayCost || tour.cost}</p>
                                         <p className="text-white/60 font-general text-xs mt-0.5">per rider</p>
+                                        {addonTotal > 0 && (
+                                            <p className="text-white/50 font-general text-[10px] mt-1">
+                                                incl. {formatCost(addonTotal)} in add-ons
+                                            </p>
+                                        )}
                                     </div>
 
                                     {/* Card body */}
@@ -1043,6 +1205,58 @@ const TourDetail = () => {
                                                 <FaUndoAlt className="w-3.5 h-3.5 text-brown-100 flex-shrink-0" />
                                                 <span className="text-white/50 font-general text-xs">Cancellation & postponement with conditions</span>
                                             </div>
+                                        </div>
+
+                                        {/* Divider */}
+                                        <div className="h-px bg-white/[0.06]" />
+
+                                        {/* Price Add-ons */}
+                                        <div>
+                                            <p className="font-general text-[10px] uppercase tracking-[0.15em] text-white/40 mb-3">Add-ons</p>
+                                            <div className="space-y-2.5">
+                                                {Object.entries(ADDON_LABELS).map(([key, label]) => {
+                                                    const isActive = addons[key];
+                                                    const isPillion = key === "withPillion";
+                                                    const priceDisplay = isPillion
+                                                        ? tour.cost
+                                                        : `₹${ADDON_RATE_PER_DAY[key].toLocaleString("en-IN")}`;
+                                                    const suffix = isPillion ? "" : " /day";
+                                                    return (
+                                                        <button
+                                                            key={key}
+                                                            onClick={() => toggleAddon(key)}
+                                                            className={`w-full flex items-center justify-between rounded-xl px-4 py-3.5 transition-all duration-300 cursor-pointer ${isActive
+                                                                ? "bg-brown-100/15 border border-brown-100/40"
+                                                                : "bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.12]"
+                                                                }`}
+                                                        >
+                                                            <div className="flex items-center gap-3">
+                                                                <div
+                                                                    className={`w-5 h-5 rounded flex items-center justify-center transition-colors duration-200 flex-shrink-0 ${isActive
+                                                                        ? "bg-brown-100"
+                                                                        : "border-2 border-white/25"
+                                                                        }`}
+                                                                >
+                                                                    {isActive && (
+                                                                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                                                        </svg>
+                                                                    )}
+                                                                </div>
+                                                                <p className={`font-general text-sm font-semibold ${isActive ? "text-white" : "text-white/70"}`}>{label}</p>
+                                                            </div>
+                                                            <p className={`font-general text-sm font-bold ${isActive ? "text-brown-100" : "text-white/50"}`}>{priceDisplay}{suffix && <span className="text-[10px] font-normal opacity-60">{suffix}</span>}</p>
+                                                        </button>
+                                                    );
+                                                })}
+                                            </div>
+                                            <Link
+                                                to="/contact"
+                                                state={{ formType: "tailor", tourName: tour.name }}
+                                                className="flex items-center justify-center gap-1.5 w-full mt-3 py-2 font-general text-[11px] uppercase tracking-wider text-white/40 hover:text-brown-100 transition-colors duration-300"
+                                            >
+                                                Contact us for more customization
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>

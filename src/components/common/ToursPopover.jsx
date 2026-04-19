@@ -1,22 +1,21 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-const themes = [
+const centerSections = [
     {
-        name: "Adventure motorcycle training",
-        image: "/img/images/tours/tours_image_slider/tour_slider_image_1.jpg",
+        name: "Do Your Own Adventure",
+        icon: "/img/images/icons/do your own adventure.png",
+        link: "/tours",
     },
     {
-        name: "Adventure Tour",
-        image: "/img/images/tours/tours_image_slider/tour_slider_image_5.jpg",
+        name: "Adventure on Wheels",
+        icon: "/img/images/icons/adventure on 4 wheels.png",
+        link: "/tours",
     },
     {
-        name: "Motorcycle Ramble",
-        image: "/img/images/tours/tours_image_slider/tour_slider_image_3.jpg",
-    },
-    {
-        name: "Freedom",
-        image: "/img/images/tours/tours_image_slider/tour_slider_image_7.jpg",
+        name: "Work With Us",
+        icon: "/img/images/icons/work with us.png",
+        link: "/tours",
     },
 ];
 
@@ -27,12 +26,43 @@ const periods = [
     "SEPTEMBER 2026",
 ];
 
-const ToursPopover = ({ isOpen, onClose }) => {
+const periodToMonth = {
+    "JUNE 2026": "June",
+    "JULY 2026": "July",
+    "AUGUST 2026": "August",
+    "SEPTEMBER 2026": "September",
+};
+
+const ToursPopover = ({ isOpen, onClose, anchorRef }) => {
     const popoverRef = useRef(null);
+    const [position, setPosition] = useState({ top: 0, left: 0 });
+
+    useEffect(() => {
+        if (!isOpen) return;
+        const isMobile = window.innerWidth < 640;
+        if (isMobile) {
+            setPosition({
+                top: 70,
+                left: 16,
+            });
+        } else if (anchorRef?.current) {
+            const rect = anchorRef.current.getBoundingClientRect();
+            const popoverWidth = Math.min(600, window.innerWidth - 32);
+            const left = Math.max(16, Math.min(rect.left, window.innerWidth - popoverWidth - 16));
+            setPosition({
+                top: rect.bottom + 8,
+                left,
+            });
+        }
+    }, [isOpen, anchorRef]);
 
     useEffect(() => {
         const handleClickOutside = (e) => {
-            if (popoverRef.current && !popoverRef.current.contains(e.target)) {
+            if (
+                popoverRef.current &&
+                !popoverRef.current.contains(e.target) &&
+                !(anchorRef?.current && anchorRef.current.contains(e.target))
+            ) {
                 onClose();
             }
         };
@@ -41,7 +71,7 @@ const ToursPopover = ({ isOpen, onClose }) => {
             document.addEventListener("mousedown", handleClickOutside);
         }
         return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, [isOpen, onClose]);
+    }, [isOpen, onClose, anchorRef]);
 
     useEffect(() => {
         const handleEsc = (e) => {
@@ -55,24 +85,44 @@ const ToursPopover = ({ isOpen, onClose }) => {
 
     if (!isOpen) return null;
 
+    // Center tile colors: dark grey tones
+    const tileBgs = ["bg-[#2a2a2a]", "bg-[#333333]", "bg-[#2a2a2a]"];
+    const tileHovers = [
+        "hover:bg-[#353535]",
+        "hover:bg-[#3e3e3e]",
+        "hover:bg-[#353535]",
+    ];
+
     return (
         <div
             ref={popoverRef}
-            className="absolute top-full left-0 right-0 mt-2 mx-auto max-w-5xl rounded-2xl bg-[#f5f0eb] shadow-2xl border border-[#e0d6cc] overflow-hidden z-50 animate-popover-in"
+            className="fixed z-[60] animate-popover-in w-[calc(100vw-2rem)] max-w-[600px]"
+            style={{ top: position.top, left: position.left }}
         >
-            <div className="flex flex-col md:flex-row">
-                {/* Left: Depending on the period */}
-                <div className="p-5 md:p-6 md:border-r border-b md:border-b-0 border-[#e0d6cc] md:w-[200px] shrink-0">
-                    <h3 className="font-myCustomFont text-[#33443c] text-base md:text-lg font-bold italic mb-4 leading-tight">
-                        Depending on the period
+            {/* Main Wrapper — dark grey with low opacity */}
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-2.5 p-2 sm:p-2.5 rounded-2xl sm:rounded-[2rem] backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+
+                {/* Column 1: Fixed Departures — dark grey */}
+                <div className="w-full sm:w-[175px] shrink-0 rounded-xl sm:rounded-[1.25rem] p-3 sm:p-4 flex flex-col gap-2 sm:gap-2.5 bg-[#2a2a2a]">
+                    <div className="flex justify-center mb-0.5">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-[#1f1f1f]/60 p-1.5 sm:p-2 flex items-center justify-center">
+                            <img
+                                src="/img/images/icons/fixed departures.png"
+                                alt="Fixed Departures"
+                                className="w-full h-full object-contain"
+                            />
+                        </div>
+                    </div>
+                    <h3 className="font-myCustomFont text-[#e0e0e0] text-xs sm:text-sm font-bold text-center uppercase">
+                        Fixed Departures
                     </h3>
-                    <div className="flex flex-row flex-wrap md:flex-col gap-2">
+                    <div className="grid grid-cols-2 sm:grid-cols-1 gap-1.5">
                         {periods.map((period) => (
                             <Link
                                 key={period}
-                                to="/tours"
+                                to={`/tours?month=${periodToMonth[period]}`}
                                 onClick={onClose}
-                                className="px-4 py-2 rounded-full bg-[#d9d4cd] text-[#33443c] font-general text-[11px] uppercase tracking-wide font-semibold hover:bg-[#ccc5bc] transition-colors duration-200 text-left whitespace-nowrap cursor-pointer"
+                                className="block w-full text-center py-1.5 sm:py-2 px-2 sm:px-3 rounded-lg bg-[#e0e0e0] text-[#1a1a1a] font-general text-[10px] sm:text-[11px] uppercase tracking-wide font-bold hover:bg-[#f0f0f0] hover:scale-[1.02] hover:shadow-md transition-all duration-200"
                             >
                                 {period}
                             </Link>
@@ -80,61 +130,68 @@ const ToursPopover = ({ isOpen, onClose }) => {
                         <Link
                             to="/tours"
                             onClick={onClose}
-                            className="px-4 py-2 rounded-full bg-[#33443c] text-white font-general text-[11px] uppercase tracking-wide font-semibold hover:bg-[#3d5349] transition-colors duration-200 text-left whitespace-nowrap cursor-pointer"
+                            className="block w-full text-center py-1.5 sm:py-2 px-2 sm:px-3 rounded-lg bg-[#111111] text-[#e0e0e0] font-general text-[10px] sm:text-[11px] uppercase tracking-wide font-bold hover:bg-[#0a0a0a] hover:scale-[1.02] hover:shadow-md transition-all duration-200 col-span-2 sm:col-span-1 mt-0.5"
                         >
                             ALL DEPARTURES
                         </Link>
                     </div>
                 </div>
 
-                {/* Middle: According to our themes */}
-                <div className="p-5 md:p-6 flex-1">
-                    <h3 className="font-myCustomFont text-[#33443c] text-base md:text-lg font-bold mb-5 leading-tight">
-                        According to our themes
-                    </h3>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-                        {themes.map((theme) => (
+                {/* Column 2: Center — grey tiles */}
+                <div className="flex-1 flex flex-col gap-2 sm:gap-2.5">
+                    {/* Banner */}
+                    <div className="w-full bg-[#1f1f1f]/90 rounded-lg sm:rounded-xl py-2 sm:py-2.5 px-3 sm:px-4 flex items-center justify-center">
+                        <h3 className="font-myCustomFont text-[#e0e0e0] text-xs sm:text-sm md:text-base font-bold tracking-wide uppercase">
+                            According to our themes
+                        </h3>
+                    </div>
+
+                    {/* 3 Grey Tiles */}
+                    <div className="grid grid-cols-3 sm:grid-cols-1 gap-1.5 sm:gap-2 flex-1">
+                        {centerSections.map((section, index) => (
                             <Link
-                                key={theme.name}
-                                to="/tours"
+                                key={section.name}
+                                to={section.link}
                                 onClick={onClose}
-                                className="flex flex-col items-center gap-3 group cursor-pointer"
+                                className={`flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 p-2 sm:px-4 sm:py-3.5 rounded-lg sm:rounded-xl transition-all duration-300 group ${tileBgs[index]} ${tileHovers[index]} hover:-translate-y-0.5 hover:shadow-lg`}
                             >
-                                <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-[3px] border-[#c9bfb3] group-hover:border-[#89573b] transition-colors duration-300">
+                                <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-md sm:rounded-lg bg-[#3a3a3a]/50 p-1.5 sm:p-2 flex items-center justify-center group-hover:bg-[#3a3a3a]/80 group-hover:scale-105 transition-all duration-300">
                                     <img
-                                        src={theme.image}
-                                        alt={theme.name}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        src={section.icon}
+                                        alt={section.name}
+                                        className="w-full h-full object-contain"
                                     />
                                 </div>
-                                <span className="font-myCustomFont text-[#33443c] text-sm md:text-base font-bold text-center leading-tight">
-                                    {theme.name}
+                                <span className="font-myCustomFont text-[#e0e0e0] text-[9px] sm:text-xs font-semibold text-center sm:text-left leading-tight line-clamp-2 uppercase tracking-wide">
+                                    {section.name}
                                 </span>
                             </Link>
                         ))}
                     </div>
                 </div>
 
-                {/* Right: Tailor-made */}
-                <div className="m-3 md:m-4 md:w-[200px] shrink-0">
-                    <div
-                        className="relative h-full min-h-[180px] md:min-h-0 rounded-xl overflow-hidden flex flex-col justify-end p-5 cursor-pointer"
-                        style={{
-                            backgroundColor: "#33443c",
-                            backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0C40 22 20 40 0 40M80 0C80 44 44 80 0 80M120 0C120 66 66 120 0 120M160 0C160 88 88 160 0 160M200 0C200 110 110 200 0 200M200 40C178 40 160 58 160 80M200 80C178 80 160 98 160 120M200 120C178 120 160 138 160 160M200 160C178 160 160 178 160 200M160 40C160 62 142 80 120 80M160 80C160 102 142 120 120 120M160 120C160 142 142 160 120 160M160 160C160 182 142 200 120 200M120 40C120 62 102 80 80 80M120 80C120 102 102 120 80 120M120 120C120 142 102 160 80 160M120 160C120 182 102 200 80 200M80 40C80 62 62 80 40 80M80 80C80 102 62 120 40 120M80 120C80 142 62 160 40 160M80 160C80 182 62 200 40 200M40 40C40 62 22 80 0 80M40 80C40 102 22 120 0 120M40 120C40 142 22 160 0 160M40 160C40 182 22 200 0 200' fill='none' stroke='%234a5e52' stroke-width='1' opacity='0.5'/%3E%3C/svg%3E")`,
-                            backgroundSize: "200px 200px",
-                        }}
-                        onClick={() => onClose()}
-                    >
-                        <Link to="/tours" className="absolute inset-0 z-10" onClick={onClose} />
-                        <h4 className="font-myCustomFont text-[#c4943e] text-xl md:text-2xl font-bold italic mb-2 leading-tight">
-                            Tailor-made
+                {/* Column 3: Tailor Made — dark grey */}
+                <div className="w-full sm:w-[155px] shrink-0 rounded-xl sm:rounded-[1.25rem] p-3 sm:p-4 flex flex-col items-center text-center relative overflow-hidden bg-[#2a2a2a]">
+                    <Link to="/contact" state={{ formType: "tailor" }} className="absolute inset-0 z-20" onClick={onClose} />
+                    <div className="relative z-10 flex flex-col mb-2 w-full">
+                        <h4 className="font-myCustomFont text-[#e0e0e0] text-base sm:text-lg font-bold uppercase tracking-wide leading-none">
+                            Tailor Made
                         </h4>
-                        <p className="text-[#d9d4cd] text-sm leading-snug font-general">
+                    </div>
+                    <div className="relative z-10 w-[65%] sm:w-[85%] aspect-square rounded-lg sm:rounded-xl bg-[#1f1f1f]/50 mb-2 sm:mb-3 flex items-center justify-center">
+                        <img
+                            src="/img/images/icons/Tailor made.png"
+                            alt="Tailor Made"
+                            className="w-3/4 h-3/4 object-contain"
+                        />
+                    </div>
+                    <div className="relative z-10 flex flex-col w-full px-1">
+                        <p className="text-[#b0b0b0] text-[10px] sm:text-[11px] leading-relaxed font-general">
                             Our team can help make your dream trip a reality!
                         </p>
                     </div>
                 </div>
+
             </div>
         </div>
     );
