@@ -163,6 +163,19 @@ const TourDetail = () => {
         return () => ctx.revert(); // Cleanup
     }, [tour]);
 
+    const getVideoForTour = (slug) => {
+        switch(slug) {
+            case "rajasthan":
+                return "/videos/trip_vids/rajasthan.mp4";
+            case "nēpālamā-svāgata-cha":
+                return "/videos/trip_vids/nepal.mp4";
+            case "north-eastern-nirvana":
+                return "/videos/trip_vids/north_east.mp4";
+            default:
+                return "/videos/bta-3.mp4";
+        }
+    };
+
     if (!tour || !region) {
         return (
             <div className="flex-center absolute h-dvh w-screen overflow-hidden loader-bg">
@@ -577,13 +590,14 @@ const TourDetail = () => {
                     {/* Video Background */}
                     <div className="absolute inset-0 z-10">
                         <video
+                            key={tourSlug}
                             autoPlay
                             muted
                             loop
                             playsInline
                             className="w-full h-full object-cover"
                         >
-                            <source src="/videos/bta-3.mp4" type="video/mp4" />
+                            <source src={getVideoForTour(tourSlug)} type="video/mp4" />
                         </video>
                     </div>
 

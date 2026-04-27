@@ -12,6 +12,7 @@ import FAQ from "./components/pages/FAQ";
 import TravelTips from "./components/pages/TravelTips";
 import NotFound from "./components/pages/NotFound";
 import Contact from "./components/pages/Contact";
+import Founder from "./components/pages/Founder";
 import ScrollToTop from "./components/common/ScrollToTop";
 import ScrollToTopOnMount from "./components/common/ScrollToTopOnMount";
 import WhatsAppButton from "./components/common/WhatsAppButton";
@@ -34,6 +35,7 @@ function App() {
               <Route path="/faq" element={<FAQ />} />
               <Route path="/travel-tips" element={<TravelTips />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/founder" element={<Founder />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <ScrollToTop
