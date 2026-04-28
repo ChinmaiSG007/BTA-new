@@ -80,6 +80,14 @@ const Footer = () => {
               </li>
               <li>
                 <Link
+                  to="/founder"
+                  className="text-neutral-300 hover:text-white transition-colors duration-200"
+                >
+                  Founder Story
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/contact"
                   className="text-neutral-300 hover:text-white transition-colors duration-200"
                 >

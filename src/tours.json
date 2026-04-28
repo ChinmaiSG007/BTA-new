@@ -11,7 +11,7 @@
           "duration": "9 Days and 8 Nights",
           "period": "April 2026",
           "starting": "Chandigarh",
-          "cost": "₹ 95,999",
+          "cost": "₹ 90,000",
           "image": "img/images/gallery/trip-main/snow_white_spiti.jpg",
           "mainLogo": "/img/images/tours/main_logo/snow_white_spiti.png",
           "monoLogo": "/img/images/tours/mono_logo/snow_white_spiti.png",
@@ -98,7 +98,9 @@
             "Services of vehicle is not included on leisure days & after finishing the sight seeing",
             "Alcohol & Starters",
             "Anything and everything not mentioned in the ‘Inclusions’."
-          ]
+          ],
+          "inclusiveCost": "₹ 1,17,000",
+          "exclusiveCost": "₹ 90,000"
         },
         {
           "id": "nih-2",
@@ -107,7 +109,7 @@
           "duration": "16 days and 15 nights",
           "period": "August 2026",
           "starting": "Chandigarh",
-          "cost": "₹ 1,85,999",
+          "cost": "₹ 1,60,000",
           "image": "img/images/gallery/trip-main/tale_of_three_valleys.jpg",
           "mainLogo": "/img/images/tours/main_logo/tale_of_three_valleys.png",
           "monoLogo": "/img/images/tours/mono_logo/tale_of_three_valleys.png",
@@ -191,7 +193,9 @@
             "Any kind of personal expenses or extra meals ordered",
             "Tips, Travel insurance, Laundry",
             "Anything and everything not mentioned in the ‘Inclusions’."
-          ]
+          ],
+          "inclusiveCost": "₹ 2,08,000",
+          "exclusiveCost": "₹ 1,60,000"
         },
         {
           "id": "nih-3",
@@ -200,7 +204,7 @@
           "duration": "10 days and 9 nights",
           "period": "October 2026",
           "starting": "Chandigarh",
-          "cost": "₹ 84,999",
+          "cost": "₹ 1,00,000",
           "image": "img/images/gallery/trip-main/the_moonland_tour.jpg",
           "mainLogo": "/img/images/tours/main_logo/the_moonland_tour.png",
           "monoLogo": "/img/images/tours/mono_logo/the_moonland_tour.png",
@@ -306,7 +310,9 @@
             "Vehicle services on leisure days",
             "Alcohol & Starters",
             "Anything not mentioned in 'Inclusions'"
-          ]
+          ],
+          "inclusiveCost": "₹ 1,30,000",
+          "exclusiveCost": "₹ 1,00,000"
         },
         {
           "id": "nih-4",
@@ -315,7 +321,7 @@
           "duration": "12 days and 11 nights",
           "period": "June 2026",
           "starting": "Chandigarh",
-          "cost": "₹ 1,19,999",
+          "cost": "₹ 1,20,000",
           "image": "img/images/gallery/trip-main/the_complete_circle.jpg",
           "mainLogo": "/img/images/tours/main_logo/the_complete_circle.png",
           "monoLogo": "/img/images/tours/mono_logo/the_complete_circle.png",
@@ -428,7 +434,9 @@
             "Services of vehicle is not included on leisure days & after finishing the sight seeing",
             "Alcohol & Starters",
             "Anything and everything not mentioned in the 'Inclusions'."
-          ]
+          ],
+          "inclusiveCost": "₹ 1,56,000",
+          "exclusiveCost": "₹ 1,20,000"
         },
         {
           "id": "nih-5",
@@ -437,7 +445,7 @@
           "duration": "15 days and 14 nights",
           "period": "July - August 2026",
           "starting": "Chandigarh",
-          "cost": "₹ 1,35,999",
+          "cost": "₹ 1,50,000",
           "image": "img/images/gallery/trip-main/la_himalaya.jpg",
           "mainLogo": null,
           "monoLogo": null,
@@ -563,7 +571,9 @@
             "Any kind of personal expenses or extra meals ordered",
             "Tips, Travel insurance, Laundry",
             "Anything and everything not mentioned in the 'Inclusions'."
-          ]
+          ],
+          "inclusiveCost": "₹ 1,95,000",
+          "exclusiveCost": "₹ 1,50,000"
         },
         {
           "id": "nih-6",
@@ -686,7 +696,7 @@
           "duration": "11 Days and 10 Nights",
           "period": "Jan / Feb 2027",
           "starting": "Jaipur",
-          "cost": "₹ 1,49,999",
+          "cost": "₹ 1,10,000",
           "image": "img/images/gallery/trip-main/rajasthan.jpg",
           "mainLogo": null,
           "monoLogo": null,
@@ -791,7 +801,9 @@
             "Any kind of personal expenses or extra meals ordered",
             "Tips, Travel insurance, Laundry",
             "Anything and everything not mentioned in the 'Inclusions'."
-          ]
+          ],
+          "inclusiveCost": "₹ 1,43,000",
+          "exclusiveCost": "₹ 1,10,000"
         }
       ]
     },
@@ -806,7 +818,7 @@
           "duration": "12 Days and 11 Nights",
           "period": "October 2026",
           "starting": "Lucknow",
-          "cost": "₹ 1,89,999",
+          "cost": "₹ 2,10,000",
           "image": "img/images/gallery/trip-main/nepalama_svagata_cha.jpg",
           "mainLogo": "/img/images/tours/main_logo/nepalama_svagata_cha.png",
           "monoLogo": "/img/images/tours/mono_logo/nepalama_svagata_cha.png",
@@ -920,7 +932,9 @@
             "Any kind of personal expenses or extra meals ordered",
             "Tips, Travel insurance, Laundry",
             "Anything and everything not mentioned in the 'Inclusions'."
-          ]
+          ],
+          "inclusiveCost": "₹ 2,60,000",
+          "exclusiveCost": "₹ 2,10,000"
         }
       ]
     },
@@ -935,7 +949,7 @@
           "duration": "11 Days and 10 Nights",
           "period": "November 2026",
           "starting": "Guwahati",
-          "cost": "₹ 1,24,999",
+          "cost": "₹ 1,10,000",
           "image": "img/images/gallery/trip-main/north_eastern_nirvana.jpg",
           "mainLogo": "/img/images/tours/main_logo/north_eastern_nirvana.png",
           "monoLogo": "/img/images/tours/mono_logo/north_eastern_nirvana.png",
@@ -1042,7 +1056,9 @@
             "Any kind of personal expenses or extra meals ordered",
             "Tips, Travel insurance, Laundry",
             "Anything and everything not mentioned in the 'Inclusions'."
-          ]
+          ],
+          "inclusiveCost": "₹ 1,43,000",
+          "exclusiveCost": "₹ 1,10,000"
         }
       ]
     },
@@ -1057,7 +1073,7 @@
           "duration": "8 Days and 9 Nights",
           "period": "December 2026",
           "starting": "Bengaluru",
-          "cost": "₹ 64,999",
+          "cost": "₹ 80,000",
           "image": "img/images/gallery/trip-main/southern_spice.jpg",
           "mainLogo": "/img/images/tours/main_logo/southern_spice.png",
           "monoLogo": "/img/images/tours/mono_logo/southern_spice.png",
@@ -1157,7 +1173,9 @@
             "Fuel For Motorcycles",
             "Tips, Travel insurance, Laundry",
             "Anything and everything not mentioned in the 'Inclusions'."
-          ]
+          ],
+          "inclusiveCost": "₹ 1,04,000",
+          "exclusiveCost": "₹ 80,000"
         }
       ]
     }

@@ -6,7 +6,6 @@ import { TiLocationArrow } from "react-icons/ti";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import AnimatedTitle from "../common/AnimatedTitle";
 import Button from "../common/Button";
-import Balatro from "../styling/Balatro";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -178,38 +177,56 @@ const RideSkillWorkshop = () => {
     return (
         <div ref={containerRef} className="min-h-screen w-screen bg-neutral-black text-white">
             {/* Hero Section */}
-            <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24">
-                {/* Background with gradient overlay */}
+            <section className="relative h-screen flex items-center justify-center overflow-hidden">
+                {/* Background Image with Gradient Overlay */}
                 <div className="absolute inset-0 bg-neutral-black">
-                    <div className="absolute inset-0 bg-gradient-to-b from-neutral-black/60 via-neutral-black/80 to-neutral-black z-10" />
+                    <img
+                        src="/img/images/gallery/Ride/rideskillworkshop.webp"
+                        alt="Ride Skill Workshop"
+                        className="w-full h-full object-cover opacity-70"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-neutral-black/60 via-neutral-black/40 to-neutral-black z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-black via-transparent to-transparent z-10" />
                 </div>
 
-                <Balatro
-                    isRotate={false}
-                    mouseInteraction={true}
-                    pixelFilter={1000}
-                    color1="#763919"
-                    color2="#102103"
-                    color3="#010b18"
-                />
+                <div className="relative z-20 text-center px-6 max-w-5xl mx-auto pt-16">
+                    {/* Glowing Card — same style as 404 page */}
+                    <div className="relative rounded-3xl border border-brown-100/30 bg-gradient-to-br from-neutral-black/80 to-neutral-black/60 backdrop-blur-xl px-8 py-10 sm:px-14 sm:py-14 shadow-[0_0_50px_rgba(137,87,59,0.25)]">
+                        {/* Animated Glow Border */}
+                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-brown-100/0 via-brown-100/20 to-brown-100/0 opacity-50 blur-xl animate-pulse pointer-events-none" />
 
-                <div className="relative z-20 text-center px-6">
-                    <h1 className="special-font hero-heading text-blue-75 mb-6">
-                        RIDE SKILL WORKSHOP
-                    </h1>
-                    <p className="font-myCustomFont text-2xl sm:text-3xl md:text-4xl text-brown-100 mb-4 italic">
-                        A Basic Riding Course for Women
-                    </p>
-                    <div className="inline-block font-myCustomFont bg-[#65402b] text-white px-8 py-4 rounded-full text-xl sm:text-2xl mt-4">
-                        ₹8,999 + 5% GST
+                        <div className="relative z-10">
+                            <h1 className="special-font hero-heading text-blue-75 mb-4 drop-shadow-2xl">
+                                RIDE SKILL WORKSHOP
+                            </h1>
+                            <p className="font-general text-lg sm:text-xl md:text-3xl text-brown-100 mb-8 drop-shadow-lg">
+                                A Basic Riding Course for Women
+                            </p>
+
+                            {/* Decorative divider */}
+                            <div className="w-32 h-1 bg-gradient-to-r from-transparent via-brown-100 to-transparent mx-auto mb-8" />
+
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-8 py-4 rounded-full shadow-2xl">
+                                    <span className="font-myCustomFont text-white text-2xl sm:text-3xl">₹8,999</span>
+                                    <span className="text-white/70 text-sm tracking-widest uppercase">+ 5% GST</span>
+                                </div>
+                                <a href="https://wa.me/919663299663" target="_blank" rel="noopener noreferrer">
+                                    <Button
+                                        title="Book Your Slot"
+                                        containerClass="text-black hover:!bg-brown-300 transition-all duration-300 shadow-2xl"
+                                    />
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div className="absolute bottom-20 w-full px-6 z-20">
+                <div className="absolute bottom-10 w-full px-6 z-20">
                     <div className="flex gap-4 justify-center items-center">
                         <TiLocationArrow className="text-brown-100 text-3xl sm:text-4xl animate-bounce" />
                     </div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 z-20">
+                    <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 z-20">
                         <p className="text-label text-neutral-gray animate-pulse">Scroll to explore</p>
                     </div>
                 </div>
@@ -223,15 +240,6 @@ const RideSkillWorkshop = () => {
                         title="About <b>RSW</b>"
                         containerClass="mb-8"
                     />
-
-                    {/* Image */}
-                    <div className="mb-8 rounded-3xl overflow-hidden">
-                        <img
-                            src="/img/images/gallery/Ride/rideskillworkshop.webp"
-                            alt="Ride Skill Workshop"
-                            className="w-full h-[400px] sm:h-[700px] object-cover"
-                        />
-                    </div>
 
                     <div className="bg-gradient-to-br from-[#1c2621]/40 to-[#1b1b1b]/40 backdrop-blur-sm p-8 rounded-2xl border border-[#496156]">
                         <p className="text-body text-neutral-gray">
