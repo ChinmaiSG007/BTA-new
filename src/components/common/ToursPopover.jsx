@@ -105,7 +105,7 @@ const ToursPopover = ({ isOpen, onClose, anchorRef }) => {
                 {/* Column 1: Fixed Departures — dark grey */}
                 <div className="w-full sm:w-[175px] shrink-0 rounded-xl sm:rounded-[1.25rem] p-3 sm:p-4 flex flex-col gap-2 sm:gap-2.5 bg-[#2a2a2a]">
                     <div className="flex justify-center mb-0.5">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-[#1f1f1f]/60 p-1.5 sm:p-2 flex items-center justify-center">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-[#ffffff]/60 p-1.5 sm:p-2 flex items-center justify-center">
                             <img
                                 src="/img/images/icons/fixed departures.png"
                                 alt="Fixed Departures"
@@ -155,7 +155,7 @@ const ToursPopover = ({ isOpen, onClose, anchorRef }) => {
                                 onClick={onClose}
                                 className={`flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-4 p-2 sm:px-4 sm:py-3.5 rounded-lg sm:rounded-xl transition-all duration-300 group ${tileBgs[index]} ${tileHovers[index]} hover:-translate-y-0.5 hover:shadow-lg`}
                             >
-                                <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-md sm:rounded-lg bg-[#3a3a3a]/50 p-1.5 sm:p-2 flex items-center justify-center group-hover:bg-[#3a3a3a]/80 group-hover:scale-105 transition-all duration-300">
+                                <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-md sm:rounded-lg bg-[#ffffff]/50 p-1.5 sm:p-2 flex items-center justify-center group-hover:bg-[#3a3a3a]/80 group-hover:scale-105 transition-all duration-300">
                                     <img
                                         src={section.icon}
                                         alt={section.name}
@@ -178,7 +178,7 @@ const ToursPopover = ({ isOpen, onClose, anchorRef }) => {
                             Tailor Made
                         </h4>
                     </div>
-                    <div className="relative z-10 w-[65%] sm:w-[85%] aspect-square rounded-lg sm:rounded-xl bg-[#1f1f1f]/50 mb-2 sm:mb-3 flex items-center justify-center">
+                    <div className="relative z-10 w-[65%] sm:w-[85%] aspect-square rounded-lg sm:rounded-xl bg-[#ffffff]/50 mb-2 sm:mb-3 flex items-center justify-center">
                         <img
                             src="/img/images/icons/Tailor made.png"
                             alt="Tailor Made"

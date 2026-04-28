@@ -1,6 +1,5 @@
 import DomeGallery from '../styling/DomeGallery';
-import Balatro from '../styling/Balatro';
-import { TiLocationArrow } from "react-icons/ti";
+import GalleryHeroCarousel from '../styling/GalleryHeroCarousel';
 
 const Gallery = () => {
     // All images from the gallery folder
@@ -88,39 +87,9 @@ const Gallery = () => {
 
     return (
         <div className="min-h-screen w-screen bg-neutral-black text-white">
-            {/* Hero Intro Section */}
-            <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24">
-                {/* Background with gradient overlay */}
-                <div className="absolute inset-0 bg-neutral-black">
-                    <div className="absolute inset-0 bg-gradient-to-b from-neutral-black/60 via-neutral-black/80 to-neutral-black z-10" />
-                </div>
-
-                <Balatro
-                    isRotate={false}
-                    mouseInteraction={true}
-                    pixelFilter={1000}
-                    color1="#763919"
-                    color2="#102103"
-                    color3="#010b18"
-                />
-
-                <div className="relative z-20 text-center px-6">
-                    <h1 className="special-font hero-heading text-blue-75 mb-6">
-                        OUR GALLERY
-                    </h1>
-                    <p className="font-robert-regular text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto text-neutral-gray leading-relaxed mb-8">
-                        Explore our adventures through this immersive 3D gallery experience
-                    </p>
-                </div>
-
-                <div className="absolute bottom-20 w-full px-6 z-20">
-                    <div className="flex gap-4 justify-center items-center">
-                        <TiLocationArrow className="text-brown-100 text-3xl sm:text-4xl animate-bounce" />
-                    </div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 z-20">
-                        <p className="font-general text-xs sm:text-sm text-neutral-gray uppercase tracking-widest animate-pulse">Scroll to explore</p>
-                    </div>
-                </div>
+            {/* Hero Carousel Section */}
+            <section className="relative h-screen w-full overflow-hidden">
+                <GalleryHeroCarousel images={galleryImages} />
             </section>
 
             {/* DomeGallery Section */}

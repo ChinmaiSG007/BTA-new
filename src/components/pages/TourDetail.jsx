@@ -30,6 +30,8 @@ const TourDetail = () => {
         withPillion: false,
     });
 
+    const [packageType, setPackageType] = useState("exclusive"); // 'exclusive' | 'inclusive'
+
     const ADDON_RATE_PER_DAY = {
         rentalBike: 3500,
         singleRoom: 3500,
@@ -57,20 +59,27 @@ const TourDetail = () => {
         return match ? parseInt(match[1], 10) : 0;
     }, [tour]);
 
+    const baseTourCost = useMemo(() => {
+        if (!tour) return 0;
+        if (tour.inclusiveCost && packageType === "inclusive") {
+            return parseCost(tour.inclusiveCost);
+        }
+        return parseCost(tour.cost);
+    }, [tour, packageType, parseCost]);
+
     const addonTotal = useMemo(() => {
-        const baseCost = parseCost(tour?.cost);
         return Object.entries(addons).reduce((sum, [key, active]) => {
             if (!active) return sum;
-            if (key === "withPillion") return sum + baseCost;
+            if (key === "withPillion") return sum + baseTourCost;
+            if (key === "rentalBike" && packageType === "inclusive") return sum; // Free if inclusive
             return sum + ADDON_RATE_PER_DAY[key] * tourDays;
         }, 0);
-    }, [addons, tourDays, tour, parseCost]);
+    }, [addons, tourDays, packageType, baseTourCost]);
 
     const displayCost = useMemo(() => {
         if (!tour?.cost) return "";
-        const base = parseCost(tour.cost);
-        return formatCost(base + addonTotal);
-    }, [tour, addonTotal, parseCost, formatCost]);
+        return formatCost(baseTourCost + addonTotal);
+    }, [tour, baseTourCost, addonTotal, formatCost]);
 
     const toggleAddon = useCallback((key) => {
         setAddons((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -164,7 +173,7 @@ const TourDetail = () => {
     }, [tour]);
 
     const getVideoForTour = (slug) => {
-        switch(slug) {
+        switch (slug) {
             case "rajasthan":
                 return "/videos/trip_vids/rajasthan.mp4";
             case "nēpālamā-svāgata-cha":
@@ -771,12 +780,6 @@ const TourDetail = () => {
                                         <FaSlidersH className="w-3.5 h-3.5" />
                                         Tailor made
                                     </Link>
-                                    <Link
-                                        to="/contact"
-                                        className="flex items-center justify-center w-full py-2.5 font-general text-xs uppercase tracking-wider text-white/50 font-semibold hover:text-white/80 transition-colors duration-300"
-                                    >
-                                        Questions? Contact Us
-                                    </Link>
                                 </div>
 
                                 {/* Divider */}
@@ -1147,24 +1150,41 @@ const TourDetail = () => {
                             <div className="sticky top-24">
                                 <div className="rounded-3xl overflow-hidden border border-white/[0.08]">
                                     {/* Brown accent header */}
-                                    <div className="bg-brown-100 px-6 py-5">
-                                        <p className="font-general text-[10px] uppercase tracking-[0.2em] text-white/70">Starting from</p>
-                                        <p className="font-myCustomFont text-white text-3xl font-black mt-1">{displayCost || tour.cost}</p>
-                                        <p className="text-white/60 font-general text-xs mt-0.5">per rider</p>
+                                    <div className="bg-brown-100 px-5 py-3.5">
+                                        <p className="font-general text-[10px] uppercase tracking-[0.2em] text-white/70 leading-none">Starting from</p>
+                                        <p className="font-myCustomFont text-white text-3xl font-black mt-1 leading-none">{displayCost || tour.cost}</p>
+                                        <p className="text-white/60 font-general text-[10px] mt-1 leading-none">per rider</p>
                                         {addonTotal > 0 && (
-                                            <p className="text-white/50 font-general text-[10px] mt-1">
+                                            <p className="text-white/50 font-general text-[10px] mt-1 leading-none">
                                                 incl. {formatCost(addonTotal)} in add-ons
                                             </p>
+                                        )}
+
+                                        {tour.inclusiveCost && (
+                                            <div className="mt-3 bg-black/20 p-1 rounded-full flex">
+                                                <button
+                                                    onClick={() => setPackageType("exclusive")}
+                                                    className={`flex-1 py-1.5 text-[10px] uppercase tracking-wider font-semibold rounded-full transition-all duration-300 ${packageType === "exclusive" ? "bg-white text-brown-100 shadow-sm" : "text-white/70 hover:text-white"}`}
+                                                >
+                                                    Exclusive
+                                                </button>
+                                                <button
+                                                    onClick={() => setPackageType("inclusive")}
+                                                    className={`flex-1 py-1.5 text-[10px] uppercase tracking-wider font-semibold rounded-full transition-all duration-300 ${packageType === "inclusive" ? "bg-white text-brown-100 shadow-sm" : "text-white/70 hover:text-white"}`}
+                                                >
+                                                    All Inclusive
+                                                </button>
+                                            </div>
                                         )}
                                     </div>
 
                                     {/* Card body */}
-                                    <div className="bg-[#161616] px-6 py-5 space-y-4">
+                                    <div className="bg-[#161616] px-5 py-4 space-y-3.5">
                                         {/* Tour Date */}
-                                        <div className="flex items-center justify-between rounded-xl bg-white/[0.04] px-4 py-3">
+                                        <div className="flex items-center justify-between rounded-xl bg-white/[0.04] px-4 py-2.5">
                                             <div>
-                                                <p className="text-white font-general text-sm">{tour.period}</p>
-                                                <p className="text-white/40 font-general text-xs mt-0.5">{tour.duration}</p>
+                                                <p className="text-white font-general text-sm leading-none">{tour.period}</p>
+                                                <p className="text-white/40 font-general text-[10px] mt-1.5 leading-none">{tour.duration}</p>
                                             </div>
                                             <a
                                                 href={`https://wa.me/919663299663?text=${encodeURIComponent(`Hi! I'd like to book the ${tour.name} tour (${tour.period}).`)}`}
@@ -1180,29 +1200,23 @@ const TourDetail = () => {
                                         <div className="h-px bg-white/[0.06]" />
 
                                         {/* CTA Buttons */}
-                                        <div className="space-y-2.5">
+                                        <div className="space-y-2">
                                             <a
                                                 href={`https://wa.me/919663299663?text=${encodeURIComponent(`Hi! I'd like to know more about the ${tour.name} tour.`)}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="group flex items-center justify-center gap-2.5 w-full rounded-full bg-brown-100 py-3.5 font-general text-sm uppercase tracking-wider text-white font-bold hover:bg-brown-300 active:scale-[0.98] transition-all duration-300"
+                                                className="group flex items-center justify-center gap-2 w-full rounded-full bg-brown-100 py-2.5 font-general text-xs uppercase tracking-wider text-white font-bold hover:bg-brown-300 active:scale-[0.98] transition-all duration-300"
                                             >
-                                                <FaWhatsapp className="w-5 h-5" />
+                                                <FaWhatsapp className="w-4 h-4" />
                                                 Enquire Now
                                             </a>
                                             <Link
                                                 to="/contact"
                                                 state={{ formType: "tailor", tourName: tour.name }}
-                                                className="group flex items-center justify-center gap-2.5 w-full rounded-full border border-brown-100/40 py-3 font-general text-xs uppercase tracking-wider text-brown-100 font-semibold hover:bg-brown-100/10 transition-all duration-300"
+                                                className="group flex items-center justify-center gap-2 w-full rounded-full border border-brown-100/40 py-2.5 font-general text-[11px] uppercase tracking-wider text-brown-100 font-semibold hover:bg-brown-100/10 transition-all duration-300"
                                             >
                                                 <FaSlidersH className="w-3.5 h-3.5" />
                                                 Tailor made
-                                            </Link>
-                                            <Link
-                                                to="/contact"
-                                                className="flex items-center justify-center w-full py-2.5 font-general text-xs uppercase tracking-wider text-white/50 font-semibold hover:text-white/80 transition-colors duration-300"
-                                            >
-                                                Questions? Contact Us
                                             </Link>
                                         </div>
 
@@ -1210,14 +1224,14 @@ const TourDetail = () => {
                                         <div className="h-px bg-white/[0.06]" />
 
                                         {/* Trust Badges */}
-                                        <div className="space-y-2">
-                                            <div className="flex items-center gap-3">
-                                                <FaShieldAlt className="w-3.5 h-3.5 text-brown-100 flex-shrink-0" />
-                                                <span className="text-white/50 font-general text-xs">25,000 INR deposit to confirm your spot</span>
+                                        <div className="space-y-1.5">
+                                            <div className="flex items-center gap-2.5">
+                                                <FaShieldAlt className="w-3 h-3 text-brown-100 flex-shrink-0" />
+                                                <span className="text-white/50 font-general text-[11px] leading-tight">25,000 INR deposit to confirm your spot</span>
                                             </div>
-                                            <div className="flex items-center gap-3">
-                                                <FaUndoAlt className="w-3.5 h-3.5 text-brown-100 flex-shrink-0" />
-                                                <span className="text-white/50 font-general text-xs">Cancellation & postponement with conditions</span>
+                                            <div className="flex items-center gap-2.5">
+                                                <FaUndoAlt className="w-3 h-3 text-brown-100 flex-shrink-0" />
+                                                <span className="text-white/50 font-general text-[11px] leading-tight">Cancellation & postponement with conditions</span>
                                             </div>
                                         </div>
 
@@ -1226,40 +1240,43 @@ const TourDetail = () => {
 
                                         {/* Price Add-ons */}
                                         <div>
-                                            <p className="font-general text-[10px] uppercase tracking-[0.15em] text-white/40 mb-3">Add-ons</p>
-                                            <div className="space-y-2.5">
+                                            <p className="font-general text-[10px] uppercase tracking-[0.15em] text-white/40 mb-2">Add-ons</p>
+                                            <div className="space-y-1.5">
                                                 {Object.entries(ADDON_LABELS).map(([key, label]) => {
-                                                    const isActive = addons[key];
+                                                    const isIncluded = key === "rentalBike" && packageType === "inclusive";
+                                                    const isActive = isIncluded ? true : addons[key];
                                                     const isPillion = key === "withPillion";
-                                                    const priceDisplay = isPillion
-                                                        ? tour.cost
-                                                        : `₹${ADDON_RATE_PER_DAY[key].toLocaleString("en-IN")}`;
-                                                    const suffix = isPillion ? "" : " /day";
+                                                    const priceDisplay = isIncluded
+                                                        ? "Included"
+                                                        : isPillion
+                                                            ? tour.cost
+                                                            : `₹${ADDON_RATE_PER_DAY[key].toLocaleString("en-IN")}`;
+                                                    const suffix = isIncluded || isPillion ? "" : " /day";
                                                     return (
                                                         <button
                                                             key={key}
-                                                            onClick={() => toggleAddon(key)}
-                                                            className={`w-full flex items-center justify-between rounded-xl px-4 py-3.5 transition-all duration-300 cursor-pointer ${isActive
+                                                            onClick={() => !isIncluded && toggleAddon(key)}
+                                                            className={`w-full flex items-center justify-between rounded-xl px-3 py-2 transition-all duration-300 ${isIncluded ? "cursor-default opacity-80" : "cursor-pointer"} ${isActive
                                                                 ? "bg-brown-100/15 border border-brown-100/40"
                                                                 : "bg-white/[0.03] border border-white/[0.06] hover:border-white/[0.12]"
                                                                 }`}
                                                         >
-                                                            <div className="flex items-center gap-3">
+                                                            <div className="flex items-center gap-2.5">
                                                                 <div
-                                                                    className={`w-5 h-5 rounded flex items-center justify-center transition-colors duration-200 flex-shrink-0 ${isActive
+                                                                    className={`w-4 h-4 rounded flex items-center justify-center transition-colors duration-200 flex-shrink-0 ${isActive
                                                                         ? "bg-brown-100"
                                                                         : "border-2 border-white/25"
                                                                         }`}
                                                                 >
                                                                     {isActive && (
-                                                                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
+                                                                        <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                                                                             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                                                         </svg>
                                                                     )}
                                                                 </div>
-                                                                <p className={`font-general text-sm font-semibold ${isActive ? "text-white" : "text-white/70"}`}>{label}</p>
+                                                                <p className={`font-general text-xs font-semibold ${isActive ? "text-white" : "text-white/70"}`}>{label}</p>
                                                             </div>
-                                                            <p className={`font-general text-sm font-bold ${isActive ? "text-brown-100" : "text-white/50"}`}>{priceDisplay}{suffix && <span className="text-[10px] font-normal opacity-60">{suffix}</span>}</p>
+                                                            <p className={`font-general text-xs font-bold ${isActive ? "text-brown-100" : "text-white/50"}`}>{priceDisplay}{suffix && <span className="text-[10px] font-normal opacity-60">{suffix}</span>}</p>
                                                         </button>
                                                     );
                                                 })}
@@ -1267,7 +1284,7 @@ const TourDetail = () => {
                                             <Link
                                                 to="/contact"
                                                 state={{ formType: "tailor", tourName: tour.name }}
-                                                className="flex items-center justify-center gap-1.5 w-full mt-3 py-2 font-general text-[11px] uppercase tracking-wider text-white/40 hover:text-brown-100 transition-colors duration-300"
+                                                className="flex items-center justify-center gap-1.5 w-full mt-2.5 font-general text-[10px] uppercase tracking-wider text-white/40 hover:text-brown-100 transition-colors duration-300"
                                             >
                                                 Contact us for more customization
                                             </Link>
