@@ -13,6 +13,7 @@ import {
     FaChevronDown,
 } from "react-icons/fa";
 import DecryptedText from "../styling/DecryptedText";
+import { submitToSheets } from "../../utils/submitToSheets";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -156,46 +157,60 @@ const Contact = () => {
         setFormData((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        let lines;
-        if (formType === "general") {
-            lines = [
-                `*New Enquiry from Website*`,
-                `*Name:* ${formData.name}`,
-                `*Email:* ${formData.email}`,
-                formData.phone ? `*Phone:* ${formData.phone}` : null,
-                formData.tripInterest ? `*Trip Interest:* ${formData.tripInterest}` : null,
-                `*Message:* ${formData.message}`,
-            ]
-                .filter(Boolean)
-                .join("\n");
+        setFormStatus("submitting");
+
+        const payload = formType === "general"
+            ? {
+                sheet: "contact",
+                type: "general",
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                tripInterest: formData.tripInterest,
+                message: formData.message,
+            }
+            : {
+                sheet: "contact",
+                type: "tailor",
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                destination: formData.destination,
+                numberOfDays: formData.numberOfDays,
+                numberOfPeople: formData.numberOfPeople,
+                preferredDates: formData.preferredDates,
+                ridingExperience: formData.ridingExperience,
+                vehicleType: formData.vehicleType,
+                hasPillion: formData.hasPillion ? "Yes" : "No",
+                specialRequirements: formData.specialRequirements,
+            };
+
+        const success = await submitToSheets(payload);
+
+        if (success) {
+            setFormStatus("sent");
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                tripInterest: "",
+                message: "",
+                destination: "",
+                numberOfDays: "",
+                numberOfPeople: "",
+                preferredDates: "",
+                ridingExperience: "",
+                vehicleType: "",
+                hasPillion: false,
+                specialRequirements: "",
+            });
+            setTimeout(() => setFormStatus(null), 4000);
         } else {
-            lines = [
-                `*Tailor-Made Tour Request*`,
-                `*Name:* ${formData.name}`,
-                `*Email:* ${formData.email}`,
-                formData.phone ? `*Phone:* ${formData.phone}` : null,
-                `*Destination:* ${formData.destination}`,
-                `*Number of Days:* ${formData.numberOfDays}`,
-                `*Number of People:* ${formData.numberOfPeople}`,
-                formData.preferredDates ? `*Preferred Dates:* ${formData.preferredDates}` : null,
-                formData.ridingExperience ? `*Riding Experience:* ${formData.ridingExperience}` : null,
-                formData.vehicleType ? `*Vehicle:* ${formData.vehicleType}` : null,
-                `*Pillion Rider:* ${formData.hasPillion ? "Yes" : "No"}`,
-                formData.specialRequirements ? `*Special Requirements:* ${formData.specialRequirements}` : null,
-            ]
-                .filter(Boolean)
-                .join("\n");
+            setFormStatus("error");
+            setTimeout(() => setFormStatus(null), 4000);
         }
-        const encoded = encodeURIComponent(lines);
-        window.open(
-            `https://api.whatsapp.com/send?phone=919663299663&text=${encoded}`,
-            "_blank",
-            "noopener,noreferrer"
-        );
-        setFormStatus("sent");
-        setTimeout(() => setFormStatus(null), 4000);
     };
 
     return (
@@ -357,7 +372,7 @@ const Contact = () => {
                                     {formType === "general" ? (
                                         <>
                                             {/* General: Trip Interest */}
-                                            <div className="form-field">
+                                            <div className="form-field relative z-50">
                                                 <label className="block text-neutral-gray text-xs uppercase tracking-widest font-general mb-2">
                                                     Interested In
                                                 </label>
@@ -399,7 +414,7 @@ const Contact = () => {
                                     ) : (
                                         <>
                                             {/* Tailor Made: Destination */}
-                                            <div className="form-field">
+                                            <div className="form-field relative z-50">
                                                 <label className="block text-neutral-gray text-xs uppercase tracking-widest font-general mb-2">
                                                     Destination / Region *
                                                 </label>
@@ -471,7 +486,7 @@ const Contact = () => {
                                                         className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-white font-general text-sm placeholder:text-white/20 focus:outline-none focus:border-brown-100/50 focus:ring-1 focus:ring-brown-100/30 focus:bg-white/[0.06] transition-all duration-300"
                                                     />
                                                 </div>
-                                                <div className="form-field">
+                                                <div className="form-field relative z-50">
                                                     <label className="block text-neutral-gray text-xs uppercase tracking-widest font-general mb-2">
                                                         Riding Experience
                                                     </label>
@@ -554,10 +569,11 @@ const Contact = () => {
                                     <div className="form-field pt-2">
                                         <button
                                             type="submit"
-                                            className="group relative w-full sm:w-auto overflow-hidden rounded-full bg-green-500 px-10 py-3.5 font-general text-xs uppercase tracking-widest text-white font-semibold transition-all duration-300 hover:bg-green-300 hover:-translate-y-0.5 cursor-pointer"
+                                            disabled={formStatus === "submitting"}
+                                            className="group relative w-full sm:w-auto overflow-hidden rounded-full bg-green-500 px-10 py-3.5 font-general text-xs uppercase tracking-widest text-white font-semibold transition-all duration-300 hover:bg-green-300 hover:-translate-y-0.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
                                             <span className="relative z-10">
-                                                Submit
+                                                {formStatus === "submitting" ? "Submitting..." : "Submit"}
                                             </span>
                                         </button>
                                     </div>
@@ -568,7 +584,16 @@ const Contact = () => {
                                             animate={{ opacity: 1, y: 0 }}
                                             className="text-green-100 font-general text-sm animate-pulse"
                                         >
-                                            Opening WhatsApp with your message...
+                                            Your enquiry has been submitted successfully!
+                                        </motion.p>
+                                    )}
+                                    {formStatus === "error" && (
+                                        <motion.p
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="text-red-400 font-general text-sm animate-pulse"
+                                        >
+                                            Something went wrong. Please try again.
                                         </motion.p>
                                     )}
                                 </form>
@@ -660,7 +685,7 @@ const FormDropdown = ({ value, onChange, placeholder, options }) => {
     }, []);
 
     return (
-        <div ref={ref} className="relative">
+        <div ref={ref} className={`relative ${isOpen ? "z-50" : "z-10"}`}>
             <button
                 type="button"
                 onClick={() => setIsOpen((prev) => !prev)}

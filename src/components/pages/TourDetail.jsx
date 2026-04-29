@@ -992,7 +992,7 @@ const TourDetail = () => {
                                 </section>
                             )}
 
-                            {/* Itinerary Section - Scroll Timeline */}
+                            {/* Itinerary Section */}
                             {tour.itinerary && tour.itinerary.length > 0 && (
                                 <section className="content-section mb-20">
                                     <div className="mb-10 section-heading">
@@ -1012,7 +1012,8 @@ const TourDetail = () => {
                                     </div>
                                     <RoadmapTimeline
                                         tourId={tourSlug}
-                                        items={tour.itinerary.map((day, index) => ({
+                                        tourName={tour.name}
+                                        items={tour.itinerary.map((day) => ({
                                             title: day.title,
                                             description: day.description || null,
                                         }))}
