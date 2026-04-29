@@ -12,6 +12,7 @@ import {
     FaInstagram,
 } from "react-icons/fa";
 import DecryptedText from "../styling/DecryptedText";
+import FounderSection from "../common/FounderSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -100,7 +101,7 @@ const timeline = [
 const team = [
     {
         name: "Rider One",
-        role: "Founder & Lead Marshal",
+        role: "Founder",
         image: "img/images/gallery/trip-main/la_himalaya.jpg",
     },
     {
@@ -356,7 +357,7 @@ const AboutUs = () => {
                                     Palaksha
                                 </p>
                                 <p className="text-white/40 font-general text-xs uppercase tracking-[0.15em]">
-                                    Founder & Lead Marshal
+                                    Founder
                                 </p>
                             </div>
                         </div>
@@ -409,59 +410,9 @@ const AboutUs = () => {
                 </div>
             </section>
 
+            <FounderSection />
+
             {/* ===== OUR TEAM ===== */}
-            <section className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto mt-16 md:mt-24 pb-24 md:pb-32">
-                <div className="text-center mb-10">
-                    <DecryptedText
-                        text="Our Team"
-                        parentClassName="flex justify-center"
-                        className="font-myCustomFont font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase text-blue-75"
-                        encryptedClassName="font-myCustomFont font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl uppercase text-blue-75 opacity-40"
-                        characters="█▓▒░▀▄▌▐"
-                        animateOn="view"
-                        revealDirection="center"
-                        sequential
-                        useOriginalCharsOnly={false}
-                        speed={40}
-                    />
-                </div>
-
-                <div className="team-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-                    {team.map((member, i) => (
-                        <div
-                            key={i}
-                            className="team-card group relative rounded-3xl overflow-hidden border border-white/[0.06] bg-[#1c1c1c] transition-all duration-500 hover:border-white/[0.15] hover:-translate-y-1"
-                        >
-                            {/* Photo */}
-                            <div className="relative aspect-[3/4] overflow-hidden">
-                                <img
-                                    src={member.image}
-                                    alt={member.name}
-                                    className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                                />
-                                {/* Gradient overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c1c] via-transparent to-transparent" />
-
-                                {/* Social icon on hover */}
-                                <div className="absolute top-3 right-3 w-8 h-8 rounded-full border border-white/[0.1] bg-black/40 backdrop-blur-sm flex items-center justify-center text-white/0 group-hover:text-white/60 transition-all duration-300">
-                                    <FaInstagram className="w-3.5 h-3.5" />
-                                </div>
-                            </div>
-
-                            {/* Info */}
-                            <div className="p-4">
-                                <p className="text-white font-myCustomFont text-sm font-bold truncate">
-                                    {member.name}
-                                </p>
-                                <p className="text-white/40 font-general text-[10px] uppercase tracking-[0.2em] mt-0.5 truncate">
-                                    {member.role}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
         </div>
     );
 };

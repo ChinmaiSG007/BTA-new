@@ -11,7 +11,7 @@ import ImportantMessage from "../common/ImportantMessage";
 import GlassSurface from "../styling/GlassSurface";
 import ToursPopover from "../common/ToursPopover";
 
-const navItems = ["About", "Founder Story", "Gallery", "Ride skill workshop", "Contact"];
+const navItems = ["About", "Gallery", "Ride skill workshop", "Contact"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -228,7 +228,6 @@ const NavBar = () => {
               {navItems.map((item, index) => {
                 const hrefMap = {
                   "About": "/about",
-                  "Founder Story": "/founder",
                   "Ride skill workshop": "/ride-skill-workshop",
                   "Contact": "/contact",
                 };
@@ -352,7 +351,6 @@ const NavBar = () => {
               {navItems.map((item, index) => {
                 const hrefMap = {
                   "About": "/about",
-                  "Founder Story": "/founder",
                   "Ride skill workshop": "/ride-skill-workshop",
                   "Contact": "/contact",
                 };

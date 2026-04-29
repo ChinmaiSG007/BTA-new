@@ -307,8 +307,7 @@ export default function DomeGallery({
                 stopInertia();
 
                 pointerTypeRef.current = event.pointerType || 'mouse';
-                if (pointerTypeRef.current === 'touch') event.preventDefault();
-                if (pointerTypeRef.current === 'touch') lockScroll();
+                // Removed preventDefault and lockScroll to allow native mobile scrolling
                 draggingRef.current = true;
                 cancelTapRef.current = false;
                 movedRef.current = false;
@@ -320,7 +319,7 @@ export default function DomeGallery({
             onDrag: ({ event, last, velocity: velArr = [0, 0], direction: dirArr = [0, 0], movement }) => {
                 if (focusedElRef.current || !draggingRef.current || !startPosRef.current) return;
 
-                if (pointerTypeRef.current === 'touch') event.preventDefault();
+                // Removed preventDefault to allow native mobile scrolling
 
                 const dxTotal = event.clientX - startPosRef.current.x;
                 const dyTotal = event.clientY - startPosRef.current.y;
@@ -382,7 +381,7 @@ export default function DomeGallery({
                     if (cancelTapRef.current) setTimeout(() => (cancelTapRef.current = false), 120);
                     if (movedRef.current) lastDragEndAt.current = performance.now();
                     movedRef.current = false;
-                    if (pointerTypeRef.current === 'touch') unlockScroll();
+                    // Removed unlockScroll since we didn't lock it on drag
                 }
             }
         },
@@ -778,7 +777,7 @@ export default function DomeGallery({
                     ref={mainRef}
                     className="absolute inset-0 grid place-items-center overflow-hidden select-none bg-transparent"
                     style={{
-                        touchAction: 'none',
+                        touchAction: 'pan-y', // Allows vertical scrolling on mobile
                         WebkitUserSelect: 'none'
                     }}
                 >
