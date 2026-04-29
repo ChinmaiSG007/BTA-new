@@ -1,5 +1,5 @@
 import DomeGallery from '../styling/DomeGallery';
-import GalleryHeroCarousel from '../styling/GalleryHeroCarousel';
+import DecryptedText from '../styling/DecryptedText';
 
 const Gallery = () => {
     // All images from the gallery folder
@@ -86,14 +86,27 @@ const Gallery = () => {
     ];
 
     return (
-        <div className="min-h-screen w-screen bg-neutral-black text-white">
-            {/* Hero Carousel Section */}
-            <section className="relative h-screen w-full overflow-hidden">
-                <GalleryHeroCarousel images={galleryImages} />
+        <div className="min-h-screen w-screen bg-neutral-black text-white pt-24 md:pt-32">
+            {/* ===== TITLE SECTION ===== */}
+            <section className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-6">
+                <div className="text-center mb-8">
+                    <DecryptedText
+                        text="Gallery"
+                        parentClassName="flex justify-center"
+                        className="font-myCustomFont font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase text-blue-75"
+                        encryptedClassName="font-myCustomFont font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase text-blue-75 opacity-40"
+                        characters="█▓▒░▀▄▌▐"
+                        animateOn="view"
+                        revealDirection="start"
+                        sequential
+                        useOriginalCharsOnly={false}
+                        speed={40}
+                    />
+                </div>
             </section>
 
             {/* DomeGallery Section */}
-            <section className="relative w-full h-screen bg-neutral-black">
+            <section className="relative w-full h-[80vh] md:h-[85vh] bg-neutral-black">
                 <div className="w-full h-full">
                     <DomeGallery
                         images={galleryImages}
