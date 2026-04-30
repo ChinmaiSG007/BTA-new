@@ -1,5 +1,6 @@
 import DomeGallery from '../styling/DomeGallery';
 import DecryptedText from '../styling/DecryptedText';
+import SEO from "../common/SEO";
 
 const Gallery = () => {
     // All images from the gallery folder
@@ -87,6 +88,11 @@ const Gallery = () => {
 
     return (
         <div className="min-h-screen w-screen bg-neutral-black text-white pt-24 md:pt-32">
+            <SEO 
+                title="Gallery | Beyond Tarmac Adventures"
+                description="Browse our gallery of breathtaking landscapes, thrilling motorcycle rides, and unforgettable moments from our adventure tours."
+                url="https://beyondtarmacadv.com/gallery"
+            />
             {/* ===== TITLE SECTION ===== */}
             <section className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pb-6">
                 <div className="text-center mb-8">

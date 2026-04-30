@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import DecryptedText from "../styling/DecryptedText";
 import FounderSection from "../common/FounderSection";
+import SEO from "../common/SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -229,6 +230,11 @@ const AboutUs = () => {
             ref={containerRef}
             className="min-h-screen w-screen bg-neutral-black text-white overflow-hidden"
         >
+            <SEO 
+                title="About Us | Beyond Tarmac Adventures"
+                description="Discover the story behind Beyond Tarmac Adventures. We are passionate motorcyclists curating unforgettable guided motorcycle tours in India."
+                url="https://beyondtarmacadv.com/about"
+            />
             {/* ===== TITLE ===== */}
             <section className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-32 sm:pt-36 md:pt-40 pb-6">
                 <div className="text-center mb-4">

@@ -12,6 +12,7 @@ import AnimatedTitle from "../common/AnimatedTitle";
 import DecryptedText from "../styling/DecryptedText";
 import ScrollTimeline from "../styling/ScrollTimeline";
 import RoadmapTimeline from "../styling/RoadmapTimeline";
+import SEO from "../common/SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -200,6 +201,12 @@ const TourDetail = () => {
 
     return (
         <>
+            <SEO 
+                title={`${tour.name} Motorcycle Tour | Beyond Tarmac Adventures`} 
+                description={`Join the ${tour.name} motorcycle tour. ${tour.description?.slice(0, 150)}...`}
+                image={`https://beyondtarmacadv.com${tour.images?.[0] || ''}`}
+                url={`https://beyondtarmacadv.com/tours/${tour.slug}`}
+            />
             {/* HUD Interface Loading Screen - HALO Style */}
             <AnimatePresence mode="wait">
                 {showLogoScreen && tour && region && (

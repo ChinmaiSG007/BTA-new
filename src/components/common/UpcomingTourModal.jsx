@@ -19,8 +19,31 @@ const UpcomingTourModal = () => {
 
     useEffect(() => {
         if (!upcomingTour) return;
-        const timer = setTimeout(() => setIsOpen(true), 2000);
-        return () => clearTimeout(timer);
+
+        // Check if we've shown it recently (6 hours)
+        const lastSeenStr = localStorage.getItem("lastSeenUpcomingTourModal");
+        const now = new Date().getTime();
+        const sixHours = 6 * 60 * 60 * 1000;
+
+        if (lastSeenStr && (now - parseInt(lastSeenStr, 10)) < sixHours) {
+            return; // Already seen in the last 6 hours
+        }
+
+        const handleScroll = () => {
+            // Trigger when scrolled down past ~70% of the viewport (past hero section)
+            if (window.scrollY > window.innerHeight * 0.7) {
+                setIsOpen(true);
+                localStorage.setItem("lastSeenUpcomingTourModal", now.toString());
+                window.removeEventListener("scroll", handleScroll);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        
+        // Check once initially in case they reload the page already scrolled down
+        handleScroll();
+
+        return () => window.removeEventListener("scroll", handleScroll);
     }, [upcomingTour]);
 
     // Lock body scroll when modal is open

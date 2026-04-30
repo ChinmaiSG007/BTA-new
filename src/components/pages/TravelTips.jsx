@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { TiLocationArrow } from "react-icons/ti";
 import AnimatedTitle from "../common/AnimatedTitle";
 import Balatro from "../styling/Balatro";
+import SEO from "../common/SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -117,6 +118,11 @@ const TravelTips = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen w-screen bg-neutral-black text-white">
+            <SEO 
+                title="Travel Tips | Beyond Tarmac Adventures"
+                description="Essential travel tips, kit lists, and medical requirements for your motorcycle adventure in North and South India."
+                url="https://beyondtarmacadv.com/travel-tips"
+            />
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24">
                 {/* Background with gradient overlay */}

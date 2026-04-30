@@ -6,6 +6,7 @@ import { TiLocationArrow } from "react-icons/ti";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import AnimatedTitle from "../common/AnimatedTitle";
 import Button from "../common/Button";
+import SEO from "../common/SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -176,6 +177,12 @@ const RideSkillWorkshop = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen w-screen bg-neutral-black text-white">
+            <SEO 
+                title="Ride Skill Workshop | Beyond Tarmac Adventures"
+                description="A Basic Riding Course for Women. Join us to rev up your skills, learn motorcycle basics, and break barriers in a supportive environment."
+                image="https://beyondtarmacadv.com/img/images/gallery/Ride/rideskillworkshop.webp"
+                url="https://beyondtarmacadv.com/ride-skill-workshop"
+            />
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
                 {/* Background Image with Gradient Overlay */}
@@ -196,7 +203,7 @@ const RideSkillWorkshop = () => {
                         <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-brown-100/0 via-brown-100/20 to-brown-100/0 opacity-50 blur-xl animate-pulse pointer-events-none" />
 
                         <div className="relative z-10">
-                            <h1 className="special-font hero-heading text-blue-75 mb-4 drop-shadow-2xl">
+                            <h1 className="special-font font-myCustomFont text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-black uppercase leading-[0.95] text-blue-75 mb-4 drop-shadow-2xl break-words">
                                 RIDE SKILL WORKSHOP
                             </h1>
                             <p className="font-general text-lg sm:text-xl md:text-3xl text-brown-100 mb-8 drop-shadow-lg">
