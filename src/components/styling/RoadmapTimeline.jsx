@@ -1,4 +1,5 @@
 import { useRef, useMemo, useState, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion";
 import { submitToSheets } from "../../utils/submitToSheets";
 
@@ -382,84 +383,87 @@ const RoadmapTimeline = ({ items = [], tourId = "", tourName = "" }) => {
                 </div>
             )}
 
-            {/* ========== Lead Capture Modal ========== */}
-            <AnimatePresence>
-                {showModal && (
-                    <motion.div
-                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
-                        style={{ backgroundColor: "rgba(0,0,0,0.45)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
-                        onClick={() => setShowModal(false)}
-                    >
+            {/* ========== Lead Capture Modal (Portaled) ========== */}
+            {createPortal(
+                <AnimatePresence>
+                    {showModal && (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.92, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.92, y: 20 }}
-                            transition={{ duration: 0.3, type: "spring", damping: 25 }}
-                            onClick={(e) => e.stopPropagation()}
-                            className="w-full max-w-md rounded-2xl overflow-hidden"
-                            style={{
-                                border: "1px solid rgba(212,165,116,0.25)",
-                                background: "linear-gradient(145deg, rgba(35,30,25,0.95) 0%, rgba(20,18,16,0.97) 100%)",
-                                boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(212,165,116,0.06), inset 0 1px 0 rgba(255,255,255,0.05)",
-                                backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
-                            }}
+                            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+                            style={{ backgroundColor: "rgba(0,0,0,0.45)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
+                            onClick={() => setShowModal(false)}
                         >
-                            {/* Modal header */}
-                            <div className="relative px-6 pt-6 pb-4" style={{ borderBottom: "1px solid rgba(212,165,116,0.1)" }}>
-                                <h3 className="text-lg sm:text-xl font-bold text-white font-general">Unlock Full Itinerary</h3>
-                                <p className="text-sm text-neutral-400 mt-1 font-general">Enter your details to view the complete day-by-day plan.</p>
-                                <button
-                                    onClick={() => setShowModal(false)}
-                                    className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
-                                    aria-label="Close modal"
-                                >
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.92, y: 20 }}
+                                transition={{ duration: 0.3, type: "spring", damping: 25 }}
+                                onClick={(e) => e.stopPropagation()}
+                                className="w-full max-w-md rounded-2xl overflow-hidden"
+                                style={{
+                                    border: "1px solid rgba(212,165,116,0.25)",
+                                    background: "linear-gradient(145deg, rgba(35,30,25,0.95) 0%, rgba(20,18,16,0.97) 100%)",
+                                    boxShadow: "0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(212,165,116,0.06), inset 0 1px 0 rgba(255,255,255,0.05)",
+                                    backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)",
+                                }}
+                            >
+                                {/* Modal header */}
+                                <div className="relative px-6 pt-6 pb-4" style={{ borderBottom: "1px solid rgba(212,165,116,0.1)" }}>
+                                    <h3 className="text-lg sm:text-xl font-bold text-white font-general">Unlock Full Itinerary</h3>
+                                    <p className="text-sm text-neutral-400 mt-1 font-general">Enter your details to view the complete day-by-day plan.</p>
+                                    <button
+                                        onClick={() => setShowModal(false)}
+                                        className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center rounded-full bg-white/5 text-neutral-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+                                        aria-label="Close modal"
+                                    >
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                </div>
 
-                            {/* Modal form */}
-                            <form onSubmit={handleSubmit} className="px-6 py-5 space-y-4">
-                                <div>
-                                    <label className="block text-xs text-[#d4a574]/70 font-general mb-1.5 uppercase tracking-wider font-semibold">Full Name</label>
-                                    <input type="text" value={formData.name} onChange={(e) => handleFormChange("name", e.target.value)} placeholder="John Doe"
-                                        className="w-full px-4 py-2.5 rounded-lg text-white text-sm font-general placeholder:text-neutral-500 focus:outline-none transition-all"
-                                        style={inputStyle} {...focusHandlers} />
-                                    {formErrors.name && <p className="text-red-400 text-xs mt-1 font-general">{formErrors.name}</p>}
-                                </div>
-                                <div>
-                                    <label className="block text-xs text-[#d4a574]/70 font-general mb-1.5 uppercase tracking-wider font-semibold">Email Address</label>
-                                    <input type="email" value={formData.email} onChange={(e) => handleFormChange("email", e.target.value)} placeholder="john@example.com"
-                                        className="w-full px-4 py-2.5 rounded-lg text-white text-sm font-general placeholder:text-neutral-500 focus:outline-none transition-all"
-                                        style={inputStyle} {...focusHandlers} />
-                                    {formErrors.email && <p className="text-red-400 text-xs mt-1 font-general">{formErrors.email}</p>}
-                                </div>
-                                <div>
-                                    <label className="block text-xs text-[#d4a574]/70 font-general mb-1.5 uppercase tracking-wider font-semibold">Phone Number</label>
-                                    <input type="tel" value={formData.phone} onChange={(e) => handleFormChange("phone", e.target.value)} placeholder="+91 98765 43210"
-                                        className="w-full px-4 py-2.5 rounded-lg text-white text-sm font-general placeholder:text-neutral-500 focus:outline-none transition-all"
-                                        style={inputStyle} {...focusHandlers} />
-                                    {formErrors.phone && <p className="text-red-400 text-xs mt-1 font-general">{formErrors.phone}</p>}
-                                </div>
-                                <button type="submit" disabled={submitting}
-                                    className="w-full py-3 rounded-lg bg-[#d4a574] text-[#1a1a1a] font-bold text-sm sm:text-base font-general tracking-wide hover:bg-[#c4955a] transition-colors disabled:opacity-60 cursor-pointer"
-                                    style={{ boxShadow: "0 4px 15px rgba(212,165,116,0.25)" }}>
-                                    {submitting ? "Unlocking…" : "View Full Itinerary"}
-                                </button>
-                            </form>
+                                {/* Modal form */}
+                                <form onSubmit={handleSubmit} className="px-6 py-5 space-y-4">
+                                    <div>
+                                        <label className="block text-xs text-[#d4a574]/70 font-general mb-1.5 uppercase tracking-wider font-semibold">Full Name</label>
+                                        <input type="text" value={formData.name} onChange={(e) => handleFormChange("name", e.target.value)} placeholder="John Doe"
+                                            className="w-full px-4 py-2.5 rounded-lg text-white text-sm font-general placeholder:text-neutral-500 focus:outline-none transition-all"
+                                            style={inputStyle} {...focusHandlers} />
+                                        {formErrors.name && <p className="text-red-400 text-xs mt-1 font-general">{formErrors.name}</p>}
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs text-[#d4a574]/70 font-general mb-1.5 uppercase tracking-wider font-semibold">Email Address</label>
+                                        <input type="email" value={formData.email} onChange={(e) => handleFormChange("email", e.target.value)} placeholder="john@example.com"
+                                            className="w-full px-4 py-2.5 rounded-lg text-white text-sm font-general placeholder:text-neutral-500 focus:outline-none transition-all"
+                                            style={inputStyle} {...focusHandlers} />
+                                        {formErrors.email && <p className="text-red-400 text-xs mt-1 font-general">{formErrors.email}</p>}
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs text-[#d4a574]/70 font-general mb-1.5 uppercase tracking-wider font-semibold">Phone Number</label>
+                                        <input type="tel" value={formData.phone} onChange={(e) => handleFormChange("phone", e.target.value)} placeholder="+91 98765 43210"
+                                            className="w-full px-4 py-2.5 rounded-lg text-white text-sm font-general placeholder:text-neutral-500 focus:outline-none transition-all"
+                                            style={inputStyle} {...focusHandlers} />
+                                        {formErrors.phone && <p className="text-red-400 text-xs mt-1 font-general">{formErrors.phone}</p>}
+                                    </div>
+                                    <button type="submit" disabled={submitting}
+                                        className="w-full py-3 rounded-lg bg-[#d4a574] text-[#1a1a1a] font-bold text-sm sm:text-base font-general tracking-wide hover:bg-[#c4955a] transition-colors disabled:opacity-60 cursor-pointer"
+                                        style={{ boxShadow: "0 4px 15px rgba(212,165,116,0.25)" }}>
+                                        {submitting ? "Unlocking…" : "View Full Itinerary"}
+                                    </button>
+                                </form>
 
-                            {submitError && (
-                                <p className="px-6 pb-4 text-red-400 text-sm font-general text-center animate-pulse">
-                                    Something went wrong. Please try again.
-                                </p>
-                            )}
+                                {submitError && (
+                                    <p className="px-6 pb-4 text-red-400 text-sm font-general text-center animate-pulse">
+                                        Something went wrong. Please try again.
+                                    </p>
+                                )}
+                            </motion.div>
                         </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
         </section>
     );
 };

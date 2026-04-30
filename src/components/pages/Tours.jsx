@@ -5,6 +5,7 @@ import { TiLocationArrow } from "react-icons/ti";
 import { FaClock, FaCalendarAlt, FaMoneyBillWave, FaMapMarkerAlt, FaStar, FaChevronDown } from "react-icons/fa";
 import toursData from "../../tours.json";
 import ToursHeroCarousel from "../styling/ToursHeroCarousel";
+import SEO from "../common/SEO";
 
 // Extract unique months from tour periods for date filter
 const getMonthsFromPeriod = (period) => {
@@ -56,6 +57,11 @@ const Tours = () => {
 
     return (
         <div className="min-h-screen w-screen bg-neutral-black text-white">
+            <SEO 
+                title="Our Tours | Beyond Tarmac Adventures"
+                description="Explore our meticulously crafted guided motorcycle tours across Spiti Valley, Ladakh, Rajasthan, Nepal, and more."
+                url="https://beyondtarmacadv.com/tours"
+            />
             {/* Hero Carousel Section */}
             <ToursHeroCarousel />
 

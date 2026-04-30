@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import DecryptedText from "../styling/DecryptedText";
 import { submitToSheets } from "../../utils/submitToSheets";
+import SEO from "../common/SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -215,6 +216,11 @@ const Contact = () => {
 
     return (
         <div ref={containerRef} className="min-h-screen w-screen bg-neutral-black text-white overflow-hidden">
+            <SEO 
+                title="Contact Us | Beyond Tarmac Adventures"
+                description="Get in touch with Beyond Tarmac Adventures. Reach out for general inquiries or to craft your tailor-made motorcycle expedition."
+                url="https://beyondtarmacadv.com/contact"
+            />
             {/* ===== TITLE + CARDS + ADDRESS SECTION ===== */}
             <section className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-32 sm:pt-36 md:pt-40 pb-6">
                 <div className="text-center mb-8">
@@ -372,7 +378,7 @@ const Contact = () => {
                                     {formType === "general" ? (
                                         <>
                                             {/* General: Trip Interest */}
-                                            <div className="form-field relative z-50">
+                                            <div className="form-field relative z-[100]">
                                                 <label className="block text-neutral-gray text-xs uppercase tracking-widest font-general mb-2">
                                                     Interested In
                                                 </label>
@@ -414,7 +420,7 @@ const Contact = () => {
                                     ) : (
                                         <>
                                             {/* Tailor Made: Destination */}
-                                            <div className="form-field relative z-50">
+                                            <div className="form-field relative z-[100]">
                                                 <label className="block text-neutral-gray text-xs uppercase tracking-widest font-general mb-2">
                                                     Destination / Region *
                                                 </label>
@@ -486,7 +492,7 @@ const Contact = () => {
                                                         className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-white font-general text-sm placeholder:text-white/20 focus:outline-none focus:border-brown-100/50 focus:ring-1 focus:ring-brown-100/30 focus:bg-white/[0.06] transition-all duration-300"
                                                     />
                                                 </div>
-                                                <div className="form-field relative z-50">
+                                                <div className="form-field relative z-[90]">
                                                     <label className="block text-neutral-gray text-xs uppercase tracking-widest font-general mb-2">
                                                         Riding Experience
                                                     </label>

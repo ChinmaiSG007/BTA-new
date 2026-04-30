@@ -6,6 +6,7 @@ import { TiLocationArrow } from "react-icons/ti";
 import { FaChevronDown } from "react-icons/fa";
 import AnimatedTitle from "../common/AnimatedTitle";
 import Balatro from "../styling/Balatro";
+import SEO from "../common/SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -103,6 +104,11 @@ All our rides can be handled by a rider with limited to no off-road experience. 
 
     return (
         <div ref={containerRef} className="min-h-screen w-screen bg-neutral-black text-white">
+            <SEO 
+                title="FAQ | Beyond Tarmac Adventures"
+                description="Frequently asked questions about our guided motorcycle tours, rentals, and requirements for exploring India."
+                url="https://beyondtarmacadv.com/faq"
+            />
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24">
                 {/* Background with gradient overlay */}
